@@ -1,0 +1,1083 @@
+Symbol range map extraction starting
+Processing 12 files
+startProcessing "otamusan\NotEnoughCompression.java" md5: 658e0f8624bc77c8944639d16639d6a4
+@|otamusan\NotEnoughCompression.java|8|16|otamusan|package|otamusan|(file)
+Class Start: otamusan.NotEnoughCompression
+   @|otamusan\NotEnoughCompression.java|610|613|Mod|class|net.minecraftforge.fml.common.Mod
+   @|otamusan\NotEnoughCompression.java|614|619|modid|method|net.minecraftforge.fml.common.Mod|modid|()Ljava/lang/String;
+   @|otamusan\NotEnoughCompression.java|622|642|NotEnoughCompression|class|otamusan.NotEnoughCompression
+   @|otamusan\NotEnoughCompression.java|643|649|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+   @|otamusan\NotEnoughCompression.java|651|655|name|method|net.minecraftforge.fml.common.Mod|name|()Ljava/lang/String;
+   @|otamusan\NotEnoughCompression.java|658|678|NotEnoughCompression|class|otamusan.NotEnoughCompression
+   @|otamusan\NotEnoughCompression.java|679|687|MOD_NAME|field|otamusan.NotEnoughCompression|MOD_NAME
+   @|otamusan\NotEnoughCompression.java|689|696|version|method|net.minecraftforge.fml.common.Mod|version|()Ljava/lang/String;
+   @|otamusan\NotEnoughCompression.java|699|719|NotEnoughCompression|class|otamusan.NotEnoughCompression
+   @|otamusan\NotEnoughCompression.java|720|731|MOD_VERSION|field|otamusan.NotEnoughCompression|MOD_VERSION
+   @|otamusan\NotEnoughCompression.java|733|758|acceptedMinecraftVersions|method|net.minecraftforge.fml.common.Mod|acceptedMinecraftVersions|()Ljava/lang/String;
+   @|otamusan\NotEnoughCompression.java|761|781|NotEnoughCompression|class|otamusan.NotEnoughCompression
+   @|otamusan\NotEnoughCompression.java|782|806|MOD_ACCEPTED_MC_VERSIONS|field|otamusan.NotEnoughCompression|MOD_ACCEPTED_MC_VERSIONS
+   @|otamusan\NotEnoughCompression.java|808|819|useMetadata|method|net.minecraftforge.fml.common.Mod|useMetadata|()Z
+   @|otamusan\NotEnoughCompression.java|842|862|NotEnoughCompression|class|otamusan.NotEnoughCompression
+   @|otamusan\NotEnoughCompression.java|886|892|String|class|java.lang.String
+   @|otamusan\NotEnoughCompression.java|886|892|String|class|java.lang.String
+   @|otamusan\NotEnoughCompression.java|893|899|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID|
+   @|otamusan\NotEnoughCompression.java|947|953|String|class|java.lang.String
+   @|otamusan\NotEnoughCompression.java|947|953|String|class|java.lang.String
+   @|otamusan\NotEnoughCompression.java|954|962|MOD_NAME|field|otamusan.NotEnoughCompression|MOD_NAME|
+   @|otamusan\NotEnoughCompression.java|1010|1016|String|class|java.lang.String
+   @|otamusan\NotEnoughCompression.java|1010|1016|String|class|java.lang.String
+   @|otamusan\NotEnoughCompression.java|1017|1028|MOD_VERSION|field|otamusan.NotEnoughCompression|MOD_VERSION|
+   @|otamusan\NotEnoughCompression.java|1061|1067|String|class|java.lang.String
+   @|otamusan\NotEnoughCompression.java|1061|1067|String|class|java.lang.String
+   @|otamusan\NotEnoughCompression.java|1068|1092|MOD_ACCEPTED_MC_VERSIONS|field|otamusan.NotEnoughCompression|MOD_ACCEPTED_MC_VERSIONS|
+   @|otamusan\NotEnoughCompression.java|1223|1234|CommonProxy|class|otamusan.common.CommonProxy
+   @|otamusan\NotEnoughCompression.java|1109|1119|SidedProxy|class|net.minecraftforge.fml.common.SidedProxy
+   @|otamusan\NotEnoughCompression.java|1120|1130|clientSide|method|net.minecraftforge.fml.common.SidedProxy|clientSide|()Ljava/lang/String;
+   @|otamusan\NotEnoughCompression.java|1164|1174|serverSide|method|net.minecraftforge.fml.common.SidedProxy|serverSide|()Ljava/lang/String;
+   @|otamusan\NotEnoughCompression.java|1223|1234|CommonProxy|class|otamusan.common.CommonProxy
+   @|otamusan\NotEnoughCompression.java|1235|1240|proxy|field|otamusan.NotEnoughCompression|proxy|
+   Method Start: preInit(Lnet/minecraftforge/fml/common/event/FMLPreInitializationEvent;)V
+      @|otamusan\NotEnoughCompression.java|1305|1310|event|param|otamusan.NotEnoughCompression|preInit|(Lnet/minecraftforge/fml/common/event/FMLPreInitializationEvent;)V|event|0
+      @|otamusan\NotEnoughCompression.java|1245|1257|EventHandler|class|net.minecraftforge.fml.common.Mod.EventHandler
+      @|otamusan\NotEnoughCompression.java|1271|1278|preInit|method|otamusan.NotEnoughCompression|preInit|(Lnet/minecraftforge/fml/common/event/FMLPreInitializationEvent;)V
+      @|otamusan\NotEnoughCompression.java|1279|1304|FMLPreInitializationEvent|class|net.minecraftforge.fml.common.event.FMLPreInitializationEvent
+      @|otamusan\NotEnoughCompression.java|1317|1330|Configuration|class|net.minecraftforge.common.config.Configuration
+      @|otamusan\NotEnoughCompression.java|1341|1354|Configuration|class|net.minecraftforge.common.config.Configuration
+      @|otamusan\NotEnoughCompression.java|1359|1363|File|class|java.io.File
+      @|otamusan\NotEnoughCompression.java|1416|1420|load|method|net.minecraftforge.common.config.Configuration|load|()V
+      @|otamusan\NotEnoughCompression.java|1445|1449|save|method|net.minecraftforge.common.config.Configuration|save|()V
+      @|otamusan\NotEnoughCompression.java|1459|1471|ItemRegister|class|otamusan.register.ItemRegister
+      @|otamusan\NotEnoughCompression.java|1472|1476|init|method|otamusan.register.ItemRegister|init|(Lnet/minecraftforge/fml/relauncher/Side;)V
+      @|otamusan\NotEnoughCompression.java|1477|1482|event|param|otamusan.NotEnoughCompression|preInit|(Lnet/minecraftforge/fml/common/event/FMLPreInitializationEvent;)V|event|0
+      @|otamusan\NotEnoughCompression.java|1483|1490|getSide|method|net.minecraftforge.fml.common.event.FMLStateEvent|getSide|()Lnet/minecraftforge/fml/relauncher/Side;
+      @|otamusan\NotEnoughCompression.java|1497|1502|proxy|field|otamusan.NotEnoughCompression|proxy
+      @|otamusan\NotEnoughCompression.java|1503|1521|registerTileEntity|method|otamusan.common.CommonProxy|registerTileEntity|()V
+      @|otamusan\NotEnoughCompression.java|1527|1532|proxy|field|otamusan.NotEnoughCompression|proxy
+      @|otamusan\NotEnoughCompression.java|1533|1554|registerEventHandlers|method|otamusan.common.CommonProxy|registerEventHandlers|()V
+   Method End: preInit(Lnet/minecraftforge/fml/common/event/FMLPreInitializationEvent;)V
+   Method Start: init(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V
+      @|otamusan\NotEnoughCompression.java|1619|1624|event|param|otamusan.NotEnoughCompression|init|(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V|event|0
+      @|otamusan\NotEnoughCompression.java|1565|1577|EventHandler|class|net.minecraftforge.fml.common.Mod.EventHandler
+      @|otamusan\NotEnoughCompression.java|1591|1595|init|method|otamusan.NotEnoughCompression|init|(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V
+      @|otamusan\NotEnoughCompression.java|1596|1618|FMLInitializationEvent|class|net.minecraftforge.fml.common.event.FMLInitializationEvent
+      @|otamusan\NotEnoughCompression.java|1631|1640|Minecraft|class|net.minecraft.client.Minecraft
+      @|otamusan\NotEnoughCompression.java|1641|1653|getMinecraft|method|net.minecraft.client.Minecraft|getMinecraft|()Lnet/minecraft/client/Minecraft;
+      @|otamusan\NotEnoughCompression.java|1656|1669|getItemColors|method|net.minecraft.client.Minecraft|getItemColors|()Lnet/minecraft/client/renderer/color/ItemColors;
+      @|otamusan\NotEnoughCompression.java|1672|1696|registerItemColorHandler|method|net.minecraft.client.renderer.color.ItemColors|registerItemColorHandler|(Lnet/minecraft/client/renderer/color/IItemColor;[Lnet/minecraft/item/Item;)V
+      @|otamusan\NotEnoughCompression.java|1701|1711|IItemColor|class|net.minecraft.client.renderer.color.IItemColor
+      Anon Class Start: otamusan.NotEnoughCompression$1
+         Method Start: colorMultiplier(Lnet/minecraft/item/ItemStack;I)I
+            @|otamusan\NotEnoughCompression.java|1769|1774|stack|param|otamusan.NotEnoughCompression$1|colorMultiplier|(Lnet/minecraft/item/ItemStack;I)I|stack|0
+            @|otamusan\NotEnoughCompression.java|1780|1789|tintIndex|param|otamusan.NotEnoughCompression$1|colorMultiplier|(Lnet/minecraft/item/ItemStack;I)I|tintIndex|1
+            @|otamusan\NotEnoughCompression.java|1720|1728|Override|class|java.lang.Override
+            @|otamusan\NotEnoughCompression.java|1743|1758|colorMultiplier|method|net.minecraft.client.renderer.color.IItemColor|colorMultiplier|(Lnet/minecraft/item/ItemStack;I)I
+            @|otamusan\NotEnoughCompression.java|1759|1768|ItemStack|class|net.minecraft.item.ItemStack
+            @|otamusan\NotEnoughCompression.java|1802|1807|stack|param|otamusan.NotEnoughCompression$1|colorMultiplier|(Lnet/minecraft/item/ItemStack;I)I|stack|0
+            @|otamusan\NotEnoughCompression.java|1808|1822|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+            @|otamusan\NotEnoughCompression.java|1852|1857|stack|param|otamusan.NotEnoughCompression$1|colorMultiplier|(Lnet/minecraft/item/ItemStack;I)I|stack|0
+            @|otamusan\NotEnoughCompression.java|1858|1872|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+            @|otamusan\NotEnoughCompression.java|1875|1885|getInteger|method|net.minecraft.nbt.NBTTagCompound|getInteger|(Ljava/lang/String;)I
+            @|otamusan\NotEnoughCompression.java|1886|1892|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+            @|otamusan\NotEnoughCompression.java|1921|1926|Color|class|java.awt.Color
+            @|otamusan\NotEnoughCompression.java|1927|1938|getHSBColor|method|java.awt.Color|getHSBColor|(FFF)Ljava/awt/Color;
+            @|otamusan\NotEnoughCompression.java|1975|1981|getRGB|method|java.awt.Color|getRGB|()I
+            @|otamusan\NotEnoughCompression.java|2002|2007|Color|class|java.awt.Color
+            @|otamusan\NotEnoughCompression.java|2008|2013|BLACK|field|java.awt.Color|BLACK
+            @|otamusan\NotEnoughCompression.java|2014|2020|getRGB|method|java.awt.Color|getRGB|()I
+         Method End: colorMultiplier(Lnet/minecraft/item/ItemStack;I)I
+      Anon Class End: otamusan.NotEnoughCompression$1
+      @|otamusan\NotEnoughCompression.java|2034|2046|ItemRegister|class|otamusan.register.ItemRegister
+      @|otamusan\NotEnoughCompression.java|2047|2061|itemcompressed|field|otamusan.register.ItemRegister|itemcompressed
+   Method End: init(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V
+Class End  : otamusan.NotEnoughCompression
+endProcessing "otamusan\NotEnoughCompression.java"
+
+startProcessing "otamusan\client\ClientProxy.java" md5: 1b071c91a2a8f1c14c9a1e6d7dde5770
+@|otamusan\client\ClientProxy.java|8|23|otamusan.client|package|otamusan.client|(file)
+Class Start: otamusan.client.ClientProxy
+   @|otamusan\client\ClientProxy.java|275|286|ClientProxy|class|otamusan.client.ClientProxy
+   @|otamusan\client\ClientProxy.java|295|306|CommonProxy|class|otamusan.common.CommonProxy
+   Method Start: getClientWorld()Lnet/minecraft/world/World;
+      @|otamusan\client\ClientProxy.java|311|319|Override|class|java.lang.Override
+      @|otamusan\client\ClientProxy.java|328|333|World|class|net.minecraft.world.World
+      @|otamusan\client\ClientProxy.java|334|348|getClientWorld|method|otamusan.common.CommonProxy|getClientWorld|()Lnet/minecraft/world/World;
+      @|otamusan\client\ClientProxy.java|362|378|FMLClientHandler|class|net.minecraftforge.fml.client.FMLClientHandler
+      @|otamusan\client\ClientProxy.java|379|387|instance|method|net.minecraftforge.fml.client.FMLClientHandler|instance|()Lnet/minecraftforge/fml/client/FMLClientHandler;
+      @|otamusan\client\ClientProxy.java|390|399|getClient|method|net.minecraftforge.fml.client.FMLClientHandler|getClient|()Lnet/minecraft/client/Minecraft;
+      @|otamusan\client\ClientProxy.java|402|407|world|field|net.minecraft.client.Minecraft|world
+   Method End: getClientWorld()Lnet/minecraft/world/World;
+   Method Start: registerTileEntity()V
+      @|otamusan\client\ClientProxy.java|415|423|Override|class|java.lang.Override
+      @|otamusan\client\ClientProxy.java|437|455|registerTileEntity|method|otamusan.common.CommonProxy|registerTileEntity|()V
+      @|otamusan\client\ClientProxy.java|468|486|registerTileEntity|method|otamusan.common.CommonProxy|registerTileEntity|()V
+   Method End: registerTileEntity()V
+   Method Start: registerEventHandlers()V
+      @|otamusan\client\ClientProxy.java|496|504|Override|class|java.lang.Override
+      @|otamusan\client\ClientProxy.java|518|539|registerEventHandlers|method|otamusan.common.CommonProxy|registerEventHandlers|()V
+      @|otamusan\client\ClientProxy.java|552|573|registerEventHandlers|method|otamusan.common.CommonProxy|registerEventHandlers|()V
+      @|otamusan\client\ClientProxy.java|579|593|MinecraftForge|class|net.minecraftforge.common.MinecraftForge
+      @|otamusan\client\ClientProxy.java|594|603|EVENT_BUS|field|net.minecraftforge.common.MinecraftForge|EVENT_BUS
+      @|otamusan\client\ClientProxy.java|604|612|register|method|net.minecraftforge.fml.common.eventhandler.EventBus|register|(Ljava/lang/Object;)V
+      @|otamusan\client\ClientProxy.java|617|631|TooltipHandler|class|otamusan.client.TooltipHandler
+      @|otamusan\client\ClientProxy.java|638|652|MinecraftForge|class|net.minecraftforge.common.MinecraftForge
+      @|otamusan\client\ClientProxy.java|653|662|EVENT_BUS|field|net.minecraftforge.common.MinecraftForge|EVENT_BUS
+      @|otamusan\client\ClientProxy.java|663|671|register|method|net.minecraftforge.fml.common.eventhandler.EventBus|register|(Ljava/lang/Object;)V
+      @|otamusan\client\ClientProxy.java|676|697|ModelBakeEventHandler|class|otamusan.client.ItemCompressed.ModelBakeEventHandler
+   Method End: registerEventHandlers()V
+Class End  : otamusan.client.ClientProxy
+endProcessing "otamusan\client\ClientProxy.java"
+
+startProcessing "otamusan\client\ItemCompressed\CompressedItemOverrideList.java" md5: fbe602c7826bfa94aca6ec29b8e7836b
+@|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|8|38|otamusan.client.ItemCompressed|package|otamusan.client.ItemCompressed|(file)
+Class Start: otamusan.client.ItemCompressed.CompressedItemOverrideList
+   @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|499|525|CompressedItemOverrideList|class|otamusan.client.ItemCompressed.CompressedItemOverrideList
+   @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|534|550|ItemOverrideList|class|net.minecraft.client.renderer.block.model.ItemOverrideList
+   Method Start: CompressedItemOverrideList(Ljava/util/List;)V
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|607|615|override|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|CompressedItemOverrideList|(Ljava/util/List;)V|override|0
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|561|587|CompressedItemOverrideList|method|otamusan.client.ItemCompressed.CompressedItemOverrideList|CompressedItemOverrideList|(Ljava/util/List;)V
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|588|592|List|class|java.util.List
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|593|605|ItemOverride|class|net.minecraft.client.renderer.block.model.ItemOverride
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|627|635|override|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|CompressedItemOverrideList|(Ljava/util/List;)V|override|0
+   Method End: CompressedItemOverrideList(Ljava/util/List;)V
+   Method Start: handleItemState(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|701|706|model|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|model|0
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|718|723|stack|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|stack|1
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|731|736|world|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|world|2
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|755|761|entity|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|entity|3
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|644|652|Override|class|java.lang.Override
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|661|672|IBakedModel|class|net.minecraft.client.renderer.block.model.IBakedModel
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|673|688|handleItemState|method|net.minecraft.client.renderer.block.model.ItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|689|700|IBakedModel|class|net.minecraft.client.renderer.block.model.IBakedModel
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|708|717|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|725|730|World|class|net.minecraft.world.World
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|738|754|EntityLivingBase|class|net.minecraft.entity.EntityLivingBase
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|772|777|stack|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|stack|1
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|797|806|Minecraft|class|net.minecraft.client.Minecraft
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|807|819|getMinecraft|method|net.minecraft.client.Minecraft|getMinecraft|()Lnet/minecraft/client/Minecraft;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|822|835|getRenderItem|method|net.minecraft.client.Minecraft|getRenderItem|()Lnet/minecraft/client/renderer/RenderItem;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|838|863|getItemModelWithOverrides|method|net.minecraft.client.renderer.RenderItem|getItemModelWithOverrides|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|868|877|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|878|884|Blocks|class|net.minecraft.init.Blocks
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|885|892|BARRIER|field|net.minecraft.init.Blocks|BARRIER
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|900|905|world|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|world|2
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|907|913|entity|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|entity|3
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|922|927|stack|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|stack|1
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|928|942|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|964|973|Minecraft|class|net.minecraft.client.Minecraft
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|974|986|getMinecraft|method|net.minecraft.client.Minecraft|getMinecraft|()Lnet/minecraft/client/Minecraft;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|989|1002|getRenderItem|method|net.minecraft.client.Minecraft|getRenderItem|()Lnet/minecraft/client/renderer/RenderItem;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1005|1030|getItemModelWithOverrides|method|net.minecraft.client.renderer.RenderItem|getItemModelWithOverrides|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1035|1044|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1045|1051|Blocks|class|net.minecraft.init.Blocks
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1052|1059|BARRIER|field|net.minecraft.init.Blocks|BARRIER
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1067|1072|world|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|world|2
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1074|1080|entity|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|entity|3
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1090|1095|stack|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|stack|1
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1096|1110|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1113|1119|hasKey|method|net.minecraft.nbt.NBTTagCompound|hasKey|(Ljava/lang/String;)Z
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1120|1140|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1141|1147|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1175|1184|Minecraft|class|net.minecraft.client.Minecraft
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1185|1197|getMinecraft|method|net.minecraft.client.Minecraft|getMinecraft|()Lnet/minecraft/client/Minecraft;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1200|1213|getRenderItem|method|net.minecraft.client.Minecraft|getRenderItem|()Lnet/minecraft/client/renderer/RenderItem;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1216|1241|getItemModelWithOverrides|method|net.minecraft.client.renderer.RenderItem|getItemModelWithOverrides|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1246|1255|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1256|1262|Blocks|class|net.minecraft.init.Blocks
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1263|1270|BARRIER|field|net.minecraft.init.Blocks|BARRIER
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1278|1283|world|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|world|2
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1285|1291|entity|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|entity|3
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1296|1307|IBakedModel|class|net.minecraft.client.renderer.block.model.IBakedModel
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1319|1328|Minecraft|class|net.minecraft.client.Minecraft
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1329|1341|getMinecraft|method|net.minecraft.client.Minecraft|getMinecraft|()Lnet/minecraft/client/Minecraft;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1344|1357|getRenderItem|method|net.minecraft.client.Minecraft|getRenderItem|()Lnet/minecraft/client/renderer/RenderItem;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1360|1385|getItemModelWithOverrides|method|net.minecraft.client.renderer.RenderItem|getItemModelWithOverrides|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1395|1404|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1405|1410|stack|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|stack|1
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1411|1425|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1428|1442|getCompoundTag|method|net.minecraft.nbt.NBTTagCompound|getCompoundTag|(Ljava/lang/String;)Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1443|1463|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1464|1470|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1489|1494|world|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|world|2
+      @|otamusan\client\ItemCompressed\CompressedItemOverrideList.java|1500|1506|entity|param|otamusan.client.ItemCompressed.CompressedItemOverrideList|handleItemState|(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;|entity|3
+   Method End: handleItemState(Lnet/minecraft/client/renderer/block/model/IBakedModel;Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/EntityLivingBase;)Lnet/minecraft/client/renderer/block/model/IBakedModel;
+Class End  : otamusan.client.ItemCompressed.CompressedItemOverrideList
+endProcessing "otamusan\client\ItemCompressed\CompressedItemOverrideList.java"
+
+startProcessing "otamusan\client\ItemCompressed\CompressedModel.java" md5: b385915905a4ab7d9f7c137e151399a6
+@|otamusan\client\ItemCompressed\CompressedModel.java|8|38|otamusan.client.ItemCompressed|package|otamusan.client.ItemCompressed|(file)
+Class Start: otamusan.client.ItemCompressed.CompressedModel
+   @|otamusan\client\ItemCompressed\CompressedModel.java|595|610|CompressedModel|class|otamusan.client.ItemCompressed.CompressedModel
+   @|otamusan\client\ItemCompressed\CompressedModel.java|622|633|IBakedModel|class|net.minecraft.client.renderer.block.model.IBakedModel
+   Method Start: CompressedModel(Lnet/minecraft/client/renderer/block/model/IBakedModel;)V
+      @|otamusan\client\ItemCompressed\CompressedModel.java|672|677|model|param|otamusan.client.ItemCompressed.CompressedModel|CompressedModel|(Lnet/minecraft/client/renderer/block/model/IBakedModel;)V|model|0
+      @|otamusan\client\ItemCompressed\CompressedModel.java|644|659|CompressedModel|method|otamusan.client.ItemCompressed.CompressedModel|CompressedModel|(Lnet/minecraft/client/renderer/block/model/IBakedModel;)V
+      @|otamusan\client\ItemCompressed\CompressedModel.java|660|671|IBakedModel|class|net.minecraft.client.renderer.block.model.IBakedModel
+      @|otamusan\client\ItemCompressed\CompressedModel.java|688|693|model|field|otamusan.client.ItemCompressed.CompressedModel|model
+      @|otamusan\client\ItemCompressed\CompressedModel.java|696|701|model|param|otamusan.client.ItemCompressed.CompressedModel|CompressedModel|(Lnet/minecraft/client/renderer/block/model/IBakedModel;)V|model|0
+      @|otamusan\client\ItemCompressed\CompressedModel.java|710|722|overrideList|field|otamusan.client.ItemCompressed.CompressedModel|overrideList
+      @|otamusan\client\ItemCompressed\CompressedModel.java|729|755|CompressedItemOverrideList|class|otamusan.client.ItemCompressed.CompressedItemOverrideList
+      @|otamusan\client\ItemCompressed\CompressedModel.java|756|767|Collections|class|java.util.Collections
+      @|otamusan\client\ItemCompressed\CompressedModel.java|768|778|EMPTY_LIST|field|java.util.Collections|EMPTY_LIST
+   Method End: CompressedModel(Lnet/minecraft/client/renderer/block/model/IBakedModel;)V
+   Method Start: getParticleTexture()Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|787|795|Override|class|java.lang.Override
+      @|otamusan\client\ItemCompressed\CompressedModel.java|804|822|TextureAtlasSprite|class|net.minecraft.client.renderer.texture.TextureAtlasSprite
+      @|otamusan\client\ItemCompressed\CompressedModel.java|823|841|getParticleTexture|method|net.minecraft.client.renderer.block.model.IBakedModel|getParticleTexture|()Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|855|860|model|field|otamusan.client.ItemCompressed.CompressedModel|model
+      @|otamusan\client\ItemCompressed\CompressedModel.java|861|879|getParticleTexture|method|net.minecraft.client.renderer.block.model.IBakedModel|getParticleTexture|()Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+   Method End: getParticleTexture()Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+   Method Start: getQuads(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/util/EnumFacing;J)Ljava/util/List;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|943|948|state|param|otamusan.client.ItemCompressed.CompressedModel|getQuads|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/util/EnumFacing;J)Ljava/util/List;|state|0
+      @|otamusan\client\ItemCompressed\CompressedModel.java|961|965|side|param|otamusan.client.ItemCompressed.CompressedModel|getQuads|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/util/EnumFacing;J)Ljava/util/List;|side|1
+      @|otamusan\client\ItemCompressed\CompressedModel.java|972|976|rand|param|otamusan.client.ItemCompressed.CompressedModel|getQuads|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/util/EnumFacing;J)Ljava/util/List;|rand|2
+      @|otamusan\client\ItemCompressed\CompressedModel.java|889|897|Override|class|java.lang.Override
+      @|otamusan\client\ItemCompressed\CompressedModel.java|906|910|List|class|java.util.List
+      @|otamusan\client\ItemCompressed\CompressedModel.java|911|920|BakedQuad|class|net.minecraft.client.renderer.block.model.BakedQuad
+      @|otamusan\client\ItemCompressed\CompressedModel.java|922|930|getQuads|method|net.minecraft.client.renderer.block.model.IBakedModel|getQuads|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/util/EnumFacing;J)Ljava/util/List;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|931|942|IBlockState|class|net.minecraft.block.state.IBlockState
+      @|otamusan\client\ItemCompressed\CompressedModel.java|950|960|EnumFacing|class|net.minecraft.util.EnumFacing
+      @|otamusan\client\ItemCompressed\CompressedModel.java|989|994|model|field|otamusan.client.ItemCompressed.CompressedModel|model
+      @|otamusan\client\ItemCompressed\CompressedModel.java|995|1003|getQuads|method|net.minecraft.client.renderer.block.model.IBakedModel|getQuads|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/util/EnumFacing;J)Ljava/util/List;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1004|1009|state|param|otamusan.client.ItemCompressed.CompressedModel|getQuads|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/util/EnumFacing;J)Ljava/util/List;|state|0
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1011|1015|side|param|otamusan.client.ItemCompressed.CompressedModel|getQuads|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/util/EnumFacing;J)Ljava/util/List;|side|1
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1017|1021|rand|param|otamusan.client.ItemCompressed.CompressedModel|getQuads|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/util/EnumFacing;J)Ljava/util/List;|rand|2
+   Method End: getQuads(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/util/EnumFacing;J)Ljava/util/List;
+   Method Start: isAmbientOcclusion()Z
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1030|1038|Override|class|java.lang.Override
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1055|1073|isAmbientOcclusion|method|net.minecraft.client.renderer.block.model.IBakedModel|isAmbientOcclusion|()Z
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1087|1092|model|field|otamusan.client.ItemCompressed.CompressedModel|model
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1093|1111|isAmbientOcclusion|method|net.minecraft.client.renderer.block.model.IBakedModel|isAmbientOcclusion|()Z
+   Method End: isAmbientOcclusion()Z
+   Method Start: isGui3d()Z
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1121|1129|Override|class|java.lang.Override
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1146|1153|isGui3d|method|net.minecraft.client.renderer.block.model.IBakedModel|isGui3d|()Z
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1167|1172|model|field|otamusan.client.ItemCompressed.CompressedModel|model
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1173|1180|isGui3d|method|net.minecraft.client.renderer.block.model.IBakedModel|isGui3d|()Z
+   Method End: isGui3d()Z
+   Method Start: isBuiltInRenderer()Z
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1190|1198|Override|class|java.lang.Override
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1215|1232|isBuiltInRenderer|method|net.minecraft.client.renderer.block.model.IBakedModel|isBuiltInRenderer|()Z
+   Method End: isBuiltInRenderer()Z
+   Method Start: getItemCameraTransforms()Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1259|1267|Override|class|java.lang.Override
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1276|1296|ItemCameraTransforms|class|net.minecraft.client.renderer.block.model.ItemCameraTransforms
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1297|1320|getItemCameraTransforms|method|net.minecraft.client.renderer.block.model.IBakedModel|getItemCameraTransforms|()Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1334|1339|model|field|otamusan.client.ItemCompressed.CompressedModel|model
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1340|1363|getItemCameraTransforms|method|net.minecraft.client.renderer.block.model.IBakedModel|getItemCameraTransforms|()Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms;
+   Method End: getItemCameraTransforms()Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms;
+   Method Start: getOverrides()Lnet/minecraft/client/renderer/block/model/ItemOverrideList;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1373|1381|Override|class|java.lang.Override
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1390|1406|ItemOverrideList|class|net.minecraft.client.renderer.block.model.ItemOverrideList
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1407|1419|getOverrides|method|net.minecraft.client.renderer.block.model.IBakedModel|getOverrides|()Lnet/minecraft/client/renderer/block/model/ItemOverrideList;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1433|1445|overrideList|field|otamusan.client.ItemCompressed.CompressedModel|overrideList
+   Method End: getOverrides()Lnet/minecraft/client/renderer/block/model/ItemOverrideList;
+   @|otamusan\client\ItemCompressed\CompressedModel.java|1460|1471|IBakedModel|class|net.minecraft.client.renderer.block.model.IBakedModel
+   @|otamusan\client\ItemCompressed\CompressedModel.java|1460|1471|IBakedModel|class|net.minecraft.client.renderer.block.model.IBakedModel
+   @|otamusan\client\ItemCompressed\CompressedModel.java|1472|1477|model|field|otamusan.client.ItemCompressed.CompressedModel|model|
+   @|otamusan\client\ItemCompressed\CompressedModel.java|1488|1514|CompressedItemOverrideList|class|otamusan.client.ItemCompressed.CompressedItemOverrideList
+   @|otamusan\client\ItemCompressed\CompressedModel.java|1488|1514|CompressedItemOverrideList|class|otamusan.client.ItemCompressed.CompressedItemOverrideList
+   @|otamusan\client\ItemCompressed\CompressedModel.java|1515|1527|overrideList|field|otamusan.client.ItemCompressed.CompressedModel|overrideList|
+   Method Start: handlePerspective(Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType;)Lorg/apache/commons/lang3/tuple/Pair;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1644|1663|cameraTransformType|param|otamusan.client.ItemCompressed.CompressedModel|handlePerspective|(Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType;)Lorg/apache/commons/lang3/tuple/Pair;|cameraTransformType|0
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1532|1540|Override|class|java.lang.Override
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1549|1553|Pair|class|org.apache.commons.lang3.tuple.Pair
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1564|1575|IBakedModel|class|net.minecraft.client.renderer.block.model.IBakedModel
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1577|1585|Matrix4f|class|javax.vecmath.Matrix4f
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1587|1604|handlePerspective|method|net.minecraft.client.renderer.block.model.IBakedModel|handlePerspective|(Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType;)Lorg/apache/commons/lang3/tuple/Pair;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1609|1643|ItemCameraTransforms.TransformType|class|net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1669|1677|Matrix4f|class|javax.vecmath.Matrix4f
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1689|1694|model|field|otamusan.client.ItemCompressed.CompressedModel|model
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1695|1712|handlePerspective|method|net.minecraft.client.renderer.block.model.IBakedModel|handlePerspective|(Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType;)Lorg/apache/commons/lang3/tuple/Pair;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1713|1732|cameraTransformType|param|otamusan.client.ItemCompressed.CompressedModel|handlePerspective|(Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType;)Lorg/apache/commons/lang3/tuple/Pair;|cameraTransformType|0
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1734|1742|getRight|method|org.apache.commons.lang3.tuple.Pair|getRight|()Ljava/lang/Object;
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1755|1759|Pair|class|org.apache.commons.lang3.tuple.Pair
+      @|otamusan\client\ItemCompressed\CompressedModel.java|1760|1762|of|method|org.apache.commons.lang3.tuple.Pair|of|(Ljava/lang/Object;Ljava/lang/Object;)Lorg/apache/commons/lang3/tuple/Pair;
+   Method End: handlePerspective(Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType;)Lorg/apache/commons/lang3/tuple/Pair;
+Class End  : otamusan.client.ItemCompressed.CompressedModel
+endProcessing "otamusan\client\ItemCompressed\CompressedModel.java"
+
+startProcessing "otamusan\client\ItemCompressed\ModelBakeEventHandler.java" md5: d195625a75e267c1afe04ca1453348d5
+@|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|8|38|otamusan.client.ItemCompressed|package|otamusan.client.ItemCompressed|(file)
+Class Start: otamusan.client.ItemCompressed.ModelBakeEventHandler
+   @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|348|369|ModelBakeEventHandler|class|otamusan.client.ItemCompressed.ModelBakeEventHandler
+   Method Start: onModelBakeEvent(Lnet/minecraftforge/client/event/ModelBakeEvent;)V
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|435|440|event|param|otamusan.client.ItemCompressed.ModelBakeEventHandler|onModelBakeEvent|(Lnet/minecraftforge/client/event/ModelBakeEvent;)V|event|0
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|375|389|SubscribeEvent|class|net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|403|419|onModelBakeEvent|method|otamusan.client.ItemCompressed.ModelBakeEventHandler|onModelBakeEvent|(Lnet/minecraftforge/client/event/ModelBakeEvent;)V
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|420|434|ModelBakeEvent|class|net.minecraftforge.client.event.ModelBakeEvent
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|446|457|IBakedModel|class|net.minecraft.client.renderer.block.model.IBakedModel
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|466|471|event|param|otamusan.client.ItemCompressed.ModelBakeEventHandler|onModelBakeEvent|(Lnet/minecraftforge/client/event/ModelBakeEvent;)V|event|0
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|472|488|getModelRegistry|method|net.minecraftforge.client.event.ModelBakeEvent|getModelRegistry|()Lnet/minecraft/util/registry/IRegistry;
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|491|500|getObject|method|net.minecraft.util.registry.IRegistry|getObject|(Ljava/lang/Object;)Ljava/lang/Object;
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|510|531|ModelResourceLocation|class|net.minecraft.client.renderer.block.model.ModelResourceLocation
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|532|552|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|553|559|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|603|618|CompressedModel|class|otamusan.client.ItemCompressed.CompressedModel
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|637|652|CompressedModel|class|otamusan.client.ItemCompressed.CompressedModel
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|663|668|event|param|otamusan.client.ItemCompressed.ModelBakeEventHandler|onModelBakeEvent|(Lnet/minecraftforge/client/event/ModelBakeEvent;)V|event|0
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|669|685|getModelRegistry|method|net.minecraftforge.client.event.ModelBakeEvent|getModelRegistry|()Lnet/minecraft/util/registry/IRegistry;
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|688|697|putObject|method|net.minecraft.util.registry.IRegistry|putObject|(Ljava/lang/Object;Ljava/lang/Object;)V
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|707|728|ModelResourceLocation|class|net.minecraft.client.renderer.block.model.ModelResourceLocation
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|729|749|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\client\ItemCompressed\ModelBakeEventHandler.java|750|756|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+   Method End: onModelBakeEvent(Lnet/minecraftforge/client/event/ModelBakeEvent;)V
+Class End  : otamusan.client.ItemCompressed.ModelBakeEventHandler
+endProcessing "otamusan\client\ItemCompressed\ModelBakeEventHandler.java"
+
+startProcessing "otamusan\client\TooltipHandler.java" md5: 04893c8be191d2293a40812735b9b72e
+@|otamusan\client\TooltipHandler.java|8|23|otamusan.client|package|otamusan.client|(file)
+Class Start: otamusan.client.TooltipHandler
+   @|otamusan\client\TooltipHandler.java|170|184|TooltipHandler|class|otamusan.client.TooltipHandler
+   Method Start: onItemTooltip(Lnet/minecraftforge/event/entity/player/ItemTooltipEvent;)V
+      @|otamusan\client\TooltipHandler.java|249|254|event|param|otamusan.client.TooltipHandler|onItemTooltip|(Lnet/minecraftforge/event/entity/player/ItemTooltipEvent;)V|event|0
+      @|otamusan\client\TooltipHandler.java|190|204|SubscribeEvent|class|net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+      @|otamusan\client\TooltipHandler.java|218|231|onItemTooltip|method|otamusan.client.TooltipHandler|onItemTooltip|(Lnet/minecraftforge/event/entity/player/ItemTooltipEvent;)V
+      @|otamusan\client\TooltipHandler.java|232|248|ItemTooltipEvent|class|net.minecraftforge.event.entity.player.ItemTooltipEvent
+   Method End: onItemTooltip(Lnet/minecraftforge/event/entity/player/ItemTooltipEvent;)V
+Class End  : otamusan.client.TooltipHandler
+endProcessing "otamusan\client\TooltipHandler.java"
+
+startProcessing "otamusan\common\CommonProxy.java" md5: 4c4a0f2fb1144f38b79feaf5c33545d1
+@|otamusan\common\CommonProxy.java|8|23|otamusan.common|package|otamusan.common|(file)
+Class Start: otamusan.common.CommonProxy
+   @|otamusan\common\CommonProxy.java|383|394|CommonProxy|class|otamusan.common.CommonProxy
+   Method Start: getClientWorld()Lnet/minecraft/world/World;
+      @|otamusan\common\CommonProxy.java|405|410|World|class|net.minecraft.world.World
+      @|otamusan\common\CommonProxy.java|411|425|getClientWorld|method|otamusan.common.CommonProxy|getClientWorld|()Lnet/minecraft/world/World;
+   Method End: getClientWorld()Lnet/minecraft/world/World;
+   Method Start: registerTileEntity()V
+      @|otamusan\common\CommonProxy.java|462|480|registerTileEntity|method|otamusan.common.CommonProxy|registerTileEntity|()V
+   Method End: registerTileEntity()V
+   Method Start: registerEventHandlers()V
+      @|otamusan\common\CommonProxy.java|503|524|registerEventHandlers|method|otamusan.common.CommonProxy|registerEventHandlers|()V
+      @|otamusan\common\CommonProxy.java|531|538|IRecipe|class|net.minecraft.item.crafting.IRecipe
+      @|otamusan\common\CommonProxy.java|557|568|Compression|class|otamusan.recipes.Compression
+      @|otamusan\common\CommonProxy.java|586|601|setRegistryName|method|net.minecraftforge.registries.IForgeRegistryEntry|setRegistryName|(Lnet/minecraft/util/ResourceLocation;)Ljava/lang/Object;
+      @|otamusan\common\CommonProxy.java|606|622|ResourceLocation|class|net.minecraft.util.ResourceLocation
+      @|otamusan\common\CommonProxy.java|623|643|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\common\CommonProxy.java|644|650|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\common\CommonProxy.java|671|686|ForgeRegistries|class|net.minecraftforge.fml.common.registry.ForgeRegistries
+      @|otamusan\common\CommonProxy.java|687|694|RECIPES|field|net.minecraftforge.fml.common.registry.ForgeRegistries|RECIPES
+      @|otamusan\common\CommonProxy.java|695|703|register|method|net.minecraftforge.registries.IForgeRegistry|register|(Lnet/minecraftforge/registries/IForgeRegistryEntry;)V
+      @|otamusan\common\CommonProxy.java|721|728|IRecipe|class|net.minecraft.item.crafting.IRecipe
+      @|otamusan\common\CommonProxy.java|749|762|Uncompression|class|otamusan.recipes.Uncompression
+      @|otamusan\common\CommonProxy.java|782|797|setRegistryName|method|net.minecraftforge.registries.IForgeRegistryEntry|setRegistryName|(Lnet/minecraft/util/ResourceLocation;)Ljava/lang/Object;
+      @|otamusan\common\CommonProxy.java|802|818|ResourceLocation|class|net.minecraft.util.ResourceLocation
+      @|otamusan\common\CommonProxy.java|819|839|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\common\CommonProxy.java|840|846|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\common\CommonProxy.java|869|884|ForgeRegistries|class|net.minecraftforge.fml.common.registry.ForgeRegistries
+      @|otamusan\common\CommonProxy.java|885|892|RECIPES|field|net.minecraftforge.fml.common.registry.ForgeRegistries|RECIPES
+      @|otamusan\common\CommonProxy.java|893|901|register|method|net.minecraftforge.registries.IForgeRegistry|register|(Lnet/minecraftforge/registries/IForgeRegistryEntry;)V
+      @|otamusan\common\CommonProxy.java|921|928|IRecipe|class|net.minecraft.item.crafting.IRecipe
+      @|otamusan\common\CommonProxy.java|954|972|CompressedCrafting|class|otamusan.recipes.CompressedCrafting
+      @|otamusan\common\CommonProxy.java|997|1012|setRegistryName|method|net.minecraftforge.registries.IForgeRegistryEntry|setRegistryName|(Lnet/minecraft/util/ResourceLocation;)Ljava/lang/Object;
+      @|otamusan\common\CommonProxy.java|1017|1033|ResourceLocation|class|net.minecraft.util.ResourceLocation
+      @|otamusan\common\CommonProxy.java|1034|1054|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\common\CommonProxy.java|1055|1061|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\common\CommonProxy.java|1089|1104|ForgeRegistries|class|net.minecraftforge.fml.common.registry.ForgeRegistries
+      @|otamusan\common\CommonProxy.java|1105|1112|RECIPES|field|net.minecraftforge.fml.common.registry.ForgeRegistries|RECIPES
+      @|otamusan\common\CommonProxy.java|1113|1121|register|method|net.minecraftforge.registries.IForgeRegistry|register|(Lnet/minecraftforge/registries/IForgeRegistryEntry;)V
+   Method End: registerEventHandlers()V
+Class End  : otamusan.common.CommonProxy
+endProcessing "otamusan\common\CommonProxy.java"
+
+startProcessing "otamusan\items\ItemCompressed.java" md5: 02d95f00ce4ba43da4e0ec468d599944
+@|otamusan\items\ItemCompressed.java|8|22|otamusan.items|package|otamusan.items|(file)
+Class Start: otamusan.items.ItemCompressed
+   @|otamusan\items\ItemCompressed.java|375|389|ItemCompressed|class|otamusan.items.ItemCompressed
+   @|otamusan\items\ItemCompressed.java|398|402|Item|class|net.minecraft.item.Item
+   Method Start: getItemStackDisplayName(Lnet/minecraft/item/ItemStack;)Ljava/lang/String;
+      @|otamusan\items\ItemCompressed.java|465|470|stack|param|otamusan.items.ItemCompressed|getItemStackDisplayName|(Lnet/minecraft/item/ItemStack;)Ljava/lang/String;|stack|0
+      @|otamusan\items\ItemCompressed.java|407|415|Override|class|java.lang.Override
+      @|otamusan\items\ItemCompressed.java|424|430|String|class|java.lang.String
+      @|otamusan\items\ItemCompressed.java|431|454|getItemStackDisplayName|method|net.minecraft.item.Item|getItemStackDisplayName|(Lnet/minecraft/item/ItemStack;)Ljava/lang/String;
+      @|otamusan\items\ItemCompressed.java|455|464|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|480|485|stack|param|otamusan.items.ItemCompressed|getItemStackDisplayName|(Lnet/minecraft/item/ItemStack;)Ljava/lang/String;|stack|0
+      @|otamusan\items\ItemCompressed.java|486|500|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|522|526|I18n|class|net.minecraft.client.resources.I18n
+      @|otamusan\items\ItemCompressed.java|527|533|format|method|net.minecraft.client.resources.I18n|format|(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      @|otamusan\items\ItemCompressed.java|534|554|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|555|561|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|582|591|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|608|617|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|623|628|stack|param|otamusan.items.ItemCompressed|getItemStackDisplayName|(Lnet/minecraft/item/ItemStack;)Ljava/lang/String;|stack|0
+      @|otamusan\items\ItemCompressed.java|629|643|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|646|660|getCompoundTag|method|net.minecraft.nbt.NBTTagCompound|getCompoundTag|(Ljava/lang/String;)Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|661|681|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|682|688|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|720|725|stack|param|otamusan.items.ItemCompressed|getItemStackDisplayName|(Lnet/minecraft/item/ItemStack;)Ljava/lang/String;|stack|0
+      @|otamusan\items\ItemCompressed.java|726|740|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|743|753|getInteger|method|net.minecraft.nbt.NBTTagCompound|getInteger|(Ljava/lang/String;)I
+      @|otamusan\items\ItemCompressed.java|754|774|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|775|781|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|796|802|String|class|java.lang.String
+      @|otamusan\items\ItemCompressed.java|810|814|I18n|class|net.minecraft.client.resources.I18n
+      @|otamusan\items\ItemCompressed.java|815|821|format|method|net.minecraft.client.resources.I18n|format|(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      @|otamusan\items\ItemCompressed.java|822|842|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|843|849|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|886|900|getDisplayName|method|net.minecraft.item.ItemStack|getDisplayName|()Ljava/lang/String;
+   Method End: getItemStackDisplayName(Lnet/minecraft/item/ItemStack;)Ljava/lang/String;
+   Method Start: addInformation(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V
+      @|otamusan\items\ItemCompressed.java|972|977|stack|param|otamusan.items.ItemCompressed|addInformation|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V|stack|0
+      @|otamusan\items\ItemCompressed.java|985|992|worldIn|param|otamusan.items.ItemCompressed|addInformation|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V|worldIn|1
+      @|otamusan\items\ItemCompressed.java|1007|1014|tooltip|param|otamusan.items.ItemCompressed|addInformation|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V|tooltip|2
+      @|otamusan\items\ItemCompressed.java|1029|1035|flagIn|param|otamusan.items.ItemCompressed|addInformation|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V|flagIn|3
+      @|otamusan\items\ItemCompressed.java|925|933|Override|class|java.lang.Override
+      @|otamusan\items\ItemCompressed.java|947|961|addInformation|method|net.minecraft.item.Item|addInformation|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V
+      @|otamusan\items\ItemCompressed.java|962|971|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|979|984|World|class|net.minecraft.world.World
+      @|otamusan\items\ItemCompressed.java|994|998|List|class|java.util.List
+      @|otamusan\items\ItemCompressed.java|999|1005|String|class|java.lang.String
+      @|otamusan\items\ItemCompressed.java|1016|1028|ITooltipFlag|class|net.minecraft.client.util.ITooltipFlag
+      @|otamusan\items\ItemCompressed.java|1046|1051|stack|param|otamusan.items.ItemCompressed|addInformation|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V|stack|0
+      @|otamusan\items\ItemCompressed.java|1052|1066|hasTagCompound|method|net.minecraft.item.ItemStack|hasTagCompound|()Z
+      @|otamusan\items\ItemCompressed.java|1084|1093|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|1111|1120|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|1127|1141|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|1143|1148|stack|param|otamusan.items.ItemCompressed|addInformation|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V|stack|0
+      @|otamusan\items\ItemCompressed.java|1149|1163|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|1166|1172|getTag|method|net.minecraft.nbt.NBTTagCompound|getTag|(Ljava/lang/String;)Lnet/minecraft/nbt/NBTBase;
+      @|otamusan\items\ItemCompressed.java|1173|1193|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|1194|1200|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|1232|1237|stack|param|otamusan.items.ItemCompressed|addInformation|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V|stack|0
+      @|otamusan\items\ItemCompressed.java|1238|1252|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|1255|1265|getInteger|method|net.minecraft.nbt.NBTTagCompound|getInteger|(Ljava/lang/String;)I
+      @|otamusan\items\ItemCompressed.java|1266|1286|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|1287|1293|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|1309|1316|tooltip|param|otamusan.items.ItemCompressed|addInformation|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V|tooltip|2
+      @|otamusan\items\ItemCompressed.java|1317|1320|add|method|java.util.Collection|add|(Ljava/lang/Object;)Z
+      @|otamusan\items\ItemCompressed.java|1321|1325|I18n|class|net.minecraft.client.resources.I18n
+      @|otamusan\items\ItemCompressed.java|1326|1332|format|method|net.minecraft.client.resources.I18n|format|(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      @|otamusan\items\ItemCompressed.java|1333|1353|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|1354|1360|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|1403|1417|getDisplayName|method|net.minecraft.item.ItemStack|getDisplayName|()Ljava/lang/String;
+      @|otamusan\items\ItemCompressed.java|1424|1431|tooltip|param|otamusan.items.ItemCompressed|addInformation|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V|tooltip|2
+      @|otamusan\items\ItemCompressed.java|1432|1435|add|method|java.util.Collection|add|(Ljava/lang/Object;)Z
+      @|otamusan\items\ItemCompressed.java|1436|1440|I18n|class|net.minecraft.client.resources.I18n
+      @|otamusan\items\ItemCompressed.java|1441|1447|format|method|net.minecraft.client.resources.I18n|format|(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      @|otamusan\items\ItemCompressed.java|1448|1468|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|1469|1475|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|1504|1508|Math|class|java.lang.Math
+      @|otamusan\items\ItemCompressed.java|1509|1512|pow|method|java.lang.Math|pow|(DD)D
+   Method End: addInformation(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/client/util/ITooltipFlag;)V
+   Method Start: createCompressedItem(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|1584|1588|item|param|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;|item|0
+      @|otamusan\items\ItemCompressed.java|1543|1552|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|1553|1573|createCompressedItem|method|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|1574|1583|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|1594|1603|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|1617|1621|item|param|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;|item|0
+      @|otamusan\items\ItemCompressed.java|1622|1626|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|1643|1651|setCount|method|net.minecraft.item.ItemStack|setCount|(I)V
+      @|otamusan\items\ItemCompressed.java|1658|1672|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|1683|1697|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|1703|1712|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|1729|1738|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|1739|1751|ItemRegister|class|otamusan.register.ItemRegister
+      @|otamusan\items\ItemCompressed.java|1752|1766|itemcompressed|field|otamusan.register.ItemRegister|itemcompressed
+      @|otamusan\items\ItemCompressed.java|1787|1794|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+      @|otamusan\items\ItemCompressed.java|1800|1812|ItemRegister|class|otamusan.register.ItemRegister
+      @|otamusan\items\ItemCompressed.java|1813|1827|itemcompressed|field|otamusan.register.ItemRegister|itemcompressed
+      @|otamusan\items\ItemCompressed.java|1834|1848|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|1860|1874|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|1887|1901|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|1910|1916|getTag|method|net.minecraft.nbt.NBTTagCompound|getTag|(Ljava/lang/String;)Lnet/minecraft/nbt/NBTBase;
+      @|otamusan\items\ItemCompressed.java|1917|1937|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|1938|1944|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|1969|1975|setTag|method|net.minecraft.nbt.NBTTagCompound|setTag|(Ljava/lang/String;Lnet/minecraft/nbt/NBTBase;)V
+      @|otamusan\items\ItemCompressed.java|1976|1996|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|1997|2003|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|2037|2047|setInteger|method|net.minecraft.nbt.NBTTagCompound|setInteger|(Ljava/lang/String;I)V
+      @|otamusan\items\ItemCompressed.java|2048|2068|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|2069|2075|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|2103|2117|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|2120|2130|getInteger|method|net.minecraft.nbt.NBTTagCompound|getInteger|(Ljava/lang/String;)I
+      @|otamusan\items\ItemCompressed.java|2131|2151|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|2152|2158|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|2190|2204|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|2219|2233|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|2251|2261|writeToNBT|method|net.minecraft.item.ItemStack|writeToNBT|(Lnet/minecraft/nbt/NBTTagCompound;)Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|2279|2285|setTag|method|net.minecraft.nbt.NBTTagCompound|setTag|(Ljava/lang/String;Lnet/minecraft/nbt/NBTBase;)V
+      @|otamusan\items\ItemCompressed.java|2286|2306|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|2307|2313|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|2347|2357|setInteger|method|net.minecraft.nbt.NBTTagCompound|setInteger|(Ljava/lang/String;I)V
+      @|otamusan\items\ItemCompressed.java|2358|2378|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|2379|2385|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|2417|2431|setTagCompound|method|net.minecraft.item.ItemStack|setTagCompound|(Lnet/minecraft/nbt/NBTTagCompound;)V
+   Method End: createCompressedItem(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+   Method Start: createCompressedItem(Lnet/minecraft/item/ItemStack;I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|2518|2522|item|param|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;I)Lnet/minecraft/item/ItemStack;|item|0
+      @|otamusan\items\ItemCompressed.java|2528|2532|time|param|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;I)Lnet/minecraft/item/ItemStack;|time|1
+      @|otamusan\items\ItemCompressed.java|2477|2486|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|2487|2507|createCompressedItem|method|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|2508|2517|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|2538|2547|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|2561|2565|item|param|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;I)Lnet/minecraft/item/ItemStack;|item|0
+      @|otamusan\items\ItemCompressed.java|2566|2570|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|2587|2595|setCount|method|net.minecraft.item.ItemStack|setCount|(I)V
+      @|otamusan\items\ItemCompressed.java|2602|2616|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|2627|2641|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|2647|2656|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|2673|2682|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|2683|2695|ItemRegister|class|otamusan.register.ItemRegister
+      @|otamusan\items\ItemCompressed.java|2696|2710|itemcompressed|field|otamusan.register.ItemRegister|itemcompressed
+      @|otamusan\items\ItemCompressed.java|2716|2730|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|2745|2759|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|2776|2786|writeToNBT|method|net.minecraft.item.ItemStack|writeToNBT|(Lnet/minecraft/nbt/NBTTagCompound;)Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|2803|2809|setTag|method|net.minecraft.nbt.NBTTagCompound|setTag|(Ljava/lang/String;Lnet/minecraft/nbt/NBTBase;)V
+      @|otamusan\items\ItemCompressed.java|2810|2830|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|2831|2837|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|2870|2880|setInteger|method|net.minecraft.nbt.NBTTagCompound|setInteger|(Ljava/lang/String;I)V
+      @|otamusan\items\ItemCompressed.java|2881|2901|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|2902|2908|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|2920|2924|time|param|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;I)Lnet/minecraft/item/ItemStack;|time|1
+      @|otamusan\items\ItemCompressed.java|2940|2954|setTagCompound|method|net.minecraft.item.ItemStack|setTagCompound|(Lnet/minecraft/nbt/NBTTagCompound;)V
+   Method End: createCompressedItem(Lnet/minecraft/item/ItemStack;I)Lnet/minecraft/item/ItemStack;
+   Method Start: createUncompressedItem(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|3043|3047|item|param|otamusan.items.ItemCompressed|createUncompressedItem|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;|item|0
+      @|otamusan\items\ItemCompressed.java|3000|3009|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|3010|3032|createUncompressedItem|method|otamusan.items.ItemCompressed|createUncompressedItem|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|3033|3042|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|3053|3062|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|3076|3080|item|param|otamusan.items.ItemCompressed|createUncompressedItem|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;|item|0
+      @|otamusan\items\ItemCompressed.java|3081|3085|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|3091|3105|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|3123|3137|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|3143|3152|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|3177|3187|getInteger|method|net.minecraft.nbt.NBTTagCompound|getInteger|(Ljava/lang/String;)I
+      @|otamusan\items\ItemCompressed.java|3188|3208|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|3209|3215|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|3257|3266|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|3268|3282|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|3288|3294|getTag|method|net.minecraft.nbt.NBTTagCompound|getTag|(Ljava/lang/String;)Lnet/minecraft/nbt/NBTBase;
+      @|otamusan\items\ItemCompressed.java|3295|3315|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|3316|3322|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|3346|3350|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|3370|3378|setCount|method|net.minecraft.item.ItemStack|setCount|(I)V
+      @|otamusan\items\ItemCompressed.java|3423|3427|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|3447|3455|setCount|method|net.minecraft.item.ItemStack|setCount|(I)V
+      @|otamusan\items\ItemCompressed.java|3476|3490|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|3493|3503|setInteger|method|net.minecraft.nbt.NBTTagCompound|setInteger|(Ljava/lang/String;I)V
+      @|otamusan\items\ItemCompressed.java|3504|3524|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|3525|3531|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|3559|3573|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|3576|3586|getInteger|method|net.minecraft.nbt.NBTTagCompound|getInteger|(Ljava/lang/String;)I
+      @|otamusan\items\ItemCompressed.java|3587|3607|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|3608|3614|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+   Method End: createUncompressedItem(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+   Method Start: getOriginal(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|3710|3714|item|param|otamusan.items.ItemCompressed|getOriginal|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;|item|0
+      @|otamusan\items\ItemCompressed.java|3678|3687|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|3688|3699|getOriginal|method|otamusan.items.ItemCompressed|getOriginal|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\items\ItemCompressed.java|3700|3709|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|3720|3734|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|3741|3745|item|param|otamusan.items.ItemCompressed|getOriginal|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;|item|0
+      @|otamusan\items\ItemCompressed.java|3746|3760|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|3777|3786|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|3788|3802|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|3808|3814|getTag|method|net.minecraft.nbt.NBTTagCompound|getTag|(Ljava/lang/String;)Lnet/minecraft/nbt/NBTBase;
+      @|otamusan\items\ItemCompressed.java|3815|3835|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|3836|3842|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\items\ItemCompressed.java|3860|3864|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+   Method End: getOriginal(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+   Method Start: getTime(Lnet/minecraft/item/ItemStack;)I
+      @|otamusan\items\ItemCompressed.java|3909|3913|item|param|otamusan.items.ItemCompressed|getTime|(Lnet/minecraft/item/ItemStack;)I|item|0
+      @|otamusan\items\ItemCompressed.java|3891|3898|getTime|method|otamusan.items.ItemCompressed|getTime|(Lnet/minecraft/item/ItemStack;)I
+      @|otamusan\items\ItemCompressed.java|3899|3908|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\items\ItemCompressed.java|3919|3933|NBTTagCompound|class|net.minecraft.nbt.NBTTagCompound
+      @|otamusan\items\ItemCompressed.java|3940|3944|item|param|otamusan.items.ItemCompressed|getTime|(Lnet/minecraft/item/ItemStack;)I|item|0
+      @|otamusan\items\ItemCompressed.java|3945|3959|getTagCompound|method|net.minecraft.item.ItemStack|getTagCompound|()Lnet/minecraft/nbt/NBTTagCompound;
+      @|otamusan\items\ItemCompressed.java|3976|3986|getInteger|method|net.minecraft.nbt.NBTTagCompound|getInteger|(Ljava/lang/String;)I
+      @|otamusan\items\ItemCompressed.java|3987|4007|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\items\ItemCompressed.java|4008|4014|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+   Method End: getTime(Lnet/minecraft/item/ItemStack;)I
+Class End  : otamusan.items.ItemCompressed
+endProcessing "otamusan\items\ItemCompressed.java"
+
+startProcessing "otamusan\recipes\CompressedCrafting.java" md5: 393ad7efe019bfbd21dd0e1b3696979b
+@|otamusan\recipes\CompressedCrafting.java|8|24|otamusan.recipes|package|otamusan.recipes|(file)
+Class Start: otamusan.recipes.CompressedCrafting
+   @|otamusan\recipes\CompressedCrafting.java|710|728|CompressedCrafting|class|otamusan.recipes.CompressedCrafting
+   @|otamusan\recipes\CompressedCrafting.java|737|761|IForgeRegistryEntry.Impl|class|net.minecraftforge.registries.IForgeRegistryEntry.Impl
+   @|otamusan\recipes\CompressedCrafting.java|762|769|IRecipe|class|net.minecraft.item.crafting.IRecipe
+   @|otamusan\recipes\CompressedCrafting.java|782|789|IRecipe|class|net.minecraft.item.crafting.IRecipe
+   @|otamusan\recipes\CompressedCrafting.java|802|807|World|class|net.minecraft.world.World
+   @|otamusan\recipes\CompressedCrafting.java|802|807|World|class|net.minecraft.world.World
+   @|otamusan\recipes\CompressedCrafting.java|808|813|world|field|otamusan.recipes.CompressedCrafting|world|
+   Method Start: matches(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z
+      @|otamusan\recipes\CompressedCrafting.java|869|872|inv|param|otamusan.recipes.CompressedCrafting|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|880|887|worldIn|param|otamusan.recipes.CompressedCrafting|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|worldIn|1
+      @|otamusan\recipes\CompressedCrafting.java|818|826|Override|class|java.lang.Override
+      @|otamusan\recipes\CompressedCrafting.java|843|850|matches|method|net.minecraft.item.crafting.IRecipe|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z
+      @|otamusan\recipes\CompressedCrafting.java|851|868|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|874|879|World|class|net.minecraft.world.World
+      @|otamusan\recipes\CompressedCrafting.java|898|903|world|field|otamusan.recipes.CompressedCrafting|world
+      @|otamusan\recipes\CompressedCrafting.java|906|913|worldIn|param|otamusan.recipes.CompressedCrafting|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|worldIn|1
+      @|otamusan\recipes\CompressedCrafting.java|922|936|compressedTime|method|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I
+      @|otamusan\recipes\CompressedCrafting.java|937|940|inv|param|otamusan.recipes.CompressedCrafting|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|968|975|IRecipe|class|net.minecraft.item.crafting.IRecipe
+      @|otamusan\recipes\CompressedCrafting.java|985|1000|CraftingManager|class|net.minecraft.item.crafting.CraftingManager
+      @|otamusan\recipes\CompressedCrafting.java|1001|1019|findMatchingRecipe|method|net.minecraft.item.crafting.CraftingManager|findMatchingRecipe|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Lnet/minecraft/item/crafting/IRecipe;
+      @|otamusan\recipes\CompressedCrafting.java|1020|1039|getUncompresserdInv|method|otamusan.recipes.CompressedCrafting|getUncompresserdInv|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|1040|1043|inv|param|otamusan.recipes.CompressedCrafting|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|1046|1053|worldIn|param|otamusan.recipes.CompressedCrafting|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|worldIn|1
+      @|otamusan\recipes\CompressedCrafting.java|1084|1097|ShapedRecipes|class|net.minecraft.item.crafting.ShapedRecipes
+      @|otamusan\recipes\CompressedCrafting.java|1119|1135|ShapelessRecipes|class|net.minecraft.item.crafting.ShapelessRecipes
+      @|otamusan\recipes\CompressedCrafting.java|1161|1176|ShapedOreRecipe|class|net.minecraftforge.oredict.ShapedOreRecipe
+      @|otamusan\recipes\CompressedCrafting.java|1198|1214|ShapelessRecipes|class|net.minecraft.item.crafting.ShapelessRecipes
+   Method End: matches(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z
+   Method Start: getRemainingItems(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;
+      @|otamusan\recipes\CompressedCrafting.java|1298|1301|inv|param|otamusan.recipes.CompressedCrafting|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|1222|1230|Override|class|java.lang.Override
+      @|otamusan\recipes\CompressedCrafting.java|1239|1250|NonNullList|class|net.minecraft.util.NonNullList
+      @|otamusan\recipes\CompressedCrafting.java|1251|1260|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|1262|1279|getRemainingItems|method|net.minecraft.item.crafting.IRecipe|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;
+      @|otamusan\recipes\CompressedCrafting.java|1280|1297|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|1307|1324|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|1333|1352|getUncompresserdInv|method|otamusan.recipes.CompressedCrafting|getUncompresserdInv|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|1353|1356|inv|param|otamusan.recipes.CompressedCrafting|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|1361|1368|IRecipe|class|net.minecraft.item.crafting.IRecipe
+      @|otamusan\recipes\CompressedCrafting.java|1378|1393|CraftingManager|class|net.minecraft.item.crafting.CraftingManager
+      @|otamusan\recipes\CompressedCrafting.java|1394|1412|findMatchingRecipe|method|net.minecraft.item.crafting.CraftingManager|findMatchingRecipe|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Lnet/minecraft/item/crafting/IRecipe;
+      @|otamusan\recipes\CompressedCrafting.java|1420|1425|world|field|otamusan.recipes.CompressedCrafting|world
+      @|otamusan\recipes\CompressedCrafting.java|1431|1442|NonNullList|class|net.minecraft.util.NonNullList
+      @|otamusan\recipes\CompressedCrafting.java|1443|1452|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|1469|1486|getRemainingItems|method|net.minecraft.item.crafting.IRecipe|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;
+      @|otamusan\recipes\CompressedCrafting.java|1498|1509|NonNullList|class|net.minecraft.util.NonNullList
+      @|otamusan\recipes\CompressedCrafting.java|1510|1519|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|1530|1541|NonNullList|class|net.minecraft.util.NonNullList
+      @|otamusan\recipes\CompressedCrafting.java|1542|1550|withSize|method|net.minecraft.util.NonNullList|withSize|(ILjava/lang/Object;)Lnet/minecraft/util/NonNullList;
+      @|otamusan\recipes\CompressedCrafting.java|1551|1554|inv|param|otamusan.recipes.CompressedCrafting|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|1555|1571|getSizeInventory|method|net.minecraft.inventory.IInventory|getSizeInventory|()I
+      @|otamusan\recipes\CompressedCrafting.java|1575|1584|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|1585|1590|EMPTY|field|net.minecraft.item.ItemStack|EMPTY
+      @|otamusan\recipes\CompressedCrafting.java|1622|1626|size|method|java.util.Collection|size|()I
+      @|otamusan\recipes\CompressedCrafting.java|1650|1653|get|method|java.util.List|get|(I)Ljava/lang/Object;
+      @|otamusan\recipes\CompressedCrafting.java|1657|1664|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+      @|otamusan\recipes\CompressedCrafting.java|1670|1675|Items|class|net.minecraft.init.Items
+      @|otamusan\recipes\CompressedCrafting.java|1676|1679|AIR|field|net.minecraft.init.Items|AIR
+      @|otamusan\recipes\CompressedCrafting.java|1694|1697|set|method|java.util.List|set|(ILjava/lang/Object;)Ljava/lang/Object;
+      @|otamusan\recipes\CompressedCrafting.java|1701|1710|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|1711|1716|EMPTY|field|net.minecraft.item.ItemStack|EMPTY
+      @|otamusan\recipes\CompressedCrafting.java|1742|1745|set|method|java.util.List|set|(ILjava/lang/Object;)Ljava/lang/Object;
+      @|otamusan\recipes\CompressedCrafting.java|1749|1763|ItemCompressed|class|otamusan.items.ItemCompressed
+      @|otamusan\recipes\CompressedCrafting.java|1764|1784|createCompressedItem|method|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|1791|1794|get|method|java.util.List|get|(I)Ljava/lang/Object;
+      @|otamusan\recipes\CompressedCrafting.java|1799|1813|compressedTime|method|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I
+      @|otamusan\recipes\CompressedCrafting.java|1814|1817|inv|param|otamusan.recipes.CompressedCrafting|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;|inv|0
+   Method End: getRemainingItems(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;
+   Method Start: compressedTime(Lnet/minecraft/inventory/InventoryCrafting;)I
+      @|otamusan\recipes\CompressedCrafting.java|1900|1903|inv|param|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|1867|1881|compressedTime|method|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I
+      @|otamusan\recipes\CompressedCrafting.java|1882|1899|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|1945|1948|inv|param|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|1949|1965|getSizeInventory|method|net.minecraft.inventory.IInventory|getSizeInventory|()I
+      @|otamusan\recipes\CompressedCrafting.java|1983|1986|inv|param|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|1987|2001|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|2005|2012|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+      @|otamusan\recipes\CompressedCrafting.java|2018|2030|ItemRegister|class|otamusan.register.ItemRegister
+      @|otamusan\recipes\CompressedCrafting.java|2031|2045|itemcompressed|field|otamusan.register.ItemRegister|itemcompressed
+      @|otamusan\recipes\CompressedCrafting.java|2054|2057|inv|param|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2058|2072|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|2076|2083|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+      @|otamusan\recipes\CompressedCrafting.java|2089|2094|Items|class|net.minecraft.init.Items
+      @|otamusan\recipes\CompressedCrafting.java|2095|2098|AIR|field|net.minecraft.init.Items|AIR
+      @|otamusan\recipes\CompressedCrafting.java|2122|2125|inv|param|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2126|2140|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|2144|2151|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+      @|otamusan\recipes\CompressedCrafting.java|2157|2162|Items|class|net.minecraft.init.Items
+      @|otamusan\recipes\CompressedCrafting.java|2163|2166|AIR|field|net.minecraft.init.Items|AIR
+      @|otamusan\recipes\CompressedCrafting.java|2214|2228|ItemCompressed|class|otamusan.items.ItemCompressed
+      @|otamusan\recipes\CompressedCrafting.java|2229|2236|getTime|method|otamusan.items.ItemCompressed|getTime|(Lnet/minecraft/item/ItemStack;)I
+      @|otamusan\recipes\CompressedCrafting.java|2237|2240|inv|param|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2241|2255|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|2283|2297|ItemCompressed|class|otamusan.items.ItemCompressed
+      @|otamusan\recipes\CompressedCrafting.java|2298|2305|getTime|method|otamusan.items.ItemCompressed|getTime|(Lnet/minecraft/item/ItemStack;)I
+      @|otamusan\recipes\CompressedCrafting.java|2306|2309|inv|param|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2310|2324|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+   Method End: compressedTime(Lnet/minecraft/inventory/InventoryCrafting;)I
+   Method Start: ICCopy(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|2426|2429|inv|param|otamusan.recipes.CompressedCrafting|ICCopy|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2383|2400|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|2401|2407|ICCopy|method|otamusan.recipes.CompressedCrafting|ICCopy|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|2408|2425|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|2435|2452|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|2466|2483|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|2488|2497|Container|class|net.minecraft.inventory.Container
+      Anon Class Start: otamusan.recipes.CompressedCrafting$1
+         Method Start: canInteractWith(Lnet/minecraft/entity/player/EntityPlayer;)Z
+            @|otamusan\recipes\CompressedCrafting.java|2562|2570|playerIn|param|otamusan.recipes.CompressedCrafting$1|canInteractWith|(Lnet/minecraft/entity/player/EntityPlayer;)Z|playerIn|0
+            @|otamusan\recipes\CompressedCrafting.java|2506|2514|Override|class|java.lang.Override
+            @|otamusan\recipes\CompressedCrafting.java|2533|2548|canInteractWith|method|net.minecraft.inventory.Container|canInteractWith|(Lnet/minecraft/entity/player/EntityPlayer;)Z
+            @|otamusan\recipes\CompressedCrafting.java|2549|2561|EntityPlayer|class|net.minecraft.entity.player.EntityPlayer
+         Method End: canInteractWith(Lnet/minecraft/entity/player/EntityPlayer;)Z
+      Anon Class End: otamusan.recipes.CompressedCrafting$1
+      @|otamusan\recipes\CompressedCrafting.java|2602|2605|inv|param|otamusan.recipes.CompressedCrafting|ICCopy|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2606|2614|getWidth|method|net.minecraft.inventory.InventoryCrafting|getWidth|()I
+      @|otamusan\recipes\CompressedCrafting.java|2618|2621|inv|param|otamusan.recipes.CompressedCrafting|ICCopy|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2622|2631|getHeight|method|net.minecraft.inventory.InventoryCrafting|getHeight|()I
+      @|otamusan\recipes\CompressedCrafting.java|2659|2662|inv|param|otamusan.recipes.CompressedCrafting|ICCopy|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2663|2679|getSizeInventory|method|net.minecraft.inventory.IInventory|getSizeInventory|()I
+      @|otamusan\recipes\CompressedCrafting.java|2700|2724|setInventorySlotContents|method|net.minecraft.inventory.IInventory|setInventorySlotContents|(ILnet/minecraft/item/ItemStack;)V
+      @|otamusan\recipes\CompressedCrafting.java|2728|2731|inv|param|otamusan.recipes.CompressedCrafting|ICCopy|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2732|2746|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|2750|2754|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+   Method End: ICCopy(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+   Method Start: getUncompresserdInv(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|2849|2852|inv|param|otamusan.recipes.CompressedCrafting|getUncompresserdInv|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2793|2810|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|2811|2830|getUncompresserdInv|method|otamusan.recipes.CompressedCrafting|getUncompresserdInv|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|2831|2848|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|2858|2875|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|2884|2890|ICCopy|method|otamusan.recipes.CompressedCrafting|ICCopy|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|2891|2894|inv|param|otamusan.recipes.CompressedCrafting|getUncompresserdInv|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2899|2916|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|2926|2932|ICCopy|method|otamusan.recipes.CompressedCrafting|ICCopy|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|2933|2936|inv|param|otamusan.recipes.CompressedCrafting|getUncompresserdInv|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|2968|2984|getSizeInventory|method|net.minecraft.inventory.IInventory|getSizeInventory|()I
+      @|otamusan\recipes\CompressedCrafting.java|2998|3007|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|3022|3036|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|3040|3044|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|3051|3060|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|3084|3091|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+      @|otamusan\recipes\CompressedCrafting.java|3097|3102|Items|class|net.minecraft.init.Items
+      @|otamusan\recipes\CompressedCrafting.java|3103|3106|AIR|field|net.minecraft.init.Items|AIR
+      @|otamusan\recipes\CompressedCrafting.java|3158|3172|ItemCompressed|class|otamusan.items.ItemCompressed
+      @|otamusan\recipes\CompressedCrafting.java|3173|3184|getOriginal|method|otamusan.items.ItemCompressed|getOriginal|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|3207|3231|setInventorySlotContents|method|net.minecraft.inventory.IInventory|setInventorySlotContents|(ILnet/minecraft/item/ItemStack;)V
+   Method End: getUncompresserdInv(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+   Method Start: getCraftingResult(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|3335|3338|inv|param|otamusan.recipes.CompressedCrafting|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|3272|3280|Override|class|java.lang.Override
+      @|otamusan\recipes\CompressedCrafting.java|3289|3298|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|3299|3316|getCraftingResult|method|net.minecraft.item.crafting.IRecipe|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|3317|3334|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\CompressedCrafting.java|3344|3351|IRecipe|class|net.minecraft.item.crafting.IRecipe
+      @|otamusan\recipes\CompressedCrafting.java|3361|3376|CraftingManager|class|net.minecraft.item.crafting.CraftingManager
+      @|otamusan\recipes\CompressedCrafting.java|3377|3395|findMatchingRecipe|method|net.minecraft.item.crafting.CraftingManager|findMatchingRecipe|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Lnet/minecraft/item/crafting/IRecipe;
+      @|otamusan\recipes\CompressedCrafting.java|3396|3415|getUncompresserdInv|method|otamusan.recipes.CompressedCrafting|getUncompresserdInv|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|3416|3419|inv|param|otamusan.recipes.CompressedCrafting|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|3422|3427|world|field|otamusan.recipes.CompressedCrafting|world
+      @|otamusan\recipes\CompressedCrafting.java|3432|3441|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|3452|3466|ItemCompressed|class|otamusan.items.ItemCompressed
+      @|otamusan\recipes\CompressedCrafting.java|3467|3487|createCompressedItem|method|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|3495|3512|getCraftingResult|method|net.minecraft.item.crafting.IRecipe|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|3513|3532|getUncompresserdInv|method|otamusan.recipes.CompressedCrafting|getUncompresserdInv|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|3533|3536|inv|param|otamusan.recipes.CompressedCrafting|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|3544|3558|compressedTime|method|otamusan.recipes.CompressedCrafting|compressedTime|(Lnet/minecraft/inventory/InventoryCrafting;)I
+      @|otamusan\recipes\CompressedCrafting.java|3559|3562|inv|param|otamusan.recipes.CompressedCrafting|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|3576|3584|setCount|method|net.minecraft.item.ItemStack|setCount|(I)V
+      @|otamusan\recipes\CompressedCrafting.java|3592|3609|getCraftingResult|method|net.minecraft.item.crafting.IRecipe|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|3610|3629|getUncompresserdInv|method|otamusan.recipes.CompressedCrafting|getUncompresserdInv|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/inventory/InventoryCrafting;
+      @|otamusan\recipes\CompressedCrafting.java|3630|3633|inv|param|otamusan.recipes.CompressedCrafting|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\CompressedCrafting.java|3636|3644|getCount|method|net.minecraft.item.ItemStack|getCount|()I
+   Method End: getCraftingResult(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+   Method Start: canFit(II)Z
+      @|otamusan\recipes\CompressedCrafting.java|3709|3714|width|param|otamusan.recipes.CompressedCrafting|canFit|(II)Z|width|0
+      @|otamusan\recipes\CompressedCrafting.java|3720|3726|height|param|otamusan.recipes.CompressedCrafting|canFit|(II)Z|height|1
+      @|otamusan\recipes\CompressedCrafting.java|3673|3681|Override|class|java.lang.Override
+      @|otamusan\recipes\CompressedCrafting.java|3698|3704|canFit|method|net.minecraft.item.crafting.IRecipe|canFit|(II)Z
+   Method End: canFit(II)Z
+   Method Start: getRecipeOutput()Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|3751|3759|Override|class|java.lang.Override
+      @|otamusan\recipes\CompressedCrafting.java|3768|3777|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|3778|3793|getRecipeOutput|method|net.minecraft.item.crafting.IRecipe|getRecipeOutput|()Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\CompressedCrafting.java|3811|3820|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\CompressedCrafting.java|3821|3833|ItemRegister|class|otamusan.register.ItemRegister
+      @|otamusan\recipes\CompressedCrafting.java|3834|3848|itemcompressed|field|otamusan.register.ItemRegister|itemcompressed
+   Method End: getRecipeOutput()Lnet/minecraft/item/ItemStack;
+Class End  : otamusan.recipes.CompressedCrafting
+endProcessing "otamusan\recipes\CompressedCrafting.java"
+
+startProcessing "otamusan\recipes\Compression.java" md5: 9f07505291bde5cecff4ba4fb749bf8b
+@|otamusan\recipes\Compression.java|8|24|otamusan.recipes|package|otamusan.recipes|(file)
+Class Start: otamusan.recipes.Compression
+   @|otamusan\recipes\Compression.java|375|386|Compression|class|otamusan.recipes.Compression
+   @|otamusan\recipes\Compression.java|395|419|IForgeRegistryEntry.Impl|class|net.minecraftforge.registries.IForgeRegistryEntry.Impl
+   @|otamusan\recipes\Compression.java|420|427|IRecipe|class|net.minecraft.item.crafting.IRecipe
+   @|otamusan\recipes\Compression.java|440|447|IRecipe|class|net.minecraft.item.crafting.IRecipe
+   @|otamusan\recipes\Compression.java|458|467|ItemStack|class|net.minecraft.item.ItemStack
+   @|otamusan\recipes\Compression.java|458|467|ItemStack|class|net.minecraft.item.ItemStack
+   @|otamusan\recipes\Compression.java|468|476|catalyst|field|otamusan.recipes.Compression|catalyst|
+   @|otamusan\recipes\Compression.java|483|492|ItemStack|class|net.minecraft.item.ItemStack
+   @|otamusan\recipes\Compression.java|493|499|Blocks|class|net.minecraft.init.Blocks
+   @|otamusan\recipes\Compression.java|500|506|PISTON|field|net.minecraft.init.Blocks|PISTON
+   Method Start: matches(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z
+      @|otamusan\recipes\Compression.java|563|566|inv|param|otamusan.recipes.Compression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\Compression.java|574|579|world|param|otamusan.recipes.Compression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|world|1
+      @|otamusan\recipes\Compression.java|512|520|Override|class|java.lang.Override
+      @|otamusan\recipes\Compression.java|537|544|matches|method|net.minecraft.item.crafting.IRecipe|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z
+      @|otamusan\recipes\Compression.java|545|562|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\Compression.java|568|573|World|class|net.minecraft.world.World
+      @|otamusan\recipes\Compression.java|585|594|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|602|611|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|612|617|EMPTY|field|net.minecraft.item.ItemStack|EMPTY
+      @|otamusan\recipes\Compression.java|702|705|inv|param|otamusan.recipes.Compression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\Compression.java|706|722|getSizeInventory|method|net.minecraft.inventory.IInventory|getSizeInventory|()I
+      @|otamusan\recipes\Compression.java|748|757|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|758|763|EMPTY|field|net.minecraft.item.ItemStack|EMPTY
+      @|otamusan\recipes\Compression.java|768|778|isCatalyst|method|otamusan.recipes.Compression|isCatalyst|(Lnet/minecraft/item/ItemStack;)Z
+      @|otamusan\recipes\Compression.java|779|782|inv|param|otamusan.recipes.Compression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\Compression.java|783|797|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|816|819|inv|param|otamusan.recipes.Compression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\Compression.java|820|834|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|838|842|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|878|888|isCatalyst|method|otamusan.recipes.Compression|isCatalyst|(Lnet/minecraft/item/ItemStack;)Z
+      @|otamusan\recipes\Compression.java|889|892|inv|param|otamusan.recipes.Compression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\Compression.java|893|907|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|915|918|inv|param|otamusan.recipes.Compression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\Compression.java|919|933|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|937|945|getCount|method|net.minecraft.item.ItemStack|getCount|()I
+      @|otamusan\recipes\Compression.java|1007|1018|isItemEqual|method|net.minecraft.item.ItemStack|isItemEqual|(Lnet/minecraft/item/ItemStack;)Z
+      @|otamusan\recipes\Compression.java|1019|1022|inv|param|otamusan.recipes.Compression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\Compression.java|1023|1037|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|1046|1056|isCatalyst|method|otamusan.recipes.Compression|isCatalyst|(Lnet/minecraft/item/ItemStack;)Z
+      @|otamusan\recipes\Compression.java|1057|1060|inv|param|otamusan.recipes.Compression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\Compression.java|1061|1075|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|1128|1137|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1138|1143|EMPTY|field|net.minecraft.item.ItemStack|EMPTY
+   Method End: matches(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z
+   Method Start: isCatalyst(Lnet/minecraft/item/ItemStack;)Z
+      @|otamusan\recipes\Compression.java|1229|1233|item|param|otamusan.recipes.Compression|isCatalyst|(Lnet/minecraft/item/ItemStack;)Z|item|0
+      @|otamusan\recipes\Compression.java|1208|1218|isCatalyst|method|otamusan.recipes.Compression|isCatalyst|(Lnet/minecraft/item/ItemStack;)Z
+      @|otamusan\recipes\Compression.java|1219|1228|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1244|1248|item|param|otamusan.recipes.Compression|isCatalyst|(Lnet/minecraft/item/ItemStack;)Z|item|0
+      @|otamusan\recipes\Compression.java|1249|1260|isItemEqual|method|net.minecraft.item.ItemStack|isItemEqual|(Lnet/minecraft/item/ItemStack;)Z
+      @|otamusan\recipes\Compression.java|1261|1269|catalyst|field|otamusan.recipes.Compression|catalyst
+   Method End: isCatalyst(Lnet/minecraft/item/ItemStack;)Z
+   Method Start: getBase(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|1353|1356|inv|param|otamusan.recipes.Compression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\Compression.java|1317|1326|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1327|1334|getBase|method|otamusan.recipes.Compression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|1335|1352|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\Compression.java|1362|1371|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1379|1388|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1389|1394|EMPTY|field|net.minecraft.item.ItemStack|EMPTY
+      @|otamusan\recipes\Compression.java|1418|1421|inv|param|otamusan.recipes.Compression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\Compression.java|1422|1438|getSizeInventory|method|net.minecraft.inventory.IInventory|getSizeInventory|()I
+      @|otamusan\recipes\Compression.java|1457|1467|isCatalyst|method|otamusan.recipes.Compression|isCatalyst|(Lnet/minecraft/item/ItemStack;)Z
+      @|otamusan\recipes\Compression.java|1468|1471|inv|param|otamusan.recipes.Compression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\Compression.java|1472|1486|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|1505|1508|inv|param|otamusan.recipes.Compression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\Compression.java|1509|1523|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|1527|1531|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+   Method End: getBase(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+   Method Start: getRemainingItems(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;
+      @|otamusan\recipes\Compression.java|1641|1644|inv|param|otamusan.recipes.Compression|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;|inv|0
+      @|otamusan\recipes\Compression.java|1565|1573|Override|class|java.lang.Override
+      @|otamusan\recipes\Compression.java|1582|1593|NonNullList|class|net.minecraft.util.NonNullList
+      @|otamusan\recipes\Compression.java|1594|1603|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1605|1622|getRemainingItems|method|net.minecraft.item.crafting.IRecipe|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;
+      @|otamusan\recipes\Compression.java|1623|1640|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\Compression.java|1650|1661|NonNullList|class|net.minecraft.util.NonNullList
+      @|otamusan\recipes\Compression.java|1662|1671|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1680|1691|NonNullList|class|net.minecraft.util.NonNullList
+      @|otamusan\recipes\Compression.java|1692|1700|withSize|method|net.minecraft.util.NonNullList|withSize|(ILjava/lang/Object;)Lnet/minecraft/util/NonNullList;
+      @|otamusan\recipes\Compression.java|1701|1704|inv|param|otamusan.recipes.Compression|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;|inv|0
+      @|otamusan\recipes\Compression.java|1705|1721|getSizeInventory|method|net.minecraft.inventory.IInventory|getSizeInventory|()I
+      @|otamusan\recipes\Compression.java|1725|1734|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1735|1740|EMPTY|field|net.minecraft.item.ItemStack|EMPTY
+      @|otamusan\recipes\Compression.java|1765|1768|inv|param|otamusan.recipes.Compression|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;|inv|0
+      @|otamusan\recipes\Compression.java|1769|1785|getSizeInventory|method|net.minecraft.inventory.IInventory|getSizeInventory|()I
+      @|otamusan\recipes\Compression.java|1803|1813|isCatalyst|method|otamusan.recipes.Compression|isCatalyst|(Lnet/minecraft/item/ItemStack;)Z
+      @|otamusan\recipes\Compression.java|1814|1817|inv|param|otamusan.recipes.Compression|getRemainingItems|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;|inv|0
+      @|otamusan\recipes\Compression.java|1818|1832|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|1849|1852|set|method|java.util.List|set|(ILjava/lang/Object;)Ljava/lang/Object;
+      @|otamusan\recipes\Compression.java|1860|1869|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1870|1876|Blocks|class|net.minecraft.init.Blocks
+      @|otamusan\recipes\Compression.java|1877|1883|PISTON|field|net.minecraft.init.Blocks|PISTON
+      @|otamusan\recipes\Compression.java|1908|1911|set|method|java.util.List|set|(ILjava/lang/Object;)Ljava/lang/Object;
+      @|otamusan\recipes\Compression.java|1915|1924|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1925|1930|EMPTY|field|net.minecraft.item.ItemStack|EMPTY
+   Method End: getRemainingItems(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/util/NonNullList;
+   Method Start: getCraftingResult(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|2026|2029|inv|param|otamusan.recipes.Compression|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\Compression.java|1963|1971|Override|class|java.lang.Override
+      @|otamusan\recipes\Compression.java|1980|1989|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|1990|2007|getCraftingResult|method|net.minecraft.item.crafting.IRecipe|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|2008|2025|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\Compression.java|2035|2044|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|2063|2070|getBase|method|otamusan.recipes.Compression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|2071|2074|inv|param|otamusan.recipes.Compression|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\Compression.java|2086|2100|ItemCompressed|class|otamusan.items.ItemCompressed
+      @|otamusan\recipes\Compression.java|2101|2121|createCompressedItem|method|otamusan.items.ItemCompressed|createCompressedItem|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+   Method End: getCraftingResult(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+   Method Start: canFit(II)Z
+      @|otamusan\recipes\Compression.java|2177|2182|width|param|otamusan.recipes.Compression|canFit|(II)Z|width|0
+      @|otamusan\recipes\Compression.java|2188|2194|height|param|otamusan.recipes.Compression|canFit|(II)Z|height|1
+      @|otamusan\recipes\Compression.java|2141|2149|Override|class|java.lang.Override
+      @|otamusan\recipes\Compression.java|2166|2172|canFit|method|net.minecraft.item.crafting.IRecipe|canFit|(II)Z
+   Method End: canFit(II)Z
+   Method Start: getRecipeOutput()Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|2219|2227|Override|class|java.lang.Override
+      @|otamusan\recipes\Compression.java|2236|2245|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|2246|2261|getRecipeOutput|method|net.minecraft.item.crafting.IRecipe|getRecipeOutput|()Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Compression.java|2279|2288|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Compression.java|2289|2295|Blocks|class|net.minecraft.init.Blocks
+      @|otamusan\recipes\Compression.java|2296|2302|PISTON|field|net.minecraft.init.Blocks|PISTON
+   Method End: getRecipeOutput()Lnet/minecraft/item/ItemStack;
+Class End  : otamusan.recipes.Compression
+endProcessing "otamusan\recipes\Compression.java"
+
+startProcessing "otamusan\recipes\Uncompression.java" md5: 4ad460f891d899cd00b88d38feb0ba9c
+@|otamusan\recipes\Uncompression.java|8|24|otamusan.recipes|package|otamusan.recipes|(file)
+Class Start: otamusan.recipes.Uncompression
+   @|otamusan\recipes\Uncompression.java|374|387|Uncompression|class|otamusan.recipes.Uncompression
+   @|otamusan\recipes\Uncompression.java|396|420|IForgeRegistryEntry.Impl|class|net.minecraftforge.registries.IForgeRegistryEntry.Impl
+   @|otamusan\recipes\Uncompression.java|421|428|IRecipe|class|net.minecraft.item.crafting.IRecipe
+   @|otamusan\recipes\Uncompression.java|441|448|IRecipe|class|net.minecraft.item.crafting.IRecipe
+   Method Start: matches(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z
+      @|otamusan\recipes\Uncompression.java|504|507|inv|param|otamusan.recipes.Uncompression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\Uncompression.java|515|520|world|param|otamusan.recipes.Uncompression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|world|1
+      @|otamusan\recipes\Uncompression.java|453|461|Override|class|java.lang.Override
+      @|otamusan\recipes\Uncompression.java|478|485|matches|method|net.minecraft.item.crafting.IRecipe|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z
+      @|otamusan\recipes\Uncompression.java|486|503|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\Uncompression.java|509|514|World|class|net.minecraft.world.World
+      @|otamusan\recipes\Uncompression.java|526|535|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Uncompression.java|543|550|getBase|method|otamusan.recipes.Uncompression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|551|554|inv|param|otamusan.recipes.Uncompression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+      @|otamusan\recipes\Uncompression.java|566|579|getItemAmount|method|otamusan.recipes.Uncompression|getItemAmount|(Lnet/minecraft/inventory/InventoryCrafting;)I
+      @|otamusan\recipes\Uncompression.java|580|583|inv|param|otamusan.recipes.Uncompression|matches|(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z|inv|0
+   Method End: matches(Lnet/minecraft/inventory/InventoryCrafting;Lnet/minecraft/world/World;)Z
+   Method Start: getItemAmount(Lnet/minecraft/inventory/InventoryCrafting;)I
+      @|otamusan\recipes\Uncompression.java|656|659|inv|param|otamusan.recipes.Uncompression|getItemAmount|(Lnet/minecraft/inventory/InventoryCrafting;)I|inv|0
+      @|otamusan\recipes\Uncompression.java|624|637|getItemAmount|method|otamusan.recipes.Uncompression|getItemAmount|(Lnet/minecraft/inventory/InventoryCrafting;)I
+      @|otamusan\recipes\Uncompression.java|638|655|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\Uncompression.java|698|701|inv|param|otamusan.recipes.Uncompression|getItemAmount|(Lnet/minecraft/inventory/InventoryCrafting;)I|inv|0
+      @|otamusan\recipes\Uncompression.java|702|718|getSizeInventory|method|net.minecraft.inventory.IInventory|getSizeInventory|()I
+      @|otamusan\recipes\Uncompression.java|736|739|inv|param|otamusan.recipes.Uncompression|getItemAmount|(Lnet/minecraft/inventory/InventoryCrafting;)I|inv|0
+      @|otamusan\recipes\Uncompression.java|740|754|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|758|765|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+      @|otamusan\recipes\Uncompression.java|771|776|Items|class|net.minecraft.init.Items
+      @|otamusan\recipes\Uncompression.java|777|780|AIR|field|net.minecraft.init.Items|AIR
+   Method End: getItemAmount(Lnet/minecraft/inventory/InventoryCrafting;)I
+   Method Start: getBase(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|863|866|inv|param|otamusan.recipes.Uncompression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\Uncompression.java|827|836|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Uncompression.java|837|844|getBase|method|otamusan.recipes.Uncompression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|845|862|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\Uncompression.java|892|895|inv|param|otamusan.recipes.Uncompression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\Uncompression.java|896|912|getSizeInventory|method|net.minecraft.inventory.IInventory|getSizeInventory|()I
+      @|otamusan\recipes\Uncompression.java|926|935|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Uncompression.java|943|946|inv|param|otamusan.recipes.Uncompression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\Uncompression.java|947|961|getStackInSlot|method|net.minecraft.inventory.IInventory|getStackInSlot|(I)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|978|985|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+      @|otamusan\recipes\Uncompression.java|991|996|Items|class|net.minecraft.init.Items
+      @|otamusan\recipes\Uncompression.java|997|1000|AIR|field|net.minecraft.init.Items|AIR
+      @|otamusan\recipes\Uncompression.java|1017|1024|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+      @|otamusan\recipes\Uncompression.java|1030|1042|ItemRegister|class|otamusan.register.ItemRegister
+      @|otamusan\recipes\Uncompression.java|1043|1057|itemcompressed|field|otamusan.register.ItemRegister|itemcompressed
+      @|otamusan\recipes\Uncompression.java|1078|1082|copy|method|net.minecraft.item.ItemStack|copy|()Lnet/minecraft/item/ItemStack;
+   Method End: getBase(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+   Method Start: canFit(II)Z
+      @|otamusan\recipes\Uncompression.java|1189|1194|width|param|otamusan.recipes.Uncompression|canFit|(II)Z|width|0
+      @|otamusan\recipes\Uncompression.java|1200|1206|height|param|otamusan.recipes.Uncompression|canFit|(II)Z|height|1
+      @|otamusan\recipes\Uncompression.java|1153|1161|Override|class|java.lang.Override
+      @|otamusan\recipes\Uncompression.java|1178|1184|canFit|method|net.minecraft.item.crafting.IRecipe|canFit|(II)Z
+   Method End: canFit(II)Z
+   Method Start: getRecipeOutput()Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|1231|1239|Override|class|java.lang.Override
+      @|otamusan\recipes\Uncompression.java|1248|1257|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Uncompression.java|1258|1273|getRecipeOutput|method|net.minecraft.item.crafting.IRecipe|getRecipeOutput|()Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|1291|1300|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Uncompression.java|1301|1306|Items|class|net.minecraft.init.Items
+      @|otamusan\recipes\Uncompression.java|1307|1318|NETHER_STAR|field|net.minecraft.init.Items|NETHER_STAR
+   Method End: getRecipeOutput()Lnet/minecraft/item/ItemStack;
+   Method Start: getCraftingResult(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|1390|1393|inv|param|otamusan.recipes.Uncompression|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+      @|otamusan\recipes\Uncompression.java|1327|1335|Override|class|java.lang.Override
+      @|otamusan\recipes\Uncompression.java|1344|1353|ItemStack|class|net.minecraft.item.ItemStack
+      @|otamusan\recipes\Uncompression.java|1354|1371|getCraftingResult|method|net.minecraft.item.crafting.IRecipe|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|1372|1389|InventoryCrafting|class|net.minecraft.inventory.InventoryCrafting
+      @|otamusan\recipes\Uncompression.java|1406|1420|ItemCompressed|class|otamusan.items.ItemCompressed
+      @|otamusan\recipes\Uncompression.java|1421|1443|createUncompressedItem|method|otamusan.items.ItemCompressed|createUncompressedItem|(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|1444|1451|getBase|method|otamusan.recipes.Uncompression|getBase|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+      @|otamusan\recipes\Uncompression.java|1452|1455|inv|param|otamusan.recipes.Uncompression|getCraftingResult|(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;|inv|0
+   Method End: getCraftingResult(Lnet/minecraft/inventory/InventoryCrafting;)Lnet/minecraft/item/ItemStack;
+Class End  : otamusan.recipes.Uncompression
+endProcessing "otamusan\recipes\Uncompression.java"
+
+startProcessing "otamusan\register\ItemRegister.java" md5: f46b597c6fb832b5c743a5e268e2551d
+@|otamusan\register\ItemRegister.java|8|25|otamusan.register|package|otamusan.register|(file)
+Class Start: otamusan.register.ItemRegister
+   @|otamusan\register\ItemRegister.java|526|538|ItemRegister|class|otamusan.register.ItemRegister
+   @|otamusan\register\ItemRegister.java|556|560|Side|class|net.minecraftforge.fml.relauncher.Side
+   @|otamusan\register\ItemRegister.java|556|560|Side|class|net.minecraftforge.fml.relauncher.Side
+   @|otamusan\register\ItemRegister.java|561|566|Fside|field|otamusan.register.ItemRegister|Fside|
+   @|otamusan\register\ItemRegister.java|589|593|Item|class|net.minecraft.item.Item
+   @|otamusan\register\ItemRegister.java|589|593|Item|class|net.minecraft.item.Item
+   @|otamusan\register\ItemRegister.java|594|608|itemcompressed|field|otamusan.register.ItemRegister|itemcompressed|
+   @|otamusan\register\ItemRegister.java|615|629|ItemCompressed|class|otamusan.items.ItemCompressed
+   Method Start: init(Lnet/minecraftforge/fml/relauncher/Side;)V
+      @|otamusan\register\ItemRegister.java|664|668|side|param|otamusan.register.ItemRegister|init|(Lnet/minecraftforge/fml/relauncher/Side;)V|side|0
+      @|otamusan\register\ItemRegister.java|654|658|init|method|otamusan.register.ItemRegister|init|(Lnet/minecraftforge/fml/relauncher/Side;)V
+      @|otamusan\register\ItemRegister.java|659|663|Side|class|net.minecraftforge.fml.relauncher.Side
+      @|otamusan\register\ItemRegister.java|674|682|register|method|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V
+      @|otamusan\register\ItemRegister.java|683|697|itemcompressed|field|otamusan.register.ItemRegister|itemcompressed
+   Method End: init(Lnet/minecraftforge/fml/relauncher/Side;)V
+   Method Start: register(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V
+      @|otamusan\register\ItemRegister.java|769|773|item|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|782|785|str|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V|str|1
+      @|otamusan\register\ItemRegister.java|794|801|varient|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V|varient|2
+      @|otamusan\register\ItemRegister.java|755|763|register|method|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V
+      @|otamusan\register\ItemRegister.java|764|768|Item|class|net.minecraft.item.Item
+      @|otamusan\register\ItemRegister.java|775|781|String|class|java.lang.String
+      @|otamusan\register\ItemRegister.java|787|793|String|class|java.lang.String
+      @|otamusan\register\ItemRegister.java|807|815|register|method|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V
+      @|otamusan\register\ItemRegister.java|816|820|item|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|822|825|str|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V|str|1
+      @|otamusan\register\ItemRegister.java|830|843|modelRegister|method|otamusan.register.ItemRegister|modelRegister|(Lnet/minecraft/item/Item;Ljava/lang/String;)V
+      @|otamusan\register\ItemRegister.java|844|848|item|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|850|853|str|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V|str|1
+      @|otamusan\register\ItemRegister.java|862|869|varient|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V|varient|2
+   Method End: register(Lnet/minecraft/item/Item;Ljava/lang/String;Ljava/lang/String;)V
+   Method Start: register(Lnet/minecraft/item/Item;Ljava/lang/String;)V
+      @|otamusan\register\ItemRegister.java|910|914|item|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|923|926|str|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|str|1
+      @|otamusan\register\ItemRegister.java|896|904|register|method|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V
+      @|otamusan\register\ItemRegister.java|905|909|Item|class|net.minecraft.item.Item
+      @|otamusan\register\ItemRegister.java|916|922|String|class|java.lang.String
+      @|otamusan\register\ItemRegister.java|932|936|item|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|937|952|setRegistryName|method|net.minecraftforge.registries.IForgeRegistryEntry|setRegistryName|(Lnet/minecraft/util/ResourceLocation;)Ljava/lang/Object;
+      @|otamusan\register\ItemRegister.java|957|973|ResourceLocation|class|net.minecraft.util.ResourceLocation
+      @|otamusan\register\ItemRegister.java|974|994|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\register\ItemRegister.java|995|1001|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\register\ItemRegister.java|1010|1013|str|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|str|1
+      @|otamusan\register\ItemRegister.java|1019|1034|ForgeRegistries|class|net.minecraftforge.fml.common.registry.ForgeRegistries
+      @|otamusan\register\ItemRegister.java|1035|1040|ITEMS|field|net.minecraftforge.fml.common.registry.ForgeRegistries|ITEMS
+      @|otamusan\register\ItemRegister.java|1041|1049|register|method|net.minecraftforge.registries.IForgeRegistry|register|(Lnet/minecraftforge/registries/IForgeRegistryEntry;)V
+      @|otamusan\register\ItemRegister.java|1050|1054|item|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|1063|1068|Fside|field|otamusan.register.ItemRegister|Fside
+      @|otamusan\register\ItemRegister.java|1072|1076|Side|class|net.minecraftforge.fml.relauncher.Side
+      @|otamusan\register\ItemRegister.java|1077|1083|CLIENT|field|net.minecraftforge.fml.relauncher.Side|CLIENT
+      @|otamusan\register\ItemRegister.java|1090|1103|modelRegister|method|otamusan.register.ItemRegister|modelRegister|(Lnet/minecraft/item/Item;Ljava/lang/String;)V
+      @|otamusan\register\ItemRegister.java|1104|1108|item|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|1110|1113|str|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|str|1
+      @|otamusan\register\ItemRegister.java|1122|1126|item|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|1127|1145|setUnlocalizedName|method|net.minecraft.item.Item|setUnlocalizedName|(Ljava/lang/String;)Lnet/minecraft/item/Item;
+      @|otamusan\register\ItemRegister.java|1146|1149|str|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|str|1
+      @|otamusan\register\ItemRegister.java|1154|1158|item|param|otamusan.register.ItemRegister|register|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|1159|1173|setCreativeTab|method|net.minecraft.item.Item|setCreativeTab|(Lnet/minecraft/creativetab/CreativeTabs;)Lnet/minecraft/item/Item;
+      @|otamusan\register\ItemRegister.java|1174|1186|CreativeTabs|class|net.minecraft.creativetab.CreativeTabs
+      @|otamusan\register\ItemRegister.java|1187|1191|MISC|field|net.minecraft.creativetab.CreativeTabs|MISC
+   Method End: register(Lnet/minecraft/item/Item;Ljava/lang/String;)V
+   Method Start: modelRegister(Lnet/minecraft/item/Item;Ljava/lang/String;)V
+      @|otamusan\register\ItemRegister.java|1261|1265|item|param|otamusan.register.ItemRegister|modelRegister|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|1274|1277|str|param|otamusan.register.ItemRegister|modelRegister|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|str|1
+      @|otamusan\register\ItemRegister.java|1200|1208|SideOnly|class|net.minecraftforge.fml.relauncher.SideOnly
+      @|otamusan\register\ItemRegister.java|1209|1213|Side|class|net.minecraftforge.fml.relauncher.Side
+      @|otamusan\register\ItemRegister.java|1214|1220|CLIENT|field|net.minecraftforge.fml.relauncher.Side|CLIENT
+      @|otamusan\register\ItemRegister.java|1242|1255|modelRegister|method|otamusan.register.ItemRegister|modelRegister|(Lnet/minecraft/item/Item;Ljava/lang/String;)V
+      @|otamusan\register\ItemRegister.java|1256|1260|Item|class|net.minecraft.item.Item
+      @|otamusan\register\ItemRegister.java|1267|1273|String|class|java.lang.String
+      @|otamusan\register\ItemRegister.java|1283|1294|ModelLoader|class|net.minecraftforge.client.model.ModelLoader
+      @|otamusan\register\ItemRegister.java|1295|1325|setCustomModelResourceLocation|method|net.minecraftforge.client.model.ModelLoader|setCustomModelResourceLocation|(Lnet/minecraft/item/Item;ILnet/minecraft/client/renderer/block/model/ModelResourceLocation;)V
+      @|otamusan\register\ItemRegister.java|1326|1330|item|param|otamusan.register.ItemRegister|modelRegister|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|item|0
+      @|otamusan\register\ItemRegister.java|1343|1364|ModelResourceLocation|class|net.minecraft.client.renderer.block.model.ModelResourceLocation
+      @|otamusan\register\ItemRegister.java|1365|1385|NotEnoughCompression|class|otamusan.NotEnoughCompression
+      @|otamusan\register\ItemRegister.java|1386|1392|MOD_ID|field|otamusan.NotEnoughCompression|MOD_ID
+      @|otamusan\register\ItemRegister.java|1401|1404|str|param|otamusan.register.ItemRegister|modelRegister|(Lnet/minecraft/item/Item;Ljava/lang/String;)V|str|1
+   Method End: modelRegister(Lnet/minecraft/item/Item;Ljava/lang/String;)V
+Class End  : otamusan.register.ItemRegister
+endProcessing "otamusan\register\ItemRegister.java"
+

@@ -1,0 +1,38 @@
+Symbol range map extraction starting
+Processing 12 files
+startProcessing "otamusan\NotEnoughCompression.java" md5: 658e0f8624bc77c8944639d16639d6a4
+endProcessing "otamusan\NotEnoughCompression.java"
+
+startProcessing "otamusan\client\ClientProxy.java" md5: 1b071c91a2a8f1c14c9a1e6d7dde5770
+endProcessing "otamusan\client\ClientProxy.java"
+
+startProcessing "otamusan\client\ItemCompressed\CompressedItemOverrideList.java" md5: fbe602c7826bfa94aca6ec29b8e7836b
+endProcessing "otamusan\client\ItemCompressed\CompressedItemOverrideList.java"
+
+startProcessing "otamusan\client\ItemCompressed\CompressedModel.java" md5: b385915905a4ab7d9f7c137e151399a6
+endProcessing "otamusan\client\ItemCompressed\CompressedModel.java"
+
+startProcessing "otamusan\client\ItemCompressed\ModelBakeEventHandler.java" md5: d195625a75e267c1afe04ca1453348d5
+endProcessing "otamusan\client\ItemCompressed\ModelBakeEventHandler.java"
+
+startProcessing "otamusan\client\TooltipHandler.java" md5: 04893c8be191d2293a40812735b9b72e
+endProcessing "otamusan\client\TooltipHandler.java"
+
+startProcessing "otamusan\common\CommonProxy.java" md5: 4c4a0f2fb1144f38b79feaf5c33545d1
+endProcessing "otamusan\common\CommonProxy.java"
+
+startProcessing "otamusan\items\ItemCompressed.java" md5: 02d95f00ce4ba43da4e0ec468d599944
+endProcessing "otamusan\items\ItemCompressed.java"
+
+startProcessing "otamusan\recipes\CompressedCrafting.java" md5: 393ad7efe019bfbd21dd0e1b3696979b
+endProcessing "otamusan\recipes\CompressedCrafting.java"
+
+startProcessing "otamusan\recipes\Compression.java" md5: 9f07505291bde5cecff4ba4fb749bf8b
+endProcessing "otamusan\recipes\Compression.java"
+
+startProcessing "otamusan\recipes\Uncompression.java" md5: 4ad460f891d899cd00b88d38feb0ba9c
+endProcessing "otamusan\recipes\Uncompression.java"
+
+startProcessing "otamusan\register\ItemRegister.java" md5: f46b597c6fb832b5c743a5e268e2551d
+endProcessing "otamusan\register\ItemRegister.java"
+
