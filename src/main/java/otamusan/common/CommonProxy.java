@@ -16,8 +16,12 @@ import otamusan.tileentity.TileCompressed;
 
 public class CommonProxy {
 
-	public void preInit() {
+	public static final ResourceLocation RBlockCompressed = new ResourceLocation(
+			NotEnoughCompression.MOD_ID + ":blockcompressed", "inventory");
+	public static final ResourceLocation RItemCompressed = new ResourceLocation(
+			NotEnoughCompression.MOD_ID + ":itemcompressed", "inventory");
 
+	public void preInit() {
 		IRecipe compression = new Compression();
 		compression.setRegistryName(new ResourceLocation(NotEnoughCompression.MOD_ID, "compression"));
 		ForgeRegistries.RECIPES.register(compression);
@@ -30,19 +34,17 @@ public class CommonProxy {
 		compressedcrafting.setRegistryName(new ResourceLocation(NotEnoughCompression.MOD_ID, "compressedcrafting"));
 		ForgeRegistries.RECIPES.register(compressedcrafting);
 
-		blockCompressed = (BlockCompressed) (new BlockCompressed()
-				.setUnlocalizedName(NotEnoughCompression.MOD_ID + ":blockcompressed"));
-		blockCompressed.setRegistryName(NotEnoughCompression.MOD_ID + ":blockcompressed");
+		blockCompressed = (BlockCompressed) (new BlockCompressed().setUnlocalizedName("compressedblock"));
+		blockCompressed.setRegistryName("compressedblock");
 		ForgeRegistries.BLOCKS.register(blockCompressed);
 
 		itemBlockCompressed = new ItemBlock(blockCompressed);
 		itemBlockCompressed.setRegistryName(blockCompressed.getRegistryName());
 		ForgeRegistries.ITEMS.register(itemBlockCompressed);
 
-		NECItems.itemcompressed
-				.setRegistryName(new ResourceLocation(NotEnoughCompression.MOD_ID + ":" + "itemcompressed#inventory"));
+		NECItems.itemcompressed.setRegistryName("compresseditem");
 		ForgeRegistries.ITEMS.register(NECItems.itemcompressed);
-		NECItems.itemcompressed.setUnlocalizedName(NotEnoughCompression.MOD_ID + ":" + "itemcompressed#inventory");
+		NECItems.itemcompressed.setUnlocalizedName("compresseditem");
 		NECItems.itemcompressed.setCreativeTab(CreativeTabs.MISC);
 	}
 

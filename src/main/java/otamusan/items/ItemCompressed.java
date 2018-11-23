@@ -2,6 +2,7 @@ package otamusan.items;
 
 import java.util.List;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,6 +18,7 @@ import net.minecraft.world.World;
 import otamusan.NotEnoughCompression;
 import otamusan.common.CommonProxy;
 import otamusan.common.NECItems;
+import otamusan.tileentity.TileCompressed;
 
 public class ItemCompressed extends Item {
 	@Override
@@ -26,7 +28,7 @@ public class ItemCompressed extends Item {
 		ItemStack itemStack = new ItemStack(
 				stack.getTagCompound().getCompoundTag(NotEnoughCompression.MOD_ID + "_itemstack"));
 		int time = stack.getTagCompound().getInteger(NotEnoughCompression.MOD_ID + "_time");
-		String name = I18n.format(NotEnoughCompression.MOD_ID + ".complressed") + " " + itemStack.getDisplayName();
+		String name = I18n.format(NotEnoughCompression.MOD_ID + ".compressed") + " " + itemStack.getDisplayName();
 		return name;
 	}
 
@@ -34,8 +36,17 @@ public class ItemCompressed extends Item {
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack compressed = player.getHeldItem(hand);
 		ItemStack original = ItemCompressed.getOriginal(compressed);
+
 		if (original.getItem() instanceof ItemBlock) {
+			int meta = original.getMetadata();
+			IBlockState state = ((ItemBlock) original.getItem()).getBlock().getStateForPlacement(worldIn, pos, facing,
+					hitX, hitY, hitZ, meta, player, hand);
 			CommonProxy.itemBlockCompressed.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+			TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos.offset(facing));
+			if (tileCompressed == null)
+				return EnumActionResult.SUCCESS;
+			tileCompressed.setBlockState(state);
+			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.FAIL;
 	}
@@ -44,7 +55,6 @@ public class ItemCompressed extends Item {
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (!stack.hasTagCompound())
 			return;
-
 		ItemStack compressed = new ItemStack(
 				(NBTTagCompound) stack.getTagCompound().getTag(NotEnoughCompression.MOD_ID + "_itemstack"));
 		int time = stack.getTagCompound().getInteger(NotEnoughCompression.MOD_ID + "_time");
@@ -116,5 +126,4 @@ public class ItemCompressed extends Item {
 		NBTTagCompound nbt = item.getTagCompound();
 		return nbt.getInteger(NotEnoughCompression.MOD_ID + "_time");
 	}
-
 }

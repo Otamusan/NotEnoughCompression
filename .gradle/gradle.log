@@ -8,99 +8,203 @@ This mapping 'snapshot_20171003' was designed for MC 1.12! Use at your own peril
      by: Searge, ProfMobius, R4wk, ZeuX          
      Fesh0r, IngisKahn, bspkrs, LexManos         
 #################################################
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\src\api\resources', not found
 Version string 'unspecified' does not match SemVer specification 
 You should try SemVer : http://semver.org/
-Version string 'unspecified' does not match SemVer specification 
-You should try SemVer : http://semver.org/
-:deobfCompileDummyTask
-:deobfProvidedDummyTask
-:getVersionJson
-:extractUserdev
-:extractDependencyATs SKIPPED
-:extractMcpData SKIPPED
-:extractMcpMappings SKIPPED
-:genSrgs SKIPPED
-:downloadClient SKIPPED
-:downloadServer SKIPPED
-:splitServerJar SKIPPED
-:mergeJars SKIPPED
-:deobfMcSRG SKIPPED
-:decompileMc SKIPPED
-:fixMcSources SKIPPED
-:applySourcePatches
-:remapMcSources SKIPPED
-:recompileMc SKIPPED
-:extractNatives SKIPPED
-:getAssetIndex UP-TO-DATE
-:getAssets
-Current status: 890/1305   68%
-:makeStart
-:setupDecompWorkspace
-:ExperienceApple2 - 1.12.2:deobfCompileDummyTask
-:ExperienceApple2 - 1.12.2:deobfProvidedDummyTask
-:ExperienceApple2 - 1.12.2:getVersionJson
-:ExperienceApple2 - 1.12.2:extractUserdev
-:ExperienceApple2 - 1.12.2:extractDependencyATs SKIPPED
-:ExperienceApple2 - 1.12.2:extractMcpData SKIPPED
-:ExperienceApple2 - 1.12.2:extractMcpMappings SKIPPED
-:ExperienceApple2 - 1.12.2:genSrgs SKIPPED
-:ExperienceApple2 - 1.12.2:downloadClient SKIPPED
-:ExperienceApple2 - 1.12.2:downloadServer SKIPPED
-:ExperienceApple2 - 1.12.2:splitServerJar SKIPPED
-:ExperienceApple2 - 1.12.2:mergeJars SKIPPED
-:ExperienceApple2 - 1.12.2:deobfMcSRG SKIPPED
-:ExperienceApple2 - 1.12.2:decompileMc SKIPPED
-:ExperienceApple2 - 1.12.2:fixMcSources SKIPPED
-:ExperienceApple2 - 1.12.2:applySourcePatches SKIPPED
-:ExperienceApple2 - 1.12.2:remapMcSources SKIPPED
-:ExperienceApple2 - 1.12.2:recompileMc SKIPPED
-:ExperienceApple2 - 1.12.2:extractNatives SKIPPED
-:ExperienceApple2 - 1.12.2:getAssetIndex UP-TO-DATE
-:ExperienceApple2 - 1.12.2:getAssets
-:ExperienceApple2 - 1.12.2:makeStart
-:ExperienceApple2 - 1.12.2:setupDecompWorkspace
+Evaluating project ':ExperienceApple2 - 1.12.2' using build file 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\ExperienceApple2 - 1.12.2\build.gradle'.
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\ExperienceApple2 - 1.12.2\ExperienceApple2 - 1.12.2', not found
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\ExperienceApple2 - 1.12.2\src\api\resources', not found
+Evaluating project ':NotEnoughCompression' using build file 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\build.gradle'.
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\src\api\resources', not found
+All projects evaluated.
+Selected primary task ':NotEnoughCompression:build' from project :NotEnoughCompression
+Tasks to be executed: [task ':NotEnoughCompression:deobfCompileDummyTask', task ':NotEnoughCompression:extractMcpMappings', task ':NotEnoughCompression:deobfProvidedDeobfDepTask0', task ':NotEnoughCompression:deobfProvidedRemapDepSourcesTask1', task ':NotEnoughCompression:deobfProvidedDummyTask', task ':NotEnoughCompression:sourceApiJava', task ':NotEnoughCompression:compileApiJava', task ':NotEnoughCompression:processApiResources', task ':NotEnoughCompression:apiClasses', task ':NotEnoughCompression:sourceMainJava', task ':NotEnoughCompression:compileJava', task ':NotEnoughCompression:processResources', task ':NotEnoughCompression:classes', task ':NotEnoughCompression:jar', task ':NotEnoughCompression:sourceTestJava', task ':NotEnoughCompression:compileTestJava', task ':NotEnoughCompression:processTestResources', task ':NotEnoughCompression:testClasses', task ':NotEnoughCompression:test', task ':NotEnoughCompression:extractMcpData', task ':NotEnoughCompression:getVersionJson', task ':NotEnoughCompression:extractUserdev', task ':NotEnoughCompression:genSrgs', task ':NotEnoughCompression:reobfJar', task ':NotEnoughCompression:extractAnnotationsJar', task ':NotEnoughCompression:extractRangemapReplacedMain', task ':NotEnoughCompression:retromapReplacedMain', task ':NotEnoughCompression:sourceJar', task ':NotEnoughCompression:assemble', task ':NotEnoughCompression:check', task ':NotEnoughCompression:build']
+Creating In-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\fileHashes.bin: MaxSize{1358400}
+Creating In-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\treeSnapshots.bin: MaxSize{67900}
+Creating In-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\treeSnapshotUsage.bin: MaxSize{67900}
+Creating In-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\fileSnapshotsToTreeSnapshotsIndex.bin: MaxSize{33900}
+Creating In-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\fileSnapshots.bin: MaxSize{33900}
+Creating In-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\taskArtifacts.bin: MaxSize{6700}
+:NotEnoughCompression:deobfCompileDummyTask (Thread[Daemon worker,5,main]) started.
 :NotEnoughCompression:deobfCompileDummyTask
-:NotEnoughCompression:deobfProvidedDummyTask
-:NotEnoughCompression:getVersionJson
-:NotEnoughCompression:extractUserdev
-:NotEnoughCompression:extractDependencyATs SKIPPED
-:NotEnoughCompression:extractMcpData SKIPPED
+Executing task ':NotEnoughCompression:deobfCompileDummyTask' (up-to-date check took 0.001 secs) due to:
+  Task has not declared any outputs.
+:NotEnoughCompression:deobfCompileDummyTask (Thread[Daemon worker,5,main]) completed. Took 0.011 secs.
+:NotEnoughCompression:extractMcpMappings (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:extractMcpMappings
+Skipping task ':NotEnoughCompression:extractMcpMappings' as task onlyIf is false.
 :NotEnoughCompression:extractMcpMappings SKIPPED
+:NotEnoughCompression:extractMcpMappings (Thread[Daemon worker,5,main]) completed. Took 0.273 secs.
+:NotEnoughCompression:deobfProvidedDeobfDepTask0 (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:deobfProvidedDeobfDepTask0
+Skipping task ':NotEnoughCompression:deobfProvidedDeobfDepTask0' as task onlyIf is false.
+:NotEnoughCompression:deobfProvidedDeobfDepTask0 SKIPPED
+:NotEnoughCompression:deobfProvidedDeobfDepTask0 (Thread[Daemon worker,5,main]) completed. Took 0.031 secs.
+:NotEnoughCompression:deobfProvidedRemapDepSourcesTask1 (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:deobfProvidedRemapDepSourcesTask1
+Skipping task ':NotEnoughCompression:deobfProvidedRemapDepSourcesTask1' as task onlyIf is false.
+:NotEnoughCompression:deobfProvidedRemapDepSourcesTask1 SKIPPED
+:NotEnoughCompression:deobfProvidedRemapDepSourcesTask1 (Thread[Daemon worker,5,main]) completed. Took 0.052 secs.
+:NotEnoughCompression:deobfProvidedDummyTask (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:deobfProvidedDummyTask
+Executing task ':NotEnoughCompression:deobfProvidedDummyTask' (up-to-date check took 0.0 secs) due to:
+  Task has not declared any outputs.
+:NotEnoughCompression:deobfProvidedDummyTask (Thread[Daemon worker,5,main]) completed. Took 0.002 secs.
+:NotEnoughCompression:sourceApiJava (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:sourceApiJava
+Invalidating in-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\treeSnapshotUsage.bin
+Invalidating in-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\treeSnapshots.bin
+Invalidating in-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\fileSnapshots.bin
+Invalidating in-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\fileSnapshotsToTreeSnapshotsIndex.bin
+Invalidating in-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\fileHashes.bin
+Invalidating in-memory cache of C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\.gradle\2.14\taskArtifacts\taskArtifacts.bin
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\src\api\java', not found
+Executing task ':NotEnoughCompression:sourceApiJava' (up-to-date check took 0.026 secs) due to:
+  No history is available.
+:NotEnoughCompression:sourceApiJava (Thread[Daemon worker,5,main]) completed. Took 0.045 secs.
+:NotEnoughCompression:compileApiJava (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:compileApiJava
+Skipping task ':NotEnoughCompression:compileApiJava' as it has no source files.
+:NotEnoughCompression:compileApiJava UP-TO-DATE
+:NotEnoughCompression:compileApiJava (Thread[Daemon worker,5,main]) completed. Took 0.001 secs.
+:NotEnoughCompression:processApiResources (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:processApiResources
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\src\api\resources', not found
+Skipping task ':NotEnoughCompression:processApiResources' as it has no source files.
+:NotEnoughCompression:processApiResources UP-TO-DATE
+:NotEnoughCompression:processApiResources (Thread[Daemon worker,5,main]) completed. Took 0.002 secs.
+:NotEnoughCompression:apiClasses (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:apiClasses
+Skipping task ':NotEnoughCompression:apiClasses' as it has no actions.
+:NotEnoughCompression:apiClasses UP-TO-DATE
+:NotEnoughCompression:apiClasses (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
+:NotEnoughCompression:sourceMainJava (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:sourceMainJava
+Executing task ':NotEnoughCompression:sourceMainJava' (up-to-date check took 0.009 secs) due to:
+  No history is available.
+:NotEnoughCompression:sourceMainJava (Thread[Daemon worker,5,main]) completed. Took 0.184 secs.
+:NotEnoughCompression:compileJava (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:compileJava
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\libs', not found
+Resource missing. [HTTP GET: https://files.minecraftforge.net/maven/deobf/mezz/jei/jei_1.12.2/4.12.0.216/jei_1.12.2-4.12.0.216.pom]
+Resource missing. [HTTP HEAD: https://files.minecraftforge.net/maven/deobf/mezz/jei/jei_1.12.2/4.12.0.216/jei_1.12.2-4.12.0.216.jar]
+Executing task ':NotEnoughCompression:compileJava' (up-to-date check took 1.563 secs) due to:
+  No history is available.
+All input files are considered out-of-date for incremental task ':NotEnoughCompression:compileJava'.
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\libs', not found
+Compiling with JDK Java compiler API.
+注意:一部の入力ファイルは非推奨のAPIを使用またはオーバーライドしています。
+注意:詳細は、-Xlint:deprecationオプションを指定して再コンパイルしてください。
+注意:C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\build\sources\main\java\otamusan\client\ItemCompressed\CompressedModel.javaの操作は、未チェックまたは安全ではありません。
+注意:詳細は、-Xlint:uncheckedオプションを指定して再コンパイルしてください。
+:NotEnoughCompression:compileJava (Thread[Daemon worker,5,main]) completed. Took 3.222 secs.
+:NotEnoughCompression:processResources (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:processResources
+Executing task ':NotEnoughCompression:processResources' (up-to-date check took 0.004 secs) due to:
+  No history is available.
+:NotEnoughCompression:processResources (Thread[Daemon worker,5,main]) completed. Took 0.053 secs.
+:NotEnoughCompression:classes (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:classes
+Skipping task ':NotEnoughCompression:classes' as it has no actions.
+:NotEnoughCompression:classes (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
+:NotEnoughCompression:jar (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:jar
+Executing task ':NotEnoughCompression:jar' (up-to-date check took 0.002 secs) due to:
+  No history is available.
+:NotEnoughCompression:jar (Thread[Daemon worker,5,main]) completed. Took 0.278 secs.
+:NotEnoughCompression:sourceTestJava (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:sourceTestJava
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\src\test\java', not found
+Executing task ':NotEnoughCompression:sourceTestJava' (up-to-date check took 0.001 secs) due to:
+  No history is available.
+:NotEnoughCompression:sourceTestJava (Thread[Daemon worker,5,main]) completed. Took 0.005 secs.
+:NotEnoughCompression:compileTestJava (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:compileTestJava
+Skipping task ':NotEnoughCompression:compileTestJava' as it has no source files.
+:NotEnoughCompression:compileTestJava UP-TO-DATE
+:NotEnoughCompression:compileTestJava (Thread[Daemon worker,5,main]) completed. Took 0.001 secs.
+:NotEnoughCompression:processTestResources (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:processTestResources
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\src\test\resources', not found
+Skipping task ':NotEnoughCompression:processTestResources' as it has no source files.
+:NotEnoughCompression:processTestResources UP-TO-DATE
+:NotEnoughCompression:processTestResources (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
+:NotEnoughCompression:testClasses (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:testClasses
+Skipping task ':NotEnoughCompression:testClasses' as it has no actions.
+:NotEnoughCompression:testClasses UP-TO-DATE
+:NotEnoughCompression:testClasses (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
+:NotEnoughCompression:test (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:test
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\build\classes\test', not found
+Skipping task ':NotEnoughCompression:test' as it has no source files.
+:NotEnoughCompression:test UP-TO-DATE
+:NotEnoughCompression:test (Thread[Daemon worker,5,main]) completed. Took 0.001 secs.
+:NotEnoughCompression:extractMcpData (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:extractMcpData
+Skipping task ':NotEnoughCompression:extractMcpData' as task onlyIf is false.
+:NotEnoughCompression:extractMcpData SKIPPED
+:NotEnoughCompression:extractMcpData (Thread[Daemon worker,5,main]) completed. Took 0.977 secs.
+:NotEnoughCompression:getVersionJson (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:getVersionJson
+Executing task ':NotEnoughCompression:getVersionJson' (up-to-date check took 0.002 secs) due to:
+  Task.upToDateWhen is false.
+:NotEnoughCompression:getVersionJson (Thread[Daemon worker,5,main]) completed. Took 0.142 secs.
+:NotEnoughCompression:extractUserdev (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:extractUserdev
+Skipping task ':NotEnoughCompression:extractUserdev' as it is up-to-date (took 0.023 secs).
+:NotEnoughCompression:extractUserdev UP-TO-DATE
+:NotEnoughCompression:extractUserdev (Thread[Daemon worker,5,main]) completed. Took 0.023 secs.
+:NotEnoughCompression:genSrgs (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:genSrgs
+Skipping task ':NotEnoughCompression:genSrgs' as task onlyIf is false.
 :NotEnoughCompression:genSrgs SKIPPED
-:NotEnoughCompression:downloadClient SKIPPED
-:NotEnoughCompression:downloadServer SKIPPED
-:NotEnoughCompression:splitServerJar SKIPPED
-:NotEnoughCompression:mergeJars SKIPPED
-:NotEnoughCompression:deobfMcSRG SKIPPED
-:NotEnoughCompression:decompileMc SKIPPED
-:NotEnoughCompression:fixMcSources SKIPPED
-:NotEnoughCompression:applySourcePatches SKIPPED
-:NotEnoughCompression:remapMcSources SKIPPED
-:NotEnoughCompression:recompileMc SKIPPED
-:NotEnoughCompression:extractNatives SKIPPED
-:NotEnoughCompression:getAssetIndex UP-TO-DATE
-:NotEnoughCompression:getAssets
-:NotEnoughCompression:makeStart
-:NotEnoughCompression:setupDecompWorkspace
-:eclipseClasspath
-:eclipseJdt
-:eclipseProject
-:makeEclipseCleanRunClient
-:makeEclipseCleanRunServer
-:eclipse
-:ExperienceApple2 - 1.12.2:eclipseClasspath
-:ExperienceApple2 - 1.12.2:eclipseJdt
-:ExperienceApple2 - 1.12.2:eclipseProject
-:ExperienceApple2 - 1.12.2:makeEclipseCleanRunClient
-:ExperienceApple2 - 1.12.2:makeEclipseCleanRunServer
-:ExperienceApple2 - 1.12.2:eclipse
-:NotEnoughCompression:eclipseClasspath
-:NotEnoughCompression:eclipseJdt
-:NotEnoughCompression:eclipseProject
-:NotEnoughCompression:makeEclipseCleanRunClient
-:NotEnoughCompression:makeEclipseCleanRunServer
-:NotEnoughCompression:eclipse
+:NotEnoughCompression:genSrgs (Thread[Daemon worker,5,main]) completed. Took 0.34 secs.
+:NotEnoughCompression:reobfJar (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:reobfJar
+Executing task ':NotEnoughCompression:reobfJar' (up-to-date check took 0.0 secs) due to:
+  Task.upToDateWhen is false.
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\libs', not found
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\libs', not found
+:NotEnoughCompression:reobfJar (Thread[Daemon worker,5,main]) completed. Took 0.74 secs.
+:NotEnoughCompression:extractAnnotationsJar (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:extractAnnotationsJar
+Executing task ':NotEnoughCompression:extractAnnotationsJar' (up-to-date check took 0.0 secs) due to:
+  Task.upToDateWhen is false.
+:NotEnoughCompression:extractAnnotationsJar (Thread[Daemon worker,5,main]) completed. Took 0.384 secs.
+:NotEnoughCompression:extractRangemapReplacedMain (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:extractRangemapReplacedMain
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\libs', not found
+Executing task ':NotEnoughCompression:extractRangemapReplacedMain' (up-to-date check took 0.008 secs) due to:
+  No history is available.
+C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\build\sources\main\java
+file or directory 'C:\Users\otamusan\Documents\GitHub\Java\Forge-1.12.2-14.23.5.2768\NotEnoughCompression\libs', not found
+:NotEnoughCompression:extractRangemapReplacedMain (Thread[Daemon worker,5,main]) completed. Took 1.866 secs.
+:NotEnoughCompression:retromapReplacedMain (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:retromapReplacedMain
+Executing task ':NotEnoughCompression:retromapReplacedMain' (up-to-date check took 0.001 secs) due to:
+  No history is available.
+remapping source...
+:NotEnoughCompression:retromapReplacedMain (Thread[Daemon worker,5,main]) completed. Took 1.231 secs.
+:NotEnoughCompression:sourceJar (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:sourceJar
+Executing task ':NotEnoughCompression:sourceJar' (up-to-date check took 0.001 secs) due to:
+  No history is available.
+:NotEnoughCompression:sourceJar (Thread[Daemon worker,5,main]) completed. Took 0.138 secs.
+:NotEnoughCompression:assemble (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:assemble
+Skipping task ':NotEnoughCompression:assemble' as it has no actions.
+:NotEnoughCompression:assemble (Thread[Daemon worker,5,main]) completed. Took 0.001 secs.
+:NotEnoughCompression:check (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:check
+Skipping task ':NotEnoughCompression:check' as it has no actions.
+:NotEnoughCompression:check UP-TO-DATE
+:NotEnoughCompression:check (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
+:NotEnoughCompression:build (Thread[Daemon worker,5,main]) started.
+:NotEnoughCompression:build
+Skipping task ':NotEnoughCompression:build' as it has no actions.
+:NotEnoughCompression:build (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
 
 BUILD SUCCESSFUL
 
-Total time: 1 mins 12.009 secs
+Total time: 19.848 secs

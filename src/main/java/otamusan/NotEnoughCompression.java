@@ -32,12 +32,10 @@ public class NotEnoughCompression {
 		proxy.registerTileEntity();
 		proxy.registerEventHandlers();
 		proxy.preInit();
-
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init();
-
 	}
 }
