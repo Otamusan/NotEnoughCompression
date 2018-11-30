@@ -17,10 +17,14 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import otamusan.NotEnoughCompression;
 import otamusan.blocks.BlockCompressed;
+import otamusan.client.blockcompressed.TileSpecialItemRendererCompressed;
+import otamusan.client.blockcompressed.TileSpecialRendererCompressed;
 import otamusan.common.CommonProxy;
 import otamusan.common.NECItems;
+import otamusan.tileentity.TileCompressed;
 
 public class ClientProxy extends CommonProxy {
 
@@ -41,8 +45,7 @@ public class ClientProxy extends CommonProxy {
 	public void init() {
 		super.init();
 
-		// ClientRegistry.bindTileEntitySpecialRenderer(TileCompressed.class,
-		// new TileSpecialRendererCompressed());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCompressed.class, new TileSpecialRendererCompressed());
 
 		StateMapperBase ignoreState = new StateMapperBase() {
 			@Override
@@ -66,13 +69,13 @@ public class ClientProxy extends CommonProxy {
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
 				if (!(state instanceof IExtendedBlockState))
-					return Color.BLACK.getRGB();
+					return -1;
 				IExtendedBlockState eState = (IExtendedBlockState) state;
 
 				NBTTagCompound itemnbt = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_NBT);
 
 				if (itemnbt == null)
-					return Color.getHSBColor(0, 0, 0).getRGB();
+					return -1;
 
 				ItemStack stack = new ItemStack(itemnbt);
 
@@ -80,9 +83,14 @@ public class ClientProxy extends CommonProxy {
 					int time = stack.getTagCompound().getInteger(NotEnoughCompression.MOD_ID + "_time") + 1;
 					return Color.getHSBColor(0F, 0F, (float) 1.0 / (float) time).getRGB();
 				}
-				return Color.BLACK.getRGB();
+				return -1;
 			}
 		}, CommonProxy.blockCompressed);
+
+	}
+
+	public void postInit() {
+		NECItems.itemcompressed.setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
 	}
 
 	@Override

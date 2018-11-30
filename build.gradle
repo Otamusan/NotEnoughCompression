@@ -1,8 +1,18 @@
-
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+        
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
 dependencies {
   	deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
   	runtime "mezz.jei:jei_${mc_version}:${jei_version}"
 }
+
 repositories {
   maven {
     // location of the maven that hosts JEI files

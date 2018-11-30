@@ -1,24 +1,10 @@
-package otamusan.client.BlockCompressed;
+package otamusan.client.blockcompressed;
 
-import org.lwjgl.opengl.GL11;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.IBakedModel;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import otamusan.items.ItemCompressed;
 import otamusan.tileentity.TileCompressed;
 
@@ -34,41 +20,17 @@ public class TileSpecialRendererCompressed extends TileEntitySpecialRenderer<Til
 		if (!itemcompressed.hasTagCompound())
 			return;
 
-		Block block = ((ItemBlock) ItemCompressed.getOriginal(itemcompressed).getItem()).getBlock();
-		IBlockState iBlockState = block.getStateFromMeta(itemcompressed.getMetadata());
+		ItemStack item = ItemCompressed.getOriginal(itemcompressed);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x + 0.5, y + 2, z + 0.5);
+		GlStateManager.scale(0.8, 0.8, 0.8);
+		GlStateManager.enableLighting();
 
-		Tessellator tessellator = Tessellator.getInstance();
-		BufferBuilder bufferbuilder = tessellator.getBuffer();
-		bufferbuilder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
-		this.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-		RenderHelper.disableStandardItemLighting();
-		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GlStateManager.enableBlend();
-		GlStateManager.disableCull();
-		// bufferbuilder = new BufferBuilder(262144);
+		float angle = (te.getWorld().getTotalWorldTime() + partialTicks) / 20.0F * (180F / (float) Math.PI);
+		GlStateManager.rotate(angle, 0.0F, 1.0F, 0.0F);
+		Minecraft.getMinecraft().getRenderItem().renderItem(item, ItemCameraTransforms.TransformType.GROUND);
+		GlStateManager.popMatrix();
 
-		IBakedModel model = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(iBlockState);
-
-		// Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelRenderer().renderModel(te.getWorld(),
-		// model,
-		// iBlockState, te.getPos(), bufferbuilder, true);
-		bufferbuilder.setTranslation(x - MathHelper.floor(x), y - MathHelper.floor(y), z - MathHelper.floor(z));
-
-		Minecraft.getMinecraft().getBlockRendererDispatcher().renderBlock(iBlockState, new BlockPos(x, y, z),
-				te.getWorld(), bufferbuilder);
-
-		// Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelRenderer().renderModelSmooth(te.getWorld(),
-		// model, iBlockState, new BlockPos(x, y, z), bufferbuilder, true, 0);
-		bufferbuilder.setTranslation(0, 0, 0);
-		tessellator.draw();
-
-		TileEntitySpecialRenderer<TileEntity> tileentityspecialrenderer = TileEntityRendererDispatcher.instance
-				.<TileEntity>getRenderer(block.createTileEntity(te.getWorld(), iBlockState));
-
-		if (tileentityspecialrenderer != null) {
-			tileentityspecialrenderer.render(block.createTileEntity(te.getWorld(), iBlockState), x, y, z, partialTicks,
-					destroyStage, alpha);
-		}
 	}
 
 	public boolean isGlobalRenderer(TileCompressed te) {

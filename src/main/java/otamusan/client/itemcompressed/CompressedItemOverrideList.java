@@ -1,4 +1,4 @@
-package otamusan.client.ItemCompressed;
+package otamusan.client.itemcompressed;
 
 import java.util.List;
 

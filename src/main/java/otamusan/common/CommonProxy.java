@@ -5,10 +5,12 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import otamusan.NotEnoughCompression;
 import otamusan.blocks.BlockCompressed;
+import otamusan.common.automaticcompression.CompressionInChest;
 import otamusan.recipes.CompressedCrafting;
 import otamusan.recipes.Compression;
 import otamusan.recipes.Uncompression;
@@ -46,9 +48,14 @@ public class CommonProxy {
 		ForgeRegistries.ITEMS.register(NECItems.itemcompressed);
 		NECItems.itemcompressed.setUnlocalizedName("compresseditem");
 		NECItems.itemcompressed.setCreativeTab(CreativeTabs.MISC);
+
 	}
 
 	public void init() {
+
+	}
+
+	public void postInit() {
 
 	}
 
@@ -65,6 +72,6 @@ public class CommonProxy {
 	public static ItemBlock itemBlockCompressed;
 
 	public void registerEventHandlers() {
-
+		MinecraftForge.EVENT_BUS.register(new CompressionInChest());
 	}
 }

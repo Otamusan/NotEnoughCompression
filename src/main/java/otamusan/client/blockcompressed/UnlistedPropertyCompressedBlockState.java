@@ -1,4 +1,4 @@
-package otamusan.client.BlockCompressed;
+package otamusan.client.blockcompressed;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
