@@ -32,7 +32,9 @@ public class CompressedItemOverrideList extends ItemOverrideList {
 		IBakedModel newmodel = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(
 				new ItemStack(stack.getTagCompound().getCompoundTag(NotEnoughCompression.MOD_ID + "_itemstack")), world,
 				entity);
-		return newmodel;
+
+		IBakedModel bakedModel = new CompressedModel(newmodel, ItemOverrideList.NONE);
+		return bakedModel;
 	}
 
 }

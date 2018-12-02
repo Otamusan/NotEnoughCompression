@@ -21,6 +21,12 @@ import otamusan.common.NECItems;
 import otamusan.tileentity.TileCompressed;
 
 public class ItemCompressed extends Item {
+
+	@Override
+	public boolean isFull3D() {
+		return true;
+	}
+
 	@Override
 	public String getItemStackDisplayName(ItemStack stack) {
 		if (stack.getTagCompound() == null)
@@ -36,6 +42,7 @@ public class ItemCompressed extends Item {
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack compressed = player.getHeldItem(hand);
 		ItemStack original = ItemCompressed.getOriginal(compressed);
+
 		if (original.getItem() instanceof ItemBlock) {
 			int meta = original.getMetadata();
 			IBlockState state = ((ItemBlock) original.getItem()).getBlock().getStateForPlacement(worldIn, pos, facing,
@@ -54,7 +61,6 @@ public class ItemCompressed extends Item {
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (!stack.hasTagCompound())
 			return;
-
 		ItemStack compressed = new ItemStack(
 				(NBTTagCompound) stack.getTagCompound().getTag(NotEnoughCompression.MOD_ID + "_itemstack"));
 		int time = stack.getTagCompound().getInteger(NotEnoughCompression.MOD_ID + "_time");
@@ -86,6 +92,12 @@ public class ItemCompressed extends Item {
 	}
 
 	public static ItemStack createCompressedItem(ItemStack item, int time) {
+		if (time <= 0) {
+			ItemStack itemStack = item.copy();
+			itemStack.setCount(0);
+			return itemStack;
+		}
+
 		ItemStack compressed = item.copy();
 		compressed.setCount(1);
 		NBTTagCompound nbt = new NBTTagCompound();
@@ -126,5 +138,4 @@ public class ItemCompressed extends Item {
 		NBTTagCompound nbt = item.getTagCompound();
 		return nbt.getInteger(NotEnoughCompression.MOD_ID + "_time");
 	}
-
 }

@@ -1,50 +1,75 @@
 Symbol range map extraction starting
-Processing 18 files
-startProcessing "otamusan\NotEnoughCompression.java" md5: e099ec9158c81407c643d6e736e79166
+Processing 22 files
+startProcessing "otamusan\NotEnoughCompression.java" md5: 2fb3115f4ec98e0abe9999c6eb028c10
+Cache Hit!
 endProcessing "otamusan\NotEnoughCompression.java"
 
-startProcessing "otamusan\blocks\BlockCompressed.java" md5: ff2f82eb66773370c486f79880148762
+startProcessing "otamusan\blocks\BlockCompressed.java" md5: b986d438d442cda926556e07ca82cc6e
+Cache Hit!
 endProcessing "otamusan\blocks\BlockCompressed.java"
 
-startProcessing "otamusan\client\BlockCompressed\BlockCompressedBakedModel.java" md5: 46db19ff8a0cc381bae378d4fa96ef78
-endProcessing "otamusan\client\BlockCompressed\BlockCompressedBakedModel.java"
-
-startProcessing "otamusan\client\BlockCompressed\TileSpecialRendererCompressed.java" md5: 31909efb3d67aebacad11c37439a27c6
-endProcessing "otamusan\client\BlockCompressed\TileSpecialRendererCompressed.java"
-
-startProcessing "otamusan\client\BlockCompressed\UnlistedPropertyCompressedBlockNBT.java" md5: 87f81a7e60501f08280a8bf9986524d1
-endProcessing "otamusan\client\BlockCompressed\UnlistedPropertyCompressedBlockNBT.java"
-
-startProcessing "otamusan\client\BlockCompressed\UnlistedPropertyCompressedBlockState.java" md5: 3e9ce81f68fca436685d7f800120ef2a
-endProcessing "otamusan\client\BlockCompressed\UnlistedPropertyCompressedBlockState.java"
-
-startProcessing "otamusan\client\ClientProxy.java" md5: 265a08a6d8f99d2c0d66a0f32d68f1d6
+startProcessing "otamusan\client\ClientProxy.java" md5: 347a24d87c4b3300761b42f7070781a6
+Cache Hit!
 endProcessing "otamusan\client\ClientProxy.java"
 
-startProcessing "otamusan\client\ItemCompressed\CompressedItemOverrideList.java" md5: fbe602c7826bfa94aca6ec29b8e7836b
+startProcessing "otamusan\client\ModelBakeEventHandler.java" md5: ee82d4729d538230ae4625b8914397e4
 Cache Hit!
-endProcessing "otamusan\client\ItemCompressed\CompressedItemOverrideList.java"
-
-startProcessing "otamusan\client\ItemCompressed\CompressedModel.java" md5: 67bb0fbf4295cf1a2fb661bb35d74c11
-endProcessing "otamusan\client\ItemCompressed\CompressedModel.java"
-
-startProcessing "otamusan\client\ModelBakeEventHandler.java" md5: 5787e8ec82fe6a51c950cb6f177bba2c
 endProcessing "otamusan\client\ModelBakeEventHandler.java"
 
 startProcessing "otamusan\client\TooltipHandler.java" md5: 04893c8be191d2293a40812735b9b72e
 Cache Hit!
 endProcessing "otamusan\client\TooltipHandler.java"
 
-startProcessing "otamusan\common\CommonProxy.java" md5: 1921558aa6eb18a1fe34367ddd5aad2a
+startProcessing "otamusan\client\blockcompressed\BlockCompressedBakedModel.java" md5: ffd526ceedc7f5daccbf557f329bd61d
+Cache Hit!
+endProcessing "otamusan\client\blockcompressed\BlockCompressedBakedModel.java"
+
+startProcessing "otamusan\client\blockcompressed\TileSpecialItemRendererCompressed.java" md5: 18dae5662f6f353436bc424923a62414
+Cache Hit!
+endProcessing "otamusan\client\blockcompressed\TileSpecialItemRendererCompressed.java"
+
+startProcessing "otamusan\client\blockcompressed\TileSpecialRendererCompressed.java" md5: dccadc2838f4e7e8a26042a13682156a
+Cache Hit!
+endProcessing "otamusan\client\blockcompressed\TileSpecialRendererCompressed.java"
+
+startProcessing "otamusan\client\blockcompressed\UnlistedPropertyCompressedBlockNBT.java" md5: d69b4746d8502dea33cfbbcfafcf3052
+Cache Hit!
+endProcessing "otamusan\client\blockcompressed\UnlistedPropertyCompressedBlockNBT.java"
+
+startProcessing "otamusan\client\blockcompressed\UnlistedPropertyCompressedBlockState.java" md5: c39a74484bdd898eaccc76fc51d50f7b
+Cache Hit!
+endProcessing "otamusan\client\blockcompressed\UnlistedPropertyCompressedBlockState.java"
+
+startProcessing "otamusan\client\itemcompressed\CompressedItemOverrideList.java" md5: 46fa03ffc68be524dd9cbffe364fea8e
+Cache Hit!
+endProcessing "otamusan\client\itemcompressed\CompressedItemOverrideList.java"
+
+startProcessing "otamusan\client\itemcompressed\CompressedModel.java" md5: 1c8c98f972c2fb66612e8950af78587f
+Cache Hit!
+endProcessing "otamusan\client\itemcompressed\CompressedModel.java"
+
+startProcessing "otamusan\common\CommonProxy.java" md5: 1b22c12b926a1a1d7ced1b65f6639060
+Cache Hit!
 endProcessing "otamusan\common\CommonProxy.java"
 
 startProcessing "otamusan\common\NECItems.java" md5: 52ddb029e466fa74a9c2530551f4a4fa
+Cache Hit!
 endProcessing "otamusan\common\NECItems.java"
 
-startProcessing "otamusan\items\ItemCompressed.java" md5: af33638cb4842509e3cd263cbf687f93
+startProcessing "otamusan\common\automaticcompression\AutoCompression.java" md5: d02e21071a6ac70cfdd7a2714fef3829
+Cache Hit!
+endProcessing "otamusan\common\automaticcompression\AutoCompression.java"
+
+startProcessing "otamusan\common\automaticcompression\CompressionInChest.java" md5: cb1c835959258b3d57cfff22002c3e6b
+Cache Hit!
+endProcessing "otamusan\common\automaticcompression\CompressionInChest.java"
+
+startProcessing "otamusan\items\ItemCompressed.java" md5: 55e68bb43192e5042c73d4229eac5f21
+Cache Hit!
 endProcessing "otamusan\items\ItemCompressed.java"
 
 startProcessing "otamusan\recipes\CompressedCrafting.java" md5: f89975713bd73707a2118d3ee49703a3
+Cache Hit!
 endProcessing "otamusan\recipes\CompressedCrafting.java"
 
 startProcessing "otamusan\recipes\Compression.java" md5: 9f07505291bde5cecff4ba4fb749bf8b
@@ -52,8 +77,14 @@ Cache Hit!
 endProcessing "otamusan\recipes\Compression.java"
 
 startProcessing "otamusan\recipes\Uncompression.java" md5: c418511de02863fb1e2283f1ccb9554c
+Cache Hit!
 endProcessing "otamusan\recipes\Uncompression.java"
 
 startProcessing "otamusan\tileentity\TileCompressed.java" md5: ded2372540b227b055a26e6b879c5b6c
+Cache Hit!
 endProcessing "otamusan\tileentity\TileCompressed.java"
+
+startProcessing "otamusan\util\InventoryUtil.java" md5: d37c3ce598c2e4babdd367f2657b684b
+Cache Hit!
+endProcessing "otamusan\util\InventoryUtil.java"
 

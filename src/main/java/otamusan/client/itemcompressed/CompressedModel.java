@@ -1,6 +1,5 @@
 package otamusan.client.itemcompressed;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.vecmath.Matrix4f;
@@ -16,9 +15,9 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.EnumFacing;
 
 public class CompressedModel implements IBakedModel {
-	public CompressedModel(IBakedModel model) {
+	public CompressedModel(IBakedModel model, ItemOverrideList overrideList) {
 		this.model = model;
-		this.overrideList = new CompressedItemOverrideList(Collections.EMPTY_LIST);
+		this.overrideList = overrideList;
 	}
 
 	@Override
@@ -33,7 +32,7 @@ public class CompressedModel implements IBakedModel {
 
 	@Override
 	public boolean isAmbientOcclusion() {
-		return true;
+		return model.isAmbientOcclusion();
 	}
 
 	@Override
@@ -57,7 +56,7 @@ public class CompressedModel implements IBakedModel {
 	}
 
 	private IBakedModel model;
-	private CompressedItemOverrideList overrideList;
+	private ItemOverrideList overrideList;
 
 	@Override
 	public Pair<? extends IBakedModel, Matrix4f> handlePerspective(

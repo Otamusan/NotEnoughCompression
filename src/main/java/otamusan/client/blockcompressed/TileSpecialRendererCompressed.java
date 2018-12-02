@@ -22,13 +22,14 @@ public class TileSpecialRendererCompressed extends TileEntitySpecialRenderer<Til
 
 		ItemStack item = ItemCompressed.getOriginal(itemcompressed);
 		GlStateManager.pushMatrix();
-		GlStateManager.translate(x + 0.5, y + 2, z + 0.5);
-		GlStateManager.scale(0.8, 0.8, 0.8);
+		GlStateManager.translate(x, y, z);
+		// GlStateManager.scale(0.8, 0.8, 0.8);
 		GlStateManager.enableLighting();
 
-		float angle = (te.getWorld().getTotalWorldTime() + partialTicks) / 20.0F * (180F / (float) Math.PI);
-		GlStateManager.rotate(angle, 0.0F, 1.0F, 0.0F);
-		Minecraft.getMinecraft().getRenderItem().renderItem(item, ItemCameraTransforms.TransformType.GROUND);
+		// float angle = (te.getWorld().getTotalWorldTime() + partialTicks) /
+		// 20.0F * (180F / (float) Math.PI);
+		// GlStateManager.rotate(angle, 0.0F, 1.0F, 0.0F);
+		Minecraft.getMinecraft().getRenderItem().renderItem(item, ItemCameraTransforms.TransformType.GUI);
 		GlStateManager.popMatrix();
 
 	}

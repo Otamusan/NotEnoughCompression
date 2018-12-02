@@ -27,8 +27,8 @@ import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import otamusan.client.BlockCompressed.UnlistedPropertyCompressedBlockNBT;
-import otamusan.client.BlockCompressed.UnlistedPropertyCompressedBlockState;
+import otamusan.client.blockcompressed.UnlistedPropertyCompressedBlockNBT;
+import otamusan.client.blockcompressed.UnlistedPropertyCompressedBlockState;
 import otamusan.items.ItemCompressed;
 import otamusan.tileentity.TileCompressed;
 

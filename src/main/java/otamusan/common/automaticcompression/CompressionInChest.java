@@ -29,6 +29,7 @@ public class CompressionInChest {
 				continue;
 			IInventory inventory = (IInventory) event.world.getTileEntity(pos);
 			AutoCompression.autocompression(inventory);
+
 		}
 	}
 }
