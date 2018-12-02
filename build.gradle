@@ -1,22 +1,63 @@
+buildscript {
+	repositories {
+		jcenter()
+		maven { url = "http://files.minecraftforge.net/maven" }
+	}
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+	}
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+repositories {
+	maven {
+		// location of the maven that hosts JEI files
+		name = "Progwml6 maven"
+		url = "http://dvs1.progwml6.com/files/maven"
+	}
+	maven {
+		// location of a maven mirror for JEI files, as a fallback
+		name = "ModMaven"
+		url = "modmaven.k-4u.nl"
+	}
+}
+
+minecraft {
+	version = "${mc_version}-${forge_version}"
+	runDir = 'run'
+
+	mappings = 'snapshot_20171003'
+}
+
+version = "1.0"
+archivesBaseName = project.projectDir.name
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+	sourceCompatibility = targetCompatibility = '1.8'
+}
 
 dependencies {
-  	deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
-  	runtime "mezz.jei:jei_${mc_version}:${jei_version}"
+	deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
+	runtime "mezz.jei:jei_${mc_version}:${jei_version}"
 }
-repositories {
-  maven {
-    // location of the maven that hosts JEI files
-    name = "Progwml6 maven"
-    url = "http://dvs1.progwml6.com/files/maven"
-  }
-  maven {
-    // location of a maven mirror for JEI files, as a fallback
-    name = "ModMaven"
-    url = "modmaven.k-4u.nl"
-  }
-}
+
 sourceSets.main {
-    java.srcDirs project.projectDir.name
-    resources.srcDirs project.projectDir.name
+	java.srcDirs project.projectDir.name
+	resources.srcDirs project.projectDir.name
 }
-version = "1.0"
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
