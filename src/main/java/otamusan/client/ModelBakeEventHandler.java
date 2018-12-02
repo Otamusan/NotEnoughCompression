@@ -3,8 +3,8 @@ package otamusan.client;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import otamusan.client.BlockCompressed.BlockCompressedBakedModel;
-import otamusan.client.ItemCompressed.CompressedModel;
+import otamusan.client.blockcompressed.BlockCompressedBakedModel;
+import otamusan.client.itemcompressed.CompressedModel;
 
 public class ModelBakeEventHandler {
 

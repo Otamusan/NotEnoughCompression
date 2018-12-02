@@ -1,4 +1,4 @@
-package otamusan.client.BlockCompressed;
+package otamusan.client.blockcompressed;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.property.IUnlistedProperty;

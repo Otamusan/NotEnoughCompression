@@ -21,6 +21,12 @@ import otamusan.common.NECItems;
 import otamusan.tileentity.TileCompressed;
 
 public class ItemCompressed extends Item {
+
+	@Override
+	public boolean isFull3D() {
+		return true;
+	}
+
 	@Override
 	public String getItemStackDisplayName(ItemStack stack) {
 		if (stack.getTagCompound() == null)
@@ -86,6 +92,12 @@ public class ItemCompressed extends Item {
 	}
 
 	public static ItemStack createCompressedItem(ItemStack item, int time) {
+		if (time <= 0) {
+			ItemStack itemStack = item.copy();
+			itemStack.setCount(0);
+			return itemStack;
+		}
+
 		ItemStack compressed = item.copy();
 		compressed.setCount(1);
 		NBTTagCompound nbt = new NBTTagCompound();

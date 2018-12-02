@@ -1,4 +1,4 @@
-package otamusan.client.BlockCompressed;
+package otamusan.client.blockcompressed;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,17 +71,17 @@ public class BlockCompressedBakedModel implements IBakedModel {
 
 	@Override
 	public boolean isAmbientOcclusion() {
-		return originalModel.isAmbientOcclusion();
+		return true;
 	}
 
 	@Override
 	public boolean isGui3d() {
-		return originalModel.isGui3d();
+		return true;
 	}
 
 	@Override
 	public boolean isBuiltInRenderer() {
-		return originalModel.isBuiltInRenderer();
+		return true;
 	}
 
 	@Override
