@@ -1,4 +1,5 @@
+# General
 notenoughcompression.hasnotitem=圧縮アイテム
-notenoughcompression.compressed=圧縮された
-notenoughcompression.compresseditem=圧縮されたアイテム
-notenoughcompression.total=合計
+notenoughcompression.compressed=%s倍圧縮 %s
+notenoughcompression.compresseditem=圧縮されたアイテム : %s
+notenoughcompression.total=合計 : %s
