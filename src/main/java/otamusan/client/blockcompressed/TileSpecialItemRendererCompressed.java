@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
-import otamusan.NotEnoughCompression;
+import otamusan.items.ItemCompressed;
 import otamusan.tileentity.TileCompressed;
 
 public class TileSpecialItemRendererCompressed extends TileEntityItemStackRenderer {
@@ -28,17 +28,20 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 	}
 
 	@Override
-	public void renderByItem(ItemStack p_192838_1_, float partialTicks) {
+	public void renderByItem(ItemStack stack, float partialTicks) {
 
-		int time = p_192838_1_.getTagCompound().getInteger(NotEnoughCompression.MOD_ID + "_time") + 1;
-		Color color = Color.getHSBColor(0F, 0F, (float) 1.0 / (float) time);
+		int time = ItemCompressed.getTime(stack)+1;
+		ItemStack original = ItemCompressed.getOriginal(stack);
 
-		renderModel(Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(p_192838_1_, null, null), -1,
-				p_192838_1_, color);
+		int intColor = Minecraft.getMinecraft().getItemColors().colorMultiplier(original, 0);
+		Color color = new Color(intColor);
+		float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), new float[3]);
+		color = Color.getHSBColor(hsb[0], hsb[1], (float) 1.0/(float) time);
 
+		renderModel(Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(stack, null, null), color.getRGB(), stack);
 	}
 
-	private void renderModel(IBakedModel model, int color, ItemStack stack, Color color2) {
+	private void renderModel(IBakedModel model, int color, ItemStack stack) {
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferbuilder = tessellator.getBuffer();
 		bufferbuilder.begin(7, DefaultVertexFormats.ITEM);
@@ -48,11 +51,6 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 		}
 
 		this.renderQuads(bufferbuilder, model.getQuads((IBlockState) null, (EnumFacing) null, 0L), color, stack);
-
-		for (int i = 0; i < bufferbuilder.getVertexCount(); i++) {
-			bufferbuilder.putColorMultiplier(color2.getRed() / 255f, color2.getGreen() / 255f, color2.getGreen() / 255f,
-					i);
-		}
 
 		tessellator.draw();
 	}
