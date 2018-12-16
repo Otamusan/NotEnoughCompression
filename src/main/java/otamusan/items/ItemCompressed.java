@@ -35,7 +35,7 @@ public class ItemCompressed extends Item {
 		ItemStack itemStack = new ItemStack(
 				stack.getTagCompound().getCompoundTag(NotEnoughCompression.MOD_ID + "_itemstack"));
 		int time = stack.getTagCompound().getInteger(NotEnoughCompression.MOD_ID + "_time");
-		String name = I18n.format(NotEnoughCompression.MOD_ID+".compressed", time, itemStack.getDisplayName());
+		String name = I18n.format(NotEnoughCompression.MOD_ID + ".compressed", time, itemStack.getDisplayName());
 		return name;
 	}
 
@@ -64,44 +64,44 @@ public class ItemCompressed extends Item {
 			return;
 		ItemStack compressed = new ItemStack(
 				(NBTTagCompound) stack.getTagCompound().getTag(NotEnoughCompression.MOD_ID + "_itemstack"));
-		int time = stack.getTagCompound().getInteger(NotEnoughCompression.MOD_ID+"_time");
-		//int time = 2147483647;
-
-		tooltip.add(I18n.format(NotEnoughCompression.MOD_ID+".compresseditem", compressed.getDisplayName()));
-		tooltip.add(I18n.format(NotEnoughCompression.MOD_ID+".total", getCompressedAmount(time)));
+		int time = stack.getTagCompound().getInteger(NotEnoughCompression.MOD_ID + "_time");
+		// int time = 2147483647;
+		System.out.println(I18n.format(NotEnoughCompression.MOD_ID + ".compresseditem", compressed.getDisplayName()));
+		tooltip.add(I18n.format(NotEnoughCompression.MOD_ID + ".compresseditem", compressed.getDisplayName()));
+		tooltip.add(I18n.format(NotEnoughCompression.MOD_ID + ".total", getCompressedAmount(time)));
 	}
 
 	private String getCompressedAmount(int time8) {
-		double log10_8 = Math.log(8)/Math.log(10);
-		double time10 = time8*log10_8;
+		double log10_8 = Math.log(8) / Math.log(10);
+		double time10 = time8 * log10_8;
 		int time10_int = (int) time10;
 
 		int power_a;
-		if (time10_int>=6)
-			power_a = time10_int%3;
+		if (time10_int >= 6)
+			power_a = time10_int % 3;
 		else
 			power_a = time10_int;
 
-		double time10_fract = time10-time10_int;
+		double time10_fract = time10 - time10_int;
 		double num_value = Math.pow(10, time10_fract);
 
 		double pow_a = Math.pow(10, power_a);
 
 		String str_value;
-		if (time10_int>=6)
-			str_value = String.format("%.3f", num_value*pow_a);
+		if (time10_int >= 6)
+			str_value = String.format("%.3f", num_value * pow_a);
 		else
-			str_value = String.format("%,.0f", num_value*pow_a);
+			str_value = String.format("%,.0f", num_value * pow_a);
 
-		int pow_1000 = (time10_int-power_a)/3;
+		int pow_1000 = (time10_int - power_a) / 3;
 		String str_1000;
-		String key = NotEnoughCompression.MOD_ID+".unit."+pow_1000;
-		if (time10_int>=6&&(!(I18n.hasKey(key))||GuiScreen.isShiftKeyDown()))
-			str_1000 = I18n.format(NotEnoughCompression.MOD_ID+".unit.huge", pow_1000);
+		String key = NotEnoughCompression.MOD_ID + ".unit." + pow_1000;
+		if (time10_int >= 6 && (!(I18n.hasKey(key)) || GuiScreen.isShiftKeyDown()))
+			str_1000 = I18n.format(NotEnoughCompression.MOD_ID + ".unit.huge", pow_1000);
 		else
 			str_1000 = I18n.format(key, pow_1000);
 
-		String str_num = I18n.format(NotEnoughCompression.MOD_ID+".unit", str_value, str_1000);
+		String str_num = I18n.format(NotEnoughCompression.MOD_ID + ".unit", str_value, str_1000);
 
 		return str_num;
 	}

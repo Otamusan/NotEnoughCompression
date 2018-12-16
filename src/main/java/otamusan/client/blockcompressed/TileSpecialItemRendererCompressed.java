@@ -1,5 +1,6 @@
 package otamusan.client.blockcompressed;
 
+import java.awt.Color;
 import java.util.List;
 
 import net.minecraft.block.state.IBlockState;
@@ -11,12 +12,10 @@ import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
-import otamusan.items.ItemCompressed;
+import otamusan.NotEnoughCompression;
 import otamusan.tileentity.TileCompressed;
 
 public class TileSpecialItemRendererCompressed extends TileEntityItemStackRenderer {
@@ -31,24 +30,31 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 	@Override
 	public void renderByItem(ItemStack p_192838_1_, float partialTicks) {
 
-		if (ItemCompressed.getOriginal(p_192838_1_).getItem() instanceof ItemBlock) {
-			compressed.setItemCompressed(p_192838_1_);
-			TileEntityRendererDispatcher.instance.render(compressed, partialTicks, 0);
-		} else {
-			IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(p_192838_1_, null,
-					null);
-			Tessellator tessellator = Tessellator.getInstance();
-			BufferBuilder bufferbuilder = tessellator.getBuffer();
-			bufferbuilder.begin(7, DefaultVertexFormats.ITEM);
+		int time = p_192838_1_.getTagCompound().getInteger(NotEnoughCompression.MOD_ID + "_time") + 1;
+		Color color = Color.getHSBColor(0F, 0F, (float) 1.0 / (float) time);
 
-			for (EnumFacing enumfacing : EnumFacing.values()) {
-				this.renderQuads(bufferbuilder, model.getQuads((IBlockState) null, enumfacing, 0L), -1, p_192838_1_);
-			}
+		renderModel(Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(p_192838_1_, null, null), -1,
+				p_192838_1_, color);
 
-			this.renderQuads(bufferbuilder, model.getQuads((IBlockState) null, (EnumFacing) null, 0L), -1, p_192838_1_);
-			tessellator.draw();
+	}
+
+	private void renderModel(IBakedModel model, int color, ItemStack stack, Color color2) {
+		Tessellator tessellator = Tessellator.getInstance();
+		BufferBuilder bufferbuilder = tessellator.getBuffer();
+		bufferbuilder.begin(7, DefaultVertexFormats.ITEM);
+
+		for (EnumFacing enumfacing : EnumFacing.values()) {
+			renderQuads(bufferbuilder, model.getQuads((IBlockState) null, enumfacing, 0L), color, stack);
 		}
 
+		this.renderQuads(bufferbuilder, model.getQuads((IBlockState) null, (EnumFacing) null, 0L), color, stack);
+
+		for (int i = 0; i < bufferbuilder.getVertexCount(); i++) {
+			bufferbuilder.putColorMultiplier(color2.getRed() / 255f, color2.getGreen() / 255f, color2.getGreen() / 255f,
+					i);
+		}
+
+		tessellator.draw();
 	}
 
 	private void renderQuads(BufferBuilder renderer, List<BakedQuad> quads, int color, ItemStack stack) {
