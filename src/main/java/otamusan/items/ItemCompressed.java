@@ -130,7 +130,7 @@ public class ItemCompressed extends Item {
 	public static ItemStack createCompressedItem(ItemStack item, int time) {
 		if (time <= 0) {
 			ItemStack itemStack = item.copy();
-			itemStack.setCount(0);
+			itemStack.setCount(1);
 			return itemStack;
 		}
 

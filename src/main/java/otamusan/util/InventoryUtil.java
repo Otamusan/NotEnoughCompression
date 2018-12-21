@@ -1,5 +1,6 @@
 package otamusan.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.inventory.IInventory;
@@ -17,9 +18,12 @@ public class InventoryUtil {
 		return TileEntityHopper.putStackInInventoryAllSlots(null, destination, stack, null);
 	}
 
-	public static void putStacksInSlots(IInventory destination, List<ItemStack> list) {
+	public static List<ItemStack> putStacksInSlots(IInventory destination, List<ItemStack> list) {
+		ArrayList<ItemStack> remain = new ArrayList<>();
 		for (ItemStack itemStack : list) {
-			TileEntityHopper.putStackInInventoryAllSlots(null, destination, itemStack, null);
+			remain.add(TileEntityHopper.putStackInInventoryAllSlots(null, destination, itemStack, null));
 		}
+
+		return remain;
 	}
 }
