@@ -66,7 +66,6 @@ public class ItemCompressed extends Item {
 				(NBTTagCompound) stack.getTagCompound().getTag(NotEnoughCompression.MOD_ID + "_itemstack"));
 		int time = stack.getTagCompound().getInteger(NotEnoughCompression.MOD_ID + "_time");
 		// int time = 2147483647;
-		System.out.println(I18n.format(NotEnoughCompression.MOD_ID + ".compresseditem", compressed.getDisplayName()));
 		tooltip.add(I18n.format(NotEnoughCompression.MOD_ID + ".compresseditem", compressed.getDisplayName()));
 		tooltip.add(I18n.format(NotEnoughCompression.MOD_ID + ".total", getCompressedAmount(time)));
 	}
