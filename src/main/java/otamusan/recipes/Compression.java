@@ -7,7 +7,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import otamusan.common.CommonProxy;
 import otamusan.items.ItemCompressed;
 
 public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
@@ -20,24 +19,26 @@ public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IR
 		int baseamount = 0;
 		boolean isCatalystPresented = false;
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			if (base == ItemStack.EMPTY && !isCatalyst(inv.getStackInSlot(i))) {
-				base = inv.getStackInSlot(i).copy();
-				baseamount++;
-			} else if (isCatalyst(inv.getStackInSlot(i)) && inv.getStackInSlot(i).getCount() == 1) {
-				isCatalystPresented = true;
-			} else if (base.isItemEqual(inv.getStackInSlot(i)) && !isCatalyst(inv.getStackInSlot(i))) {
-				baseamount++;
+			ItemStack current = inv.getStackInSlot(i);
+			if (isCatalyst(current)) {
+				if (current.getCount()==1)
+					isCatalystPresented = true;
+			} else {
+				if (base.isEmpty()) {
+					base = inv.getStackInSlot(i).copy();
+					baseamount++;
+				} else if (ItemCompressed.isCompressedItemEqual(base, current)) {
+					baseamount++;
+				}
 			}
 		}
 
 		// 2147483647回以上の圧縮を制限
-		if (base.getItem()==CommonProxy.itemCompressed) {
-			int time = ItemCompressed.getTime(base);
-			if (time>=Integer.MAX_VALUE-1)
-				return false;
-		}
+		int time = ItemCompressed.getTime(base);
+		if (time>=Integer.MAX_VALUE-1)
+			return false;
 
-		return base != ItemStack.EMPTY && baseamount == 8 && isCatalystPresented;
+		return !base.isEmpty()&&baseamount==8&&isCatalystPresented;
 	}
 
 	private boolean isCatalyst(ItemStack item) {
@@ -59,11 +60,8 @@ public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IR
 	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
 		NonNullList<ItemStack> list = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			if (isCatalyst(inv.getStackInSlot(i))) {
+			if (isCatalyst(inv.getStackInSlot(i)))
 				list.set(i, new ItemStack(Blocks.PISTON));
-			} else {
-				list.set(i, ItemStack.EMPTY);
-			}
 		}
 		return list;
 	}
