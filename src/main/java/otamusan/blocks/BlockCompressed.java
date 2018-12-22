@@ -146,9 +146,7 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 			}
 
 			IBlockState blockState = tileCompressed.getState();
-			if (state != null) {
-				retval = retval.withProperty(COMPRESSEDBLOCK_STATE, blockState);
-			}
+			retval = retval.withProperty(COMPRESSEDBLOCK_STATE, blockState);
 			return retval;
 		}
 		return state;

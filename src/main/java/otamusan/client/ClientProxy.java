@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.renderer.color.IBlockColor;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -25,10 +26,12 @@ import net.minecraftforge.common.property.IUnlistedProperty;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import otamusan.NotEnoughCompression;
 import otamusan.blocks.BlockCompressed;
+import otamusan.client.blockcompressed.TileSpecialEntityRendererCompressed;
 import otamusan.client.blockcompressed.TileSpecialItemRendererCompressed;
 import otamusan.common.CommonProxy;
 import otamusan.common.NECItems;
 import otamusan.items.ItemCompressed;
+import otamusan.tileentity.TileCompressed;
 
 public class ClientProxy extends CommonProxy {
 
@@ -101,6 +104,8 @@ public class ClientProxy extends CommonProxy {
 
 	public void postInit() {
 		NECItems.itemcompressed.setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
+		TileSpecialEntityRendererCompressed.instance.setRendererDispatcher(TileEntityRendererDispatcher.instance);
+		TileEntityRendererDispatcher.instance.renderers.put(TileCompressed.class, TileSpecialEntityRendererCompressed.instance);
 	}
 
 	@Override

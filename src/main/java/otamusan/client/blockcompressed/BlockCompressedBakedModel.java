@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.block.model.ItemOverrideList;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import otamusan.blocks.BlockCompressed;
@@ -32,10 +33,14 @@ public class BlockCompressedBakedModel implements IBakedModel {
 
 	public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand) {
 
-		List<BakedQuad> originallist = handleBlockState(state).getQuads(getState(state), side, rand);
+		IBlockState state_child = getState(state);
+		if (state_child.getRenderType()!=EnumBlockRenderType.MODEL)
+			return new ArrayList<>();
+
+		IBakedModel model_child = handleBlockState(state_child);
+		List<BakedQuad> originallist = model_child.getQuads(state_child, side, rand);
 
 		ArrayList<BakedQuad> list = new ArrayList<>();
-
 		for (int i = 0; i < originallist.size(); i++) {
 			BakedQuad qued = originallist.get(i);
 			BakedQuad newqued = new BakedQuad(qued.getVertexData(), 1, qued.getFace(), qued.getSprite(),
@@ -55,9 +60,8 @@ public class BlockCompressedBakedModel implements IBakedModel {
 		return Blocks.STONE.getDefaultState();
 	}
 
-	private IBakedModel handleBlockState(@Nullable IBlockState iBlockState) {
-		IBakedModel model = Minecraft.getMinecraft().getBlockRendererDispatcher()
-				.getModelForState(getState(iBlockState));
+	private IBakedModel handleBlockState(@Nullable IBlockState state_child) {
+		IBakedModel model = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(state_child);
 		this.originalModel = model;
 		return model;
 	}
