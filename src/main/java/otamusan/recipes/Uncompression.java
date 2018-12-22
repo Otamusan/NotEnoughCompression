@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import otamusan.common.NECItems;
+import otamusan.common.CommonProxy;
 import otamusan.items.ItemCompressed;
 
 public class Uncompression extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
@@ -30,7 +30,7 @@ public class Uncompression extends IForgeRegistryEntry.Impl<IRecipe> implements 
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack item = inv.getStackInSlot(i);
 			if (item.getItem() != Items.AIR) {
-				if (item.getItem() == NECItems.itemcompressed) {
+				if (item.getItem()==CommonProxy.itemCompressed) {
 					return item.copy();
 				} else {
 					return null;

@@ -22,7 +22,7 @@ public class TileSpecialEntityRendererCompressed extends TileEntitySpecialRender
 	@Override
 	public void render(TileCompressed te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		IBlockState state_child = te.getState();
-		if (state_child.getRenderType()!=EnumBlockRenderType.MODEL) {
+		if (state_child!=null&&state_child.getRenderType()!=EnumBlockRenderType.MODEL) {
 			Block block_child = state_child.getBlock();
 			TileEntity te_child = block_child.createTileEntity(getWorld(), state_child);
 			if (te_child!=null) {

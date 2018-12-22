@@ -3,6 +3,7 @@ package otamusan.client;
 import java.util.ArrayList;
 
 import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.init.Blocks;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import otamusan.client.blockcompressed.BlockCompressedBakedModel;
@@ -18,8 +19,8 @@ public class ModelBakeEventHandler {
 				new CompressedItemOverrideList(new ArrayList<>()));
 		event.getModelRegistry().putObject(ClientProxy.MRItemCompressed, customItemModel);
 
-		IBakedModel itemblockmodel = event.getModelRegistry().getObject(ClientProxy.MRBlockCompressed);
-		BlockCompressedBakedModel customBlockModel = new BlockCompressedBakedModel(itemblockmodel);
+		//IBakedModel itemblockmodel = event.getModelRegistry().getObject(ClientProxy.MRBlockCompressed);
+		BlockCompressedBakedModel customBlockModel = new BlockCompressedBakedModel(event.getModelManager().getBlockModelShapes().getModelForState(Blocks.STONE.getDefaultState()));
 		event.getModelRegistry().putObject(ClientProxy.MRBlockCompressed, customBlockModel);
 	}
 }

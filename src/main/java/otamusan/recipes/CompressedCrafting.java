@@ -13,7 +13,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import otamusan.common.NECItems;
+import otamusan.common.CommonProxy;
 import otamusan.items.ItemCompressed;
 
 public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
@@ -57,7 +57,8 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 	private int compressedTime(InventoryCrafting inv) {
 		int time = 0;
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			if (inv.getStackInSlot(i).getItem() != NECItems.itemcompressed
+			if (
+				inv.getStackInSlot(i).getItem()!=CommonProxy.itemCompressed
 					&& inv.getStackInSlot(i).getItem() != Items.AIR)
 				return 0;
 
@@ -121,7 +122,7 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 
 	@Override
 	public ItemStack getRecipeOutput() {
-		return new ItemStack(NECItems.itemcompressed);
+		return new ItemStack(CommonProxy.itemCompressed);
 	}
 
 }

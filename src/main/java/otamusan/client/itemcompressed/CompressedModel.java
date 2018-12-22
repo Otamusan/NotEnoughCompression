@@ -45,6 +45,7 @@ public class CompressedModel implements IBakedModel {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public ItemCameraTransforms getItemCameraTransforms() {
 		return model.getItemCameraTransforms();

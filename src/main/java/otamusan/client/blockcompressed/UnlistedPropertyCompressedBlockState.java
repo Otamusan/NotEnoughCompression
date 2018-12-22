@@ -1,7 +1,6 @@
 package otamusan.client.blockcompressed;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.property.IUnlistedProperty;
 
 public class UnlistedPropertyCompressedBlockState implements IUnlistedProperty<IBlockState> {

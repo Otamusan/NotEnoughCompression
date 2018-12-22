@@ -29,7 +29,6 @@ import otamusan.blocks.BlockCompressed;
 import otamusan.client.blockcompressed.TileSpecialEntityRendererCompressed;
 import otamusan.client.blockcompressed.TileSpecialItemRendererCompressed;
 import otamusan.common.CommonProxy;
-import otamusan.common.NECItems;
 import otamusan.items.ItemCompressed;
 import otamusan.tileentity.TileCompressed;
 
@@ -44,8 +43,7 @@ public class ClientProxy extends CommonProxy {
 	public void preInit() {
 		super.preInit();
 
-		ModelLoader.setCustomModelResourceLocation(NECItems.itemcompressed, 0, MRItemCompressed);
-
+		ModelLoader.setCustomModelResourceLocation(CommonProxy.itemCompressed, 0, MRItemCompressed);
 	}
 
 	@Override
@@ -103,7 +101,7 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	public void postInit() {
-		NECItems.itemcompressed.setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
+		CommonProxy.itemCompressed.setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
 		TileSpecialEntityRendererCompressed.instance.setRendererDispatcher(TileEntityRendererDispatcher.instance);
 		TileEntityRendererDispatcher.instance.renderers.put(TileCompressed.class, TileSpecialEntityRendererCompressed.instance);
 	}

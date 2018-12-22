@@ -126,8 +126,8 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		IProperty[] listedProperties = new IProperty[0];
-		IUnlistedProperty[] unlistedProperties = new IUnlistedProperty[] { COMPRESSEDBLOCK_NBT, COMPRESSEDBLOCK_STATE };
+		IProperty<?>[] listedProperties = new IProperty[0];
+		IUnlistedProperty<?>[] unlistedProperties = new IUnlistedProperty[] { COMPRESSEDBLOCK_NBT, COMPRESSEDBLOCK_STATE };
 		return new ExtendedBlockState(this, listedProperties, unlistedProperties);
 	}
 

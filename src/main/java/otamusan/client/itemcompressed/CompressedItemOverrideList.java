@@ -20,21 +20,14 @@ public class CompressedItemOverrideList extends ItemOverrideList {
 	@Override
 	public IBakedModel handleItemState(IBakedModel model, ItemStack stack, World world, EntityLivingBase entity) {
 
-		if (stack == null)
-			return Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(new ItemStack(Blocks.BARRIER),
-					world, entity);
-		if (stack.getTagCompound() == null)
-			return Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(new ItemStack(Blocks.BARRIER),
-					world, entity);
-		if (!stack.getTagCompound().hasKey(NotEnoughCompression.MOD_ID + "_itemstack"))
+		if (stack==null||stack.getTagCompound()==null||!stack.getTagCompound().hasKey(NotEnoughCompression.MOD_ID+"_itemstack"))
 			return Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(new ItemStack(Blocks.BARRIER),
 					world, entity);
 		IBakedModel newmodel = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(
 				new ItemStack(stack.getTagCompound().getCompoundTag(NotEnoughCompression.MOD_ID + "_itemstack")), world,
 				entity);
 
-		IBakedModel bakedModel = new CompressedModel(newmodel, ItemOverrideList.NONE);
-		return bakedModel;
+		return new CompressedModel(newmodel, ItemOverrideList.NONE);
 	}
 
 }
