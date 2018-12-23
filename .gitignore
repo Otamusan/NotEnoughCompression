@@ -187,3 +187,4 @@ gradle-app.setting
 **/build/
 
 # End of https://www.gitignore.io/api/git,gradle,eclipse,forgegradle,intellij+iml
+*.yml
