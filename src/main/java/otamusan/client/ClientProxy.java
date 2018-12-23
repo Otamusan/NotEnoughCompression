@@ -69,6 +69,7 @@ public class ClientProxy extends CommonProxy {
 				IExtendedBlockState eState = (IExtendedBlockState) state;
 
 				NBTTagCompound itemnbt = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_NBT);
+				IBlockState originalState = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
 
 				if (itemnbt == null)
 					return -1;
@@ -94,8 +95,8 @@ public class ClientProxy extends CommonProxy {
 						if (oritintindex == -1) {
 							intColor = -1;
 						} else {
-							intColor = Minecraft.getMinecraft().getBlockColors().colorMultiplier(instate, worldIn, pos,
-									oritintindex);
+							intColor = Minecraft.getMinecraft().getBlockColors().colorMultiplier(originalState, worldIn,
+									pos, oritintindex);
 						}
 						color = new Color(intColor);
 					}
@@ -112,7 +113,8 @@ public class ClientProxy extends CommonProxy {
 	public void postInit() {
 		NECItems.itemcompressed.setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
 		TileSpecialEntityRendererCompressed.instance.setRendererDispatcher(TileEntityRendererDispatcher.instance);
-		TileEntityRendererDispatcher.instance.renderers.put(TileCompressed.class, TileSpecialEntityRendererCompressed.instance);
+		TileEntityRendererDispatcher.instance.renderers.put(TileCompressed.class,
+				TileSpecialEntityRendererCompressed.instance);
 	}
 
 	@Override
