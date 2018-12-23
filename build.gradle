@@ -409,11 +409,14 @@ if (sec_bintray_user!=null&&sec_bintray_key!=null&&project.isProperty('extra_bin
 		publications = ['ModPublication']
 		publish = true
 		pkg {
+			userOrg = project.extra_bintray_org
 			repo = project.extra_bintray_repo
 			name = project.extra_bintray_name
 			version {
 				name = "${mod_version}"
 				released = new Date()
+				desc = "${mod_changelog_title}"+(StringUtils.isEmpty(mod_changelog)?'':"\n\n${mod_changelog}")
+				vcsTag = mod_buildtag
 			}
 		}
 	}
