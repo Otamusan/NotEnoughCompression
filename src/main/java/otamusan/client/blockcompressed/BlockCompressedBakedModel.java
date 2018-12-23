@@ -38,8 +38,8 @@ public class BlockCompressedBakedModel implements IBakedModel {
 
 		for (int i = 0; i < originallist.size(); i++) {
 			BakedQuad qued = originallist.get(i);
-			BakedQuad newqued = new BakedQuad(qued.getVertexData(), 1, qued.getFace(), qued.getSprite(),
-					qued.shouldApplyDiffuseLighting(), qued.getFormat());
+			BakedQuad newqued = new CompressedBakedQuad(qued.getVertexData(), 1, qued.getFace(), qued.getSprite(),
+					qued.shouldApplyDiffuseLighting(), qued.getFormat(), qued.getTintIndex());
 			list.add(newqued);
 		}
 

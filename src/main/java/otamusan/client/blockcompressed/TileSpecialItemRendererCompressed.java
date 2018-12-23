@@ -30,47 +30,62 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 	@Override
 	public void renderByItem(ItemStack stack, float partialTicks) {
 
-		int time = ItemCompressed.getTime(stack)+1;
+		int time = ItemCompressed.getTime(stack) + 1;
 		ItemStack original = ItemCompressed.getOriginal(stack);
 
-		int intColor = Minecraft.getMinecraft().getItemColors().colorMultiplier(original, 0);
-		Color color = new Color(intColor);
-		float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), new float[3]);
-		color = Color.getHSBColor(hsb[0], hsb[1], (float) 1.0/(float) time);
+		// int intColor =
+		// Minecraft.getMinecraft().getItemColors().colorMultiplier(original,
+		// 0);
+		// Color color = new Color(intColor);
+		// float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(),
+		// color.getBlue(), new float[3]);
+		// color = Color.getHSBColor(hsb[0], hsb[1], (float) 1.0 / (float)
+		// time);
 
-		renderModel(Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(stack, null, null), color.getRGB(), stack);
+		renderModel(Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(original, null, null), original,
+				time);
+
 	}
 
-	private void renderModel(IBakedModel model, int color, ItemStack stack) {
+	private void renderModel(IBakedModel model, ItemStack stack, int time) {
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferbuilder = tessellator.getBuffer();
 		bufferbuilder.begin(7, DefaultVertexFormats.ITEM);
 
 		for (EnumFacing enumfacing : EnumFacing.values()) {
-			renderQuads(bufferbuilder, model.getQuads((IBlockState) null, enumfacing, 0L), color, stack);
+			renderQuads(bufferbuilder, model.getQuads((IBlockState) null, enumfacing, 0L), stack, time);
 		}
 
-		this.renderQuads(bufferbuilder, model.getQuads((IBlockState) null, (EnumFacing) null, 0L), color, stack);
+		this.renderQuads(bufferbuilder, model.getQuads((IBlockState) null, (EnumFacing) null, 0L), stack, time);
 
 		tessellator.draw();
 	}
 
-	private void renderQuads(BufferBuilder renderer, List<BakedQuad> quads, int color, ItemStack stack) {
-		boolean flag = color == -1 && !stack.isEmpty();
+	private void renderQuads(BufferBuilder renderer, List<BakedQuad> quads, ItemStack stack, int time) {
 		int i = 0;
 
 		for (int j = quads.size(); i < j; ++i) {
 			BakedQuad bakedquad = quads.get(i);
-			int k = color;
+			int k;
 
-			if (flag && bakedquad.hasTintIndex()) {
-				k = Minecraft.getMinecraft().getItemColors().colorMultiplier(stack, bakedquad.getTintIndex());
+			if (bakedquad.hasTintIndex()) {
+
+				int intColor = Minecraft.getMinecraft().getItemColors().colorMultiplier(stack,
+						bakedquad.getTintIndex());
+				Color color = new Color(intColor);
+				float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), new float[3]);
+				color = Color.getHSBColor(hsb[0], hsb[1], (float) 1.0 / (float) time);
+				k = color.getRGB();
 
 				if (EntityRenderer.anaglyphEnable) {
 					k = TextureUtil.anaglyphColor(k);
 				}
 
 				k = k | -16777216;
+
+			} else {
+				Color color = Color.getHSBColor(0f, 0f, (float) 1.0 / (float) time);
+				k = color.getRGB();
 			}
 
 			net.minecraftforge.client.model.pipeline.LightUtil.renderQuadColor(renderer, bakedquad, k);
