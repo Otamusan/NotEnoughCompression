@@ -88,8 +88,12 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 		TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos);
 		ItemStack itemCompressed = tileCompressed.compressedblock;
 		IBlockState iBlockState = tileCompressed.getState();
-		if (iBlockState == null)
+
+		if (iBlockState == null) {
+			itemCompressed.setCount(1);
+			spawnAsEntity(worldIn, pos, itemCompressed.copy());
 			return;
+		}
 
 		if (iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player) && silktouch == 0) {
 

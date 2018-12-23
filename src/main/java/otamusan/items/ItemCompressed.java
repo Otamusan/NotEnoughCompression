@@ -50,6 +50,7 @@ public class ItemCompressed extends Item {
 					hitX, hitY, hitZ, meta, player, hand);
 			CommonProxy.itemBlockCompressed.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 			TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos.offset(facing));
+			System.out.println(state);
 			if (tileCompressed == null)
 				return EnumActionResult.SUCCESS;
 			tileCompressed.setBlockState(state);

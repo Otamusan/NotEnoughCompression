@@ -55,6 +55,9 @@ public class BlockCompressedBakedModel implements IBakedModel {
 		if (state instanceof IExtendedBlockState) {
 			IExtendedBlockState sBlockState = (IExtendedBlockState) state;
 			IBlockState orstate = sBlockState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
+			if (orstate == null)
+				return Blocks.STONE.getDefaultState();
+
 			return orstate;
 		}
 		return Blocks.STONE.getDefaultState();
