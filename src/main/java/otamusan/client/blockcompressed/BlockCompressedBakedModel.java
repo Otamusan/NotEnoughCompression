@@ -32,7 +32,12 @@ public class BlockCompressedBakedModel implements IBakedModel {
 
 	public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand) {
 
-		List<BakedQuad> originallist = handleBlockState(state).getQuads(getState(state), side, rand);
+		IBlockState state_child = getState(state);
+		if (state_child.getRenderType()!=EnumBlockRenderType.MODEL)
+			return new ArrayList<>();
+
+		IBakedModel model_child = handleBlockState(state_child);
+		List<BakedQuad> originallist = model_child.getQuads(state_child, side, rand);
 
 		ArrayList<BakedQuad> list = new ArrayList<>();
 
@@ -100,5 +105,4 @@ public class BlockCompressedBakedModel implements IBakedModel {
 		Matrix4f matrix4f = originalModel.handlePerspective(cameraTransformType).getRight();
 		return Pair.of(this, matrix4f);
 	}
-
 }

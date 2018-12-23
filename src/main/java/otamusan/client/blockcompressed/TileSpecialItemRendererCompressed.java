@@ -7,6 +7,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.EntityRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
@@ -16,11 +17,10 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import otamusan.items.ItemCompressed;
-import otamusan.tileentity.TileCompressed;
+import otamusan.util.CustomRenderHelper;
 
 public class TileSpecialItemRendererCompressed extends TileEntityItemStackRenderer {
-	private final TileCompressed compressed = new TileCompressed();
-	public static TileSpecialItemRendererCompressed instance;
+	public static TileSpecialItemRendererCompressed instance = new TileSpecialItemRendererCompressed();
 
 	@Override
 	public void renderByItem(ItemStack itemStackIn) {
@@ -41,9 +41,16 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 		// color.getBlue(), new float[3]);
 		// color = Color.getHSBColor(hsb[0], hsb[1], (float) 1.0 / (float)
 		// time);
-
-		renderModel(Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(original, null, null), original,
-				time);
+		IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(original, null, null);
+		if (!model.isBuiltInRenderer()){
+			renderModel(model, original,time);
+		}else{
+			GlStateManager.pushAttrib();
+			CustomRenderHelper.percentAllLights(1.f/time);
+			original.getItem().getTileEntityItemStackRenderer().renderByItem(original);
+			GlStateManager.popAttrib();
+		}
+		
 
 	}
 
@@ -90,9 +97,5 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 
 			net.minecraftforge.client.model.pipeline.LightUtil.renderQuadColor(renderer, bakedquad, k);
 		}
-	}
-
-	static {
-		instance = new TileSpecialItemRendererCompressed();
 	}
 }
