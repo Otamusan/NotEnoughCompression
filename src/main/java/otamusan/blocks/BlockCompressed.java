@@ -93,10 +93,8 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 		int silktouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem);
 		TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos);
 		IBlockState iBlockState = tileCompressed.getState();
-		if (iBlockState == null)
-			return;
 
-		if (iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player) && silktouch == 0) {
+		if (iBlockState != null && iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player) && silktouch == 0) {
 
 			int time = ItemCompressed.getTime(tileCompressed.getItemCompressed());
 
