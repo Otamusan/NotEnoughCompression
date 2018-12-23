@@ -1,7 +1,6 @@
 package otamusan.recipes;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -13,7 +12,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import otamusan.common.NECItems;
+import otamusan.common.CommonProxy;
 import otamusan.items.ItemCompressed;
 
 public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
@@ -43,12 +42,8 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 		NonNullList<ItemStack> output = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 
 		for (int i = 0; i < reInv.size(); i++) {
-			if (reInv.get(i).getItem() == Items.AIR) {
-				output.set(i, ItemStack.EMPTY);
-			} else {
+			if (!reInv.get(i).isEmpty())
 				output.set(i, ItemCompressed.createCompressedItem(reInv.get(i), compressedTime(inv)));
-			}
-
 		}
 
 		return output;
@@ -57,18 +52,17 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 	private int compressedTime(InventoryCrafting inv) {
 		int time = 0;
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			if (inv.getStackInSlot(i).getItem() != NECItems.itemcompressed
-					&& inv.getStackInSlot(i).getItem() != Items.AIR)
-				return 0;
-
-			if (inv.getStackInSlot(i).getItem() == Items.AIR)
+			ItemStack current = inv.getStackInSlot(i);
+			if (current.isEmpty())
 				continue;
 
-			if (time == 0) {
-				time = ItemCompressed.getTime(inv.getStackInSlot(i));
-			} else if (time != ItemCompressed.getTime(inv.getStackInSlot(i))) {
+			if (current.getItem()!=CommonProxy.itemCompressed)
 				return 0;
-			}
+
+			if (time==0)
+				time = ItemCompressed.getTime(current);
+			else if (time!=ItemCompressed.getTime(current))
+				return 0;
 		}
 		return time;
 	}
@@ -94,7 +88,7 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 			ItemStack slot = newinv.getStackInSlot(i).copy();
 			ItemStack original;
 
-			if (slot.getItem() == Items.AIR) {
+			if (slot.isEmpty()) {
 				original = slot;
 			} else {
 				original = ItemCompressed.getOriginal(slot);
@@ -121,7 +115,7 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 
 	@Override
 	public ItemStack getRecipeOutput() {
-		return new ItemStack(NECItems.itemcompressed);
+		return new ItemStack(CommonProxy.itemCompressed);
 	}
 
 }

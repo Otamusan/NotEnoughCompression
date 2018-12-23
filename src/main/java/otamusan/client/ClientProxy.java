@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -26,10 +27,11 @@ import net.minecraftforge.common.property.IUnlistedProperty;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import otamusan.NotEnoughCompression;
 import otamusan.blocks.BlockCompressed;
+import otamusan.client.blockcompressed.BlockCompressedBakedModel;
 import otamusan.client.blockcompressed.TileSpecialEntityRendererCompressed;
 import otamusan.client.blockcompressed.TileSpecialItemRendererCompressed;
+import otamusan.client.itemcompressed.CompressedModel;
 import otamusan.common.CommonProxy;
-import otamusan.common.NECItems;
 import otamusan.items.ItemCompressed;
 import otamusan.tileentity.TileCompressed;
 
@@ -40,12 +42,15 @@ public class ClientProxy extends CommonProxy {
 	public static final ModelResourceLocation MRBlockCompressed = new ModelResourceLocation(
 			NotEnoughCompression.MOD_ID + ":compressedblock", "normal");
 
+	public static IBakedModel modelBased;
+	public static BlockCompressedBakedModel modelBlockCompressed;
+	public static CompressedModel modelItemCompressed;
+
 	@Override
 	public void preInit() {
 		super.preInit();
 
-		ModelLoader.setCustomModelResourceLocation(NECItems.itemcompressed, 0, MRItemCompressed);
-
+		ModelLoader.setCustomModelResourceLocation(CommonProxy.itemCompressed, 0, MRItemCompressed);
 	}
 
 	@Override
@@ -69,40 +74,27 @@ public class ClientProxy extends CommonProxy {
 				IExtendedBlockState eState = (IExtendedBlockState) state;
 
 				NBTTagCompound itemnbt = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_NBT);
-				IBlockState originalState = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
 
 				if (itemnbt == null)
 					return -1;
 
 				ItemStack stack = new ItemStack(itemnbt);
 
-				if (stack.getTagCompound() != null) {
-					ItemStack original = ItemCompressed.getOriginal(stack);
-					Color color = Color.BLACK;
-					int time = ItemCompressed.getTime(stack) + 1;
-
-					if (original.getItem() instanceof ItemBlock) {
-						Block block = ((ItemBlock) original.getItem()).getBlock();
-						ImmutableSet<IProperty<?>> props = eState.getProperties().keySet();
-						ImmutableSet<IUnlistedProperty<?>> unlistedProps = eState.getUnlistedProperties().keySet();
-
-						IBlockState instate = new ExtendedBlockState(block,
-								props.toArray(new IProperty<?>[props.size()]),
-								unlistedProps.toArray(new IUnlistedProperty<?>[unlistedProps.size()])).getBaseState();
-
-						int oritintindex = tintIndex - 100;
-						int intColor;
-						if (oritintindex == -1) {
-							intColor = -1;
-						} else {
-							intColor = Minecraft.getMinecraft().getBlockColors().colorMultiplier(originalState, worldIn,
-									pos, oritintindex);
-						}
-						color = new Color(intColor);
-					}
-
-					float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), new float[3]);
-					return Color.getHSBColor(hsb[0], hsb[1], (float) 1.0 / (float) time).getRGB();
+				int time = ItemCompressed.getTime(stack); 
+				if (time>0) { 
+					IBlockState originalState = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE); 
+ 
+					int oritintindex = tintIndex-100; 
+					int intColor; 
+					if (oritintindex==-1) 
+						intColor = -1; 
+					else 
+						intColor = Minecraft.getMinecraft().getBlockColors().colorMultiplier(originalState, worldIn, pos, 
+								oritintindex); 
+					Color color = new Color(intColor); 
+ 
+					float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), new float[3]); 
+					return Color.getHSBColor(hsb[0], hsb[1], 1.f/(time+1)).getRGB(); 
 				}
 				return -1;
 			}
@@ -111,7 +103,7 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	public void postInit() {
-		NECItems.itemcompressed.setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
+		CommonProxy.itemCompressed.setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
 		TileSpecialEntityRendererCompressed.instance.setRendererDispatcher(TileEntityRendererDispatcher.instance);
 		TileEntityRendererDispatcher.instance.renderers.put(TileCompressed.class,
 				TileSpecialEntityRendererCompressed.instance);

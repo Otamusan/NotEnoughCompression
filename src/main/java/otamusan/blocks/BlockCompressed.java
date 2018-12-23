@@ -20,6 +20,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.property.ExtendedBlockState;
@@ -49,7 +50,7 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state,
+	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess worldIn, BlockPos pos, IBlockState state,
 			int fortune) {
 	}
 
@@ -57,10 +58,8 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 		if (state instanceof IExtendedBlockState) {
 			IExtendedBlockState estate = (IExtendedBlockState) state;
 
-			if (estate.getValue(COMPRESSEDBLOCK_STATE) == null) {
-				return Blocks.STONE.getDefaultState();
-			}
-			return estate.getValue(COMPRESSEDBLOCK_STATE);
+			if (estate.getValue(COMPRESSEDBLOCK_STATE)!=null)
+				return estate.getValue(COMPRESSEDBLOCK_STATE);
 		}
 		return Blocks.STONE.getDefaultState();
 	}
@@ -80,22 +79,22 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World worldIn, BlockPos pos, EntityPlayer player) {
+		TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos);
+		ItemStack itemCompressed = tileCompressed.compressedblock.copy();
+		itemCompressed.setCount(1);
+		return itemCompressed;
+	}
 
+	@Override
+	public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
 		ItemStack heldItem = player.getHeldItem(EnumHand.MAIN_HAND);
 		int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, heldItem);
 		int silktouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem);
 		TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos);
-		ItemStack itemCompressed = tileCompressed.compressedblock;
 		IBlockState iBlockState = tileCompressed.getState();
 
-		if (iBlockState == null) {
-			itemCompressed.setCount(1);
-			spawnAsEntity(worldIn, pos, itemCompressed.copy());
-			return;
-		}
-
-		if (iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player) && silktouch == 0) {
+		if (iBlockState != null && iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player) && silktouch == 0) {
 
 			int time = ItemCompressed.getTime(tileCompressed.getItemCompressed());
 
@@ -109,8 +108,9 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 			}
 
 		} else {
+			ItemStack itemCompressed = tileCompressed.compressedblock.copy();
 			itemCompressed.setCount(1);
-			spawnAsEntity(worldIn, pos, itemCompressed.copy());
+			spawnAsEntity(worldIn, pos, itemCompressed);
 		}
 	}
 
@@ -125,13 +125,12 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 
 		TileCompressed tile = (TileCompressed) worldIn.getTileEntity(pos);
 		tile.setItemCompressed(stack);
-
 	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		IProperty[] listedProperties = new IProperty[0];
-		IUnlistedProperty[] unlistedProperties = new IUnlistedProperty[] { COMPRESSEDBLOCK_NBT, COMPRESSEDBLOCK_STATE };
+		IProperty<?>[] listedProperties = new IProperty[0];
+		IUnlistedProperty<?>[] unlistedProperties = new IUnlistedProperty[] { COMPRESSEDBLOCK_NBT, COMPRESSEDBLOCK_STATE };
 		return new ExtendedBlockState(this, listedProperties, unlistedProperties);
 	}
 

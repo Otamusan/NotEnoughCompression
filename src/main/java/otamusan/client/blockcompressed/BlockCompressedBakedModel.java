@@ -1,12 +1,15 @@
 package otamusan.client.blockcompressed;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.vecmath.Matrix4f;
 
 import org.apache.commons.lang3.tuple.Pair;
+
+import com.google.common.collect.Lists;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -26,54 +29,51 @@ import otamusan.blocks.BlockCompressed;
  * rendering of the camouflage block, based on the block it is copying.
  */
 public class BlockCompressedBakedModel implements IBakedModel {
+	private final @Nonnull IBakedModel baseModel;
 
-	public BlockCompressedBakedModel(IBakedModel model) {
-		originalModel = model;
+	public BlockCompressedBakedModel(IBakedModel baseModel) {
+		this.baseModel = baseModel;
 	}
 
 	public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand) {
+		IBlockState state_child = null;
 
-		IBlockState state_child = getState(state);
-		if (state_child.getRenderType() != EnumBlockRenderType.MODEL)
-			return new ArrayList<>();
-
-		IBakedModel model_child = handleBlockState(state_child);
-		List<BakedQuad> originallist = model_child.getQuads(state_child, side, rand);
-
-		ArrayList<BakedQuad> list = new ArrayList<>();
-
-		for (int i = 0; i < originallist.size(); i++) {
-			BakedQuad qued = originallist.get(i);
-			BakedQuad newqued = new CompressedBakedQuad(qued.getVertexData(), 1, qued.getFace(), qued.getSprite(),
-					qued.shouldApplyDiffuseLighting(), qued.getFormat(), qued.getTintIndex());
-			list.add(newqued);
-		}
-		return list;
-	}
-
-	private IBlockState getState(IBlockState state) {
+		// BlockStateを取得
 		if (state instanceof IExtendedBlockState) {
 			IExtendedBlockState sBlockState = (IExtendedBlockState) state;
 			IBlockState orstate = sBlockState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
-			if (orstate == null)
-				return Blocks.STONE.getDefaultState();
-
-			return orstate;
+			state_child = orstate;
 		}
-		return Blocks.STONE.getDefaultState();
+
+		// stateがnullだったらデフォルトモデル
+		if (state_child==null)
+			return baseModel.getQuads(state_child, side, rand);
+
+		// 破片パーティクルのテクスチャ更新
+		this.originalSprite = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getTexture(state_child);
+
+		// チェストなどのモデルを使用しないブロックは描画しない
+		if (state_child.getRenderType()!=EnumBlockRenderType.MODEL)
+			return Lists.newArrayList();
+
+		// モデルを取得
+		IBakedModel model_child = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(state_child);
+		List<BakedQuad> originallist = model_child.getQuads(state_child, side, rand);
+
+		List<BakedQuad> list = originallist.stream().map(qued -> {
+			return new CompressedBakedQuad(
+					qued.getVertexData(), 1, qued.getFace(), qued.getSprite(),
+					qued.shouldApplyDiffuseLighting(), qued.getFormat(), qued.getTintIndex());
+		}).collect(Collectors.toList());
+
+		return list;
 	}
 
-	private IBakedModel handleBlockState(@Nullable IBlockState iBlockState) {
-		IBakedModel model = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(iBlockState);
-		this.originalModel = model;
-		return model;
-	}
-
-	private IBakedModel originalModel;
+	private TextureAtlasSprite originalSprite;
 
 	@Override
 	public TextureAtlasSprite getParticleTexture() {
-		return originalModel.getParticleTexture();
+		return originalSprite;
 	}
 
 	@Override
@@ -93,18 +93,19 @@ public class BlockCompressedBakedModel implements IBakedModel {
 
 	@Override
 	public ItemOverrideList getOverrides() {
-		return originalModel.getOverrides();
+		return baseModel.getOverrides();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public ItemCameraTransforms getItemCameraTransforms() {
-		return originalModel.getItemCameraTransforms();
+		return baseModel.getItemCameraTransforms();
 	}
 
 	@Override
 	public Pair<? extends IBakedModel, Matrix4f> handlePerspective(
 			ItemCameraTransforms.TransformType cameraTransformType) {
-		Matrix4f matrix4f = originalModel.handlePerspective(cameraTransformType).getRight();
+		Matrix4f matrix4f = baseModel.handlePerspective(cameraTransformType).getRight();
 		return Pair.of(this, matrix4f);
 	}
 }
