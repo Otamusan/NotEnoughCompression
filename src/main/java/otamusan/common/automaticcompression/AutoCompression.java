@@ -70,7 +70,12 @@ public class AutoCompression {
 		for (int i = 0; i < getMaxTime(n) + 1; i++) {
 			int time = getMaxTime(n) - i;
 			int count = (int) Math.floor(buffer / Math.pow(8, time));
-			ItemStack stack = ItemCompressed.createCompressedItem(source, time);
+			ItemStack stack;
+			if (time <= 0) {
+				stack = source.copy();
+			} else {
+				stack = ItemCompressed.createCompressedItem(source, time);
+			}
 			stack.setCount(count);
 			items.add(stack);
 			buffer = OtamuModulo(buffer, (int) Math.pow(8, time));
