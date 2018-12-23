@@ -36,40 +36,37 @@ public class BlockCompressedBakedModel implements IBakedModel {
 	}
 
 	public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand) {
+		IBlockState state_child = null;
 
-		IBlockState state_child = getState(state);
+		// BlockStateを取得
 		if (state instanceof IExtendedBlockState) {
 			IExtendedBlockState sBlockState = (IExtendedBlockState) state;
 			IBlockState orstate = sBlockState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
 			state_child = orstate;
 		}
 
+		// stateがnullだったらデフォルトモデル
 		if (state_child==null)
 			return baseModel.getQuads(state_child, side, rand);
 
+		// 破片パーティクルのテクスチャ更新
 		this.originalSprite = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getTexture(state_child);
+
+		// チェストなどのモデルを使用しないブロックは描画しない
 		if (state_child.getRenderType()!=EnumBlockRenderType.MODEL)
 			return Lists.newArrayList();
 
+		// モデルを取得
 		IBakedModel model_child = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(state_child);
 		List<BakedQuad> originallist = model_child.getQuads(state_child, side, rand);
 
 		List<BakedQuad> list = originallist.stream().map(qued -> {
-			return new BakedQuad(
+			return new CompressedBakedQuad(
 					qued.getVertexData(), 1, qued.getFace(), qued.getSprite(),
-					qued.shouldApplyDiffuseLighting(), qued.getFormat());
+					qued.shouldApplyDiffuseLighting(), qued.getFormat(), qued.getTintIndex());
 		}).collect(Collectors.toList());
 
 		return list;
-	}
-
-	private IBlockState getState(IBlockState state) {
-		if (state instanceof IExtendedBlockState) {
-			IExtendedBlockState sBlockState = (IExtendedBlockState) state;
-			IBlockState orstate = sBlockState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
-			return orstate;
-		}
-		return Blocks.STONE.getDefaultState();
 	}
 
 	private TextureAtlasSprite originalSprite;
@@ -111,5 +108,4 @@ public class BlockCompressedBakedModel implements IBakedModel {
 		Matrix4f matrix4f = baseModel.handlePerspective(cameraTransformType).getRight();
 		return Pair.of(this, matrix4f);
 	}
-
 }

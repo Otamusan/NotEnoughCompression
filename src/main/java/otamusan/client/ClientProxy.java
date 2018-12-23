@@ -80,26 +80,33 @@ public class ClientProxy extends CommonProxy {
 
 				ItemStack stack = new ItemStack(itemnbt);
 
-				if (stack.getTagCompound()!=null) {
+				if (stack.getTagCompound() != null) {
 					ItemStack original = ItemCompressed.getOriginal(stack);
 					Color color = Color.BLACK;
-					int time = ItemCompressed.getTime(stack)+1;
+					int time = ItemCompressed.getTime(stack) + 1;
 
 					if (original.getItem() instanceof ItemBlock) {
 						Block block = ((ItemBlock) original.getItem()).getBlock();
 						ImmutableSet<IProperty<?>> props = eState.getProperties().keySet();
 						ImmutableSet<IUnlistedProperty<?>> unlistedProps = eState.getUnlistedProperties().keySet();
 
-						IBlockState instate = new ExtendedBlockState(
-								block,
+						IBlockState instate = new ExtendedBlockState(block,
 								props.toArray(new IProperty<?>[props.size()]),
 								unlistedProps.toArray(new IUnlistedProperty<?>[unlistedProps.size()])).getBaseState();
-						int intColor = Minecraft.getMinecraft().getBlockColors().colorMultiplier(instate, worldIn, pos, tintIndex);
+
+						int oritintindex = tintIndex - 100;
+						int intColor;
+						if (oritintindex == -1) {
+							intColor = -1;
+						} else {
+							intColor = Minecraft.getMinecraft().getBlockColors().colorMultiplier(instate, worldIn, pos,
+									oritintindex);
+						}
 						color = new Color(intColor);
 					}
 
 					float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), new float[3]);
-					return Color.getHSBColor(hsb[0], hsb[1], (float) 1.0/(float) time).getRGB();
+					return Color.getHSBColor(hsb[0], hsb[1], (float) 1.0 / (float) time).getRGB();
 				}
 				return -1;
 			}
