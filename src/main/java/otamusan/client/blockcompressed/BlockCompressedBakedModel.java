@@ -38,6 +38,11 @@ public class BlockCompressedBakedModel implements IBakedModel {
 	public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand) {
 
 		IBlockState state_child = getState(state);
+		if (state instanceof IExtendedBlockState) {
+			IExtendedBlockState sBlockState = (IExtendedBlockState) state;
+			IBlockState orstate = sBlockState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
+			state_child = orstate;
+		}
 
 		if (state_child==null)
 			return baseModel.getQuads(state_child, side, rand);

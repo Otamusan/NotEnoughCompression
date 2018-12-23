@@ -2,6 +2,7 @@ package otamusan.tileentity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
@@ -25,7 +26,7 @@ public class TileCompressed extends TileEntity {
 		if (compressedblock != null) {
 			return compressedblock.copy();
 		} else {
-			return null;
+			return ItemStack.EMPTY;
 		}
 	}
 
@@ -33,7 +34,7 @@ public class TileCompressed extends TileEntity {
 		if (state != null) {
 			return state;
 		} else {
-			return null;
+			return Blocks.STONE.getDefaultState();
 		}
 	}
 

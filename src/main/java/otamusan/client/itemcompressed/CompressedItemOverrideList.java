@@ -10,7 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import otamusan.NotEnoughCompression;
+import otamusan.items.ItemCompressed;
 
 public class CompressedItemOverrideList extends ItemOverrideList {
 	public CompressedItemOverrideList(List<ItemOverride> override) {
@@ -19,15 +19,15 @@ public class CompressedItemOverrideList extends ItemOverrideList {
 
 	@Override
 	public IBakedModel handleItemState(IBakedModel model, ItemStack stack, World world, EntityLivingBase entity) {
+		if (stack!=null) {
+			ItemStack itemStack = ItemCompressed.getOriginal(stack);
+			if (!itemStack.isEmpty()) {
+				IBakedModel newmodel = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(itemStack, world, entity);
+				return new CompressedModel(newmodel, ItemOverrideList.NONE);
+			}
+		}
 
-		if (stack==null||stack.getTagCompound()==null||!stack.getTagCompound().hasKey(NotEnoughCompression.MOD_ID+"_itemstack"))
-			return Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(new ItemStack(Blocks.BARRIER),
-					world, entity);
-		IBakedModel newmodel = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(
-				new ItemStack(stack.getTagCompound().getCompoundTag(NotEnoughCompression.MOD_ID + "_itemstack")), world,
-				entity);
-
-		return new CompressedModel(newmodel, ItemOverrideList.NONE);
+		return Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(new ItemStack(Blocks.BARRIER),
+				world, entity);
 	}
-
 }

@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -26,8 +27,10 @@ import net.minecraftforge.common.property.IUnlistedProperty;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import otamusan.NotEnoughCompression;
 import otamusan.blocks.BlockCompressed;
+import otamusan.client.blockcompressed.BlockCompressedBakedModel;
 import otamusan.client.blockcompressed.TileSpecialEntityRendererCompressed;
 import otamusan.client.blockcompressed.TileSpecialItemRendererCompressed;
+import otamusan.client.itemcompressed.CompressedModel;
 import otamusan.common.CommonProxy;
 import otamusan.items.ItemCompressed;
 import otamusan.tileentity.TileCompressed;
@@ -38,6 +41,10 @@ public class ClientProxy extends CommonProxy {
 			NotEnoughCompression.MOD_ID + ":compresseditem", "inventory");
 	public static final ModelResourceLocation MRBlockCompressed = new ModelResourceLocation(
 			NotEnoughCompression.MOD_ID + ":compressedblock", "normal");
+
+	public static IBakedModel modelBased;
+	public static BlockCompressedBakedModel modelBlockCompressed;
+	public static CompressedModel modelItemCompressed;
 
 	@Override
 	public void preInit() {

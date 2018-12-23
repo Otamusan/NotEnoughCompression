@@ -23,9 +23,9 @@ public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IR
 			if (isCatalyst(current)) {
 				if (current.getCount()==1)
 					isCatalystPresented = true;
-			} else {
+			} else if (!current.isEmpty()) {
 				if (base.isEmpty()) {
-					base = inv.getStackInSlot(i).copy();
+					base = current.copy();
 					baseamount++;
 				} else if (ItemCompressed.isCompressedItemEqual(base, current)) {
 					baseamount++;
@@ -53,7 +53,7 @@ public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IR
 				return inv.getStackInSlot(i).copy();
 			}
 		}
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override

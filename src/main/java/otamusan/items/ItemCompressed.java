@@ -57,7 +57,8 @@ public class ItemCompressed extends ItemBlock {
 				IBlockState state = ((ItemBlock) itemStack.getItem()).getBlock().getStateForPlacement(worldIn, pos, facing,
 						hitX, hitY, hitZ, meta, player, hand);
 				super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-				TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos.offset(facing));
+				BlockPos newpos = pos.offset(facing);
+				TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(newpos);
 				if (tileCompressed!=null)
 					tileCompressed.setBlockState(state);
 				return EnumActionResult.SUCCESS;
@@ -151,7 +152,15 @@ public class ItemCompressed extends ItemBlock {
 	}
 
 	public static boolean isCompressedItemEqual(final @Nonnull ItemStack a, final @Nonnull ItemStack b) {
-		return a.isItemEqual(b)&&getTime(a)==getTime(b)&&getOriginal(a).isItemEqual(getOriginal(b));
+		if (!a.isItemEqual(b))
+			return false;
+		if (getTime(a)!=getTime(b))
+			return false;
+		ItemStack item_a = getOriginal(a);
+		ItemStack item_b = getOriginal(b);
+		if (item_a.isEmpty()&&item_b.isEmpty())
+			return true;
+		return item_a.isItemEqual(item_b);
 	}
 
 	public static @Nonnull ItemStack getOriginal(final @Nonnull ItemStack item) {
