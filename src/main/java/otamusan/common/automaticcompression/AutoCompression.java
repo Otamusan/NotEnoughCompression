@@ -41,12 +41,12 @@ public class AutoCompression {
 
 			int count = 0;
 			for (int j = i; j < inv.getSizeInventory(); j++) {
-				if (source.isItemEqual(inv.getStackInSlot(j))) {
+				if (ItemStack.areItemStacksEqual(source, inv.getStackInSlot(j))) {
 					count += inv.getStackInSlot(j).getCount();
 					inv.setInventorySlotContents(j, ItemStack.EMPTY);
 				} else if (inv.getStackInSlot(j).getItem() instanceof ItemCompressed) {
 					ItemStack compressed = inv.getStackInSlot(j);
-					if (ItemCompressed.getOriginal(compressed).isItemEqual(source)
+					if (ItemStack.areItemStacksEqual(ItemCompressed.getOriginal(compressed), source)
 							&& ItemCompressed.getTime(compressed) < 10) {
 						count += compressed.getCount() * Math.pow(8, ItemCompressed.getTime(compressed));
 						inv.setInventorySlotContents(j, ItemStack.EMPTY);
