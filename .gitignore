@@ -2,6 +2,9 @@
 # Created by https://www.gitignore.io/api/git,gradle,eclipse,forgegradle,intellij+iml
 # Edit at https://www.gitignore.io/?templates=git,gradle,eclipse,forgegradle,intellij+iml
 
+### Custom ###
+artifacts/
+
 ### Eclipse ###
 
 .metadata
@@ -187,4 +190,3 @@ gradle-app.setting
 **/build/
 
 # End of https://www.gitignore.io/api/git,gradle,eclipse,forgegradle,intellij+iml
-*.yml
