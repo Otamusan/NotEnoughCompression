@@ -2,25 +2,31 @@ package otamusan.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.property.ExtendedBlockState;
@@ -45,8 +51,30 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) {
-		return 0.5f;
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return getOriginalBlockState(source, pos).getBoundingBox(source, pos);
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return getOriginalBlockState(worldIn, pos).getCollisionBoundingBox(worldIn, pos);
+	}
+
+	@Override
+	public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
+		return getOriginalBlockState(world, pos).getBlock().getExplosionResistance(world, pos, exploder, explosion);
+	}
+
+	@Override
+	public SoundType getSoundType(IBlockState state, World world, BlockPos pos, Entity entity) {
+		return getOriginalBlockState(world, pos).getBlock().getSoundType(getOriginalBlockState(world, pos), world, pos,
+				entity);
+	}
+
+	@Override
+	public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		return getOriginalBlockState(world, pos).getBlock().canConnectRedstone(getOriginalBlockState(world, pos), world,
+				pos, side);
 	}
 
 	@Override
@@ -54,11 +82,34 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 			int fortune) {
 	}
 
+	public IBlockState getOriginalBlockState(IBlockAccess world, BlockPos pos) {
+		TileCompressed tile = (TileCompressed) world.getTileEntity(pos);
+		IBlockState state;
+
+		if (tile == null)
+			return Blocks.STONE.getDefaultState();
+
+		if (tile.getState() == null) {
+			state = getOriginalBlockState(tile.getItemCompressed());
+		} else {
+			state = tile.getState();
+		}
+		return state;
+	}
+
+	public IBlockState getOriginalBlockState(ItemStack item) {
+		if (!(item.getItem() instanceof ItemBlock))
+			return Blocks.STONE.getDefaultState();
+
+		return ((ItemBlock) item.getItem()).getBlock().getStateFromMeta(item.getMetadata());
+
+	}
+
 	public IBlockState getOriginalBlockState(IBlockState state) {
 		if (state instanceof IExtendedBlockState) {
 			IExtendedBlockState estate = (IExtendedBlockState) state;
 
-			if (estate.getValue(COMPRESSEDBLOCK_STATE)!=null)
+			if (estate.getValue(COMPRESSEDBLOCK_STATE) != null)
 				return estate.getValue(COMPRESSEDBLOCK_STATE);
 		}
 		return Blocks.STONE.getDefaultState();
@@ -74,12 +125,8 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public float getEnchantPowerBonus(World world, BlockPos pos) {
-		return super.getEnchantPowerBonus(world, pos);
-	}
-
-	@Override
-	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World worldIn, BlockPos pos, EntityPlayer player) {
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World worldIn, BlockPos pos,
+			EntityPlayer player) {
 		TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos);
 		ItemStack itemCompressed = tileCompressed.compressedblock.copy();
 		itemCompressed.setCount(1);
@@ -94,7 +141,8 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 		TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos);
 		IBlockState iBlockState = tileCompressed.getState();
 
-		if (iBlockState != null && iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player) && silktouch == 0) {
+		if (iBlockState != null && iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player)
+				&& silktouch == 0) {
 
 			int time = ItemCompressed.getTime(tileCompressed.getItemCompressed());
 
@@ -122,7 +170,6 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
 			ItemStack stack) {
-
 		TileCompressed tile = (TileCompressed) worldIn.getTileEntity(pos);
 		tile.setItemCompressed(stack);
 	}
@@ -130,7 +177,8 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		IProperty<?>[] listedProperties = new IProperty[0];
-		IUnlistedProperty<?>[] unlistedProperties = new IUnlistedProperty[] { COMPRESSEDBLOCK_NBT, COMPRESSEDBLOCK_STATE };
+		IUnlistedProperty<?>[] unlistedProperties = new IUnlistedProperty[] { COMPRESSEDBLOCK_NBT,
+				COMPRESSEDBLOCK_STATE };
 		return new ExtendedBlockState(this, listedProperties, unlistedProperties);
 	}
 
