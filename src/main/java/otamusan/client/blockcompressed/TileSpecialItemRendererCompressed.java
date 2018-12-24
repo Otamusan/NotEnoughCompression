@@ -32,25 +32,15 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 
 		int time = ItemCompressed.getTime(stack) + 1;
 		ItemStack original = ItemCompressed.getOriginal(stack);
-
-		// int intColor =
-		// Minecraft.getMinecraft().getItemColors().colorMultiplier(original,
-		// 0);
-		// Color color = new Color(intColor);
-		// float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(),
-		// color.getBlue(), new float[3]);
-		// color = Color.getHSBColor(hsb[0], hsb[1], (float) 1.0 / (float)
-		// time);
 		IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(original, null, null);
-		if (!model.isBuiltInRenderer()){
-			renderModel(model, original,time);
-		}else{
+		if (!model.isBuiltInRenderer()) {
+			renderModel(model, original, time);
+		} else {
 			GlStateManager.pushAttrib();
-			CustomRenderHelper.percentAllLights(1.f/time);
+			CustomRenderHelper.percentAllLights(1.f / time);
 			original.getItem().getTileEntityItemStackRenderer().renderByItem(original);
 			GlStateManager.popAttrib();
 		}
-		
 
 	}
 
@@ -79,10 +69,7 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 
 				int intColor = Minecraft.getMinecraft().getItemColors().colorMultiplier(stack,
 						bakedquad.getTintIndex());
-				Color color = new Color(intColor);
-				float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), new float[3]);
-				color = Color.getHSBColor(hsb[0], hsb[1], (float) 1.0 / (float) time);
-				k = color.getRGB();
+				k = ItemCompressed.getCompressedColor(new Color(intColor), time).getRGB();
 
 				if (EntityRenderer.anaglyphEnable) {
 					k = TextureUtil.anaglyphColor(k);
@@ -91,8 +78,7 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 				k = k | -16777216;
 
 			} else {
-				Color color = Color.getHSBColor(0f, 0f, (float) 1.0 / (float) time);
-				k = color.getRGB();
+				k = ItemCompressed.getCompressedColor(time).getRGB();
 			}
 
 			net.minecraftforge.client.model.pipeline.LightUtil.renderQuadColor(renderer, bakedquad, k);

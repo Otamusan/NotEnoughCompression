@@ -2,10 +2,6 @@ package otamusan.client;
 
 import java.awt.Color;
 
-import com.google.common.collect.ImmutableSet;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.IBakedModel;
@@ -13,7 +9,6 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
@@ -21,9 +16,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IExtendedBlockState;
-import net.minecraftforge.common.property.IUnlistedProperty;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import otamusan.NotEnoughCompression;
 import otamusan.blocks.BlockCompressed;
@@ -80,21 +73,22 @@ public class ClientProxy extends CommonProxy {
 
 				ItemStack stack = new ItemStack(itemnbt);
 
-				int time = ItemCompressed.getTime(stack); 
-				if (time>0) { 
-					IBlockState originalState = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE); 
- 
-					int oritintindex = tintIndex-100; 
-					int intColor; 
-					if (oritintindex==-1) 
-						intColor = -1; 
-					else 
-						intColor = Minecraft.getMinecraft().getBlockColors().colorMultiplier(originalState, worldIn, pos, 
-								oritintindex); 
-					Color color = new Color(intColor); 
- 
-					float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), new float[3]); 
-					return Color.getHSBColor(hsb[0], hsb[1], 1.f/(time+1)).getRGB(); 
+				int time = ItemCompressed.getTime(stack);
+
+				if (time > 0) {
+					IBlockState originalState = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
+
+					int k;
+
+					int oritintindex = tintIndex - 100;
+					if (oritintindex == -1) {
+						k = ItemCompressed.getCompressedColor(time + 1).getRGB();
+					} else {
+						int colorInt = Minecraft.getMinecraft().getBlockColors().colorMultiplier(originalState, worldIn,
+								pos, oritintindex);
+						k = ItemCompressed.getCompressedColor(new Color(colorInt), time + 1).getRGB();
+					}
+					return k;
 				}
 				return -1;
 			}
