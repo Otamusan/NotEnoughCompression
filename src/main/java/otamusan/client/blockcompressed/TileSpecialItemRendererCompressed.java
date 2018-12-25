@@ -37,7 +37,9 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 		IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(original, null, null);
 		if (!model.isBuiltInRenderer()) {
 			renderModel(model, original, time);
-			renderEffect(model, stack);
+			if (original.hasEffect()) {
+				renderEffect(model, stack);
+			}
 		} else {
 			GlStateManager.pushAttrib();
 			CustomRenderHelper.percentAllLights(1.f / time);
