@@ -1,5 +1,6 @@
 package otamusan.items;
 
+import java.awt.Color;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -33,6 +34,21 @@ public class ItemCompressed extends ItemBlock {
 	@Override
 	public boolean isFull3D() {
 		return true;
+	}
+
+	@Override
+	public double getDurabilityForDisplay(ItemStack stack) {
+		return getOriginal(stack).getItem().getDurabilityForDisplay(getOriginal(stack));
+	}
+
+	@Override
+	public boolean showDurabilityBar(ItemStack stack) {
+		return getOriginal(stack).getItem().showDurabilityBar(getOriginal(stack));
+	}
+
+	@Override
+	public int getRGBDurabilityForDisplay(ItemStack stack) {
+		return getOriginal(stack).getItem().getRGBDurabilityForDisplay(getOriginal(stack));
 	}
 
 	@Override
@@ -214,5 +230,17 @@ public class ItemCompressed extends ItemBlock {
 			nbt = new NBTTagCompound();
 		nbt.setInteger(NotEnoughCompression.MOD_ID + "_time", time);
 		item.setTagCompound(nbt);
+	}
+
+	public static Color getCompressedColor(Color source, int time) {
+		float multi = 1.0f / (float) time;
+		float r = ((float) source.getRed() / 255f) * (float) multi;
+		float g = ((float) source.getGreen() / 255f) * (float) multi;
+		float b = ((float) source.getBlue() / 255f) * (float) multi;
+		return new Color(r, g, b);
+	}
+
+	public static Color getCompressedColor(int time) {
+		return getCompressedColor(new Color(1f, 1f, 1f), time);
 	}
 }
