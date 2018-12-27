@@ -27,6 +27,7 @@ import otamusan.client.itemcompressed.CompressedModel;
 import otamusan.common.CommonProxy;
 import otamusan.items.ItemCompressed;
 import otamusan.tileentity.TileCompressed;
+import otamusan.util.ColorUtil;
 
 public class ClientProxy extends CommonProxy {
 
@@ -82,11 +83,11 @@ public class ClientProxy extends CommonProxy {
 
 					int oritintindex = tintIndex - 100;
 					if (oritintindex == -1) {
-						k = ItemCompressed.getCompressedColor(time + 1).getRGB();
+						k = ColorUtil.getCompressedColor(time + 1).getRGB();
 					} else {
 						int colorInt = Minecraft.getMinecraft().getBlockColors().colorMultiplier(originalState, worldIn,
 								pos, oritintindex);
-						k = ItemCompressed.getCompressedColor(new Color(colorInt), time + 1).getRGB();
+						k = ColorUtil.getCompressedColor(new Color(colorInt), time + 1).getRGB();
 					}
 					return k;
 				}

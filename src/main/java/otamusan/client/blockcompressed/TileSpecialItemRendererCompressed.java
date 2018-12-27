@@ -19,6 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import otamusan.items.ItemCompressed;
+import otamusan.util.ColorUtil;
 import otamusan.util.CustomRenderHelper;
 
 public class TileSpecialItemRendererCompressed extends TileEntityItemStackRenderer {
@@ -73,7 +74,7 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 
 				int intColor = Minecraft.getMinecraft().getItemColors().colorMultiplier(stack,
 						bakedquad.getTintIndex());
-				k = ItemCompressed.getCompressedColor(new Color(intColor), time).getRGB();
+				k = ColorUtil.getCompressedColor(new Color(intColor), time).getRGB();
 
 				if (EntityRenderer.anaglyphEnable) {
 					k = TextureUtil.anaglyphColor(k);
@@ -82,7 +83,7 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 				k = k | -16777216;
 
 			} else {
-				k = ItemCompressed.getCompressedColor(time).getRGB();
+				k = ColorUtil.getCompressedColor(time).getRGB();
 			}
 
 			net.minecraftforge.client.model.pipeline.LightUtil.renderQuadColor(renderer, bakedquad, k);
@@ -153,4 +154,5 @@ public class TileSpecialItemRendererCompressed extends TileEntityItemStackRender
 			net.minecraftforge.client.model.pipeline.LightUtil.renderQuadColor(renderer, bakedquad, k);
 		}
 	}
+
 }
