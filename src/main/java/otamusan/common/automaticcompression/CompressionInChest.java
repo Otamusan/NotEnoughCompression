@@ -30,7 +30,7 @@ public class CompressionInChest {
 				Item displayedItem = frame.getDisplayedItem().getItem();
 				if (displayedItem instanceof ItemBlock) {
 					Block displayedBlock = ((ItemBlock) displayedItem).getBlock();
-					if (displayedBlock==Blocks.PISTON||displayedBlock==Blocks.STICKY_PISTON) {
+					if (displayedBlock == Blocks.PISTON || displayedBlock == Blocks.STICKY_PISTON) {
 						BlockPos pos = entity.getPosition().offset(frame.getAdjustedHorizontalFacing(), -1).down();
 						candidates.put(pos, displayedBlock);
 					}
@@ -45,14 +45,13 @@ public class CompressionInChest {
 			TileEntity tile = event.world.getTileEntity(pos);
 			if (tile instanceof IInventory) {
 				IInventory inventory = (IInventory) tile;
-				if (type==Blocks.PISTON) {
-					AutoCompression.autocompression(inventory);
-				} else if (type==Blocks.STICKY_PISTON) {
-					List<ItemStack> remains = AutoCompression.fastautocompression(inventory);
+				if (type == Blocks.PISTON) {
+					List<ItemStack> remains = AutoCompression.autocompression2(inventory);
 
 					for (ItemStack itemStack : remains) {
 						Block.spawnAsEntity(event.world, pos.add(0.5, 0.5, 0.5), itemStack);
 					}
+
 				}
 			}
 		}
