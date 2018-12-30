@@ -23,7 +23,6 @@ public class InventoryUtil {
 		for (ItemStack itemStack : list) {
 			remain.add(TileEntityHopper.putStackInInventoryAllSlots(null, destination, itemStack, null));
 		}
-
 		return remain;
 	}
 }

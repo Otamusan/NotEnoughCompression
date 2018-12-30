@@ -14,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -60,6 +61,17 @@ public class ItemCompressed extends ItemBlock {
 		return I18n.format(NotEnoughCompression.MOD_ID + ".hasnotitem");
 	}
 
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack compressed = player.getHeldItem(hand);
+		if (!compressed.isEmpty() && !(ItemCompressed.getOriginal(compressed).getItem() instanceof ItemBlock)) {
+			UsingCompressed using = new UsingCompressed(compressed);
+			return using.useStart(world, player, hand);
+		}
+
+		return new ActionResult<ItemStack>(EnumActionResult.FAIL, compressed);
+	}
+
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack compressed = player.getHeldItem(hand);
@@ -75,6 +87,9 @@ public class ItemCompressed extends ItemBlock {
 				if (tileCompressed != null)
 					tileCompressed.setBlockState(state);
 				return EnumActionResult.SUCCESS;
+			} else {
+				UsingCompressed using = new UsingCompressed(compressed);
+				return using.useOnBlockStart(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 			}
 		}
 		return EnumActionResult.FAIL;
