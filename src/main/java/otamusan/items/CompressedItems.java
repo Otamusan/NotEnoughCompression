@@ -58,7 +58,7 @@ public class CompressedItems {
 
 			ItemStack bitem = item.copy();
 			bitem.setCount(item.getMaxStackSize());
-			items.add(item);
+			items.add(bitem);
 		}
 		ItemStack bitem = CompressedItems.createCompressedItem(item.copy(), time);
 		if (n == 0)

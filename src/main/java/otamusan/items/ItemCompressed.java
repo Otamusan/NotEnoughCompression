@@ -65,10 +65,9 @@ public class ItemCompressed extends ItemBlock {
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack compressed = player.getHeldItem(hand);
 		if (!compressed.isEmpty() && !(ItemCompressed.getOriginal(compressed).getItem() instanceof ItemBlock)) {
-			UsingCompressed using = new UsingCompressed(compressed);
-			return using.useStart(world, player, hand);
+			UsingCompressed using = new UsingCompressed();
+			// using.useStart(compressed, world, player, hand);
 		}
-
 		return new ActionResult<ItemStack>(EnumActionResult.FAIL, compressed);
 	}
 
@@ -79,20 +78,30 @@ public class ItemCompressed extends ItemBlock {
 			ItemStack itemStack = ItemCompressed.getOriginal(compressed);
 			if (itemStack.getItem() instanceof ItemBlock) {
 				int meta = itemStack.getMetadata();
-				IBlockState state = ((ItemBlock) itemStack.getItem()).getBlock().getStateForPlacement(worldIn, pos,
+				BlockPos newpos = getPlacedPos(worldIn, pos, facing);
+
+				IBlockState state = ((ItemBlock) itemStack.getItem()).getBlock().getStateForPlacement(worldIn, newpos,
 						facing, hitX, hitY, hitZ, meta, player, hand);
 				super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-				BlockPos newpos = pos.offset(facing);
+
 				TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(newpos);
 				if (tileCompressed != null)
 					tileCompressed.setBlockState(state);
 				return EnumActionResult.SUCCESS;
 			} else {
-				UsingCompressed using = new UsingCompressed(compressed);
-				return using.useOnBlockStart(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+				UsingCompressed using = new UsingCompressed();
+				// using.useOnBlockStart(compressed, player, worldIn, pos, hand,
+				// facing, hitX, hitY, hitZ);
 			}
 		}
 		return EnumActionResult.FAIL;
+	}
+
+	public BlockPos getPlacedPos(World worldIn, BlockPos pos, EnumFacing facing) {
+		if (!worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos)) {
+			return pos.offset(facing);
+		}
+		return pos;
 	}
 
 	@Override

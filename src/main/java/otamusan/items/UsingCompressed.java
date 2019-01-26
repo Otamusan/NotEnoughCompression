@@ -16,107 +16,104 @@ import net.minecraft.world.World;
 import otamusan.util.InventoryUtil;
 
 public class UsingCompressed {
-	public ItemStack compressed;
 
-	public ArrayList<CompressedItems> remains;
-
-	public UsingCompressed(ItemStack compressed) {
-		this.compressed = compressed;
-		this.remains = new ArrayList<CompressedItems>();
-	}
-
-	public EnumActionResult useOnBlockStart(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
-		InventoryPlayer inv = player.inventory;
-		EnumActionResult actionResult = useOnBlock(ItemCompressed.getTime(compressed), player, worldIn, pos, hand,
-				facing, hitX, hitY, hitZ);
-		compressed.shrink(1);
-		inv.setInventorySlotContents(inv.currentItem, compressed);
+	public EnumActionResult useOnBlockStart(ItemStack compressed, EntityPlayer player, World worldIn, BlockPos pos,
+			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		ArrayList<CompressedItems> remains = new ArrayList<>();
+		ArrayList<EnumActionResult> results = new ArrayList<>();
+		useOnBlock(results, compressed, remains, ItemCompressed.getTime(compressed), player, worldIn, pos, hand, facing,
+				hitX, hitY, hitZ);
 		if (!worldIn.isRemote) {
-			for (CompressedItems compressedItems : remains) {
-				System.out.println(compressedItems.getCompressed());
-				List<ItemStack> itemStacks = InventoryUtil.putStacksInSlots(inv, compressedItems.getCompressed());
-				for (ItemStack itemStack : itemStacks) {
-					Block.spawnAsEntity(worldIn, pos.add(0.5, 0.5, 0.5), itemStack);
-				}
-			}
+			compressed.shrink(1);
+			putRemains(player, remains);
 		}
 
-		return actionResult;
+		for (EnumActionResult enumActionResult : results) {
+			if (enumActionResult == EnumActionResult.SUCCESS)
+				return EnumActionResult.SUCCESS;
+		}
+		return EnumActionResult.FAIL;
 	}
 
-	public EnumActionResult useOnBlock(int time, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public void useOnBlock(ArrayList<EnumActionResult> results, ItemStack compressed,
+			ArrayList<CompressedItems> remains, int time, EntityPlayer player, World worldIn, BlockPos pos,
+			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (time != 0) {
-			EnumActionResult actionResult = EnumActionResult.PASS;
 			for (int i = 0; i < 8; i++) {
-				EnumActionResult per = useOnBlock(time - 1, player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-				if (per == EnumActionResult.SUCCESS) {
-					actionResult = EnumActionResult.SUCCESS;
-				}
+				useOnBlock(results, compressed, remains, time - 1, player, worldIn, pos, hand, facing, hitX, hitY,
+						hitZ);
 			}
-			return actionResult;
 		} else {
-			InventoryPlayer inv = player.inventory;
 			ItemStack ori = ItemCompressed.getOriginal(compressed).copy();
 			ori.setCount(1);
-			setItemToPlayerInv(player, ori, hand);
+			setItemToActive(player, ori, hand);
 			EnumActionResult actionResult = ori.getItem().onItemUse(player, worldIn, pos, hand, facing, hitX, hitY,
 					hitZ);
-			addRemain(inv.getStackInSlot(inv.currentItem));
-			setItemToPlayerInv(player, ItemStack.EMPTY, hand);
-			return actionResult;
+			// System.out.println(getItemToActive(player, hand));
+			addRemain(getItemToActive(player, hand), remains);
+			setItemToActive(player, ItemStack.EMPTY, hand);
+			results.add(actionResult);
 		}
 	}
 
-	public ActionResult<ItemStack> useStart(World world, EntityPlayer player, EnumHand hand) {
-		InventoryPlayer inv = player.inventory;
-		ActionResult<ItemStack> actionResult = use(ItemCompressed.getTime(compressed), world, player, hand);
-		compressed.shrink(1);
-		inv.setInventorySlotContents(inv.currentItem, compressed);
+	public ActionResult<ItemStack> useStart(ItemStack compressed, World world, EntityPlayer player, EnumHand hand) {
+		ArrayList<CompressedItems> remains = new ArrayList<>();
+		ArrayList<ActionResult<ItemStack>> results = new ArrayList<>();
+		use(results, compressed, remains, ItemCompressed.getTime(compressed), world, player, hand);
+
 		if (!world.isRemote) {
-
-			for (CompressedItems compressedItems : remains) {
-				List<ItemStack> itemStacks = InventoryUtil.putStacksInSlots(inv, compressedItems.getCompressed());
-				for (ItemStack itemStack : itemStacks) {
-					Block.spawnAsEntity(world, player.getPosition().add(0.5, 0.5, 0.5), itemStack);
-				}
-			}
+			compressed.shrink(1);
+			putRemains(player, remains);
 		}
-		return actionResult;
+
+		for (ActionResult<ItemStack> actionResult : results) {
+			if (actionResult.getType() == EnumActionResult.SUCCESS)
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, compressed);
+		}
+
+		return new ActionResult<ItemStack>(EnumActionResult.FAIL, compressed);
 	}
 
-	public ActionResult<ItemStack> use(int time, World worldIn, EntityPlayer player, EnumHand hand) {
+	public void use(ArrayList<ActionResult<ItemStack>> results, ItemStack compressed,
+			ArrayList<CompressedItems> remains, int time, World worldIn, EntityPlayer player, EnumHand hand) {
 		if (time != 0) {
-			ActionResult<ItemStack> actionResult = new ActionResult<ItemStack>(EnumActionResult.PASS,
-					compressed.copy());
 			for (int i = 0; i < 8; i++) {
-				ActionResult<ItemStack> per = use(time - 1, worldIn, player, hand);
-				if (per.getType() == EnumActionResult.SUCCESS) {
-					actionResult = new ActionResult<ItemStack>(EnumActionResult.SUCCESS, compressed.copy());
-				}
+				use(results, compressed, remains, time - 1, worldIn, player, hand);
 			}
-			return actionResult;
 		} else {
-			InventoryPlayer inv = player.inventory;
 			ItemStack ori = ItemCompressed.getOriginal(compressed).copy();
 			ori.setCount(1);
-			setItemToPlayerInv(player, ori, hand);
+			setItemToActive(player, ori, hand);
 			ActionResult<ItemStack> actionResult = ori.getItem().onItemRightClick(worldIn, player, hand);
-			addRemain(inv.getStackInSlot(inv.currentItem));
-			setItemToPlayerInv(player, ItemStack.EMPTY, hand);
-			return actionResult;
+			addRemain(getItemToActive(player, hand), remains);
+			// System.out.println(getItemToActive(player, hand));
+			setItemToActive(player, ItemStack.EMPTY, hand);
+			results.add(actionResult);
 		}
 	}
 
-	public void setItemToPlayerInv(EntityPlayer player, ItemStack stack, EnumHand hand) {
+	public void putRemains(EntityPlayer player, ArrayList<CompressedItems> remains) {
+		for (CompressedItems compressedItems : remains) {
+			List<ItemStack> itemStacks = InventoryUtil.putStacksInSlots(player.inventory,
+					compressedItems.getCompressed());
+			for (ItemStack itemStack : itemStacks) {
+				Block.spawnAsEntity(player.world, player.getPosition().add(0.5, 0.5, 0.5), itemStack);
+			}
+		}
+	}
+
+	public void setItemToActive(EntityPlayer player, ItemStack stack, EnumHand hand) {
+		if (player.getEntityWorld().isRemote)
+			return;
 		InventoryPlayer inv = player.inventory;
-		if (hand == EnumHand.MAIN_HAND) {
-			inv.setInventorySlotContents(inv.currentItem, stack);
-		}
+		inv.setInventorySlotContents(inv.currentItem, stack);
 	}
 
-	public void addRemain(ItemStack stack) {
+	public ItemStack getItemToActive(EntityPlayer player, EnumHand hand) {
+		return player.getHeldItem(hand);
+	}
+
+	public void addRemain(ItemStack stack, ArrayList<CompressedItems> remains) {
 		for (CompressedItems compressedItems : remains) {
 			if (compressedItems.addCompressed(stack))
 				return;

@@ -45,7 +45,7 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 	public static final UnlistedPropertyCompressedBlockState COMPRESSEDBLOCK_STATE = new UnlistedPropertyCompressedBlockState();
 
 	public BlockCompressed() {
-		super(Material.CIRCUITS);
+		super(Material.BARRIER);
 		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		hasTileEntity = true;
 	}
