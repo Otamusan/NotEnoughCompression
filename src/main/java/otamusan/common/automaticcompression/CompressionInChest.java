@@ -24,7 +24,7 @@ public class CompressionInChest {
 	public void onUpdate(WorldTickEvent event) {
 		Map<BlockPos, Block> candidates = Maps.newHashMap();
 
-		for (Entity entity : event.world.getLoadedEntityList()) {
+		for (Entity entity : event.world.loadedEntityList) {
 			if (entity instanceof EntityItemFrame) {
 				EntityItemFrame frame = (EntityItemFrame) entity;
 				Item displayedItem = frame.getDisplayedItem().getItem();

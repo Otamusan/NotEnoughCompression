@@ -21,6 +21,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import otamusan.NotEnoughCompression;
 import otamusan.common.CommonProxy;
 import otamusan.tileentity.TileCompressed;
@@ -51,6 +53,7 @@ public class ItemCompressed extends ItemBlock {
 		return getOriginal(stack).getItem().getRGBDurabilityForDisplay(getOriginal(stack));
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public String getItemStackDisplayName(ItemStack compressed) {
 		ItemStack itemStack = getOriginal(compressed);
@@ -104,6 +107,7 @@ public class ItemCompressed extends ItemBlock {
 		return pos;
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack compressed, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (!compressed.hasTagCompound())
