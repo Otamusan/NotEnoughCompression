@@ -178,6 +178,9 @@ public class ItemCompressed extends ItemBlock {
 
 	public static ItemStack createCompressedItem(ItemStack uncompressed, int time) {
 		ItemStack compressed;
+		if (time <= 0)
+			return uncompressed.copy();
+
 		if (uncompressed.getItem() != CommonProxy.itemCompressed) {
 			compressed = new ItemStack(CommonProxy.itemCompressed);
 			setOriginal(compressed, uncompressed);
