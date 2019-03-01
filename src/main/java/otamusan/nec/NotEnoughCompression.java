@@ -18,7 +18,7 @@ public class NotEnoughCompression {
 	public static final String MOD_NAME = "NotEnoughCompression";
 	public static final String MOD_VERSION = "0.0.1";
 	public static final String MOD_ACCEPTED_MC_VERSIONS = "[1.12.2]";
-	@SidedProxy(serverSide = "otamusan.common.CommonProxy", clientSide = "otamusan.client.ClientProxy")
+	@SidedProxy(serverSide = "otamusan.nec.common.CommonProxy", clientSide = "otamusan.nec.client.ClientProxy")
 	public static CommonProxy proxy;
 
 	@EventHandler
