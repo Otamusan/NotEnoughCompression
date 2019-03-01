@@ -1,5 +1,9 @@
 package otamusan.nec.recipes;
 
+import java.util.Collection;
+
+import javax.annotation.Nullable;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
@@ -10,6 +14,7 @@ import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import otamusan.nec.common.CommonProxy;
@@ -17,7 +22,22 @@ import otamusan.nec.items.ItemCompressed;
 
 public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
-	private World world;
+	protected World world;
+
+	public Collection<IRecipe> getExistingRecipes() {
+		return ForgeRegistries.RECIPES.getValues();
+	}
+
+	@Nullable
+	public static IRecipe findMatchingRecipe(Collection<IRecipe> recipes, InventoryCrafting craftMatrix,
+			World worldIn) {
+		for (IRecipe irecipe : recipes) {
+			if (irecipe.matches(craftMatrix, worldIn)) {
+				return irecipe;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting inv, World worldIn) {
@@ -26,7 +46,7 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 		if (compressedTime(inv) == 0)
 			return false;
 
-		IRecipe recipe = CraftingManager.findMatchingRecipe(getUncompresserdInv(inv), worldIn);
+		IRecipe recipe = findMatchingRecipe(getExistingRecipes(), getUncompresserdInv(inv), worldIn);
 
 		return recipe instanceof ShapedRecipes || recipe instanceof ShapelessRecipes
 				|| recipe instanceof ShapedOreRecipe || recipe instanceof ShapelessRecipes;
@@ -35,7 +55,7 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 	@Override
 	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
 		InventoryCrafting ucInv = getUncompresserdInv(inv);
-		IRecipe recipe = CraftingManager.findMatchingRecipe(ucInv, world);
+		IRecipe recipe = findMatchingRecipe(getExistingRecipes(), ucInv, world);
 
 		NonNullList<ItemStack> reInv = recipe.getRemainingItems(ucInv);
 
@@ -49,19 +69,19 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 		return output;
 	}
 
-	private int compressedTime(InventoryCrafting inv) {
+	protected int compressedTime(InventoryCrafting inv) {
 		int time = 0;
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack current = inv.getStackInSlot(i);
 			if (current.isEmpty())
 				continue;
 
-			if (current.getItem()!=CommonProxy.itemCompressed)
+			if (current.getItem() != CommonProxy.itemCompressed)
 				return 0;
 
-			if (time==0)
+			if (time == 0)
 				time = ItemCompressed.getTime(current);
-			else if (time!=ItemCompressed.getTime(current))
+			else if (time != ItemCompressed.getTime(current))
 				return 0;
 		}
 		return time;
@@ -81,7 +101,7 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 		return newinv;
 	}
 
-	private InventoryCrafting getUncompresserdInv(InventoryCrafting inv) {
+	protected InventoryCrafting getUncompresserdInv(InventoryCrafting inv) {
 		InventoryCrafting after = ICCopy(inv);
 		InventoryCrafting newinv = ICCopy(inv);
 		for (int i = 0; i < newinv.getSizeInventory(); i++) {
