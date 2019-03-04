@@ -8,7 +8,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
@@ -121,7 +120,7 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 
 	@Override
 	public ItemStack getCraftingResult(InventoryCrafting inv) {
-		IRecipe recipe = CraftingManager.findMatchingRecipe(getUncompresserdInv(inv), world);
+		IRecipe recipe = findMatchingRecipe(getExistingRecipes(), getUncompresserdInv(inv), world);
 		ItemStack created = ItemCompressed.createCompressedItem(recipe.getCraftingResult(getUncompresserdInv(inv)),
 				compressedTime(inv));
 		created.setCount(recipe.getCraftingResult(getUncompresserdInv(inv)).getCount());
