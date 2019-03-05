@@ -23,8 +23,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import otamusan.nec.NotEnoughCompression;
 import otamusan.nec.common.CommonProxy;
+import otamusan.nec.common.Lib;
 import otamusan.nec.tileentity.TileCompressed;
 
 public class ItemCompressed extends ItemBlock {
@@ -59,9 +59,9 @@ public class ItemCompressed extends ItemBlock {
 		ItemStack itemStack = getOriginal(compressed);
 		if (!itemStack.isEmpty()) {
 			int time = getTime(compressed);
-			return I18n.format(NotEnoughCompression.MOD_ID + ".compressed", time, itemStack.getDisplayName());
+			return I18n.format(Lib.MOD_ID + ".compressed", time, itemStack.getDisplayName());
 		}
-		return I18n.format(NotEnoughCompression.MOD_ID + ".hasnotitem");
+		return I18n.format(Lib.MOD_ID + ".hasnotitem");
 	}
 
 	@Override
@@ -116,8 +116,8 @@ public class ItemCompressed extends ItemBlock {
 		if (!itemStack.isEmpty()) {
 			int time = getTime(compressed);
 			// int time = 2147483647;
-			tooltip.add(I18n.format(NotEnoughCompression.MOD_ID + ".compresseditem", itemStack.getDisplayName()));
-			tooltip.add(I18n.format(NotEnoughCompression.MOD_ID + ".total", getCompressedAmount(time)));
+			tooltip.add(I18n.format(Lib.MOD_ID + ".compresseditem", itemStack.getDisplayName()));
+			tooltip.add(I18n.format(Lib.MOD_ID + ".total", getCompressedAmount(time)));
 			ForgeEventFactory.onItemTooltip(itemStack, Minecraft.getMinecraft().player, tooltip, flagIn);
 		}
 
@@ -161,13 +161,13 @@ public class ItemCompressed extends ItemBlock {
 
 		int pow_1000 = (time10_int - power_a) / 3;
 		String str_1000;
-		String key = NotEnoughCompression.MOD_ID + ".unit." + pow_1000;
+		String key = Lib.MOD_ID + ".unit." + pow_1000;
 		if (time10_int >= 6 && (!(I18n.hasKey(key)) || GuiScreen.isShiftKeyDown()))
-			str_1000 = I18n.format(NotEnoughCompression.MOD_ID + ".unit.huge", pow_1000);
+			str_1000 = I18n.format(Lib.MOD_ID + ".unit.huge", pow_1000);
 		else
 			str_1000 = I18n.format(key, pow_1000);
 
-		String str_num = I18n.format(NotEnoughCompression.MOD_ID + ".unit", str_value, str_1000);
+		String str_num = I18n.format(Lib.MOD_ID + ".unit", str_value, str_1000);
 
 		return str_num;
 	}
@@ -228,7 +228,7 @@ public class ItemCompressed extends ItemBlock {
 		NBTTagCompound nbt = item.getTagCompound();
 		if (nbt == null)
 			return ItemStack.EMPTY;
-		return new ItemStack(nbt.getCompoundTag(NotEnoughCompression.MOD_ID + "_itemstack"));
+		return new ItemStack(nbt.getCompoundTag(Lib.MOD_ID + "_itemstack"));
 	}
 
 	public static int getTime(final @Nonnull ItemStack item) {
@@ -237,7 +237,7 @@ public class ItemCompressed extends ItemBlock {
 		NBTTagCompound nbt = item.getTagCompound();
 		if (nbt == null)
 			return 0;
-		return nbt.getInteger(NotEnoughCompression.MOD_ID + "_time");
+		return nbt.getInteger(Lib.MOD_ID + "_time");
 	}
 
 	private static void setOriginal(final @Nonnull ItemStack item, final @Nonnull ItemStack itemIn) {
@@ -250,7 +250,7 @@ public class ItemCompressed extends ItemBlock {
 		NBTTagCompound nbtItemIn = new NBTTagCompound();
 		tmpItemIn.writeToNBT(nbtItemIn);
 
-		nbt.setTag(NotEnoughCompression.MOD_ID + "_itemstack", nbtItemIn);
+		nbt.setTag(Lib.MOD_ID + "_itemstack", nbtItemIn);
 		item.setTagCompound(nbt);
 	}
 
@@ -258,7 +258,7 @@ public class ItemCompressed extends ItemBlock {
 		NBTTagCompound nbt = item.getTagCompound();
 		if (nbt == null)
 			nbt = new NBTTagCompound();
-		nbt.setInteger(NotEnoughCompression.MOD_ID + "_time", time);
+		nbt.setInteger(Lib.MOD_ID + "_time", time);
 		item.setTagCompound(nbt);
 	}
 

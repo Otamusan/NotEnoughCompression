@@ -10,14 +10,12 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import otamusan.nec.common.CommonProxy;
+import otamusan.nec.common.Lib;
 
-@Mod(modid = NotEnoughCompression.MOD_ID, name = NotEnoughCompression.MOD_NAME, version = NotEnoughCompression.MOD_VERSION, acceptedMinecraftVersions = NotEnoughCompression.MOD_ACCEPTED_MC_VERSIONS, useMetadata = true)
+@Mod(modid = Lib.MOD_ID, name = Lib.MOD_NAME, version = Lib.MOD_VERSION, acceptedMinecraftVersions = Lib.MOD_ACCEPTED_MC_VERSIONS, useMetadata = true)
 
 public class NotEnoughCompression {
-	public static final String MOD_ID = "notenoughcompression";
-	public static final String MOD_NAME = "NotEnoughCompression";
-	public static final String MOD_VERSION = "0.0.1";
-	public static final String MOD_ACCEPTED_MC_VERSIONS = "[1.12.2]";
+
 	@SidedProxy(serverSide = "otamusan.nec.common.CommonProxy", clientSide = "otamusan.nec.client.ClientProxy")
 	public static CommonProxy proxy;
 

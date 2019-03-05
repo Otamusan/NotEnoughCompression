@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import otamusan.nec.NotEnoughCompression;
+import otamusan.nec.common.Lib;
 
 public class TileCompressed extends TileEntity {
 
@@ -45,23 +45,23 @@ public class TileCompressed extends TileEntity {
 			NBTTagCompound itemnbt = new NBTTagCompound();
 			compressedblock.writeToNBT(itemnbt);
 
-			nbt.setTag(NotEnoughCompression.MOD_ID + "_blockcompressed", itemnbt);
+			nbt.setTag(Lib.MOD_ID + "_blockcompressed", itemnbt);
 		}
 
 		if (state != null) {
 			int meta = Block.getStateId(state);
-			nbt.setInteger(NotEnoughCompression.MOD_ID + "_originalid", meta);
+			nbt.setInteger(Lib.MOD_ID + "_originalid", meta);
 		}
 		return nbt;
 	}
 
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		if (nbt.hasKey(NotEnoughCompression.MOD_ID + "_blockcompressed")) {
-			this.compressedblock = new ItemStack(nbt.getCompoundTag(NotEnoughCompression.MOD_ID + "_blockcompressed"));
+		if (nbt.hasKey(Lib.MOD_ID + "_blockcompressed")) {
+			this.compressedblock = new ItemStack(nbt.getCompoundTag(Lib.MOD_ID + "_blockcompressed"));
 		}
-		if (nbt.hasKey(NotEnoughCompression.MOD_ID + "_originalid")) {
-			this.state = Block.getStateById(nbt.getInteger(NotEnoughCompression.MOD_ID + "_originalid"));
+		if (nbt.hasKey(Lib.MOD_ID + "_originalid")) {
+			this.state = Block.getStateById(nbt.getInteger(Lib.MOD_ID + "_originalid"));
 		}
 	}
 

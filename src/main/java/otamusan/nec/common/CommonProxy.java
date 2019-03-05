@@ -7,7 +7,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import otamusan.nec.NotEnoughCompression;
 import otamusan.nec.blocks.BlockCompressed;
 import otamusan.nec.common.automaticcompression.CompressionInChest;
 import otamusan.nec.items.ItemCompressed;
@@ -20,15 +19,15 @@ public class CommonProxy {
 
 	public void preInit() {
 		IRecipe compression = new Compression();
-		compression.setRegistryName(new ResourceLocation(NotEnoughCompression.MOD_ID, "compression"));
+		compression.setRegistryName(new ResourceLocation(Lib.MOD_ID, "compression"));
 		ForgeRegistries.RECIPES.register(compression);
 
 		IRecipe uncompression = new Uncompression();
-		uncompression.setRegistryName(new ResourceLocation(NotEnoughCompression.MOD_ID, "uncompression"));
+		uncompression.setRegistryName(new ResourceLocation(Lib.MOD_ID, "uncompression"));
 		ForgeRegistries.RECIPES.register(uncompression);
 
 		IRecipe compressedcrafting = new CompressedCrafting();
-		compressedcrafting.setRegistryName(new ResourceLocation(NotEnoughCompression.MOD_ID, "compressedcrafting"));
+		compressedcrafting.setRegistryName(new ResourceLocation(Lib.MOD_ID, "compressedcrafting"));
 		ForgeRegistries.RECIPES.register(compressedcrafting);
 
 		blockCompressed = new BlockCompressed();
@@ -56,8 +55,7 @@ public class CommonProxy {
 	}
 
 	public void registerTileEntity() {
-		GameRegistry.registerTileEntity(TileCompressed.class,
-				new ResourceLocation(NotEnoughCompression.MOD_ID, "tilecompressed"));
+		GameRegistry.registerTileEntity(TileCompressed.class, new ResourceLocation(Lib.MOD_ID, "tilecompressed"));
 	}
 
 	public static BlockCompressed blockCompressed;

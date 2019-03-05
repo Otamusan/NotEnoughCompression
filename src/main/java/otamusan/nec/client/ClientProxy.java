@@ -18,13 +18,13 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.fml.client.FMLClientHandler;
-import otamusan.nec.NotEnoughCompression;
 import otamusan.nec.blocks.BlockCompressed;
 import otamusan.nec.client.blockcompressed.BlockCompressedBakedModel;
 import otamusan.nec.client.blockcompressed.TileSpecialEntityRendererCompressed;
 import otamusan.nec.client.blockcompressed.TileSpecialItemRendererCompressed;
 import otamusan.nec.client.itemcompressed.CompressedModel;
 import otamusan.nec.common.CommonProxy;
+import otamusan.nec.common.Lib;
 import otamusan.nec.items.ItemCompressed;
 import otamusan.nec.tileentity.TileCompressed;
 import otamusan.nec.util.ColorUtil;
@@ -32,9 +32,9 @@ import otamusan.nec.util.ColorUtil;
 public class ClientProxy extends CommonProxy {
 
 	public static final ModelResourceLocation MRItemCompressed = new ModelResourceLocation(
-			NotEnoughCompression.MOD_ID + ":compresseditem", "inventory");
+			Lib.MOD_ID + ":compresseditem", "inventory");
 	public static final ModelResourceLocation MRBlockCompressed = new ModelResourceLocation(
-			NotEnoughCompression.MOD_ID + ":compressedblock", "normal");
+			Lib.MOD_ID + ":compressedblock", "normal");
 
 	public static IBakedModel modelBased;
 	public static BlockCompressedBakedModel modelBlockCompressed;
