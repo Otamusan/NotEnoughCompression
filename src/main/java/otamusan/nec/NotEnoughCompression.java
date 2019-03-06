@@ -1,8 +1,5 @@
 package otamusan.nec;
 
-import java.io.File;
-
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -21,13 +18,6 @@ public class NotEnoughCompression {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-
-		Configuration cfg = new Configuration(new File("config/NotEnoughCompression.cfg"));
-		try {
-			cfg.load();
-		} finally {
-			cfg.save();
-		}
 		proxy.registerTileEntity();
 		proxy.registerEventHandlers();
 		proxy.preInit();
