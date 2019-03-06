@@ -2,6 +2,7 @@ package otamusan.nec.common.config;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
 import otamusan.nec.common.Lib;
@@ -25,9 +26,18 @@ public class NECConfig {
 	}
 
 	public static boolean isPlacable(Block block) {
-		for (String name : CONFIG_TYPES.compressedExclusion) {
+		for (String name : CONFIG_TYPES.placeExclusion) {
 			Block cfg = Block.getBlockFromName(name);
 			if (block == cfg)
+				return false;
+		}
+		return true;
+	}
+
+	public static boolean isPlacable(Item item) {
+		for (String name : CONFIG_TYPES.placeExclusion) {
+			Block cfg = Block.getBlockFromName(name);
+			if (((ItemBlock) item).getBlock() == cfg)
 				return false;
 		}
 		return true;

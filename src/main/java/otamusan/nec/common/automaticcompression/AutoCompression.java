@@ -6,6 +6,7 @@ import java.util.List;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import otamusan.nec.common.CommonProxy;
+import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.CompressedItems;
 import otamusan.nec.items.ItemCompressed;
 import otamusan.nec.util.InventoryUtil;
@@ -24,6 +25,8 @@ public class AutoCompression {
 
 			CompressedItems manager = new CompressedItems(source);
 			if (source.isEmpty())
+				continue;
+			if (!NECConfig.isCompressible(source.getItem()))
 				continue;
 			for (int j = i; j < inv.getSizeInventory(); j++) {
 				boolean containable = manager.addCompressed(inv.getStackInSlot(j));

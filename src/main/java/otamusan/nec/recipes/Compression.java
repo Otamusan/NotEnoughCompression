@@ -7,6 +7,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.ItemCompressed;
 
 public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
@@ -21,7 +22,7 @@ public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IR
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack current = inv.getStackInSlot(i);
 			if (isCatalyst(current)) {
-				if (current.getCount()==1)
+				if (current.getCount() == 1)
 					isCatalystPresented = true;
 			} else if (!current.isEmpty()) {
 				if (base.isEmpty()) {
@@ -35,10 +36,12 @@ public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IR
 
 		// 2147483647回以上の圧縮を制限
 		int time = ItemCompressed.getTime(base);
-		if (time>=Integer.MAX_VALUE-1)
+		if (time >= Integer.MAX_VALUE - 1)
+			return false;
+		if (!NECConfig.isCompressible(base.getItem()))
 			return false;
 
-		return !base.isEmpty()&&baseamount==8&&isCatalystPresented;
+		return !base.isEmpty() && baseamount == 8 && isCatalystPresented;
 	}
 
 	private boolean isCatalyst(ItemStack item) {

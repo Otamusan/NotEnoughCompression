@@ -25,6 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.Lib;
+import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.tileentity.TileCompressed;
 
 public class ItemCompressed extends ItemBlock {
@@ -79,7 +80,7 @@ public class ItemCompressed extends ItemBlock {
 		ItemStack compressed = player.getHeldItem(hand);
 		if (!compressed.isEmpty()) {
 			ItemStack itemStack = ItemCompressed.getOriginal(compressed);
-			if (itemStack.getItem() instanceof ItemBlock) {
+			if (itemStack.getItem() instanceof ItemBlock && NECConfig.isPlacable(itemStack.getItem())) {
 				int meta = itemStack.getMetadata();
 				BlockPos newpos = getPlacedPos(worldIn, pos, facing);
 
