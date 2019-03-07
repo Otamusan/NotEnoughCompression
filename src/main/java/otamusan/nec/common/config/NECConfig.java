@@ -14,6 +14,15 @@ public class NECConfig {
 		public static String[] compressedExclusion = {};
 		@Comment({ "Blocks written here can not be placed even if it is compressed" })
 		public static String[] placeExclusion = {};
+		@Comment({ "Number of compression recipes to be displayed on JEI" })
+		public static int JEIshowCompressionTime = 5;
+		@Comment({ "Whether to show the recipe of compression" })
+		public static boolean JEIshowCompression = true;
+		@Comment({ "Whether to show the recipe of uncompression" })
+		public static boolean JEIshowUncompression = true;
+		@Comment({ "Whether to show the recipe of compressed crating" })
+		public static boolean JEIshowCompressedCraft = true;
+
 	}
 
 	public static boolean isCompressible(Item item) {

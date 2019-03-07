@@ -16,17 +16,17 @@ import otamusan.nec.recipes.Uncompression;
 import otamusan.nec.tileentity.TileCompressed;
 
 public class CommonProxy {
+	public static IRecipe compression = new Compression();
+	public static IRecipe uncompression = new Uncompression();
+	public static IRecipe compressedcrafting = new CompressedCrafting();
 
 	public void preInit() {
-		IRecipe compression = new Compression();
 		compression.setRegistryName(new ResourceLocation(Lib.MOD_ID, "compression"));
 		ForgeRegistries.RECIPES.register(compression);
 
-		IRecipe uncompression = new Uncompression();
 		uncompression.setRegistryName(new ResourceLocation(Lib.MOD_ID, "uncompression"));
 		ForgeRegistries.RECIPES.register(uncompression);
 
-		IRecipe compressedcrafting = new CompressedCrafting();
 		compressedcrafting.setRegistryName(new ResourceLocation(Lib.MOD_ID, "compressedcrafting"));
 		ForgeRegistries.RECIPES.register(compressedcrafting);
 
