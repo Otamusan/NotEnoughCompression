@@ -13,22 +13,27 @@ import otamusan.nec.items.ItemCompressed;
 import otamusan.nec.recipes.CompressedCrafting;
 import otamusan.nec.recipes.Compression;
 import otamusan.nec.recipes.Uncompression;
+import otamusan.nec.recipes.UncompressionWithPiston;
 import otamusan.nec.tileentity.TileCompressed;
 
 public class CommonProxy {
 	public static IRecipe compression = new Compression();
 	public static IRecipe uncompression = new Uncompression();
+	public static IRecipe uncompressionwithpiston = new UncompressionWithPiston();
 	public static IRecipe compressedcrafting = new CompressedCrafting();
 
 	public void preInit() {
+		compressedcrafting.setRegistryName(new ResourceLocation(Lib.MOD_ID, "compressedcrafting"));
+		ForgeRegistries.RECIPES.register(compressedcrafting);
+
 		compression.setRegistryName(new ResourceLocation(Lib.MOD_ID, "compression"));
 		ForgeRegistries.RECIPES.register(compression);
 
 		uncompression.setRegistryName(new ResourceLocation(Lib.MOD_ID, "uncompression"));
 		ForgeRegistries.RECIPES.register(uncompression);
 
-		compressedcrafting.setRegistryName(new ResourceLocation(Lib.MOD_ID, "compressedcrafting"));
-		ForgeRegistries.RECIPES.register(compressedcrafting);
+		uncompressionwithpiston.setRegistryName(new ResourceLocation(Lib.MOD_ID, "uncompressionwithpiston"));
+		ForgeRegistries.RECIPES.register(uncompressionwithpiston);
 
 		blockCompressed = new BlockCompressed();
 		blockCompressed.setRegistryName("compressedblock");

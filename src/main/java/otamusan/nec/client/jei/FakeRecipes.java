@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
@@ -26,6 +27,9 @@ public class FakeRecipes {
 				if (new ItemStack(item).isEmpty() || !NECConfig.isCompressible(item)
 						|| item == CommonProxy.itemCompressed)
 					continue;
+				if (item instanceof ItemBlock && ((ItemBlock) item).getBlock() == Blocks.PISTON) {
+					continue;
+				}
 				NonNullList<Ingredient> nonNullList = NonNullList.create();
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i)));
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i)));
@@ -54,7 +58,26 @@ public class FakeRecipes {
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i + 1)));
 				ItemStack un = ItemCompressed.createCompressedItem(new ItemStack(item), i);
 				un.setCount(8);
-				recipes.add(new ShapedRecipes(Lib.MOD_ID + "_uncompression", 1, 1, nonNullList, un));
+				recipes.add(new ShapelessRecipes(Lib.MOD_ID + "_uncompression", un, nonNullList));
+			}
+		}
+		return recipes;
+	}
+
+	public static List<IRecipe> getUncompressionWithPistonFakeRecipe() {
+		List<IRecipe> recipes = new ArrayList<>();
+		for (int i = 0; i < NECConfig.CONFIG_TYPES.JEIshowCompressionTime; i++) {
+			for (Item item : ForgeRegistries.ITEMS.getValues()) {
+				if (new ItemStack(item).isEmpty() || !NECConfig.isCompressible(item)
+						|| item == CommonProxy.itemCompressed)
+					continue;
+				NonNullList<Ingredient> nonNullList = NonNullList.create();
+				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i + 1)));
+				nonNullList.add(Ingredient.fromItem(Item.getItemFromBlock(Blocks.STICKY_PISTON)));
+
+				ItemStack un = ItemCompressed.createCompressedItem(new ItemStack(item), i);
+				un.setCount(8);
+				recipes.add(new ShapelessRecipes(Lib.MOD_ID + "_uncompressionwithpiston", un, nonNullList));
 			}
 		}
 		return recipes;
