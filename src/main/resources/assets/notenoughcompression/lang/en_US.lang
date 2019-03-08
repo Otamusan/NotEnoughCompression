@@ -3,6 +3,28 @@ notenoughcompression.hasnotitem=CompressedItem
 notenoughcompression.compressed=%sx Compressed %s
 notenoughcompression.compresseditem=Compressed Items : %s
 notenoughcompression.total=Total : %s
+notenoughcompression.advancement.compression.root.title=Beginning of compression
+notenoughcompression.advancement.compression.compressedcobblestone1.title=Compressed Cobble Stone
+notenoughcompression.advancement.compression.compressedcobblestone2.title=Second time
+notenoughcompression.advancement.compression.compressedcobblestone3.title=Third time
+notenoughcompression.advancement.compression.compressedcobblestone4.title=Fourth time
+notenoughcompression.advancement.compression.compressedcobblestone5.title=Fifth time
+notenoughcompression.advancement.compression.compressedcobblestone6.title=Sixth time
+notenoughcompression.advancement.compression.compressedcobblestone7.title=Seventh time
+notenoughcompression.advancement.compression.compressedcobblestone8.title=Eighth time
+notenoughcompression.advancement.compression.compressedcobblestone9.title=Ninth time
+
+notenoughcompression.advancement.compression.root.description=Convenient, right?
+notenoughcompression.advancement.compression.compressedcobblestone1.description=Let's compress a cobble stone
+notenoughcompression.advancement.compression.compressedcobblestone2.description=Let's compress more
+notenoughcompression.advancement.compression.compressedcobblestone3.description=It has just begun more
+notenoughcompression.advancement.compression.compressedcobblestone4.description=Chest filled full of cobblestones
+notenoughcompression.advancement.compression.compressedcobblestone5.description=To exhibit this mod characteristics
+notenoughcompression.advancement.compression.compressedcobblestone6.description=Is it difficult by the manual operation soon?
+notenoughcompression.advancement.compression.compressedcobblestone7.description=Ordinary in an industrial environment
+notenoughcompression.advancement.compression.compressedcobblestone8.description=boring?
+notenoughcompression.advancement.compression.compressedcobblestone9.description=You can not make bedrock!
+
 
 # Large Number Names
 notenoughcompression.unit=%s %s

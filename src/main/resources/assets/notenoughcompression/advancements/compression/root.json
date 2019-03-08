@@ -1,0 +1,28 @@
+
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:piston"
+        },
+        "title": {
+            "translate":"notenoughcompression.advancement.compression.root.title"
+        },
+        "frame":"task",
+        "description": {
+            "translate":"notenoughcompression.advancement.compression.root.description"
+        },
+        "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "criteria": {
+        "compressedbase": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+            	"items":[{
+            		"item":"notenoughcompression:compresseditem"
+            	}]
+            }
+        }
+    }
+}

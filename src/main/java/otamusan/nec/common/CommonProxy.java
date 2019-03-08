@@ -1,12 +1,14 @@
 package otamusan.nec.common;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import otamusan.nec.blocks.BlockCompressed;
 import otamusan.nec.common.automaticcompression.CompressionInChest;
 import otamusan.nec.items.ItemCompressed;
@@ -21,6 +23,18 @@ public class CommonProxy {
 	public static IRecipe uncompression = new Uncompression();
 	public static IRecipe uncompressionwithpiston = new UncompressionWithPiston();
 	public static IRecipe compressedcrafting = new CompressedCrafting();
+
+	public static void addShapedRecipe(ItemStack item, Object... param) {
+
+		ForgeRegistries.RECIPES
+				.register(new ShapedOreRecipe(new ResourceLocation(Lib.MOD_ID, getName(item, param)), item, param)
+						.setRegistryName(Lib.MOD_ID, getName(item, param)));
+	}
+
+	public static String getName(Object ob, Object... param) {
+		String name = ob.toString() + param.toString();
+		return name;
+	}
 
 	public void preInit() {
 		compressedcrafting.setRegistryName(new ResourceLocation(Lib.MOD_ID, "compressedcrafting"));
