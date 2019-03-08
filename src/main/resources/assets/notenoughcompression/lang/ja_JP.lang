@@ -3,3 +3,25 @@ notenoughcompression.hasnotitem=圧縮アイテム
 notenoughcompression.compressed=%s倍圧縮 %s
 notenoughcompression.compresseditem=圧縮されたアイテム : %s
 notenoughcompression.total=合計 : %s
+
+notenoughcompression.advancement.compression.root.title=圧縮の始まり
+notenoughcompression.advancement.compression.compressedcobblestone1.title=圧縮丸石
+notenoughcompression.advancement.compression.compressedcobblestone2.title=二回目
+notenoughcompression.advancement.compression.compressedcobblestone3.title=三回目
+notenoughcompression.advancement.compression.compressedcobblestone4.title=四回目
+notenoughcompression.advancement.compression.compressedcobblestone5.title=五回目
+notenoughcompression.advancement.compression.compressedcobblestone6.title=六回目
+notenoughcompression.advancement.compression.compressedcobblestone7.title=七回目
+notenoughcompression.advancement.compression.compressedcobblestone8.title=八回目
+notenoughcompression.advancement.compression.compressedcobblestone9.title=九回目
+
+notenoughcompression.advancement.compression.root.description=便利でしょ？
+notenoughcompression.advancement.compression.compressedcobblestone1.description=丸石を圧縮しよう
+notenoughcompression.advancement.compression.compressedcobblestone2.description=もっともっと圧縮
+notenoughcompression.advancement.compression.compressedcobblestone3.description=まだまだ始まったばかり
+notenoughcompression.advancement.compression.compressedcobblestone4.description=丸石でいっぱいのチェスト
+notenoughcompression.advancement.compression.compressedcobblestone5.description=ここから本領発揮よ
+notenoughcompression.advancement.compression.compressedcobblestone6.description=そろそろ手動じゃ厳しい？
+notenoughcompression.advancement.compression.compressedcobblestone7.description=工業環境での日常
+notenoughcompression.advancement.compression.compressedcobblestone8.description=飽きてきた？
+notenoughcompression.advancement.compression.compressedcobblestone9.description=岩盤は作れないよ！

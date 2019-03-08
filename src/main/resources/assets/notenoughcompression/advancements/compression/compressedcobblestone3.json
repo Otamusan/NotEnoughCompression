@@ -1,0 +1,28 @@
+
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:cobblestone"
+        },
+        "title": {
+            "translate":"notenoughcompression.advancement.compression.compressedcobblestone3.title"
+        },
+        "description": {
+            "translate":"notenoughcompression.advancement.compression.compressedcobblestone3.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "criteria": {
+        "compressedcobblestone1": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+            	"items":[{
+            		"item":"notenoughcompression:compresseditem",
+            		"nbt":"{notenoughcompression_itemstack:{id:\"minecraft:cobblestone\",Count:1b,Damage:0s},notenoughcompression_time:3}"
+            	}]
+            }
+        }
+    },
+    "parent":"notenoughcompression:compression/compressedcobblestone2"
+}

@@ -32,6 +32,7 @@ public class ItemCompressed extends ItemBlock {
 
 	public ItemCompressed(Block block) {
 		super(block);
+		setHasSubtypes(true);
 	}
 
 	@Override
