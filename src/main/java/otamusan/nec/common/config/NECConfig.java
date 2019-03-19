@@ -16,6 +16,10 @@ public class NECConfig {
 		public static String[] placeExclusion = {};
 		@Comment({ "Number of compression recipes to be displayed on JEI" })
 		public static int JEIshowCompressionTime = 5;
+		@Comment({ "Restriction of time of compressed Item on using" })
+		public static int UsingCompressionTime = 3;
+		@Comment({ "Items written here can not use" })
+		public static String[] usingExclusion = {};
 		@Comment({ "Whether to show the recipe of compression" })
 		public static boolean JEIshowCompression = true;
 		@Comment({ "Whether to show the recipe of uncompression" })
@@ -26,6 +30,15 @@ public class NECConfig {
 	}
 
 	public static boolean isCompressible(Item item) {
+		for (String name : CONFIG_TYPES.compressedExclusion) {
+			Item cfgItem = Item.getByNameOrId(name);
+			if (item == cfgItem)
+				return false;
+		}
+		return true;
+	}
+
+	public static boolean isUsable(Item item) {
 		for (String name : CONFIG_TYPES.compressedExclusion) {
 			Item cfgItem = Item.getByNameOrId(name);
 			if (item == cfgItem)

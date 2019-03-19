@@ -70,8 +70,7 @@ public class ItemCompressed extends ItemBlock {
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack compressed = player.getHeldItem(hand);
 		if (!compressed.isEmpty() && !(ItemCompressed.getOriginal(compressed).getItem() instanceof ItemBlock)) {
-			UsingCompressed using = new UsingCompressed();
-			// using.useStart(compressed, world, player, hand);
+			UsingCompressed.onItemRightClick(world, player, hand);
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.FAIL, compressed);
 	}
@@ -94,9 +93,7 @@ public class ItemCompressed extends ItemBlock {
 					tileCompressed.setBlockState(state);
 				return EnumActionResult.SUCCESS;
 			} else {
-				UsingCompressed using = new UsingCompressed();
-				// using.useOnBlockStart(compressed, player, worldIn, pos, hand,
-				// facing, hitX, hitY, hitZ);
+				return UsingCompressed.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 			}
 		}
 		return EnumActionResult.FAIL;
