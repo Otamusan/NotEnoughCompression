@@ -11,7 +11,12 @@ public class CompressedItems {
 
 	public CompressedItems(ItemStack ori) {
 		this.counts = new int[50];
-		this.original = ori.copy();
+
+		if (ori.getItem() instanceof ItemCompressed) {
+			this.original = ItemCompressed.getOriginal(ori);
+		} else {
+			this.original = ori.copy();
+		}
 	}
 
 	public int getCount(int time) {
@@ -42,7 +47,7 @@ public class CompressedItems {
 			if (getCount(i) >= 8) {
 				int n = getCount(i);
 				setCount(i, OtamuModulo(n, 8));
-				setCount(i + 1, n / 8);
+				setCount(i + 1, Math.floorDiv(n, 8) + getCount(i + 1));
 			}
 		}
 	}
