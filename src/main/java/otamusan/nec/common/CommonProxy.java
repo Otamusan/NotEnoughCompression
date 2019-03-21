@@ -11,12 +11,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import otamusan.nec.blocks.BlockCompressed;
 import otamusan.nec.common.automaticcompression.CompressionInChest;
+import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.ItemCompressed;
 import otamusan.nec.recipes.CompressedCrafting;
 import otamusan.nec.recipes.Compression;
 import otamusan.nec.recipes.Uncompression;
 import otamusan.nec.recipes.UncompressionWithPiston;
 import otamusan.nec.tileentity.TileCompressed;
+import otamusan.nec.world.CompressedGenerator;
 
 public class CommonProxy {
 	public static IRecipe compression = new Compression();
@@ -59,6 +61,10 @@ public class CommonProxy {
 		itemCompressed.setUnlocalizedName("compresseditem");
 		itemCompressed.setCreativeTab(CreativeTabs.MISC);
 		ForgeRegistries.ITEMS.register(itemCompressed);
+		if (NECConfig.CONFIG_TYPES.isReplaceBlocks) {
+			GameRegistry.registerWorldGenerator(new CompressedGenerator(), 1000);
+		}
+
 	}
 
 	public void init() {
@@ -66,7 +72,6 @@ public class CommonProxy {
 	}
 
 	public void postInit() {
-
 	}
 
 	public World getClientWorld() {

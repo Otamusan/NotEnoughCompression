@@ -26,7 +26,10 @@ public class NECConfig {
 		public static boolean JEIshowUncompression = true;
 		@Comment({ "Whether to show the recipe of compressed crating" })
 		public static boolean JEIshowCompressedCraft = true;
-
+		@Comment({ "Whether to replace generated blocks in the world" })
+		public static boolean isReplaceBlocks = false;
+		@Comment({ "Number of replacements per chunk" })
+		public static int replacetime = 10;
 	}
 
 	public static boolean isCompressible(Item item) {
