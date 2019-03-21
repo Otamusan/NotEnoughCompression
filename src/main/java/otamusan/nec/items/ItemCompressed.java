@@ -10,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -97,6 +98,12 @@ public class ItemCompressed extends ItemBlock {
 			}
 		}
 		return EnumActionResult.FAIL;
+	}
+
+	@Override
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+		// UpdateCompressed.onUpdate(stack, worldIn, entityIn, itemSlot,
+		// isSelected);
 	}
 
 	public BlockPos getPlacedPos(World worldIn, BlockPos pos, EnumFacing facing) {

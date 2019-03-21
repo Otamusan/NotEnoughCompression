@@ -2,6 +2,7 @@ package otamusan.nec.items;
 
 import java.util.ArrayList;
 
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -45,11 +46,14 @@ public class UsingCompressed {
 			setHeldItem(player, hand, ItemStack.EMPTY);
 		}
 
-		compressed.shrink(1);
-		setHeldItem(player, hand, compressed);
-
-		for (ItemStack item : remains.getCompresseds()) {
-			player.inventory.addItemStackToInventory(item);
+		if (remains.getCompresseds().size() == 1
+				&& ItemStack.areItemStacksEqual(compressed, remains.getCompresseds().get(0))) {
+			setHeldItem(player, hand, compressed);
+		} else {
+			ItemStack held = compressed.copy();
+			held.shrink(1);
+			setHeldItem(player, hand, held);
+			putRemain(player, remains.getCompresseds());
 		}
 
 		for (ActionResult<ItemStack> actionResult : results) {
@@ -92,12 +96,16 @@ public class UsingCompressed {
 			setHeldItem(player, hand, ItemStack.EMPTY);
 		}
 
-		compressed.shrink(1);
-		setHeldItem(player, hand, compressed);
-
-		for (ItemStack item : remains.getCompresseds()) {
-			player.inventory.addItemStackToInventory(item);
+		if (remains.getCompresseds().size() == 1
+				&& ItemStack.areItemStacksEqual(compressed, remains.getCompresseds().get(0))) {
+			setHeldItem(player, hand, compressed);
+		} else {
+			compressed.shrink(1);
+			setHeldItem(player, hand, compressed);
+			putRemain(player, remains.getCompresseds());
 		}
+
+		System.out.println(player.getHeldItem(hand));
 
 		for (EnumActionResult enumActionResult : actionResults) {
 			if (enumActionResult == EnumActionResult.SUCCESS)
@@ -159,4 +167,16 @@ public class UsingCompressed {
 			setItemStackToSlot(player, EntityEquipmentSlot.OFFHAND, stack);
 		}
 	}
+
+	public static void putRemain(EntityPlayer player, ArrayList<ItemStack> list) {
+		for (ItemStack itemStack : list) {
+			if (!player.inventory.addItemStackToInventory(itemStack.copy())) {
+				if (!player.world.isRemote) {
+					EntityItem item = new EntityItem(player.world, player.posX, player.posY, player.posZ, itemStack);
+					player.world.spawnEntity(item);
+				}
+			}
+		}
+	}
+
 }
