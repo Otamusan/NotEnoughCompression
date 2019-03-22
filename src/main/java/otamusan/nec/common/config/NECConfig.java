@@ -30,6 +30,10 @@ public class NECConfig {
 		public static boolean isReplaceBlocks = false;
 		@Comment({ "Number of replacements per chunk" })
 		public static int replacetime = 10;
+		@Comment({ "Maximum compressed time of blocks replaced" })
+		public static int maxtimereplaced = 5;
+		@Comment({ "Deviation of the replaced compressed time" })
+		public static int deviationoftime = 4;
 	}
 
 	public static boolean isCompressible(Item item) {

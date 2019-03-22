@@ -31,7 +31,9 @@ public class CompressedGenerator implements IWorldGenerator {
 			int cz = (int) (16 * random.nextDouble()) + sz;
 			int cy = (int) (255 * random.nextDouble());
 
-			int time = 5 - (int) Math.floor(Math.log(random.nextInt(1024) + 1) / Math.log(4));
+			int time = NECConfig.CONFIG_TYPES.maxtimereplaced - (int) Math.floor(Math.log(random.nextInt(
+					(int) Math.pow(NECConfig.CONFIG_TYPES.deviationoftime, NECConfig.CONFIG_TYPES.maxtimereplaced)) + 1)
+					/ Math.log(NECConfig.CONFIG_TYPES.deviationoftime));
 
 			BlockPos pos = new BlockPos(cx, cy, cz);
 

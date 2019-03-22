@@ -44,6 +44,7 @@ public class UpdateCompressed {
 			}
 			setItem(player, itemSlot, ItemStack.EMPTY);
 		}
+
 		if (remains.getCompresseds().size() == 1
 				&& ItemStack.areItemStacksEqual(compressed, remains.getCompresseds().get(0))) {
 			setItem(player, itemSlot, compressed);
