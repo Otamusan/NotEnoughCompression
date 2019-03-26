@@ -137,4 +137,9 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 		return new ItemStack(CommonProxy.itemCompressed);
 	}
 
+	@Override
+	public boolean isDynamic() {
+		return true;
+	}
+
 }

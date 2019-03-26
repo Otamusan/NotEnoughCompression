@@ -11,9 +11,6 @@ import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.ItemCompressed;
 
 public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
-
-	final ItemStack catalyst = new ItemStack(Blocks.PISTON);
-
 	@Override
 	public boolean matches(InventoryCrafting inv, World world) {
 		ItemStack base = ItemStack.EMPTY;
@@ -45,9 +42,7 @@ public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IR
 	}
 
 	private boolean isCatalyst(ItemStack item) {
-		if (!item.isItemEqual(catalyst))
-			return false;
-		return true;
+		return NECConfig.isCompressionCatalyst(item.getItem());
 	}
 
 	private ItemStack getBase(InventoryCrafting inv) {
@@ -64,7 +59,7 @@ public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IR
 		NonNullList<ItemStack> list = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			if (isCatalyst(inv.getStackInSlot(i)))
-				list.set(i, new ItemStack(Blocks.PISTON));
+				list.set(i, inv.getStackInSlot(i).copy());
 		}
 		return list;
 	}
@@ -83,5 +78,10 @@ public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IR
 	@Override
 	public ItemStack getRecipeOutput() {
 		return new ItemStack(Blocks.PISTON);
+	}
+
+	@Override
+	public boolean isDynamic() {
+		return true;
 	}
 }

@@ -15,15 +15,15 @@ import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.ItemCompressed;
 import otamusan.nec.recipes.CompressedCrafting;
 import otamusan.nec.recipes.Compression;
-import otamusan.nec.recipes.Uncompression;
-import otamusan.nec.recipes.UncompressionWithPiston;
+import otamusan.nec.recipes.Decompression;
+import otamusan.nec.recipes.DecompressionWithPiston;
 import otamusan.nec.tileentity.TileCompressed;
 import otamusan.nec.world.CompressedGenerator;
 
 public class CommonProxy {
 	public static IRecipe compression = new Compression();
-	public static IRecipe uncompression = new Uncompression();
-	public static IRecipe uncompressionwithpiston = new UncompressionWithPiston();
+	public static IRecipe uncompression = new Decompression();
+	public static IRecipe uncompressionwithpiston = new DecompressionWithPiston();
 	public static IRecipe compressedcrafting = new CompressedCrafting();
 
 	public static void addShapedRecipe(ItemStack item, Object... param) {

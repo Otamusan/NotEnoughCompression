@@ -3,9 +3,7 @@ package otamusan.nec.client.jei;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
@@ -27,7 +25,7 @@ public class FakeRecipes {
 				if (new ItemStack(item).isEmpty() || !NECConfig.isCompressible(item)
 						|| item == CommonProxy.itemCompressed)
 					continue;
-				if (item instanceof ItemBlock && ((ItemBlock) item).getBlock() == Blocks.PISTON) {
+				if (NECConfig.isCompressionCatalyst(item)) {
 					continue;
 				}
 				NonNullList<Ingredient> nonNullList = NonNullList.create();
@@ -35,7 +33,7 @@ public class FakeRecipes {
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i)));
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i)));
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i)));
-				nonNullList.add(Ingredient.fromItem(Item.getItemFromBlock(Blocks.PISTON)));
+				nonNullList.add(Ingredient.fromItem(NECConfig.getCompressionCatalyst()));
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i)));
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i)));
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i)));
@@ -73,7 +71,7 @@ public class FakeRecipes {
 					continue;
 				NonNullList<Ingredient> nonNullList = NonNullList.create();
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i + 1)));
-				nonNullList.add(Ingredient.fromItem(Item.getItemFromBlock(Blocks.STICKY_PISTON)));
+				nonNullList.add(Ingredient.fromItem(NECConfig.getDecompressionCatalyst()));
 
 				ItemStack un = ItemCompressed.createCompressedItem(new ItemStack(item), i);
 				un.setCount(8);
@@ -88,6 +86,7 @@ public class FakeRecipes {
 		for (int i = 0; i < NECConfig.CONFIG_TYPES.JEIshowCompressionTime; i++) {
 			for (IRecipe recipe : ForgeRegistries.RECIPES.getValues()) {
 				ItemStack out = ItemCompressed.createCompressedItem(recipe.getRecipeOutput(), i);
+				out.setCount(recipe.getRecipeOutput().getCount());
 				NonNullList<Ingredient> in = NonNullList.create();
 				for (Ingredient ingredient : recipe.getIngredients()) {
 					if (ingredient.getMatchingStacks().length == 0) {
@@ -103,7 +102,6 @@ public class FakeRecipes {
 				} else if (recipe.getClass() == ShapelessRecipes.class) {
 					recipes.add(new ShapelessRecipes(Lib.MOD_ID + "_compressedcraft", out, in));
 				}
-
 			}
 		}
 		return recipes;

@@ -8,11 +8,11 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import otamusan.nec.common.CommonProxy;
 import otamusan.nec.items.ItemCompressed;
 
-public class Uncompression extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
+public class Decompression extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 	@Override
 	public boolean matches(InventoryCrafting inv, World world) {
 		ItemStack base = getBase(inv);
-		return getItemAmount(inv)==1&&!base.isEmpty();
+		return getItemAmount(inv) == 1 && !base.isEmpty();
 	}
 
 	private int getItemAmount(InventoryCrafting inv) {
@@ -28,7 +28,7 @@ public class Uncompression extends IForgeRegistryEntry.Impl<IRecipe> implements 
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack current = inv.getStackInSlot(i);
 			if (!current.isEmpty()) {
-				if (current.getItem()==CommonProxy.itemCompressed)
+				if (current.getItem() == CommonProxy.itemCompressed)
 					return current.copy();
 				else
 					return ItemStack.EMPTY;
@@ -50,5 +50,10 @@ public class Uncompression extends IForgeRegistryEntry.Impl<IRecipe> implements 
 	@Override
 	public ItemStack getCraftingResult(InventoryCrafting inv) {
 		return ItemCompressed.createUncompressedItem(getBase(inv));
+	}
+
+	@Override
+	public boolean isDynamic() {
+		return true;
 	}
 }
