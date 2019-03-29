@@ -25,7 +25,7 @@ public class UpdateCompressed {
 		if (!NECConfig.isUsable(original.getItem()))
 			return;
 
-		long n = (long) Math.pow(8, ItemCompressed.getTime(compressed));
+		long n = (long) Math.pow(8, ItemCompressed.getTime(compressed)) * compressed.getCount();
 
 		setItem(player, itemSlot, ItemStack.EMPTY);
 
@@ -39,6 +39,7 @@ public class UpdateCompressed {
 			use.getItem().onUpdate(use, worldIn, entityIn, itemSlot, isSelected);
 
 			ItemStack remain = getItem(player, itemSlot);
+
 			if (!remain.isEmpty()) {
 				remains.addItem(remain.copy());
 			}

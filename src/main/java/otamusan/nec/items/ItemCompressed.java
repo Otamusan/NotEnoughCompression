@@ -102,8 +102,7 @@ public class ItemCompressed extends ItemBlock {
 
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		// UpdateCompressed.onUpdate(stack, worldIn, entityIn, itemSlot,
-		// isSelected);
+		UpdateCompressed.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 	}
 
 	public BlockPos getPlacedPos(World worldIn, BlockPos pos, EnumFacing facing) {
