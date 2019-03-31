@@ -15,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -103,6 +104,24 @@ public class ItemCompressed extends ItemBlock {
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		UpdateCompressed.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+	}
+
+	public int getItemBurnTime(ItemStack itemStack) {
+		ItemStack original = ItemCompressed.getOriginal(itemStack);
+		int time = ItemCompressed.getTime(itemStack);
+		int burntime = ForgeEventFactory.getItemBurnTime(original);
+		if (burntime == -1) {
+			if (TileEntityFurnace.getItemBurnTime(original) == -1) {
+				return -1;
+			} else {
+				burntime = TileEntityFurnace.getItemBurnTime(original);
+			}
+		}
+		return (int) Math.pow(burntime, time);
+	}
+
+	public int getItemStackLimit(ItemStack stack) {
+		return ItemCompressed.getOriginal(stack).getItem().getItemStackLimit(stack);
 	}
 
 	public BlockPos getPlacedPos(World worldIn, BlockPos pos, EnumFacing facing) {

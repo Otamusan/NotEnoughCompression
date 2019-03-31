@@ -147,7 +147,6 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 			int time = ItemCompressed.getTime(tileCompressed.getItemCompressed());
 
 			NonNullList<ItemStack> itemlist = NonNullList.create();
-
 			iBlockState.getBlock().getDrops(itemlist, worldIn, pos, iBlockState, fortune);
 
 			for (ItemStack itemStack : itemlist) {
