@@ -63,12 +63,9 @@ public class UpdateCompressed {
 			marge(remainstack, InventoryUtil.getItemHandler(remains.getCompresseds()));
 		}
 
-		System.out.println(InventoryUtil.getItemList(remainstack));
-
 		if (InventoryUtil.getItemList(remainstack).size() == 1
 				&& ItemStack.areItemStacksEqual(compressed, remainstack.getStackInSlot(0))) {
 			setItem(player, itemSlot, compressed);
-			System.out.println(434);
 		} else {
 			UsingCompressed.putRemain(player, InventoryUtil.getItemList(remainstack));
 		}
@@ -87,5 +84,4 @@ public class UpdateCompressed {
 	public static void setItem(EntityPlayer player, int i, ItemStack itemStack) {
 		player.inventory.setInventorySlotContents(i, itemStack);
 	}
-
 }
