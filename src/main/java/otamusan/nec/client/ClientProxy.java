@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
@@ -25,7 +26,7 @@ import otamusan.nec.client.blockcompressed.TileSpecialItemRendererCompressed;
 import otamusan.nec.client.itemcompressed.CompressedModel;
 import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.Lib;
-import otamusan.nec.items.ItemCompressed;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.tileentity.TileCompressed;
 import otamusan.nec.util.ColorUtil;
 
@@ -44,7 +45,9 @@ public class ClientProxy extends CommonProxy {
 	public void preInit() {
 		super.preInit();
 
-		ModelLoader.setCustomModelResourceLocation(CommonProxy.itemCompressed, 0, MRItemCompressed);
+		for (Item item : ItemCompressed.getCompressedList()) {
+			ModelLoader.setCustomModelResourceLocation(item, 0, MRItemCompressed);
+		}
 	}
 
 	@Override
@@ -98,7 +101,11 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	public void postInit() {
-		CommonProxy.itemCompressed.setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
+
+		for (Item item : ItemCompressed.getCompressedList()) {
+			item.setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
+		}
+
 		TileSpecialEntityRendererCompressed.instance.setRendererDispatcher(TileEntityRendererDispatcher.instance);
 		TileEntityRendererDispatcher.instance.renderers.put(TileCompressed.class,
 				TileSpecialEntityRendererCompressed.instance);

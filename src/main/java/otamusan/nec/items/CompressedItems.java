@@ -3,6 +3,7 @@ package otamusan.nec.items;
 import java.util.ArrayList;
 
 import net.minecraft.item.ItemStack;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class CompressedItems {
 

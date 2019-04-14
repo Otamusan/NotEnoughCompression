@@ -6,7 +6,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import otamusan.nec.common.CommonProxy;
-import otamusan.nec.items.ItemCompressed;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class Decompression extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 	@Override
@@ -28,7 +28,7 @@ public class Decompression extends IForgeRegistryEntry.Impl<IRecipe> implements 
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack current = inv.getStackInSlot(i);
 			if (!current.isEmpty()) {
-				if (current.getItem() == CommonProxy.itemCompressed)
+				if (ItemCompressed.isCompressedItem(current.getItem()))
 					return current.copy();
 				else
 					return ItemStack.EMPTY;
@@ -44,7 +44,7 @@ public class Decompression extends IForgeRegistryEntry.Impl<IRecipe> implements 
 
 	@Override
 	public ItemStack getRecipeOutput() {
-		return new ItemStack(CommonProxy.itemCompressed);
+		return new ItemStack(CommonProxy.ITEMBASE);
 	}
 
 	@Override

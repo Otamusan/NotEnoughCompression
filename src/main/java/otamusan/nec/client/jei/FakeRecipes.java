@@ -11,10 +11,9 @@ import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.Lib;
 import otamusan.nec.common.config.NECConfig;
-import otamusan.nec.items.ItemCompressed;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class FakeRecipes {
 
@@ -23,7 +22,7 @@ public class FakeRecipes {
 		for (int i = 0; i < NECConfig.CONFIG_TYPES.JEIshowCompressionTime; i++) {
 			for (Item item : ForgeRegistries.ITEMS.getValues()) {
 				if (new ItemStack(item).isEmpty() || !NECConfig.isCompressible(item)
-						|| item == CommonProxy.itemCompressed)
+						|| ItemCompressed.isCompressedItem(item))
 					continue;
 				if (NECConfig.isCompressionCatalyst(item)) {
 					continue;
@@ -50,7 +49,7 @@ public class FakeRecipes {
 		for (int i = 0; i < NECConfig.CONFIG_TYPES.JEIshowCompressionTime; i++) {
 			for (Item item : ForgeRegistries.ITEMS.getValues()) {
 				if (new ItemStack(item).isEmpty() || !NECConfig.isCompressible(item)
-						|| item == CommonProxy.itemCompressed)
+						|| ItemCompressed.isCompressedItem(item))
 					continue;
 				NonNullList<Ingredient> nonNullList = NonNullList.create();
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i + 1)));
@@ -67,7 +66,7 @@ public class FakeRecipes {
 		for (int i = 0; i < NECConfig.CONFIG_TYPES.JEIshowCompressionTime; i++) {
 			for (Item item : ForgeRegistries.ITEMS.getValues()) {
 				if (new ItemStack(item).isEmpty() || !NECConfig.isCompressible(item)
-						|| item == CommonProxy.itemCompressed)
+						|| ItemCompressed.isCompressedItem(item))
 					continue;
 				NonNullList<Ingredient> nonNullList = NonNullList.create();
 				nonNullList.add(Ingredient.fromStacks(ItemCompressed.createCompressedItem(new ItemStack(item), i + 1)));

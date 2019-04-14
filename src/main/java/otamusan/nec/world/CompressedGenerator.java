@@ -12,7 +12,7 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.config.NECConfig;
-import otamusan.nec.items.ItemCompressed;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.tileentity.TileCompressed;
 
 public class CompressedGenerator implements IWorldGenerator {

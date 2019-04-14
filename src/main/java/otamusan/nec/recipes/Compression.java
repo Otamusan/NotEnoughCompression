@@ -8,7 +8,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import otamusan.nec.common.config.NECConfig;
-import otamusan.nec.items.ItemCompressed;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class Compression extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 	@Override

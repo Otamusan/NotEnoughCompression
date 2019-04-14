@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import otamusan.nec.common.config.NECConfig;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.items.UsingCompressed.Remains;
 import otamusan.nec.util.InventoryUtil;
 

@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.config.NECConfig;
-import otamusan.nec.items.ItemCompressed;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class DecompressionWithPiston extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
@@ -25,7 +25,7 @@ public class DecompressionWithPiston extends IForgeRegistryEntry.Impl<IRecipe> i
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack current = inv.getStackInSlot(i);
 			if (!current.isEmpty()) {
-				if (current.getItem() == CommonProxy.itemCompressed)
+				if (ItemCompressed.isCompressedItem(current.getItem()))
 					return current.copy();
 			}
 		}
@@ -72,7 +72,7 @@ public class DecompressionWithPiston extends IForgeRegistryEntry.Impl<IRecipe> i
 
 	@Override
 	public ItemStack getRecipeOutput() {
-		return new ItemStack(CommonProxy.itemCompressed);
+		return new ItemStack(CommonProxy.ITEMBASE);
 	}
 
 	@Override

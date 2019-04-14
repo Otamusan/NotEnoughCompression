@@ -1,10 +1,10 @@
-package otamusan.nec.items;
+package otamusan.nec.items.CompressedItemDiversity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -12,6 +12,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,12 +29,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.Lib;
 import otamusan.nec.common.config.NECConfig;
+import otamusan.nec.items.UpdateCompressed;
+import otamusan.nec.items.UsingCompressed;
 import otamusan.nec.tileentity.TileCompressed;
 
-public class ItemCompressed extends ItemBlock {
+public class ItemCompressed extends ItemBlock implements IItemCompressed {
 
-	public ItemCompressed(Block block) {
-		super(block);
+	public ItemCompressed() {
+		super(CommonProxy.blockCompressed);
 		setHasSubtypes(true);
 	}
 
@@ -205,8 +208,8 @@ public class ItemCompressed extends ItemBlock {
 		if (time <= 0)
 			return uncompressed.copy();
 
-		if (uncompressed.getItem() != CommonProxy.itemCompressed) {
-			compressed = new ItemStack(CommonProxy.itemCompressed);
+		if (!isCompressedItem(uncompressed)) {
+			compressed = new ItemStack(CommonProxy.ITEMBASE.getItem(uncompressed.getItem()));
 			setOriginal(compressed, uncompressed);
 			setTime(compressed, time);
 		} else {
@@ -247,7 +250,7 @@ public class ItemCompressed extends ItemBlock {
 	}
 
 	public static @Nonnull ItemStack getOriginal(final @Nonnull ItemStack item) {
-		if (item.getItem() != CommonProxy.itemCompressed)
+		if (!isCompressedItem(item))
 			return ItemStack.EMPTY;
 		NBTTagCompound nbt = item.getTagCompound();
 		if (nbt == null)
@@ -256,7 +259,7 @@ public class ItemCompressed extends ItemBlock {
 	}
 
 	public static int getTime(final @Nonnull ItemStack item) {
-		if (item.getItem() != CommonProxy.itemCompressed)
+		if (!isCompressedItem(item))
 			return 0;
 		NBTTagCompound nbt = item.getTagCompound();
 		if (nbt == null)
@@ -284,6 +287,35 @@ public class ItemCompressed extends ItemBlock {
 			nbt = new NBTTagCompound();
 		nbt.setInteger(Lib.MOD_ID + "_time", time);
 		item.setTagCompound(nbt);
+	}
+
+	@Override
+	public boolean isAvailable(Item item) {
+		return true;
+	}
+
+	private ArrayList<IItemCompressed> children = new ArrayList<>();
+
+	@Override
+	public ArrayList<IItemCompressed> getChildren() {
+		return children;
+	}
+
+	@Override
+	public void addChildren(IItemCompressed iItemCompressed) {
+		children.add(iItemCompressed);
+	}
+
+	public static boolean isCompressedItem(ItemStack itemStack) {
+		return itemStack.getItem() instanceof IItemCompressed;
+	}
+
+	public static boolean isCompressedItem(Item item) {
+		return item instanceof IItemCompressed;
+	}
+
+	public static ArrayList<Item> getCompressedList() {
+		return CommonProxy.ITEMBASE.getCompressedItems();
 	}
 
 }

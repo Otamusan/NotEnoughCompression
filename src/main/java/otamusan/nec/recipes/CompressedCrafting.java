@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import otamusan.nec.common.CommonProxy;
-import otamusan.nec.items.ItemCompressed;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
@@ -75,7 +75,7 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 			if (current.isEmpty())
 				continue;
 
-			if (current.getItem() != CommonProxy.itemCompressed)
+			if (!ItemCompressed.isCompressedItem(current.getItem()))
 				return 0;
 
 			if (time == 0)
@@ -134,7 +134,7 @@ public class CompressedCrafting extends IForgeRegistryEntry.Impl<IRecipe> implem
 
 	@Override
 	public ItemStack getRecipeOutput() {
-		return new ItemStack(CommonProxy.itemCompressed);
+		return new ItemStack(CommonProxy.ITEMBASE);
 	}
 
 	@Override

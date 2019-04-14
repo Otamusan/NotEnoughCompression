@@ -36,7 +36,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import otamusan.nec.client.blockcompressed.UnlistedPropertyCompressedBlockNBT;
 import otamusan.nec.client.blockcompressed.UnlistedPropertyCompressedBlockState;
-import otamusan.nec.items.ItemCompressed;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.tileentity.TileCompressed;
 
 public class BlockCompressed extends Block implements ITileEntityProvider {

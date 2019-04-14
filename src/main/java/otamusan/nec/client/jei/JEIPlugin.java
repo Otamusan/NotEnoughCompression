@@ -7,22 +7,24 @@ import mezz.jei.api.ISubtypeRegistry.ISubtypeInterpreter;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.config.NECConfig;
-import otamusan.nec.items.ItemCompressed;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class JEIPlugin implements IModPlugin {
 	@mezz.jei.api.JEIPlugin
 	@Override
 	public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
-		subtypeRegistry.registerSubtypeInterpreter(CommonProxy.itemCompressed, new ISubtypeInterpreter() {
-			@Override
-			public String apply(ItemStack itemStack) {
-				return ItemCompressed.getOriginal(itemStack).getUnlocalizedName() + ":"
-						+ ItemCompressed.getTime(itemStack);
-			}
-		});
+		for (Item item : ItemCompressed.getCompressedList()) {
+			subtypeRegistry.registerSubtypeInterpreter(item, new ISubtypeInterpreter() {
+				@Override
+				public String apply(ItemStack itemStack) {
+					return ItemCompressed.getOriginal(itemStack).getUnlocalizedName() + ":"
+							+ ItemCompressed.getTime(itemStack);
+				}
+			});
+		}
 	}
 
 	@Override

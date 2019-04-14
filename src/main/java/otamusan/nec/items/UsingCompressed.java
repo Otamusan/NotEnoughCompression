@@ -13,6 +13,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import otamusan.nec.common.config.NECConfig;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class UsingCompressed {
 	public static ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {

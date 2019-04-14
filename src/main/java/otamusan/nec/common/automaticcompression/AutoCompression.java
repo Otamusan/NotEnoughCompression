@@ -5,10 +5,9 @@ import java.util.List;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.CompressedItems;
-import otamusan.nec.items.ItemCompressed;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.util.InventoryUtil;
 
 public class AutoCompression {
@@ -17,7 +16,7 @@ public class AutoCompression {
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack source;
 
-			if (inv.getStackInSlot(i).getItem() == CommonProxy.itemCompressed) {
+			if (ItemCompressed.isCompressedItem(inv.getStackInSlot(i).getItem())) {
 				source = ItemCompressed.getOriginal(inv.getStackInSlot(i));
 			} else {
 				source = inv.getStackInSlot(i).copy();
