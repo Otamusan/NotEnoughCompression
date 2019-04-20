@@ -1,6 +1,7 @@
 package otamusan.nec.client;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -9,7 +10,6 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
@@ -22,7 +22,6 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import otamusan.nec.blocks.BlockCompressed;
 import otamusan.nec.client.blockcompressed.BlockCompressedBakedModel;
 import otamusan.nec.client.blockcompressed.TileSpecialEntityRendererCompressed;
-import otamusan.nec.client.blockcompressed.TileSpecialItemRendererCompressed;
 import otamusan.nec.client.itemcompressed.CompressedModel;
 import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.Lib;
@@ -32,8 +31,12 @@ import otamusan.nec.util.ColorUtil;
 
 public class ClientProxy extends CommonProxy {
 
-	public static final ModelResourceLocation MRItemCompressed = new ModelResourceLocation(
-			Lib.MOD_ID + ":compresseditem", "inventory");
+	// public static final ModelResourceLocation MRItemCompressed = new
+	// ModelResourceLocation(
+	// Lib.MOD_ID + ":compresseditem", "inventory");
+
+	public static final ArrayList<ModelResourceLocation> MRItemCompresseds = new ArrayList<>();
+
 	public static final ModelResourceLocation MRBlockCompressed = new ModelResourceLocation(
 			Lib.MOD_ID + ":compressedblock", "normal");
 
@@ -44,10 +47,8 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void preInit() {
 		super.preInit();
-
-		for (Item item : ItemCompressed.getCompressedList()) {
-			ModelLoader.setCustomModelResourceLocation(item, 0, MRItemCompressed);
-		}
+		ITEMBASE.ModelRegister();
+		ITEMBLOCK.ModelRegister();
 	}
 
 	@Override
@@ -97,14 +98,10 @@ public class ClientProxy extends CommonProxy {
 				return -1;
 			}
 		}, CommonProxy.blockCompressed);
-
 	}
 
 	public void postInit() {
-
-		for (Item item : ItemCompressed.getCompressedList()) {
-			item.setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
-		}
+		super.postInit();
 
 		TileSpecialEntityRendererCompressed.instance.setRendererDispatcher(TileEntityRendererDispatcher.instance);
 		TileEntityRendererDispatcher.instance.renderers.put(TileCompressed.class,

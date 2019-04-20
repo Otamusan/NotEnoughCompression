@@ -33,9 +33,10 @@ import otamusan.nec.items.UpdateCompressed;
 import otamusan.nec.items.UsingCompressed;
 import otamusan.nec.tileentity.TileCompressed;
 
-public class ItemCompressed extends Item implements IItemCompressed {
+public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
 
-	public ItemCompressed() {
+	public ItemBlockCompressed() {
+		super(CommonProxy.blockCompressed);
 		setHasSubtypes(true);
 	}
 
@@ -73,7 +74,7 @@ public class ItemCompressed extends Item implements IItemCompressed {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack compressed = player.getHeldItem(hand);
-		if (!compressed.isEmpty() && !(ItemCompressed.getOriginal(compressed).getItem() instanceof ItemBlock)) {
+		if (!compressed.isEmpty() && !(ItemBlockCompressed.getOriginal(compressed).getItem() instanceof ItemBlock)) {
 			UsingCompressed.onItemRightClick(world, player, hand);
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.FAIL, compressed);
@@ -83,7 +84,7 @@ public class ItemCompressed extends Item implements IItemCompressed {
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack compressed = player.getHeldItem(hand);
 		if (!compressed.isEmpty()) {
-			ItemStack itemStack = ItemCompressed.getOriginal(compressed);
+			ItemStack itemStack = ItemBlockCompressed.getOriginal(compressed);
 			if (itemStack.getItem() instanceof ItemBlock && NECConfig.isPlacable(itemStack.getItem())) {
 				int meta = itemStack.getMetadata();
 				BlockPos newpos = getPlacedPos(worldIn, pos, facing);
@@ -109,8 +110,8 @@ public class ItemCompressed extends Item implements IItemCompressed {
 	}
 
 	public int getItemBurnTime(ItemStack itemStack) {
-		ItemStack original = ItemCompressed.getOriginal(itemStack);
-		int time = ItemCompressed.getTime(itemStack);
+		ItemStack original = ItemBlockCompressed.getOriginal(itemStack);
+		int time = ItemBlockCompressed.getTime(itemStack);
 		int burntime = ForgeEventFactory.getItemBurnTime(original);
 		if (burntime == -1) {
 			if (TileEntityFurnace.getItemBurnTime(original) == -1) {
@@ -123,7 +124,7 @@ public class ItemCompressed extends Item implements IItemCompressed {
 	}
 
 	public int getItemStackLimit(ItemStack stack) {
-		return ItemCompressed.getOriginal(stack).getItem().getItemStackLimit(stack);
+		return ItemBlockCompressed.getOriginal(stack).getItem().getItemStackLimit(stack);
 	}
 
 	public BlockPos getPlacedPos(World worldIn, BlockPos pos, EnumFacing facing) {
@@ -290,7 +291,7 @@ public class ItemCompressed extends Item implements IItemCompressed {
 
 	@Override
 	public boolean isAvailable(Item item) {
-		return true;
+		return item instanceof ItemBlock;
 	}
 
 	private ArrayList<IItemCompressed> children = new ArrayList<>();
@@ -313,13 +314,9 @@ public class ItemCompressed extends Item implements IItemCompressed {
 		return CommonProxy.ITEMBASE.getCompressedItems();
 	}
 
-	public static ArrayList<IItemCompressed> getCompressedItemList() {
-		return CommonProxy.ITEMBASE.getCompressedItemCompressed();
-	}
-
 	@Override
 	public String getName() {
-		return "base";
+		return "itemblock";
 	}
 
 	@Override
@@ -329,7 +326,7 @@ public class ItemCompressed extends Item implements IItemCompressed {
 
 	@Override
 	public void setParent(IItemCompressed iItemCompressed) {
-		parent = iItemCompressed;
+		this.parent = iItemCompressed;
 	}
 
 }
