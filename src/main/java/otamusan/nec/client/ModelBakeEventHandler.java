@@ -16,15 +16,16 @@ public class ModelBakeEventHandler {
 	public void onModelBakeEvent(ModelBakeEvent event) {
 		ClientProxy.modelBased = event.getModelManager().getBlockModelShapes()
 				.getModelForState(Blocks.STONE.getDefaultState());
-		System.out.println(ClientProxy.MRItemCompresseds);
 
 		for (ModelResourceLocation modelResourceLocation : ClientProxy.MRItemCompresseds) {
 			event.getModelRegistry().putObject(modelResourceLocation,
 					new CompressedModel(ClientProxy.modelBased, new CompressedItemOverrideList(new ArrayList<>())));
 
 		}
+		for (ModelResourceLocation modelResourceLocation : ClientProxy.MRBlockCompresseds) {
+			event.getModelRegistry().putObject(modelResourceLocation,
+					new BlockCompressedBakedModel(ClientProxy.modelBased));
+		}
 
-		ClientProxy.modelBlockCompressed = new BlockCompressedBakedModel(ClientProxy.modelBased);
-		event.getModelRegistry().putObject(ClientProxy.MRBlockCompressed, ClientProxy.modelBlockCompressed);
 	}
 }

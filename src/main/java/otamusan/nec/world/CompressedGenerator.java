@@ -46,7 +46,7 @@ public class CompressedGenerator implements IWorldGenerator {
 				continue;
 			}
 
-			world.setBlockState(pos, CommonProxy.blockCompressed.getDefaultState());
+			world.setBlockState(pos, CommonProxy.BLOCKBASE.getBlock(state.getBlock()).getDefaultState());
 
 			TileCompressed tileCompressed = (TileCompressed) world.getTileEntity(pos);
 
@@ -73,7 +73,7 @@ public class CompressedGenerator implements IWorldGenerator {
 		ItemStack item = state.getBlock().getItem(world, pos, state);
 
 		return !item.isEmpty() && !state.getBlock().isAir(state, world, pos)
-				&& state.getBlock() != CommonProxy.blockCompressed
+				&& state.getBlock() != CommonProxy.BLOCKBASE.getBlock(state.getBlock())
 				&& state.getBlock().getBlockHardness(state, world, pos) != -1
 				&& NECConfig.isCompressible(item.getItem()) && NECConfig.isPlacable(state.getBlock());
 	}

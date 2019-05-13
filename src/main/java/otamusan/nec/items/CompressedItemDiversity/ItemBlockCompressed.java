@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -21,6 +23,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -36,8 +39,13 @@ import otamusan.nec.tileentity.TileCompressed;
 public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
 
 	public ItemBlockCompressed() {
-		super(CommonProxy.blockCompressed);
+		super(CommonProxy.BLOCKBASE);
 		setHasSubtypes(true);
+	}
+
+	@Override
+	public Block getBlock() {
+		return CommonProxy.BLOCKBASE.getBlock(block);
 	}
 
 	@Override
@@ -85,13 +93,16 @@ public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
 		ItemStack compressed = player.getHeldItem(hand);
 		if (!compressed.isEmpty()) {
 			ItemStack itemStack = ItemBlockCompressed.getOriginal(compressed);
-			if (itemStack.getItem() instanceof ItemBlock && NECConfig.isPlacable(itemStack.getItem())) {
+			if (NECConfig.isPlacable(itemStack.getItem())) {
 				int meta = itemStack.getMetadata();
 				BlockPos newpos = getPlacedPos(worldIn, pos, facing);
 
-				IBlockState state = ((ItemBlock) itemStack.getItem()).getBlock().getStateForPlacement(worldIn, newpos,
+				Block block = ((ItemBlock) itemStack.getItem()).getBlock();
+
+				IBlockState state = block.getStateForPlacement(worldIn, newpos,
 						facing, hitX, hitY, hitZ, meta, player, hand);
-				super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+
+				place(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 
 				TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(newpos);
 				if (tileCompressed != null)
@@ -102,6 +113,41 @@ public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
 			}
 		}
 		return EnumActionResult.FAIL;
+	}
+
+	public EnumActionResult place(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
+			EnumFacing facing, float hitX, float hitY, float hitZ) {
+		IBlockState iblockstate = worldIn.getBlockState(pos);
+		Block block = iblockstate.getBlock();
+
+		if (!block.isReplaceable(worldIn, pos)) {
+			pos = pos.offset(facing);
+		}
+
+		ItemStack itemstack = player.getHeldItem(hand);
+
+		Block block2 = CommonProxy.BLOCKBASE
+				.getBlock(((ItemBlock) (ItemCompressed.getOriginal(itemstack)).getItem()).getBlock());
+
+		if (!itemstack.isEmpty() && player.canPlayerEdit(pos, facing, itemstack)
+				&& worldIn.mayPlace(block2, pos, false, facing, (Entity) null)) {
+			int i = this.getMetadata(itemstack.getMetadata());
+			IBlockState iblockstate1 = block2.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, i,
+					player, hand);
+
+			if (placeBlockAt(itemstack, player, worldIn, pos, facing, hitX, hitY, hitZ, iblockstate1)) {
+				iblockstate1 = worldIn.getBlockState(pos);
+				SoundType soundtype = iblockstate1.getBlock().getSoundType(iblockstate1, worldIn, pos, player);
+				worldIn.playSound(player, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS,
+						(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+				itemstack.shrink(1);
+			}
+			block2.onBlockPlacedBy(worldIn, pos, iblockstate1, player, itemstack);
+
+			return EnumActionResult.SUCCESS;
+		} else {
+			return EnumActionResult.FAIL;
+		}
 	}
 
 	@Override

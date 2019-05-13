@@ -28,7 +28,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.Lib;
-import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.UpdateCompressed;
 import otamusan.nec.items.UsingCompressed;
 import otamusan.nec.tileentity.TileCompressed;
@@ -84,21 +83,19 @@ public class ItemCompressed extends Item implements IItemCompressed {
 		ItemStack compressed = player.getHeldItem(hand);
 		if (!compressed.isEmpty()) {
 			ItemStack itemStack = ItemCompressed.getOriginal(compressed);
-			if (itemStack.getItem() instanceof ItemBlock && NECConfig.isPlacable(itemStack.getItem())) {
-				int meta = itemStack.getMetadata();
-				BlockPos newpos = getPlacedPos(worldIn, pos, facing);
 
-				IBlockState state = ((ItemBlock) itemStack.getItem()).getBlock().getStateForPlacement(worldIn, newpos,
-						facing, hitX, hitY, hitZ, meta, player, hand);
-				super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+			int meta = itemStack.getMetadata();
+			BlockPos newpos = getPlacedPos(worldIn, pos, facing);
 
-				TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(newpos);
-				if (tileCompressed != null)
-					tileCompressed.setBlockState(state);
-				return EnumActionResult.SUCCESS;
-			} else {
-				return UsingCompressed.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-			}
+			IBlockState state = ((ItemBlock) itemStack.getItem()).getBlock().getStateForPlacement(worldIn, newpos,
+					facing, hitX, hitY, hitZ, meta, player, hand);
+			super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+
+			TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(newpos);
+			if (tileCompressed != null)
+				tileCompressed.setBlockState(state);
+			return EnumActionResult.SUCCESS;
+
 		}
 		return EnumActionResult.FAIL;
 	}

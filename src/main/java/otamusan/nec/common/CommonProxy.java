@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import otamusan.nec.blocks.BlockCompressed;
+import otamusan.nec.blocks.BlockCompressedFurnace;
 import otamusan.nec.client.blockcompressed.TileSpecialItemRendererCompressed;
 import otamusan.nec.common.automaticcompression.CompressionInChest;
 import otamusan.nec.common.config.NECConfig;
@@ -53,10 +54,13 @@ public class CommonProxy {
 		uncompressionwithpiston.setRegistryName(new ResourceLocation(Lib.MOD_ID, "uncompressionwithpiston"));
 		ForgeRegistries.RECIPES.register(uncompressionwithpiston);
 
-		blockCompressed = new BlockCompressed();
-		blockCompressed.setRegistryName("compressedblock");
-		blockCompressed.setUnlocalizedName("compressedblock");
-		ForgeRegistries.BLOCKS.register(blockCompressed);
+		BLOCKBASE = new BlockCompressed();
+		BLOCKBASE.setRegistryName("compressedblock");
+		BLOCKBASE.setUnlocalizedName("compressedblock");
+		ForgeRegistries.BLOCKS.register(BLOCKBASE);
+
+		BLOCKFURNECE = new BlockCompressedFurnace();
+		BLOCKBASE.addChildren(BLOCKFURNECE);
 
 		if (NECConfig.CONFIG_TYPES.isReplaceBlocks) {
 			GameRegistry.registerWorldGenerator(new CompressedGenerator(), 1000);
@@ -91,7 +95,8 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileCompressed.class, new ResourceLocation(Lib.MOD_ID, "tilecompressed"));
 	}
 
-	public static BlockCompressed blockCompressed;
+	public static BlockCompressedFurnace BLOCKFURNECE;
+	public static BlockCompressed BLOCKBASE;
 	public static ItemCompressed ITEMBASE;
 	public static ItemBlockCompressed ITEMBLOCK;
 

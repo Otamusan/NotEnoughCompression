@@ -1,5 +1,7 @@
 package otamusan.nec.blocks;
 
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -39,7 +41,7 @@ import otamusan.nec.client.blockcompressed.UnlistedPropertyCompressedBlockState;
 import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.tileentity.TileCompressed;
 
-public class BlockCompressed extends Block implements ITileEntityProvider {
+public class BlockCompressed extends Block implements ITileEntityProvider, IBlockCompressed {
 
 	public static final UnlistedPropertyCompressedBlockNBT COMPRESSEDBLOCK_NBT = new UnlistedPropertyCompressedBlockNBT();
 	public static final UnlistedPropertyCompressedBlockState COMPRESSEDBLOCK_STATE = new UnlistedPropertyCompressedBlockState();
@@ -141,6 +143,8 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 		TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos);
 		IBlockState iBlockState = tileCompressed.getState();
 
+		System.out.println(tileCompressed.compressedblock);
+
 		if (iBlockState != null && iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player)
 				&& silktouch == 0) {
 
@@ -171,6 +175,7 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 			ItemStack stack) {
 		TileCompressed tile = (TileCompressed) worldIn.getTileEntity(pos);
 		tile.setItemCompressed(stack);
+		System.out.println(stack);
 	}
 
 	@Override
@@ -215,6 +220,34 @@ public class BlockCompressed extends Block implements ITileEntityProvider {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileCompressed();
+	}
+
+	private ArrayList<IBlockCompressed> children = new ArrayList<>();
+	private IBlockCompressed parent;
+
+	@Override
+	public boolean isAvailable(Block item) {
+		return true;
+	}
+
+	@Override
+	public ArrayList<IBlockCompressed> getChildren() {
+		return children;
+	}
+
+	@Override
+	public String getName() {
+		return "blockbase";
+	}
+
+	@Override
+	public IBlockCompressed getParent() {
+		return parent;
+	}
+
+	@Override
+	public void setParent(IBlockCompressed iBlockCompressed) {
+		parent = iBlockCompressed;
 	}
 
 }

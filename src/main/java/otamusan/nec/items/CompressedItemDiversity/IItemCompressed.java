@@ -70,7 +70,7 @@ public interface IItemCompressed {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public default void ModelRegister() {
+	public default void modelRegister() {
 		ModelResourceLocation modelResourceLocation = new ModelResourceLocation(
 				Lib.MOD_ID + ":compresseditem" + getNameTreed(), "inventory");
 		ClientProxy.MRItemCompresseds.add(modelResourceLocation);
