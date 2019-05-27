@@ -59,8 +59,8 @@ public class CommonProxy {
 		BLOCKBASE.setUnlocalizedName("compressedblock");
 		ForgeRegistries.BLOCKS.register(BLOCKBASE);
 
-		BLOCKFURNECE = new BlockCompressedFurnace();
-		BLOCKBASE.addChildren(BLOCKFURNECE);
+		//BLOCKFURNECE = new BlockCompressedFurnace();
+		//BLOCKBASE.addChildren(BLOCKFURNECE);
 
 		if (NECConfig.CONFIG_TYPES.isReplaceBlocks) {
 			GameRegistry.registerWorldGenerator(new CompressedGenerator(), 1000);

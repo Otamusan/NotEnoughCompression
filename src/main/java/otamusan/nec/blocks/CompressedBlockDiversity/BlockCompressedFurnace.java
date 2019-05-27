@@ -1,9 +1,6 @@
 package otamusan.nec.blocks.CompressedBlockDiversity;
 
-import java.util.ArrayList;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -12,7 +9,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockCompressedFurnace extends BlockCompressed implements ITileEntityProvider {
+public class BlockCompressedFurnace extends BlockCompressed {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -24,17 +21,9 @@ public class BlockCompressedFurnace extends BlockCompressed implements ITileEnti
 		return true;
 	}
 
-	private ArrayList<IBlockCompressed> children = new ArrayList<>();
-	private IBlockCompressed parent;
-
 	@Override
 	public boolean isAvailable(Block item) {
 		return item == Blocks.FURNACE;
-	}
-
-	@Override
-	public ArrayList<IBlockCompressed> getChildren() {
-		return children;
 	}
 
 	@Override
@@ -42,13 +31,4 @@ public class BlockCompressedFurnace extends BlockCompressed implements ITileEnti
 		return "blockfurnace";
 	}
 
-	@Override
-	public IBlockCompressed getParent() {
-		return parent;
-	}
-
-	@Override
-	public void setParent(IBlockCompressed iBlockCompressed) {
-		parent = iBlockCompressed;
-	}
 }

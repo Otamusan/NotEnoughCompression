@@ -140,7 +140,12 @@ public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
 				SoundType soundtype = iblockstate1.getBlock().getSoundType(iblockstate1, worldIn, pos, player);
 				worldIn.playSound(player, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS,
 						(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+
+				TileCompressed tile = (TileCompressed) worldIn.getTileEntity(pos);
+				tile.setItemCompressed(itemstack.copy());
+
 				block2.onBlockPlacedBy(worldIn, pos, iblockstate1, player, itemstack);
+
 				itemstack.shrink(1);
 			}
 

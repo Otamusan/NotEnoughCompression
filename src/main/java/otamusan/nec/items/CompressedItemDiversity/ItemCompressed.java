@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
@@ -30,7 +29,6 @@ import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.Lib;
 import otamusan.nec.items.UpdateCompressed;
 import otamusan.nec.items.UsingCompressed;
-import otamusan.nec.tileentity.TileCompressed;
 
 public class ItemCompressed extends Item implements IItemCompressed {
 
@@ -86,14 +84,6 @@ public class ItemCompressed extends Item implements IItemCompressed {
 
 			int meta = itemStack.getMetadata();
 			BlockPos newpos = getPlacedPos(worldIn, pos, facing);
-
-			IBlockState state = ((ItemBlock) itemStack.getItem()).getBlock().getStateForPlacement(worldIn, newpos,
-					facing, hitX, hitY, hitZ, meta, player, hand);
-			super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-
-			TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(newpos);
-			if (tileCompressed != null)
-				tileCompressed.setBlockState(state);
 			return EnumActionResult.SUCCESS;
 
 		}

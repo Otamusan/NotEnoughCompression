@@ -12,7 +12,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
@@ -166,13 +165,6 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 	@Override
 	public boolean isOpaqueCube(IBlockState iBlockState) {
 		return false;
-	}
-
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
-			ItemStack stack) {
-		TileCompressed tile = (TileCompressed) worldIn.getTileEntity(pos);
-		tile.setItemCompressed(stack);
 	}
 
 	@Override
