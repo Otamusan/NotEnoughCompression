@@ -22,7 +22,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.property.IExtendedBlockState;
-import otamusan.nec.blocks.BlockCompressed;
+import otamusan.nec.blocks.CompressedBlockDiversity.BlockCompressed;
 
 /**
  * Created by TheGreyGhost on 19/04/2015. This class is used to customise the

@@ -20,7 +20,7 @@
             "trigger": "minecraft:inventory_changed",
             "conditions": {
             	"items":[{
-            		"item":"notenoughcompression:compresseditem"
+            		"item":"notenoughcompression:compresseditem_base_itemblock"
             	}]
             }
         }

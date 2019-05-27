@@ -1,4 +1,4 @@
-package otamusan.nec.blocks;
+package otamusan.nec.blocks.CompressedBlockDiversity;
 
 import java.util.ArrayList;
 
@@ -143,8 +143,6 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 		TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos);
 		IBlockState iBlockState = tileCompressed.getState();
 
-		System.out.println(tileCompressed.compressedblock);
-
 		if (iBlockState != null && iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player)
 				&& silktouch == 0) {
 
@@ -175,7 +173,6 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 			ItemStack stack) {
 		TileCompressed tile = (TileCompressed) worldIn.getTileEntity(pos);
 		tile.setItemCompressed(stack);
-		System.out.println(stack);
 	}
 
 	@Override

@@ -18,7 +18,7 @@
             "trigger": "minecraft:inventory_changed",
             "conditions": {
             	"items":[{
-            		"item":"notenoughcompression:compresseditem",
+            		"item":"notenoughcompression:compresseditem_base_itemblock",
             		"nbt":"{notenoughcompression_itemstack:{id:\"minecraft:cobblestone\",Count:1b,Damage:0s},notenoughcompression_time:4}"
             	}]
             }

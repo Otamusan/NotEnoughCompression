@@ -1,4 +1,4 @@
-package otamusan.nec.blocks;
+package otamusan.nec.blocks.CompressedBlockDiversity;
 
 import java.awt.Color;
 import java.util.ArrayList;
