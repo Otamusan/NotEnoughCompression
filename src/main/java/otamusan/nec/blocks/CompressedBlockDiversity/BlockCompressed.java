@@ -38,6 +38,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import otamusan.nec.client.blockcompressed.UnlistedPropertyCompressedBlockNBT;
 import otamusan.nec.client.blockcompressed.UnlistedPropertyCompressedBlockState;
 import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
+import otamusan.nec.tileentity.ITileCompressed;
 import otamusan.nec.tileentity.TileCompressed;
 
 public class BlockCompressed extends Block implements ITileEntityProvider, IBlockCompressed {
@@ -84,7 +85,7 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 	}
 
 	public IBlockState getOriginalBlockState(IBlockAccess world, BlockPos pos) {
-		TileCompressed tile = (TileCompressed) world.getTileEntity(pos);
+		ITileCompressed tile = (ITileCompressed) world.getTileEntity(pos);
 		IBlockState state;
 
 		if (tile == null)
@@ -139,7 +140,7 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 		ItemStack heldItem = player.getHeldItem(EnumHand.MAIN_HAND);
 		int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, heldItem);
 		int silktouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem);
-		TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos);
+		ITileCompressed tileCompressed = (ITileCompressed) worldIn.getTileEntity(pos);
 		IBlockState iBlockState = tileCompressed.getState();
 
 		if (iBlockState != null && iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player)
@@ -156,7 +157,7 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 			}
 
 		} else {
-			ItemStack itemCompressed = tileCompressed.compressedblock.copy();
+			ItemStack itemCompressed = tileCompressed.getItemCompressed().copy();
 			itemCompressed.setCount(1);
 			spawnAsEntity(worldIn, pos, itemCompressed);
 		}
@@ -180,7 +181,7 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 		if (state instanceof IExtendedBlockState) {
 			IExtendedBlockState retval = (IExtendedBlockState) state;
 			TileEntity tileEntity = world.getTileEntity(pos);
-			TileCompressed tileCompressed = (TileCompressed) tileEntity;
+			ITileCompressed tileCompressed = (ITileCompressed) tileEntity;
 
 			ItemStack compressed = tileCompressed.getItemCompressed();
 			if (compressed != null) {

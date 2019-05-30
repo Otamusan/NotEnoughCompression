@@ -9,7 +9,7 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import otamusan.nec.common.Lib;
 
-public class TileCompressed extends TileEntity {
+public class TileCompressed extends TileEntity implements ITileCompressed {
 
 	public ItemStack compressedblock;
 	public IBlockState state;

@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import otamusan.nec.blocks.CompressedBlockDiversity.BlockCompressed;
 import otamusan.nec.blocks.CompressedBlockDiversity.BlockCompressedFurnace;
-import otamusan.nec.client.blockcompressed.TileSpecialItemRendererCompressed;
 import otamusan.nec.common.automaticcompression.CompressionInChest;
 import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.CompressedItemDiversity.ItemBlockCompressed;
@@ -70,7 +69,6 @@ public class CommonProxy {
 
 		((Item) ITEMBASE).setRegistryName(Lib.MOD_ID + ":compresseditem_base");
 		((Item) ITEMBASE).setUnlocalizedName("compresseditem");
-		((Item) ITEMBASE).setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
 
 		ForgeRegistries.ITEMS.register((Item) ITEMBASE);
 

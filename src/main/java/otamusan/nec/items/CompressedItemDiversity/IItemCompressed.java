@@ -20,7 +20,6 @@ public interface IItemCompressed {
 	public default void addChildren(IItemCompressed iItemCompressed) {
 		getChildren().add(iItemCompressed);
 		iItemCompressed.setParent(this);
-		((Item) iItemCompressed).setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
 
 		((Item) iItemCompressed).setRegistryName(Lib.MOD_ID + ":compresseditem" + iItemCompressed.getNameTreed());
 		((Item) iItemCompressed).setUnlocalizedName("compresseditem");
@@ -73,6 +72,8 @@ public interface IItemCompressed {
 	public default void modelRegister() {
 		ModelResourceLocation modelResourceLocation = new ModelResourceLocation(
 				Lib.MOD_ID + ":compresseditem" + getNameTreed(), "inventory");
+		((Item) this).setTileEntityItemStackRenderer(TileSpecialItemRendererCompressed.instance);
+
 		ClientProxy.MRItemCompresseds.add(modelResourceLocation);
 		ModelLoader.setCustomModelResourceLocation((Item) this, 0, modelResourceLocation);
 	}

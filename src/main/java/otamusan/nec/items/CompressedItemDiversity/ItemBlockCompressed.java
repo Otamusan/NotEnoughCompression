@@ -34,7 +34,7 @@ import otamusan.nec.common.Lib;
 import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.UpdateCompressed;
 import otamusan.nec.items.UsingCompressed;
-import otamusan.nec.tileentity.TileCompressed;
+import otamusan.nec.tileentity.ITileCompressed;
 
 public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
 
@@ -104,7 +104,7 @@ public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
 
 				place(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 
-				TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(newpos);
+				ITileCompressed tileCompressed = (ITileCompressed) worldIn.getTileEntity(newpos);
 				if (tileCompressed != null)
 					tileCompressed.setBlockState(state);
 				return EnumActionResult.SUCCESS;
@@ -141,7 +141,7 @@ public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
 				worldIn.playSound(player, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS,
 						(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
 
-				TileCompressed tile = (TileCompressed) worldIn.getTileEntity(pos);
+				ITileCompressed tile = (ITileCompressed) worldIn.getTileEntity(pos);
 				tile.setItemCompressed(itemstack.copy());
 
 				block2.onBlockPlacedBy(worldIn, pos, iblockstate1, player, itemstack);

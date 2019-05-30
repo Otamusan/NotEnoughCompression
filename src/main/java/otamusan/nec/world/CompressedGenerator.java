@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
-import otamusan.nec.tileentity.TileCompressed;
+import otamusan.nec.tileentity.ITileCompressed;
 
 public class CompressedGenerator implements IWorldGenerator {
 
@@ -48,7 +48,7 @@ public class CompressedGenerator implements IWorldGenerator {
 
 			world.setBlockState(pos, CommonProxy.BLOCKBASE.getBlock(state.getBlock()).getDefaultState());
 
-			TileCompressed tileCompressed = (TileCompressed) world.getTileEntity(pos);
+			ITileCompressed tileCompressed = (ITileCompressed) world.getTileEntity(pos);
 
 			if (tileCompressed == null) {
 				world.setBlockState(pos, state);
