@@ -54,11 +54,11 @@ public interface IBlockCompressed {
 		return blocks;
 	}
 
-	public default ArrayList<IBlockCompressed> getCompressedBlockCompressed() {
+	public default ArrayList<IBlockCompressed> getIBlockCompresseds() {
 		ArrayList<IBlockCompressed> blocks = new ArrayList<>();
 		blocks.add(this);
 		for (IBlockCompressed iBlockCompressed : getChildren()) {
-			blocks.addAll(iBlockCompressed.getCompressedBlockCompressed());
+			blocks.addAll(iBlockCompressed.getIBlockCompresseds());
 		}
 		return blocks;
 	}

@@ -24,46 +24,55 @@ public class CompressedGenerator implements IWorldGenerator {
 		int z = chunkZ;
 		int sx = new ChunkPos(x, z).getXStart();
 		int sz = new ChunkPos(x, z).getZStart();
+		int ex = new ChunkPos(x, z).getXEnd();
+		int ez = new ChunkPos(x, z).getZEnd();
 
-		for (int i = 0; i < NECConfig.CONFIG_TYPES.replacetime; i++) {
+		if (random.nextDouble() > NECConfig.CONFIG_TYPES.world.rate)
+			return;
 
-			int cx = (int) (16 * random.nextDouble()) + sx;
-			int cz = (int) (16 * random.nextDouble()) + sz;
-			int cy = (int) (255 * random.nextDouble());
+		int time = NECConfig.CONFIG_TYPES.world.maxTimeReplaced - (int) Math.floor(Math.log(random.nextInt(
+				(int) Math.pow(NECConfig.CONFIG_TYPES.world.deviationofTime,
+						NECConfig.CONFIG_TYPES.world.maxTimeReplaced))
+				+ 1)
+				/ Math.log(NECConfig.CONFIG_TYPES.world.deviationofTime));
+		for (int ix = sx; ix <= ex; ix++) {
+			for (int iz = sz; iz <= ez; iz++) {
+				for (int iy = 0; iy <= 256; iy++) {
 
-			int time = NECConfig.CONFIG_TYPES.maxtimereplaced - (int) Math.floor(Math.log(random.nextInt(
-					(int) Math.pow(NECConfig.CONFIG_TYPES.deviationoftime, NECConfig.CONFIG_TYPES.maxtimereplaced)) + 1)
-					/ Math.log(NECConfig.CONFIG_TYPES.deviationoftime));
+					BlockPos pos = new BlockPos(ix, iy, iz);
 
-			BlockPos pos = new BlockPos(cx, cy, cz);
+					if (!isReplaceable(pos, world)) {
+						continue;
+					}
 
-			IBlockState state = world.getBlockState(pos);
-
-			ItemStack item = state.getBlock().getItem(world, pos, state);
-
-			if (!isReplaceable(pos, world)) {
-				i--;
-				continue;
+					replace(pos, world, time);
+				}
 			}
-
-			world.setBlockState(pos, CommonProxy.BLOCKBASE.getBlock(state.getBlock()).getDefaultState());
-
-			ITileCompressed tileCompressed = (ITileCompressed) world.getTileEntity(pos);
-
-			if (tileCompressed == null) {
-				world.setBlockState(pos, state);
-				i--;
-				continue;
-			}
-
-			tileCompressed.setBlockState(state);
-
-			ItemStack compressed = ItemCompressed.createCompressedItem(item, time);
-
-			tileCompressed.setItemCompressed(compressed);
-
 		}
 
+	}
+
+	public boolean replace(BlockPos pos, World world, int time) {
+
+		IBlockState state = world.getBlockState(pos);
+
+		ItemStack item = state.getBlock().getItem(world, pos, state);
+
+		world.setBlockState(pos, CommonProxy.BLOCKBASE.getBlock(state.getBlock()).getDefaultState());
+
+		ITileCompressed tileCompressed = (ITileCompressed) world.getTileEntity(pos);
+
+		if (tileCompressed == null) {
+			world.setBlockState(pos, state);
+			return false;
+		}
+
+		tileCompressed.setBlockState(state);
+
+		ItemStack compressed = ItemCompressed.createCompressedItem(item, time);
+
+		tileCompressed.setItemCompressed(compressed);
+		return true;
 	}
 
 	public boolean isReplaceable(BlockPos pos, World world) {

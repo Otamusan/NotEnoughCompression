@@ -19,7 +19,7 @@ public class FakeRecipes {
 
 	public static List<IRecipe> getCompressionFakeRecipe() {
 		List<IRecipe> recipes = new ArrayList<>();
-		for (int i = 0; i < NECConfig.CONFIG_TYPES.JEIshowCompressionTime; i++) {
+		for (int i = 0; i < NECConfig.CONFIG_TYPES.jei.JEIshowCompressionTime; i++) {
 			for (Item item : ForgeRegistries.ITEMS.getValues()) {
 				if (new ItemStack(item).isEmpty() || !NECConfig.isCompressible(item)
 						|| ItemCompressed.isCompressedItem(item))
@@ -46,7 +46,7 @@ public class FakeRecipes {
 
 	public static List<IRecipe> getUncompressionFakeRecipe() {
 		List<IRecipe> recipes = new ArrayList<>();
-		for (int i = 0; i < NECConfig.CONFIG_TYPES.JEIshowCompressionTime; i++) {
+		for (int i = 0; i < NECConfig.CONFIG_TYPES.jei.JEIshowCompressionTime; i++) {
 			for (Item item : ForgeRegistries.ITEMS.getValues()) {
 				if (new ItemStack(item).isEmpty() || !NECConfig.isCompressible(item)
 						|| ItemCompressed.isCompressedItem(item))
@@ -63,7 +63,7 @@ public class FakeRecipes {
 
 	public static List<IRecipe> getUncompressionWithPistonFakeRecipe() {
 		List<IRecipe> recipes = new ArrayList<>();
-		for (int i = 0; i < NECConfig.CONFIG_TYPES.JEIshowCompressionTime; i++) {
+		for (int i = 0; i < NECConfig.CONFIG_TYPES.jei.JEIshowCompressionTime; i++) {
 			for (Item item : ForgeRegistries.ITEMS.getValues()) {
 				if (new ItemStack(item).isEmpty() || !NECConfig.isCompressible(item)
 						|| ItemCompressed.isCompressedItem(item))
@@ -82,7 +82,7 @@ public class FakeRecipes {
 
 	public static List<IRecipe> getCompressedCraftFakeRecipe() {
 		List<IRecipe> recipes = new ArrayList<>();
-		for (int i = 0; i < NECConfig.CONFIG_TYPES.JEIshowCompressionTime; i++) {
+		for (int i = 0; i < NECConfig.CONFIG_TYPES.jei.JEIshowCompressionTime; i++) {
 			for (IRecipe recipe : ForgeRegistries.RECIPES.getValues()) {
 				ItemStack out = ItemCompressed.createCompressedItem(recipe.getRecipeOutput(), i);
 				out.setCount(recipe.getRecipeOutput().getCount());

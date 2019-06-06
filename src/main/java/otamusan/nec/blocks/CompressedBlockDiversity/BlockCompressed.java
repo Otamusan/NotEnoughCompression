@@ -129,8 +129,8 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World worldIn, BlockPos pos,
 			EntityPlayer player) {
-		TileCompressed tileCompressed = (TileCompressed) worldIn.getTileEntity(pos);
-		ItemStack itemCompressed = tileCompressed.compressedblock.copy();
+		ITileCompressed tileCompressed = (ITileCompressed) worldIn.getTileEntity(pos);
+		ItemStack itemCompressed = tileCompressed.getItemCompressed().copy();
 		itemCompressed.setCount(1);
 		return itemCompressed;
 	}

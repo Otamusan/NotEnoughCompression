@@ -9,8 +9,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import otamusan.nec.common.config.NECConfig;
-import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.items.UsingCompressed.Remains;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.util.InventoryUtil;
 
 public class UpdateCompressed {
@@ -25,7 +25,7 @@ public class UpdateCompressed {
 		ItemStack compressed = getItem(player, itemSlot);
 		ItemStack original = ItemCompressed.getOriginal(compressed);
 
-		if (ItemCompressed.getTime(compressed) >= NECConfig.CONFIG_TYPES.UsingCompressionTime)
+		if (ItemCompressed.getTime(compressed) >= NECConfig.CONFIG_TYPES.using.usingCompressionTime)
 			return;
 
 		if (!NECConfig.isUsable(original.getItem()))

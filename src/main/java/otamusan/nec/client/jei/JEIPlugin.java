@@ -37,13 +37,13 @@ public class JEIPlugin implements IModPlugin {
 
 	@Override
 	public void register(IModRegistry registry) {
-		if (NECConfig.CONFIG_TYPES.JEIshowCompression)
+		if (NECConfig.CONFIG_TYPES.jei.JEIshowCompression)
 			registry.addRecipes(FakeRecipes.getCompressionFakeRecipe(), VanillaRecipeCategoryUid.CRAFTING);
-		if (NECConfig.CONFIG_TYPES.JEIshowUncompression)
+		if (NECConfig.CONFIG_TYPES.jei.JEIshowUncompression)
 			registry.addRecipes(FakeRecipes.getUncompressionFakeRecipe(), VanillaRecipeCategoryUid.CRAFTING);
-		if (NECConfig.CONFIG_TYPES.JEIshowUncompression)
+		if (NECConfig.CONFIG_TYPES.jei.JEIshowUncompression)
 			registry.addRecipes(FakeRecipes.getUncompressionWithPistonFakeRecipe(), VanillaRecipeCategoryUid.CRAFTING);
-		if (NECConfig.CONFIG_TYPES.JEIshowCompressedCraft)
+		if (NECConfig.CONFIG_TYPES.jei.JEIshowCompressedCraft)
 			registry.addRecipes(FakeRecipes.getCompressedCraftFakeRecipe(), VanillaRecipeCategoryUid.CRAFTING);
 	}
 }

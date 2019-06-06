@@ -61,7 +61,7 @@ public class CommonProxy {
 		//BLOCKFURNECE = new BlockCompressedFurnace();
 		//BLOCKBASE.addChildren(BLOCKFURNECE);
 
-		if (NECConfig.CONFIG_TYPES.isReplaceBlocks) {
+		if (NECConfig.CONFIG_TYPES.world.isReplaceChunks) {
 			GameRegistry.registerWorldGenerator(new CompressedGenerator(), 1000);
 		}
 

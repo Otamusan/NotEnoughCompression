@@ -20,7 +20,7 @@ public class UsingCompressed {
 		ItemStack compressed = player.getHeldItem(hand);
 		ItemStack original = ItemCompressed.getOriginal(compressed);
 
-		if (ItemCompressed.getTime(compressed) >= NECConfig.CONFIG_TYPES.UsingCompressionTime)
+		if (ItemCompressed.getTime(compressed) >= NECConfig.CONFIG_TYPES.using.usingCompressionTime)
 			return new ActionResult<ItemStack>(EnumActionResult.FAIL, compressed);
 
 		if (!NECConfig.isUsable(original.getItem()))
@@ -70,7 +70,7 @@ public class UsingCompressed {
 		ItemStack compressed = player.getHeldItem(hand);
 		ItemStack original = ItemCompressed.getOriginal(compressed);
 
-		if (ItemCompressed.getTime(compressed) >= NECConfig.CONFIG_TYPES.UsingCompressionTime)
+		if (ItemCompressed.getTime(compressed) >= NECConfig.CONFIG_TYPES.using.usingCompressionTime)
 			return EnumActionResult.FAIL;
 
 		if (!NECConfig.isUsable(original.getItem()))

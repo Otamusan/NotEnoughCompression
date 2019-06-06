@@ -10,69 +10,83 @@ import otamusan.nec.common.Lib;
 public class NECConfig {
 	@Config(modid = Lib.MOD_ID)
 	public static class CONFIG_TYPES {
-		@Comment({ "Items written here can not be compressed" })
-		public static String[] compressedExclusion = {};
 
-		@Comment({ "Catalyst of compression" })
-		public static String compressioncatalyst = "minecraft:piston";
+		public static Compression compression = new Compression();
+		public static JEI jei = new JEI();
+		public static Using using = new Using();
+		public static World world = new World();
 
-		@Comment({ "Catalyst of decompression" })
-		public static String decompressioncatalyst = "minecraft:sticky_piston";
+		public static class World {
+			@Comment({ "Whether to replace generated chunks in the world" })
+			public boolean isReplaceChunks = true;
 
-		@Comment({ "Blocks written here can not be placed even if it is compressed" })
-		public static String[] placeExclusion = {};
+			@Comment({ "Chunk replacement rate" })
+			public double rate = 0.005D;
 
-		@Comment({ "Number of compression recipes to be displayed on JEI" })
-		public static int JEIshowCompressionTime = 5;
+			@Comment({ "Maximum compressed time of blocks in chunks replaced" })
+			public int maxTimeReplaced = 5;
 
-		@Comment({ "Restriction of time of compressed Item on using" })
-		public static int UsingCompressionTime = 3;
+			@Comment({ "Deviation of the replaced compressed time" })
+			public int deviationofTime = 6;
+		}
 
-		@Comment({ "Items written here can not use" })
-		public static String[] usingExclusion = {};
+		public static class Using {
+			@Comment({ "Blocks written here can not be placed even if it is compressed" })
+			public String[] placeExclusion = {};
 
-		@Comment({ "Whether to show the recipe of compression" })
-		public static boolean JEIshowCompression = true;
+			@Comment({ "Restriction of time of compressed Item on using" })
+			public int usingCompressionTime = 3;
 
-		@Comment({ "Whether to show the recipe of uncompression" })
-		public static boolean JEIshowUncompression = true;
+			@Comment({ "Items written here can not use" })
+			public String[] usingExclusion = {};
+		}
 
-		@Comment({ "Whether to show the recipe of compressed crating" })
-		public static boolean JEIshowCompressedCraft = true;
+		public static class Compression {
+			@Comment({ "Items written here can not be compressed" })
+			public String[] compressedExclusion = {};
 
-		@Comment({ "Whether to replace generated blocks in the world" })
-		public static boolean isReplaceBlocks = false;
+			@Comment({ "Catalyst of compression" })
+			public String compressionCatalyst = "minecraft:piston";
 
-		@Comment({ "Number of replacements per chunk" })
-		public static int replacetime = 10;
+			@Comment({ "Catalyst of decompression" })
+			public String decompressionCatalyst = "minecraft:sticky_piston";
+		}
 
-		@Comment({ "Maximum compressed time of blocks replaced" })
-		public static int maxtimereplaced = 5;
+		public static class JEI {
+			@Comment({ "Whether to show the recipe of compression" })
+			public boolean JEIshowCompression = true;
 
-		@Comment({ "Deviation of the replaced compressed time" })
-		public static int deviationoftime = 4;
+			@Comment({ "Whether to show the recipe of uncompression" })
+			public boolean JEIshowUncompression = true;
+
+			@Comment({ "Whether to show the recipe of compressed crating" })
+			public boolean JEIshowCompressedCraft = true;
+
+			@Comment({ "Number of compression recipes to be displayed on JEI" })
+			public int JEIshowCompressionTime = 5;
+		}
 	}
 
 	public static Item getCompressionCatalyst() {
-		return Item.getByNameOrId(CONFIG_TYPES.compressioncatalyst);
+		return Item.getByNameOrId(CONFIG_TYPES.compression.compressionCatalyst);
 	}
 
 	public static Item getDecompressionCatalyst() {
-		return Item.getByNameOrId(CONFIG_TYPES.decompressioncatalyst);
+		return Item.getByNameOrId(CONFIG_TYPES.compression.decompressionCatalyst);
 	}
 
 	public static boolean isCompressionCatalyst(Item item) {
-		Item cfgitem = Item.getByNameOrId(CONFIG_TYPES.compressioncatalyst);
+		Item cfgitem = Item.getByNameOrId(CONFIG_TYPES.compression.compressionCatalyst);
 		return item == cfgitem;
 	}
 
 	public static boolean isDecompressionCatalyst(Item item) {
-		Item cfgitem = Item.getByNameOrId(CONFIG_TYPES.decompressioncatalyst);
+		Item cfgitem = Item.getByNameOrId(CONFIG_TYPES.compression.decompressionCatalyst);
 		return item == cfgitem;
 	}
 
 	public static boolean isCompressible(Item item) {
-		for (String name : CONFIG_TYPES.compressedExclusion) {
+		for (String name : CONFIG_TYPES.compression.compressedExclusion) {
 			Item cfgItem = Item.getByNameOrId(name);
 			if (item == cfgItem)
 				return false;
@@ -81,7 +95,7 @@ public class NECConfig {
 	}
 
 	public static boolean isUsable(Item item) {
-		for (String name : CONFIG_TYPES.compressedExclusion) {
+		for (String name : CONFIG_TYPES.compression.compressedExclusion) {
 			Item cfgItem = Item.getByNameOrId(name);
 			if (item == cfgItem)
 				return false;
@@ -90,7 +104,7 @@ public class NECConfig {
 	}
 
 	public static boolean isPlacable(Block block) {
-		for (String name : CONFIG_TYPES.placeExclusion) {
+		for (String name : CONFIG_TYPES.using.placeExclusion) {
 			Block cfg = Block.getBlockFromName(name);
 			if (block == cfg)
 				return false;
@@ -99,7 +113,7 @@ public class NECConfig {
 	}
 
 	public static boolean isPlacable(Item item) {
-		for (String name : CONFIG_TYPES.placeExclusion) {
+		for (String name : CONFIG_TYPES.using.placeExclusion) {
 			Block cfg = Block.getBlockFromName(name);
 			if (((ItemBlock) item).getBlock() == cfg)
 				return false;
