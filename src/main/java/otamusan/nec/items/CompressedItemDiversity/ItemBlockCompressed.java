@@ -19,7 +19,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -33,7 +32,6 @@ import otamusan.nec.common.CommonProxy;
 import otamusan.nec.common.Lib;
 import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.UpdateCompressed;
-import otamusan.nec.items.UsingCompressed;
 import otamusan.nec.tileentity.ITileCompressed;
 
 public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
@@ -79,15 +77,6 @@ public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
 		return I18n.format(Lib.MOD_ID + ".hasnotitem");
 	}
 
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-		ItemStack compressed = player.getHeldItem(hand);
-		if (!compressed.isEmpty() && !(ItemBlockCompressed.getOriginal(compressed).getItem() instanceof ItemBlock)) {
-			UsingCompressed.onItemRightClick(world, player, hand);
-		}
-		return new ActionResult<ItemStack>(EnumActionResult.FAIL, compressed);
-	}
-
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack compressed = player.getHeldItem(hand);
@@ -108,8 +97,6 @@ public class ItemBlockCompressed extends ItemBlock implements IItemCompressed {
 				if (tileCompressed != null)
 					tileCompressed.setBlockState(state);
 				return EnumActionResult.SUCCESS;
-			} else {
-				return UsingCompressed.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 			}
 		}
 		return EnumActionResult.FAIL;

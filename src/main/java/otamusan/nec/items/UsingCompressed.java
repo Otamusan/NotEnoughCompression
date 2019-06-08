@@ -106,14 +106,12 @@ public class UsingCompressed {
 			putRemain(player, remains.getCompresseds());
 		}
 
-		System.out.println(player.getHeldItem(hand));
-
 		for (EnumActionResult enumActionResult : actionResults) {
 			if (enumActionResult == EnumActionResult.SUCCESS)
 				return EnumActionResult.SUCCESS;
 		}
 
-		return EnumActionResult.PASS;
+		return EnumActionResult.FAIL;
 	}
 
 	public static class Remains {

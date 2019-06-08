@@ -12,7 +12,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -70,8 +69,8 @@ public class ItemCompressed extends Item implements IItemCompressed {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack compressed = player.getHeldItem(hand);
-		if (!compressed.isEmpty() && !(ItemCompressed.getOriginal(compressed).getItem() instanceof ItemBlock)) {
-			UsingCompressed.onItemRightClick(world, player, hand);
+		if (!compressed.isEmpty()) {
+			return UsingCompressed.onItemRightClick(world, player, hand);
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.FAIL, compressed);
 	}
@@ -80,11 +79,8 @@ public class ItemCompressed extends Item implements IItemCompressed {
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack compressed = player.getHeldItem(hand);
 		if (!compressed.isEmpty()) {
-			ItemStack itemStack = ItemCompressed.getOriginal(compressed);
 
-			int meta = itemStack.getMetadata();
-			BlockPos newpos = getPlacedPos(worldIn, pos, facing);
-			return EnumActionResult.SUCCESS;
+			return UsingCompressed.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 
 		}
 		return EnumActionResult.FAIL;

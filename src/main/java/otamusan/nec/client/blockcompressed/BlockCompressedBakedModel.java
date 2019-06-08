@@ -18,16 +18,11 @@ import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.block.model.ItemOverrideList;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import otamusan.nec.blocks.CompressedBlockDiversity.BlockCompressed;
 
-/**
- * Created by TheGreyGhost on 19/04/2015. This class is used to customise the
- * rendering of the camouflage block, based on the block it is copying.
- */
 public class BlockCompressedBakedModel implements IBakedModel {
 	private final @Nonnull IBakedModel baseModel;
 
@@ -46,14 +41,15 @@ public class BlockCompressedBakedModel implements IBakedModel {
 		}
 
 		// stateがnullだったらデフォルトモデル
-		if (state_child==null)
+		if (state_child == null)
 			return baseModel.getQuads(state_child, side, rand);
 
 		// 破片パーティクルのテクスチャ更新
-		this.originalSprite = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getTexture(state_child);
+		this.originalSprite = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes()
+				.getTexture(state_child);
 
 		// チェストなどのモデルを使用しないブロックは描画しない
-		if (state_child.getRenderType()!=EnumBlockRenderType.MODEL)
+		if (state_child.getRenderType() != EnumBlockRenderType.MODEL)
 			return Lists.newArrayList();
 
 		// モデルを取得

@@ -2,6 +2,8 @@ package otamusan.nec.blocks.CompressedBlockDiversity;
 
 import java.util.ArrayList;
 
+import javax.annotation.Nonnull;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -50,6 +52,54 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 		super(Material.BARRIER);
 		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		hasTileEntity = true;
+	}
+
+	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World worldIn, BlockPos pos) {
+		return blockStrength(state, player, worldIn, pos);
+	}
+
+	public float blockStrength(@Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull World world,
+			@Nonnull BlockPos pos) {
+		IBlockState original = getOriginalBlockState(world, pos);
+
+		float hardness = original.getBlockHardness(world, pos);
+		if (hardness < 0.0F) {
+			return 0.0F;
+		}
+
+		if (!canHarvestBlock(original.getBlock(), player, world, pos)) {
+			return player.getDigSpeed(original, pos) / hardness / 100F;
+		} else {
+			return player.getDigSpeed(original, pos) / hardness / 30F;
+		}
+	}
+
+	public boolean canHarvestBlock(@Nonnull Block block, @Nonnull EntityPlayer player,
+			@Nonnull IBlockAccess world, @Nonnull BlockPos pos) {
+		IBlockState state = getOriginalBlockState(world, pos);
+		;
+		state = state.getBlock().getActualState(state, world, pos);
+		if (state.getMaterial().isToolNotRequired()) {
+			return true;
+		}
+
+		ItemStack stack = player.getHeldItemMainhand();
+		String tool = block.getHarvestTool(state);
+		if (stack.isEmpty() || tool == null) {
+			return player.canHarvestBlock(state);
+		}
+
+		int toolLevel = stack.getItem().getHarvestLevel(stack, tool, player, state);
+		if (toolLevel < 0) {
+			return player.canHarvestBlock(state);
+		}
+
+		return toolLevel >= block.getHarvestLevel(state);
+	}
+
+	@Override
+	public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) {
+		return getOriginalBlockState(worldIn, pos).getBlockHardness(worldIn, pos);
 	}
 
 	@Override
@@ -197,9 +247,14 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 		return state;
 	}
 
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		IBlockState original = getOriginalBlockState(world, pos);
+		return original.doesSideBlockRendering(world, pos, face);
+	}
+
 	@Override
 	public boolean isFullCube(IBlockState iBlockState) {
-		return false;
+		return true;
 	}
 
 	@Override
