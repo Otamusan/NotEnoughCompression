@@ -24,11 +24,11 @@ public class TileSpecialEntityRendererCompressed extends TileEntitySpecialRender
 	public void render(TileCompressed te, double x, double y, double z, float partialTicks, int destroyStage,
 			float alpha) {
 		IBlockState state_child = te.getState();
-		if (state_child!=null&&state_child.getRenderType()!=EnumBlockRenderType.MODEL) {
+		if (state_child != null && state_child.getRenderType() != EnumBlockRenderType.MODEL) {
 			Block block_child = state_child.getBlock();
 			TileEntity te_child = block_child.createTileEntity(getWorld(), state_child);
 			if (te_child != null) {
-				int time = ItemCompressed.getTime(te.compressedblock) + 1;
+				int time = ItemCompressed.getTime(te.getItemCompressed()) + 1;
 				GlStateManager.pushAttrib();
 				CustomRenderHelper.percentAllLights(1.f / time);
 				rendererDispatcher.render(te_child, x, y, z, partialTicks, destroyStage, alpha);

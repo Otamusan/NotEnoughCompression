@@ -12,7 +12,6 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import otamusan.nec.blocks.CompressedBlockDiversity.BlockCompressed;
 import otamusan.nec.blocks.CompressedBlockDiversity.BlockCompressedFurnace;
 import otamusan.nec.common.automaticcompression.CompressionInChest;
-import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.CompressedItemDiversity.ItemBlockCompressed;
 import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.recipes.CompressedCrafting;
@@ -20,6 +19,7 @@ import otamusan.nec.recipes.Compression;
 import otamusan.nec.recipes.Decompression;
 import otamusan.nec.recipes.DecompressionWithPiston;
 import otamusan.nec.tileentity.TileCompressed;
+import otamusan.nec.tileentity.TileCompressedFurnace;
 import otamusan.nec.world.CompressedGenerator;
 
 public class CommonProxy {
@@ -58,12 +58,10 @@ public class CommonProxy {
 		BLOCKBASE.setUnlocalizedName("compressedblock");
 		ForgeRegistries.BLOCKS.register(BLOCKBASE);
 
-		//BLOCKFURNECE = new BlockCompressedFurnace();
-		//BLOCKBASE.addChildren(BLOCKFURNECE);
+		BLOCKFURNECE = new BlockCompressedFurnace();
+		BLOCKBASE.addChildren(BLOCKFURNECE);
 
-		if (NECConfig.CONFIG_TYPES.world.isReplaceChunks) {
-			GameRegistry.registerWorldGenerator(new CompressedGenerator(), 1000);
-		}
+		GameRegistry.registerWorldGenerator(new CompressedGenerator(), 1000);
 
 		ITEMBASE = new ItemCompressed();
 
@@ -91,6 +89,9 @@ public class CommonProxy {
 
 	public void registerTileEntity() {
 		GameRegistry.registerTileEntity(TileCompressed.class, new ResourceLocation(Lib.MOD_ID, "tilecompressed"));
+		GameRegistry.registerTileEntity(TileCompressedFurnace.class,
+				new ResourceLocation(Lib.MOD_ID, "tilecompressedfurnace"));
+
 	}
 
 	public static BlockCompressedFurnace BLOCKFURNECE;

@@ -17,6 +17,9 @@ public class UpdateCompressed {
 
 	public static void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 
+		if (!(NECConfig.CONFIG_TYPES.using.isUpdateOnlyOnHand && isSelected))
+			return;
+
 		if (!(entityIn instanceof EntityPlayer))
 			return;
 

@@ -131,4 +131,5 @@ public interface IBlockCompressed {
 			}
 		}, (Block) this);
 	}
+
 }

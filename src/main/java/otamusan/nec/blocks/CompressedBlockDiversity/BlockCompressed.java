@@ -254,7 +254,7 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 
 	@Override
 	public boolean isFullCube(IBlockState iBlockState) {
-		return true;
+		return false;
 	}
 
 	@Override

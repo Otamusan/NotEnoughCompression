@@ -27,6 +27,9 @@ public class CompressedGenerator implements IWorldGenerator {
 		int ex = new ChunkPos(x, z).getXEnd();
 		int ez = new ChunkPos(x, z).getZEnd();
 
+		if (!NECConfig.CONFIG_TYPES.world.isReplaceChunks)
+			return;
+
 		if (random.nextDouble() > NECConfig.CONFIG_TYPES.world.rate)
 			return;
 

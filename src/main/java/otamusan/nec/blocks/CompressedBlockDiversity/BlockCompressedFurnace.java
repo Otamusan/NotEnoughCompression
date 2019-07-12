@@ -1,57 +1,36 @@
 package otamusan.nec.blocks.CompressedBlockDiversity;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import javax.annotation.Nonnull;
+
+import com.google.common.collect.Lists;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Enchantments;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.server.SPacketBlockChange;
+import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.property.ExtendedBlockState;
-import net.minecraftforge.common.property.IExtendedBlockState;
-import net.minecraftforge.common.property.IUnlistedProperty;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
-import otamusan.nec.tileentity.ITileCompressed;
-import otamusan.nec.tileentity.TileCompressed;
+import net.minecraftforge.common.util.BlockSnapshot;
+import otamusan.nec.tileentity.TileCompressedFurnace;
 
-public class BlockCompressedFurnace extends BlockFurnace implements IBlockCompressed {
+public class BlockCompressedFurnace extends BlockCompressed implements IBlockCompressed {
 	public BlockCompressedFurnace() {
-		super(false);
-	}
-
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (worldIn.isRemote)
-			return true;
-
-		worldIn.createExplosion(playerIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5, true);
-
-		return true;
 	}
 
 	@Override
 	public boolean isAvailable(Block item) {
-		return item == Blocks.FURNACE;
+		return item == Blocks.FURNACE || item == Blocks.LIT_FURNACE;
 	}
 
 	@Override
@@ -59,150 +38,101 @@ public class BlockCompressedFurnace extends BlockFurnace implements IBlockCompre
 		return "blockfurnace";
 	}
 
-	public IBlockState getOriginalBlockState(IBlockAccess world, BlockPos pos) {
-		ITileCompressed tile = (ITileCompressed) world.getTileEntity(pos);
-		IBlockState state;
-
-		if (tile == null)
-			return Blocks.STONE.getDefaultState();
-
-		if (tile.getState() == null) {
-			state = getOriginalBlockState(tile.getItemCompressed());
-		} else {
-			state = tile.getState();
-		}
-		return state;
-	}
-
-	public IBlockState getOriginalBlockState(ItemStack item) {
-		if (!(item.getItem() instanceof ItemBlock))
-			return Blocks.STONE.getDefaultState();
-
-		return ((ItemBlock) item.getItem()).getBlock().getStateFromMeta(item.getMetadata());
-
-	}
-
-	public IBlockState getOriginalBlockState(IBlockState state) {
-		if (state instanceof IExtendedBlockState) {
-			IExtendedBlockState estate = (IExtendedBlockState) state;
-
-			if (estate.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE) != null)
-				return estate.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
-		}
-		return Blocks.STONE.getDefaultState();
-	}
-
 	public boolean hasTileEntity(int metadata) {
 		return true;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.TRANSLUCENT;
-	}
-
-	@Override
-	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World worldIn, BlockPos pos,
-			EntityPlayer player) {
-		ITileCompressed tileCompressed = (ITileCompressed) worldIn.getTileEntity(pos);
-		ItemStack itemCompressed = tileCompressed.getItemCompressed().copy();
-		itemCompressed.setCount(1);
-		return itemCompressed;
-	}
-
-	@Override
-	public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
-		ItemStack heldItem = player.getHeldItem(EnumHand.MAIN_HAND);
-		int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, heldItem);
-		int silktouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem);
-		ITileCompressed tileCompressed = (ITileCompressed) worldIn.getTileEntity(pos);
-		IBlockState iBlockState = tileCompressed.getState();
-
-		if (iBlockState != null && iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player)
-				&& silktouch == 0) {
-
-			int time = ItemCompressed.getTime(tileCompressed.getItemCompressed());
-
-			NonNullList<ItemStack> itemlist = NonNullList.create();
-			iBlockState.getBlock().getDrops(itemlist, worldIn, pos, iBlockState, fortune);
-
-			for (ItemStack itemStack : itemlist) {
-				ItemStack compressed = ItemCompressed.createCompressedItem(itemStack, time);
-				spawnAsEntity(worldIn, pos, compressed);
-			}
-
-		} else {
-			ItemStack itemCompressed = tileCompressed.getItemCompressed().copy();
-			itemCompressed.setCount(1);
-			spawnAsEntity(worldIn, pos, itemCompressed);
-		}
-	}
-
-	@Override
-	public boolean isOpaqueCube(IBlockState iBlockState) {
-		return false;
-	}
-
-	@Override
-	protected BlockStateContainer createBlockState() {
-		IProperty<?>[] listedProperties = new IProperty[0];
-		IUnlistedProperty<?>[] unlistedProperties = new IUnlistedProperty[] { BlockCompressed.COMPRESSEDBLOCK_NBT,
-				BlockCompressed.COMPRESSEDBLOCK_STATE };
-		return new ExtendedBlockState(this, listedProperties, unlistedProperties);
-	}
-
-	@Override
-	public IBlockState getExtendedState(IBlockState state, IBlockAccess world, BlockPos pos) {
-		if (state instanceof IExtendedBlockState) {
-			IExtendedBlockState retval = (IExtendedBlockState) state;
-			TileEntity tileEntity = world.getTileEntity(pos);
-			ITileCompressed tileCompressed = (ITileCompressed) tileEntity;
-
-			ItemStack compressed = tileCompressed.getItemCompressed();
-			if (compressed != null) {
-				NBTTagCompound itemNBT = new NBTTagCompound();
-				compressed.writeToNBT(itemNBT);
-				retval = retval.withProperty(BlockCompressed.COMPRESSEDBLOCK_NBT, itemNBT);
-			}
-
-			IBlockState blockState = tileCompressed.getState();
-			retval = retval.withProperty(BlockCompressed.COMPRESSEDBLOCK_STATE, blockState);
-			return retval;
-		}
-		return state;
-	}
-
-	@Override
-	public boolean isFullCube(IBlockState iBlockState) {
-		return false;
-	}
-
-	@Override
-	public EnumBlockRenderType getRenderType(IBlockState iBlockState) {
-		return EnumBlockRenderType.MODEL;
-	}
-
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileCompressed();
+		return new TileCompressedFurnace();
 	}
 
-	private ArrayList<IBlockCompressed> children = new ArrayList<>();
-	private IBlockCompressed parent;
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (worldIn.isRemote) {
+			return true;
+		} else {
+			TileEntity tileentity = worldIn.getTileEntity(pos);
 
-	@Override
-	public ArrayList<IBlockCompressed> getChildren() {
-		return children;
+			if (tileentity instanceof TileCompressedFurnace) {
+				playerIn.displayGUIChest((TileCompressedFurnace) tileentity);
+				playerIn.addStat(StatList.FURNACE_INTERACTION);
+			}
+
+			return true;
+		}
 	}
 
-	@Override
-	public IBlockCompressed getParent() {
-		return parent;
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+		IBlockState original = getOriginalBlockState(worldIn, pos);
+		original.getBlock().randomDisplayTick(original, worldIn, pos, rand);
+
 	}
 
-	@Override
-	public void setParent(IBlockCompressed iBlockCompressed) {
-		parent = iBlockCompressed;
+	public static void setState(boolean active, World worldIn, BlockPos pos) {
+		IBlockState iblockstate = ((BlockCompressedFurnace) worldIn.getBlockState(pos).getBlock())
+				.getOriginalBlockState(worldIn, pos);
+		TileEntity tileentity = worldIn.getTileEntity(pos);
+
+		if (active) {
+			((TileCompressedFurnace) tileentity)
+					.setBlockState(Blocks.LIT_FURNACE.getDefaultState().withProperty(BlockFurnace.FACING,
+							iblockstate.getValue(BlockFurnace.FACING)));
+		} else {
+			((TileCompressedFurnace) tileentity)
+					.setBlockState(Blocks.FURNACE.getDefaultState().withProperty(BlockFurnace.FACING,
+							iblockstate.getValue(BlockFurnace.FACING)));
+		}
+		//worldIn.setTileEntity(pos, tileentity);
+
+		//worldIn.setBlockState(pos, CommonProxy.BLOCKFURNECE.getDefaultState(), 8);
+		//onPlaceItemIntoWorld(worldIn, pos);
+
+		for (EntityPlayer player : worldIn.playerEntities) {
+			if (player instanceof EntityPlayerMP) {
+				EntityPlayerMP entityPlayer = (EntityPlayerMP) player;
+				entityPlayer.connection.sendPacket(new SPacketBlockChange(worldIn, pos));
+			}
+		}
+		//onPlaceItemIntoWorld(worldIn, pos);
+
+		//worldIn.markBlockRangeForRenderUpdate(pos, pos);
+		//worldIn.markAndNotifyBlock(pos, null, iblockstate, iblockstate, 0);
+		try {
+			Minecraft.getMinecraft().renderGlobal.markBlockRangeForRenderUpdate(pos.getX() - 1, pos.getY() - 1,
+					pos.getZ() - 1,
+					pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1);
+		} catch (Exception e) {
+		}
+
+		//System.out.println(((ITileCompressed) worldIn.getTileEntity(pos)).getState());
+
 	}
 
+	public static void onPlaceItemIntoWorld(@Nonnull World world, @Nonnull BlockPos pos) {
+		// handle all placement events here
+
+		@SuppressWarnings("unchecked")
+		List<BlockSnapshot> blockSnapshots = (List<BlockSnapshot>) world.capturedBlockSnapshots.clone();
+		world.capturedBlockSnapshots.clear();
+
+		for (BlockSnapshot blocksnapshot : Lists.reverse(blockSnapshots)) {
+			world.restoringBlockSnapshots = true;
+			blocksnapshot.restore(true, false);
+			world.restoringBlockSnapshots = false;
+		}
+
+		for (BlockSnapshot snap : blockSnapshots) {
+			int updateFlag = snap.getFlag();
+			IBlockState oldBlock = snap.getReplacedBlock();
+			IBlockState newBlock = world.getBlockState(snap.getPos());
+			if (!newBlock.getBlock().hasTileEntity(newBlock)) // Containers get placed automatically
+			{
+				newBlock.getBlock().onBlockAdded(world, snap.getPos(), newBlock);
+			}
+
+			world.markAndNotifyBlock(snap.getPos(), null, oldBlock, newBlock, updateFlag);
+		}
+		world.capturedBlockSnapshots.clear();
+	}
 }

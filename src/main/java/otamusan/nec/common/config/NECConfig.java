@@ -39,6 +39,9 @@ public class NECConfig {
 
 			@Comment({ "Items written here can not use" })
 			public String[] usingExclusion = {};
+
+			@Comment({ "Whether to update all compressed item in inventory" })
+			public boolean isUpdateOnlyOnHand = false;
 		}
 
 		public static class Compression {

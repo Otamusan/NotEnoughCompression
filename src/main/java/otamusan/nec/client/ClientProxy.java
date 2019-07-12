@@ -35,13 +35,13 @@ public class ClientProxy extends CommonProxy {
 		ITEMBASE.modelRegister();
 		ITEMBLOCK.modelRegister();
 		BLOCKBASE.preModelRegister();
-		//BLOCKFURNECE.preModelRegister();
+		BLOCKFURNECE.preModelRegister();
 	}
 
 	@Override
 	public void init() {
 		BLOCKBASE.modelRegister();
-		//BLOCKFURNECE.modelRegister();
+		BLOCKFURNECE.modelRegister();
 		super.init();
 	}
 
@@ -51,6 +51,7 @@ public class ClientProxy extends CommonProxy {
 		TileSpecialEntityRendererCompressed.instance.setRendererDispatcher(TileEntityRendererDispatcher.instance);
 		TileEntityRendererDispatcher.instance.renderers.put(TileCompressed.class,
 				TileSpecialEntityRendererCompressed.instance);
+
 	}
 
 	@Override

@@ -31,6 +31,7 @@ public class BlockCompressedBakedModel implements IBakedModel {
 	}
 
 	public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand) {
+
 		IBlockState state_child = null;
 
 		// BlockStateを取得
