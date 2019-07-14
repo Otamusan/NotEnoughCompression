@@ -11,7 +11,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
@@ -39,6 +38,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import otamusan.nec.blocks.CompressedBlockDiversity.BlockCompressedFurnace;
 import otamusan.nec.common.Lib;
+import otamusan.nec.items.CompressedItemDiversity.IItemCompressed;
 import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class TileCompressedFurnace extends TileEntityLockable implements ITickable, ISidedInventory, ITileCompressed {
@@ -47,6 +47,7 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 
 	public ItemStack compressedblock;
 	public IBlockState state;
+	public boolean isNatural = false;
 
 	public void setItemCompressed(ItemStack stack) {
 		compressedblock = stack.copy();
@@ -211,6 +212,9 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 		if (compound.hasKey(Lib.MOD_ID + "_originalid")) {
 			this.state = Block.getStateById(compound.getInteger(Lib.MOD_ID + "_originalid"));
 		}
+		if (compound.hasKey(Lib.MOD_ID + "_isnatural")) {
+			this.isNatural = compound.getBoolean(Lib.MOD_ID + "_isnatural");
+		}
 	}
 
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
@@ -236,6 +240,8 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 			int meta = Block.getStateId(state);
 			compound.setInteger(Lib.MOD_ID + "_originalid", meta);
 		}
+
+		compound.setBoolean(Lib.MOD_ID + "_isnatural", isNatural);
 
 		return compound;
 	}
@@ -339,10 +345,12 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 	 * Returns true if the furnace can smelt an item, i.e. has a source item, destination stack isn't full, etc.
 	 */
 	private boolean canSmelt() {
-		if (((ItemStack) this.furnaceItemStacks.get(0)).isEmpty()) {
+		if (((ItemStack) this.furnaceItemStacks.get(0)).isEmpty()
+				|| !(this.furnaceItemStacks.get(0).getItem() instanceof IItemCompressed)) {
 			return false;
 		} else {
-			ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.furnaceItemStacks.get(0));
+			ItemStack itemstack = FurnaceRecipes.instance()
+					.getSmeltingResult(ItemCompressed.getOriginal(this.furnaceItemStacks.get(0)));
 
 			if (itemstack.isEmpty()) {
 				return false;
@@ -351,7 +359,7 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 
 				if (itemstack1.isEmpty()) {
 					return true;
-				} else if (!itemstack1.isItemEqual(itemstack)) {
+				} else if (!ItemCompressed.getOriginal(itemstack1).isItemEqual(itemstack)) {
 					return false;
 				} else if (itemstack1.getCount() + itemstack.getCount() <= this.getInventoryStackLimit()
 						&& itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) // Forge fix: make furnace respect stack sizes in furnace recipes
@@ -370,21 +378,16 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 	public void smeltItem() {
 		if (this.canSmelt()) {
 			ItemStack itemstack = this.furnaceItemStacks.get(0);
-			ItemStack itemstack1 = FurnaceRecipes.instance().getSmeltingResult(itemstack);
+			ItemStack itemstack1 = FurnaceRecipes.instance().getSmeltingResult(ItemCompressed.getOriginal(itemstack));
 			ItemStack itemstack2 = this.furnaceItemStacks.get(2);
 
 			if (itemstack2.isEmpty()) {
-				this.furnaceItemStacks.set(2, itemstack1.copy());
-			} else if (itemstack2.getItem() == itemstack1.getItem()) {
+				this.furnaceItemStacks.set(2, ItemCompressed.createCompressedItem(itemstack1.copy(), getTime()));
+				System.out.println(getTime());
+				System.out.println(itemstack1.copy());
+			} else if (ItemCompressed.getOriginal(itemstack2).getItem() == itemstack1.getItem()) {
 				itemstack2.grow(itemstack1.getCount());
 			}
-
-			if (itemstack.getItem() == Item.getItemFromBlock(Blocks.SPONGE) && itemstack.getMetadata() == 1
-					&& !((ItemStack) this.furnaceItemStacks.get(1)).isEmpty()
-					&& ((ItemStack) this.furnaceItemStacks.get(1)).getItem() == Items.BUCKET) {
-				this.furnaceItemStacks.set(1, new ItemStack(Items.WATER_BUCKET));
-			}
-
 			itemstack.shrink(1);
 		}
 	}
@@ -474,7 +477,7 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 		return ItemCompressed.getTime(getItemCompressed());
 	}
 
-	private boolean isTimeMatch(ItemStack compressed) {
+	public boolean isTimeMatch(ItemStack compressed) {
 		return getTime() == ItemCompressed.getTime(compressed);
 	}
 
@@ -527,7 +530,7 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 	}
 
 	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-		return new ContainerFurnace(playerInventory, this);
+		return new ContainerCompressedFurnace(playerInventory, this);
 	}
 
 	public int getField(int id) {
@@ -589,5 +592,15 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 			else
 				return (T) handlerSide;
 		return super.getCapability(capability, facing);
+	}
+
+	@Override
+	public void setNatural(boolean isnatural) {
+		this.isNatural = isnatural;
+	}
+
+	@Override
+	public boolean isNatural() {
+		return isNatural;
 	}
 }

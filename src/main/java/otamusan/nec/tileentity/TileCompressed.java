@@ -13,6 +13,7 @@ public class TileCompressed extends TileEntity implements ITileCompressed {
 
 	public ItemStack compressedblock;
 	public IBlockState state;
+	public boolean isNatural = false;
 
 	public void setItemCompressed(ItemStack stack) {
 		compressedblock = stack.copy();
@@ -52,6 +53,9 @@ public class TileCompressed extends TileEntity implements ITileCompressed {
 			int meta = Block.getStateId(state);
 			nbt.setInteger(Lib.MOD_ID + "_originalid", meta);
 		}
+
+		nbt.setBoolean(Lib.MOD_ID + "_isnatural", isNatural);
+
 		return nbt;
 	}
 
@@ -62,6 +66,10 @@ public class TileCompressed extends TileEntity implements ITileCompressed {
 		}
 		if (nbt.hasKey(Lib.MOD_ID + "_originalid")) {
 			this.state = Block.getStateById(nbt.getInteger(Lib.MOD_ID + "_originalid"));
+		}
+
+		if (nbt.hasKey(Lib.MOD_ID + "_isnatural")) {
+			this.isNatural = nbt.getBoolean(Lib.MOD_ID + "_isnatural");
 		}
 	}
 
@@ -76,5 +84,15 @@ public class TileCompressed extends TileEntity implements ITileCompressed {
 	@Override
 	public void handleUpdateTag(NBTTagCompound tag) {
 		this.readFromNBT(tag);
+	}
+
+	@Override
+	public void setNatural(boolean isnatural) {
+		this.isNatural = isnatural;
+	}
+
+	@Override
+	public boolean isNatural() {
+		return isNatural;
 	}
 }

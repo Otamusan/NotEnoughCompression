@@ -11,4 +11,8 @@ public interface ITileCompressed {
 	public ItemStack getItemCompressed();
 
 	public IBlockState getState();
+
+	public void setNatural(boolean isnatural);
+
+	public boolean isNatural();
 }

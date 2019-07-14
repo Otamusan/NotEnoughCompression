@@ -75,6 +75,7 @@ public class CompressedGenerator implements IWorldGenerator {
 		ItemStack compressed = ItemCompressed.createCompressedItem(item, time);
 
 		tileCompressed.setItemCompressed(compressed);
+		tileCompressed.setNatural(true);
 		return true;
 	}
 

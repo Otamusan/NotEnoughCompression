@@ -101,5 +101,7 @@ public class CommonProxy {
 
 	public void registerEventHandlers() {
 		MinecraftForge.EVENT_BUS.register(new CompressionInChest());
+		MinecraftForge.EVENT_BUS.register(new BreakCompressedBlock());
+
 	}
 }

@@ -55,6 +55,9 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 	}
 
 	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World worldIn, BlockPos pos) {
+		if (((ITileCompressed) (worldIn.getTileEntity(pos))).isNatural()) {
+			return (float) (blockStrength(state, player, worldIn, pos) / Math.pow(8, getTime(worldIn, pos)));
+		}
 		return blockStrength(state, player, worldIn, pos);
 	}
 
@@ -147,6 +150,15 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 			state = tile.getState();
 		}
 		return state;
+	}
+
+	public int getTime(IBlockAccess world, BlockPos pos) {
+		ITileCompressed tile = (ITileCompressed) world.getTileEntity(pos);
+
+		if (tile == null)
+			return 0;
+
+		return ItemCompressed.getTime(tile.getItemCompressed());
 	}
 
 	public IBlockState getOriginalBlockState(ItemStack item) {
