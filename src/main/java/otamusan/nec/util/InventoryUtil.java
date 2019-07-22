@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class InventoryUtil {
@@ -24,6 +25,14 @@ public class InventoryUtil {
 		ArrayList<ItemStack> remain = new ArrayList<>();
 		for (ItemStack itemStack : list) {
 			remain.add(TileEntityHopper.putStackInInventoryAllSlots(null, destination, itemStack, null));
+		}
+		return remain;
+	}
+
+	public static List<ItemStack> putStacksInSlots(IItemHandler destination, List<ItemStack> list) {
+		ArrayList<ItemStack> remain = new ArrayList<>();
+		for (ItemStack itemStack : list) {
+			remain.add(ItemHandlerHelper.insertItemStacked(destination, itemStack, false));
 		}
 		return remain;
 	}

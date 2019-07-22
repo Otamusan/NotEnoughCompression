@@ -3,17 +3,17 @@ package otamusan.nec.common.automaticcompression;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.items.IItemHandler;
 import otamusan.nec.common.config.NECConfig;
 import otamusan.nec.items.CompressedItems;
 import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.util.InventoryUtil;
 
 public class AutoCompression {
-	public static List<ItemStack> autocompression2(IInventory inv) {
+	public static List<ItemStack> autocompression2(IItemHandler inv) {
 		List<ItemStack> remains = new ArrayList<>();
-		for (int i = 0; i < inv.getSizeInventory(); i++) {
+		for (int i = 0; i < inv.getSlots(); i++) {
 			ItemStack source;
 
 			if (ItemCompressed.isCompressedItem(inv.getStackInSlot(i).getItem())) {
@@ -27,10 +27,11 @@ public class AutoCompression {
 				continue;
 			if (!NECConfig.isCompressible(source.getItem()))
 				continue;
-			for (int j = i; j < inv.getSizeInventory(); j++) {
+			for (int j = i; j < inv.getSlots(); j++) {
 				boolean containable = manager.addCompressed(inv.getStackInSlot(j));
 				if (containable) {
-					inv.setInventorySlotContents(j, ItemStack.EMPTY);
+					//inv.setStackInSlot(j, ItemStack.EMPTY);
+					inv.extractItem(j, inv.getStackInSlot(j).getCount(), false);
 				}
 			}
 			List<ItemStack> items = manager.getCompressed();
