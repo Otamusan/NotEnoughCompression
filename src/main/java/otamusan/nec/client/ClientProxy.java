@@ -36,12 +36,15 @@ public class ClientProxy extends CommonProxy {
 		ITEMBLOCK.modelRegister();
 		BLOCKBASE.preModelRegister();
 		BLOCKFURNECE.preModelRegister();
+		BLOCKHOPPER.preModelRegister();
 	}
 
 	@Override
 	public void init() {
 		BLOCKBASE.modelRegister();
 		BLOCKFURNECE.modelRegister();
+		BLOCKHOPPER.modelRegister();
+
 		super.init();
 	}
 

@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import otamusan.nec.blocks.CompressedBlockDiversity.BlockCompressed;
 import otamusan.nec.blocks.CompressedBlockDiversity.BlockCompressedFurnace;
+import otamusan.nec.blocks.CompressedBlockDiversity.BlockCompressedHopper;
 import otamusan.nec.common.automaticcompression.CompressionInChest;
 import otamusan.nec.items.CompressedItemDiversity.ItemBlockCompressed;
 import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
@@ -20,6 +21,7 @@ import otamusan.nec.recipes.Decompression;
 import otamusan.nec.recipes.DecompressionWithPiston;
 import otamusan.nec.tileentity.TileCompressed;
 import otamusan.nec.tileentity.TileCompressedFurnace;
+import otamusan.nec.tileentity.TileCompressedHopper;
 import otamusan.nec.world.CompressedGenerator;
 
 public class CommonProxy {
@@ -59,7 +61,9 @@ public class CommonProxy {
 		ForgeRegistries.BLOCKS.register(BLOCKBASE);
 
 		BLOCKFURNECE = new BlockCompressedFurnace();
+		BLOCKHOPPER = new BlockCompressedHopper();
 		BLOCKBASE.addChildren(BLOCKFURNECE);
+		BLOCKBASE.addChildren(BLOCKHOPPER);
 
 		GameRegistry.registerWorldGenerator(new CompressedGenerator(), 1000);
 
@@ -91,10 +95,14 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileCompressed.class, new ResourceLocation(Lib.MOD_ID, "tilecompressed"));
 		GameRegistry.registerTileEntity(TileCompressedFurnace.class,
 				new ResourceLocation(Lib.MOD_ID, "tilecompressedfurnace"));
+		GameRegistry.registerTileEntity(TileCompressedHopper.class,
+				new ResourceLocation(Lib.MOD_ID, "tilecompressedhopper"));
 
 	}
 
 	public static BlockCompressedFurnace BLOCKFURNECE;
+	public static BlockCompressed BLOCKHOPPER;
+
 	public static BlockCompressed BLOCKBASE;
 	public static ItemCompressed ITEMBASE;
 	public static ItemBlockCompressed ITEMBLOCK;

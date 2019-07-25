@@ -42,18 +42,22 @@ public class CompressionInChest {
 
 			TileEntity tile = event.world.getTileEntity(pos);
 
-			if (tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
-				IItemHandler iItemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+			if (tile == null)
+				continue;
 
-				if (NECConfig.isCompressionCatalyst(type)) {
-					List<ItemStack> remains = AutoCompression.autocompression2(iItemHandler);
+			if (!tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null))
+				continue;
 
-					for (ItemStack itemStack : remains) {
-						Block.spawnAsEntity(event.world, pos.add(0.5, 0.5, 0.5), itemStack);
-					}
+			IItemHandler iItemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
-				}
+			if (!NECConfig.isCompressionCatalyst(type))
+				continue;
+			List<ItemStack> remains = AutoCompression.autocompression2(iItemHandler);
+
+			for (ItemStack itemStack : remains) {
+				Block.spawnAsEntity(event.world, pos.add(0.5, 0.5, 0.5), itemStack);
 			}
+
 		}
 	}
 }

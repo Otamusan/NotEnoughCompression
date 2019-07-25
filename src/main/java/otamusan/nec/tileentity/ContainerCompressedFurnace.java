@@ -10,9 +10,9 @@ import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class ContainerCompressedFurnace extends Container {
 	private final IInventory tileFurnace;
@@ -134,7 +134,8 @@ public class ContainerCompressedFurnace extends Container {
 					if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
 						return ItemStack.EMPTY;
 					}
-				} else if (TileEntityFurnace.isItemFuel(itemstack1)) {
+				} else if (TileCompressedFurnace.isItemFuel(ItemCompressed.getOriginal(itemstack1))
+						&& ((TileCompressedFurnace) tileFurnace).isTimeMatch(itemstack1)) {
 					if (!this.mergeItemStack(itemstack1, 1, 2, false)) {
 						return ItemStack.EMPTY;
 					}

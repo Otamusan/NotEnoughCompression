@@ -14,6 +14,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.network.play.server.SPacketBlockChange;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
@@ -31,6 +33,13 @@ public class BlockCompressedFurnace extends BlockCompressed implements IBlockCom
 	@Override
 	public boolean isAvailable(Block item) {
 		return item == Blocks.FURNACE || item == Blocks.LIT_FURNACE;
+	}
+
+	@Override
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+		InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) worldIn.getTileEntity(pos));
+
+		super.breakBlock(worldIn, pos, state);
 	}
 
 	@Override
@@ -92,6 +101,8 @@ public class BlockCompressedFurnace extends BlockCompressed implements IBlockCom
 			if (player instanceof EntityPlayerMP) {
 				EntityPlayerMP entityPlayer = (EntityPlayerMP) player;
 				entityPlayer.connection.sendPacket(new SPacketBlockChange(worldIn, pos));
+				entityPlayer.connection.sendPacket(tileentity.getUpdatePacket());
+
 			}
 		}
 		//onPlaceItemIntoWorld(worldIn, pos);

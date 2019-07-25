@@ -273,7 +273,7 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 		for (EntityPlayer player : world.playerEntities) {
 			if (player instanceof EntityPlayerMP) {
 				EntityPlayerMP entityPlayer = (EntityPlayerMP) player;
-				entityPlayer.connection.sendPacket(this.getUpdatePacket());
+				//entityPlayer.connection.sendPacket(this.getUpdatePacket());
 			}
 		}
 
@@ -325,15 +325,16 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 
 			if (flag != this.isBurning()) {
 				flag1 = true;
+				BlockCompressedFurnace.setState(this.isBurning(), this.world, this.pos);
+
 			}
 		}
 
 		if (flag1) {
 			this.markDirty();
 		}
-		BlockCompressedFurnace.setState(this.isBurning(), this.world, this.pos);
 
-		this.markDirty();
+		//this.markDirty();
 
 	}
 
@@ -383,8 +384,7 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 
 			if (itemstack2.isEmpty()) {
 				this.furnaceItemStacks.set(2, ItemCompressed.createCompressedItem(itemstack1.copy(), getTime()));
-				System.out.println(getTime());
-				System.out.println(itemstack1.copy());
+
 			} else if (ItemCompressed.getOriginal(itemstack2).getItem() == itemstack1.getItem()) {
 				itemstack2.grow(itemstack1.getCount());
 			}
@@ -526,6 +526,7 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 	}
 
 	public String getGuiID() {
+		//return Lib.MOD_ID + ":compressedfurnace";
 		return "minecraft:furnace";
 	}
 
