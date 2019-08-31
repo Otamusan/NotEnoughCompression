@@ -62,8 +62,12 @@ public class CommonProxy {
 
 		BLOCKFURNECE = new BlockCompressedFurnace();
 		BLOCKHOPPER = new BlockCompressedHopper();
+		//BLOCKTNT = new BlockCompressedTNT();
+		//BLOCKSAPLING = new BlockCompressedSapling();
 		BLOCKBASE.addChildren(BLOCKFURNECE);
 		BLOCKBASE.addChildren(BLOCKHOPPER);
+		//BLOCKBASE.addChildren(BLOCKTNT);
+		//BLOCKBASE.addChildren(BLOCKSAPLING);
 
 		GameRegistry.registerWorldGenerator(new CompressedGenerator(), 1000);
 
@@ -102,6 +106,8 @@ public class CommonProxy {
 
 	public static BlockCompressedFurnace BLOCKFURNECE;
 	public static BlockCompressed BLOCKHOPPER;
+	//public static BlockCompressed BLOCKTNT;
+	//public static BlockCompressed BLOCKSAPLING;
 
 	public static BlockCompressed BLOCKBASE;
 	public static ItemCompressed ITEMBASE;

@@ -102,17 +102,20 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 
 	@Override
 	public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) {
-		return getOriginalBlockState(worldIn, pos).getBlockHardness(worldIn, pos);
+		return getOriginalBlockState(worldIn, pos).getBlock().getBlockHardness(getOriginalBlockState(worldIn, pos),
+				worldIn, pos);
 	}
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return getOriginalBlockState(source, pos).getBoundingBox(source, pos);
+		return getOriginalBlockState(source, pos).getBlock().getBoundingBox(getOriginalBlockState(source, pos), source,
+				pos);
 	}
 
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
-		return getOriginalBlockState(worldIn, pos).getCollisionBoundingBox(worldIn, pos);
+		return getOriginalBlockState(worldIn, pos).getBlock()
+				.getCollisionBoundingBox(getOriginalBlockState(worldIn, pos), worldIn, pos);
 	}
 
 	@Override
@@ -145,11 +148,18 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 			return Blocks.STONE.getDefaultState();
 
 		if (tile.getState() == null) {
-			state = getOriginalBlockState(tile.getItemCompressed());
+			state = getOriginalBlockState(ItemCompressed.getOriginal(tile.getItemCompressed()));
+
+		} else if (tile.getState().getBlock() instanceof IBlockCompressed) {
+			return Blocks.STONE.getDefaultState();
+
 		} else {
 			state = tile.getState();
+
 		}
+
 		return state;
+
 	}
 
 	public int getTime(IBlockAccess world, BlockPos pos) {
@@ -261,7 +271,7 @@ public class BlockCompressed extends Block implements ITileEntityProvider, IBloc
 
 	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		IBlockState original = getOriginalBlockState(world, pos);
-		return original.doesSideBlockRendering(world, pos, face);
+		return original.getBlock().doesSideBlockRendering(original, world, pos, face);
 	}
 
 	@Override

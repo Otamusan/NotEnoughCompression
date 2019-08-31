@@ -37,6 +37,9 @@ public class ClientProxy extends CommonProxy {
 		BLOCKBASE.preModelRegister();
 		BLOCKFURNECE.preModelRegister();
 		BLOCKHOPPER.preModelRegister();
+		//BLOCKTNT.preModelRegister();
+		//BLOCKSAPLING.preModelRegister();
+
 	}
 
 	@Override
@@ -44,6 +47,8 @@ public class ClientProxy extends CommonProxy {
 		BLOCKBASE.modelRegister();
 		BLOCKFURNECE.modelRegister();
 		BLOCKHOPPER.modelRegister();
+		//BLOCKTNT.modelRegister();
+		//BLOCKSAPLING.modelRegister();
 
 		super.init();
 	}

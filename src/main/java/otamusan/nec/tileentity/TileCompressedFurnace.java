@@ -215,6 +215,7 @@ public class TileCompressedFurnace extends TileEntityLockable implements ITickab
 		if (compound.hasKey(Lib.MOD_ID + "_isnatural")) {
 			this.isNatural = compound.getBoolean(Lib.MOD_ID + "_isnatural");
 		}
+
 	}
 
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
