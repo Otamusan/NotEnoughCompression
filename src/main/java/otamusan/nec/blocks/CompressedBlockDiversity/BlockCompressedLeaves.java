@@ -51,6 +51,6 @@ public class BlockCompressedLeaves extends BlockCompressed implements IBlockComp
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
 		List<ItemStack> newlist = new ArrayList<ItemStack>();
 
-		return;
+		return newlist;
 	}
 }

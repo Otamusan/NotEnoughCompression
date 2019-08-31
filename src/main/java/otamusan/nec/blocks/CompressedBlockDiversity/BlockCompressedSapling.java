@@ -286,10 +286,10 @@ public class BlockCompressedSapling extends BlockCompressed implements IBlockCom
 
 			if (flag) {
 
-				worldIn.setBlockState(pos.add(i, 0, j), CommonProxy.BLOCKSAPLING.getDefaultState(), 4);
-				worldIn.setBlockState(pos.add(i + 1, 0, j), CommonProxy.BLOCKSAPLING.getDefaultState(), 4);
-				worldIn.setBlockState(pos.add(i, 0, j + 1), CommonProxy.BLOCKSAPLING.getDefaultState(), 4);
-				worldIn.setBlockState(pos.add(i + 1, 0, j + 1), CommonProxy.BLOCKSAPLING.getDefaultState(), 4);
+				//worldIn.setBlockState(pos.add(i, 0, j), CommonProxy.BLOCKSAPLING.getDefaultState(), 4);
+				//worldIn.setBlockState(pos.add(i + 1, 0, j), CommonProxy.BLOCKSAPLING.getDefaultState(), 4);
+				//worldIn.setBlockState(pos.add(i, 0, j + 1), CommonProxy.BLOCKSAPLING.getDefaultState(), 4);
+				//worldIn.setBlockState(pos.add(i + 1, 0, j + 1), CommonProxy.BLOCKSAPLING.getDefaultState(), 4);
 				((ITileCompressed) worldIn.getTileEntity(pos.add(i, 0, j))).setBlockState(state);
 				((ITileCompressed) worldIn.getTileEntity(pos.add(i + 1, 0, j))).setBlockState(state);
 				((ITileCompressed) worldIn.getTileEntity(pos.add(i, 0, j + 1))).setBlockState(state);
@@ -306,7 +306,7 @@ public class BlockCompressedSapling extends BlockCompressed implements IBlockCom
 
 			} else {
 				//worldIn.setBlockState(pos, state, 4);
-				worldIn.setBlockState(pos, CommonProxy.BLOCKSAPLING.getDefaultState(), 4);
+				//worldIn.setBlockState(pos, CommonProxy.BLOCKSAPLING.getDefaultState(), 4);
 
 				((ITileCompressed) worldIn.getTileEntity(pos)).setBlockState(state);
 				((ITileCompressed) worldIn.getTileEntity(pos)).setItemCompressed(
