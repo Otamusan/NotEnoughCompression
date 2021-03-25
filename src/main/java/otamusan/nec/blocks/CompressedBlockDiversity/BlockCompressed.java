@@ -4,22 +4,24 @@ import java.util.ArrayList;
 
 import javax.annotation.Nonnull;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.server.SPacketBlockChange;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
@@ -39,282 +41,321 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import otamusan.nec.client.blockcompressed.UnlistedPropertyCompressedBlockNBT;
 import otamusan.nec.client.blockcompressed.UnlistedPropertyCompressedBlockState;
+import otamusan.nec.common.CommonProxy;
 import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.tileentity.ITileCompressed;
 import otamusan.nec.tileentity.TileCompressed;
 
 public class BlockCompressed extends Block implements ITileEntityProvider, IBlockCompressed {
 
-	public static final UnlistedPropertyCompressedBlockNBT COMPRESSEDBLOCK_NBT = new UnlistedPropertyCompressedBlockNBT();
-	public static final UnlistedPropertyCompressedBlockState COMPRESSEDBLOCK_STATE = new UnlistedPropertyCompressedBlockState();
+    public static final UnlistedPropertyCompressedBlockNBT COMPRESSEDBLOCK_NBT = new UnlistedPropertyCompressedBlockNBT();
+    public static final UnlistedPropertyCompressedBlockState COMPRESSEDBLOCK_STATE = new UnlistedPropertyCompressedBlockState();
 
-	public BlockCompressed() {
-		super(Material.BARRIER);
-		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		hasTileEntity = true;
-	}
+    public BlockCompressed(Material material) {
+        super(material);
+        this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        hasTileEntity = true;
+    }
 
-	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World worldIn, BlockPos pos) {
-		if (((ITileCompressed) (worldIn.getTileEntity(pos))).isNatural()) {
-			return (float) (blockStrength(state, player, worldIn, pos) / Math.pow(8, getTime(worldIn, pos)));
-		}
-		return blockStrength(state, player, worldIn, pos);
-	}
+    public static void placeCompressedBlock(World world, BlockPos pos, IBlockState originalState, ItemStack compresseditem, boolean natural){
+        world.setBlockState(pos, getBlockCompressed(originalState.getBlock()).getDefaultState());
+        ITileCompressed tileCompressed = (ITileCompressed) world.getTileEntity(pos);
+        tileCompressed.setNatural(natural);
+        tileCompressed.setItemCompressed(compresseditem);
+        tileCompressed.setBlockState(originalState);
+        updateOriginalState(world,pos);
+    }
+    public static void updateOriginalState(World world, BlockPos pos){
+        TileEntity tileentity = world.getTileEntity(pos);
+        for (EntityPlayer player : world.playerEntities) {
+            if (player instanceof EntityPlayerMP) {
+                EntityPlayerMP entityPlayer = (EntityPlayerMP) player;
+                entityPlayer.connection.sendPacket(new SPacketBlockChange(world, pos));
+                entityPlayer.connection.sendPacket(tileentity.getUpdatePacket());
 
-	public float blockStrength(@Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull World world,
-			@Nonnull BlockPos pos) {
-		IBlockState original = getOriginalBlockState(world, pos);
+            }
+        }
+        //onPlaceItemIntoWorld(worldIn, pos);
 
-		float hardness = original.getBlockHardness(world, pos);
-		if (hardness < 0.0F) {
-			return 0.0F;
-		}
+        //worldIn.markBlockRangeForRenderUpdate(pos, pos);
+        //worldIn.markAndNotifyBlock(pos, null, iblockstate, iblockstate, 0);
+        try {
+            Minecraft.getMinecraft().renderGlobal.markBlockRangeForRenderUpdate(pos.getX() - 1, pos.getY() - 1,
+                    pos.getZ() - 1,
+                    pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1);
+        } catch (Exception e) {
+        }
+    }
 
-		if (!canHarvestBlock(original.getBlock(), player, world, pos)) {
-			return player.getDigSpeed(original, pos) / hardness / 100F;
-		} else {
-			return player.getDigSpeed(original, pos) / hardness / 30F;
-		}
-	}
+    public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World worldIn, BlockPos pos) {
+        if (((ITileCompressed) (worldIn.getTileEntity(pos))).isNatural()) {
+            return (float) (blockStrength(state, player, worldIn, pos) / Math.pow(8, getTime(worldIn, pos)));
+        }
+        return blockStrength(state, player, worldIn, pos);
+    }
 
-	public boolean canHarvestBlock(@Nonnull Block block, @Nonnull EntityPlayer player,
-			@Nonnull IBlockAccess world, @Nonnull BlockPos pos) {
-		IBlockState state = getOriginalBlockState(world, pos);
-		;
-		state = state.getBlock().getActualState(state, world, pos);
-		if (state.getMaterial().isToolNotRequired()) {
-			return true;
-		}
+    public float blockStrength(@Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull World world,
+                               @Nonnull BlockPos pos) {
+        IBlockState original = getOriginalBlockState(world, pos);
 
-		ItemStack stack = player.getHeldItemMainhand();
-		String tool = block.getHarvestTool(state);
-		if (stack.isEmpty() || tool == null) {
-			return player.canHarvestBlock(state);
-		}
+        float hardness = original.getBlockHardness(world, pos);
+        if (hardness < 0.0F) {
+            return 0.0F;
+        }
 
-		int toolLevel = stack.getItem().getHarvestLevel(stack, tool, player, state);
-		if (toolLevel < 0) {
-			return player.canHarvestBlock(state);
-		}
+        if (!canHarvestBlock(original.getBlock(), player, world, pos)) {
+            return player.getDigSpeed(original, pos) / hardness / 100F;
+        } else {
+            return player.getDigSpeed(original, pos) / hardness / 30F;
+        }
+    }
 
-		return toolLevel >= block.getHarvestLevel(state);
-	}
+    public boolean canHarvestBlock(@Nonnull Block block, @Nonnull EntityPlayer player,
+                                   @Nonnull IBlockAccess world, @Nonnull BlockPos pos) {
+        IBlockState state = getOriginalBlockState(world, pos);
+        ;
+        state = state.getBlock().getActualState(state, world, pos);
+        if (state.getMaterial().isToolNotRequired()) {
+            return true;
+        }
 
-	@Override
-	public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) {
-		return getOriginalBlockState(worldIn, pos).getBlock().getBlockHardness(getOriginalBlockState(worldIn, pos),
-				worldIn, pos);
-	}
+        ItemStack stack = player.getHeldItemMainhand();
+        String tool = block.getHarvestTool(state);
+        if (stack.isEmpty() || tool == null) {
+            return player.canHarvestBlock(state);
+        }
 
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return getOriginalBlockState(source, pos).getBlock().getBoundingBox(getOriginalBlockState(source, pos), source,
-				pos);
-	}
+        int toolLevel = stack.getItem().getHarvestLevel(stack, tool, player, state);
+        if (toolLevel < 0) {
+            return player.canHarvestBlock(state);
+        }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
-		return getOriginalBlockState(worldIn, pos).getBlock()
-				.getCollisionBoundingBox(getOriginalBlockState(worldIn, pos), worldIn, pos);
-	}
+        return toolLevel >= block.getHarvestLevel(state);
+    }
 
-	@Override
-	public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
-		return getOriginalBlockState(world, pos).getBlock().getExplosionResistance(world, pos, exploder, explosion);
-	}
+    @Override
+    public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) {
+        return getOriginalBlockState(worldIn, pos).getBlock().getBlockHardness(getOriginalBlockState(worldIn, pos),
+                worldIn, pos);
+    }
 
-	@Override
-	public SoundType getSoundType(IBlockState state, World world, BlockPos pos, Entity entity) {
-		return getOriginalBlockState(world, pos).getBlock().getSoundType(getOriginalBlockState(world, pos), world, pos,
-				entity);
-	}
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        return getOriginalBlockState(source, pos).getBlock().getBoundingBox(getOriginalBlockState(source, pos), source,
+                pos);
+    }
 
-	@Override
-	public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-		return getOriginalBlockState(world, pos).getBlock().canConnectRedstone(getOriginalBlockState(world, pos), world,
-				pos, side);
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+        return getOriginalBlockState(worldIn, pos).getBlock()
+                .getCollisionBoundingBox(getOriginalBlockState(worldIn, pos), worldIn, pos);
+    }
 
-	@Override
-	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess worldIn, BlockPos pos, IBlockState state,
-			int fortune) {
-	}
+    @Override
+    public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
+        return getOriginalBlockState(world, pos).getBlock().getExplosionResistance(world, pos, exploder, explosion);
+    }
 
-	public IBlockState getOriginalBlockState(IBlockAccess world, BlockPos pos) {
-		ITileCompressed tile = (ITileCompressed) world.getTileEntity(pos);
-		IBlockState state;
+    @Override
+    public SoundType getSoundType(IBlockState state, World world, BlockPos pos, Entity entity) {
+        return getOriginalBlockState(world, pos).getBlock().getSoundType(getOriginalBlockState(world, pos), world, pos,
+                entity);
+    }
 
-		if (tile == null)
-			return Blocks.STONE.getDefaultState();
+    @Override
+    public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+        return getOriginalBlockState(world, pos).getBlock().canConnectRedstone(getOriginalBlockState(world, pos), world,
+                pos, side);
+    }
 
-		if (tile.getState() == null) {
-			state = getOriginalBlockState(ItemCompressed.getOriginal(tile.getItemCompressed()));
 
-		} else if (tile.getState().getBlock() instanceof IBlockCompressed) {
-			return Blocks.STONE.getDefaultState();
 
-		} else {
-			state = tile.getState();
+    public static IBlockState getOriginalBlockState(IBlockAccess world, BlockPos pos) {
+        ITileCompressed tile = (ITileCompressed) world.getTileEntity(pos);
+        IBlockState state;
 
-		}
+        if (tile == null)
+            return Blocks.STONE.getDefaultState();
 
-		return state;
+        if (tile.getState() == null) {
+            state = getOriginalBlockState(ItemCompressed.getOriginal(tile.getItemCompressed()));
 
-	}
+        } else if (tile.getState().getBlock() instanceof IBlockCompressed) {
+            return Blocks.STONE.getDefaultState();
 
-	public int getTime(IBlockAccess world, BlockPos pos) {
-		ITileCompressed tile = (ITileCompressed) world.getTileEntity(pos);
+        } else {
+            state = tile.getState();
 
-		if (tile == null)
-			return 0;
+        }
 
-		return ItemCompressed.getTime(tile.getItemCompressed());
-	}
+        return state;
 
-	public IBlockState getOriginalBlockState(ItemStack item) {
-		if (!(item.getItem() instanceof ItemBlock))
-			return Blocks.STONE.getDefaultState();
+    }
 
-		return ((ItemBlock) item.getItem()).getBlock().getStateFromMeta(item.getMetadata());
+    public static int getTime(IBlockAccess world, BlockPos pos) {
+        ITileCompressed tile = (ITileCompressed) world.getTileEntity(pos);
 
-	}
+        if (tile == null)
+            return 0;
 
-	public IBlockState getOriginalBlockState(IBlockState state) {
-		if (state instanceof IExtendedBlockState) {
-			IExtendedBlockState estate = (IExtendedBlockState) state;
+        return ItemCompressed.getTime(tile.getItemCompressed());
+    }
 
-			if (estate.getValue(COMPRESSEDBLOCK_STATE) != null)
-				return estate.getValue(COMPRESSEDBLOCK_STATE);
-		}
-		return Blocks.STONE.getDefaultState();
-	}
+    public static IBlockState getOriginalBlockState(ItemStack item) {
+        if (!(item.getItem() instanceof ItemBlock))
+            return Blocks.STONE.getDefaultState();
 
-	public boolean hasTileEntity(int metadata) {
-		return true;
-	}
+        return ((ItemBlock) item.getItem()).getBlock().getStateFromMeta(item.getMetadata());
 
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.TRANSLUCENT;
-	}
+    }
 
-	@Override
-	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World worldIn, BlockPos pos,
-			EntityPlayer player) {
-		ITileCompressed tileCompressed = (ITileCompressed) worldIn.getTileEntity(pos);
-		ItemStack itemCompressed = tileCompressed.getItemCompressed().copy();
-		itemCompressed.setCount(1);
-		return itemCompressed;
-	}
+    public static IBlockState getOriginalBlockState(IBlockState state) {
+        if (state instanceof IExtendedBlockState) {
+            IExtendedBlockState estate = (IExtendedBlockState) state;
 
-	@Override
-	public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
-		ItemStack heldItem = player.getHeldItem(EnumHand.MAIN_HAND);
-		int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, heldItem);
-		int silktouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem);
-		ITileCompressed tileCompressed = (ITileCompressed) worldIn.getTileEntity(pos);
-		IBlockState iBlockState = tileCompressed.getState();
+            if (estate.getValue(COMPRESSEDBLOCK_STATE) != null)
+                return estate.getValue(COMPRESSEDBLOCK_STATE);
+        }
+        return Blocks.STONE.getDefaultState();
+    }
 
-		if (iBlockState != null && iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player)
-				&& silktouch == 0) {
+    public boolean hasTileEntity(int metadata) {
+        return true;
+    }
 
-			int time = ItemCompressed.getTime(tileCompressed.getItemCompressed());
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getBlockLayer() {
+        return BlockRenderLayer.TRANSLUCENT;
+    }
 
-			NonNullList<ItemStack> itemlist = NonNullList.create();
-			iBlockState.getBlock().getDrops(itemlist, worldIn, pos, iBlockState, fortune);
+    @Override
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World worldIn, BlockPos pos,
+                                  EntityPlayer player) {
+        ITileCompressed tileCompressed = (ITileCompressed) worldIn.getTileEntity(pos);
+        ItemStack itemCompressed = tileCompressed.getItemCompressed().copy();
+        itemCompressed.setCount(1);
+        return itemCompressed;
+    }
 
-			for (ItemStack itemStack : itemlist) {
-				ItemStack compressed = ItemCompressed.createCompressedItem(itemStack, time);
-				spawnAsEntity(worldIn, pos, compressed);
-			}
+    public static Block getBlockCompressed(Block block) {
+        return CommonProxy.BLOCKBASE.getBlock(block);
+    }
 
-		} else {
-			ItemStack itemCompressed = tileCompressed.getItemCompressed().copy();
-			itemCompressed.setCount(1);
-			spawnAsEntity(worldIn, pos, itemCompressed);
-		}
-	}
+    public static Block getOriginalBlock(ItemStack compressed) {
+        return ((ItemBlock) (ItemCompressed.getOriginal(compressed)).getItem()).getBlock();
+    }
 
-	@Override
-	public boolean isOpaqueCube(IBlockState iBlockState) {
-		return false;
-	}
+    public static Block getBlockCompressed(ItemStack stack) {
+        return getBlockCompressed(getOriginalBlock(stack));
+    }
 
-	@Override
-	protected BlockStateContainer createBlockState() {
-		IProperty<?>[] listedProperties = new IProperty[0];
-		IUnlistedProperty<?>[] unlistedProperties = new IUnlistedProperty[] { COMPRESSEDBLOCK_NBT,
-				COMPRESSEDBLOCK_STATE };
-		return new ExtendedBlockState(this, listedProperties, unlistedProperties);
-	}
+    @Override
+    public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
+        ItemStack heldItem = player.getHeldItem(EnumHand.MAIN_HAND);
+        int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, heldItem);
+        int silktouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem);
+        ITileCompressed tileCompressed = (ITileCompressed) worldIn.getTileEntity(pos);
+        IBlockState iBlockState = tileCompressed.getState();
 
-	@Override
-	public IBlockState getExtendedState(IBlockState state, IBlockAccess world, BlockPos pos) {
-		if (state instanceof IExtendedBlockState) {
-			IExtendedBlockState retval = (IExtendedBlockState) state;
-			TileEntity tileEntity = world.getTileEntity(pos);
-			ITileCompressed tileCompressed = (ITileCompressed) tileEntity;
+        if (iBlockState != null && (!iBlockState.getBlock().canSilkHarvest(worldIn, pos, iBlockState, player)
+                && silktouch == 0)) {
 
-			ItemStack compressed = tileCompressed.getItemCompressed();
-			if (compressed != null) {
-				NBTTagCompound itemNBT = new NBTTagCompound();
-				compressed.writeToNBT(itemNBT);
-				retval = retval.withProperty(COMPRESSEDBLOCK_NBT, itemNBT);
-			}
+            int time = ItemCompressed.getTime(tileCompressed.getItemCompressed());
 
-			IBlockState blockState = tileCompressed.getState();
-			retval = retval.withProperty(COMPRESSEDBLOCK_STATE, blockState);
-			return retval;
-		}
-		return state;
-	}
+            NonNullList<ItemStack> itemlist = NonNullList.create();
+            iBlockState.getBlock().getDrops(itemlist, worldIn, pos, iBlockState, fortune);
+            for (ItemStack itemStack : itemlist) {
+                ItemStack compressed = ItemCompressed.createCompressedItem(itemStack, time);
+                spawnAsEntity(worldIn, pos, compressed);
+            }
 
-	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		IBlockState original = getOriginalBlockState(world, pos);
-		return original.getBlock().doesSideBlockRendering(original, world, pos, face);
-	}
+        } else {
+            ItemStack itemCompressed = tileCompressed.getItemCompressed().copy();
+            itemCompressed.setCount(1);
+            spawnAsEntity(worldIn, pos, itemCompressed);
+        }
+    }
 
-	@Override
-	public boolean isFullCube(IBlockState iBlockState) {
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube(IBlockState iBlockState) {
+        return false;
+    }
 
-	@Override
-	public EnumBlockRenderType getRenderType(IBlockState iBlockState) {
-		return EnumBlockRenderType.MODEL;
-	}
+    @Override
+    protected BlockStateContainer createBlockState() {
+        IProperty<?>[] listedProperties = new IProperty[0];
+        IUnlistedProperty<?>[] unlistedProperties = new IUnlistedProperty[]{COMPRESSEDBLOCK_NBT,
+                COMPRESSEDBLOCK_STATE};
+        return new ExtendedBlockState(this, listedProperties, unlistedProperties);
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileCompressed();
-	}
+    @Override
+    public IBlockState getExtendedState(IBlockState state, IBlockAccess world, BlockPos pos) {
+        if (state instanceof IExtendedBlockState) {
+            IExtendedBlockState retval = (IExtendedBlockState) state;
+            TileEntity tileEntity = world.getTileEntity(pos);
+            ITileCompressed tileCompressed = (ITileCompressed) tileEntity;
 
-	private ArrayList<IBlockCompressed> children = new ArrayList<>();
-	private IBlockCompressed parent;
+            ItemStack compressed = tileCompressed.getItemCompressed();
+            if (compressed != null) {
+                NBTTagCompound itemNBT = new NBTTagCompound();
+                compressed.writeToNBT(itemNBT);
+                retval = retval.withProperty(COMPRESSEDBLOCK_NBT, itemNBT);
+            }
 
-	@Override
-	public boolean isAvailable(Block item) {
-		return true;
-	}
+            IBlockState blockState = tileCompressed.getState();
+            retval = retval.withProperty(COMPRESSEDBLOCK_STATE, blockState);
+            return retval;
+        }
+        return state;
+    }
 
-	@Override
-	public ArrayList<IBlockCompressed> getChildren() {
-		return children;
-	}
+    public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+        IBlockState original = getOriginalBlockState(world, pos);
+        return original.getBlock().doesSideBlockRendering(original, world, pos, face);
+    }
 
-	@Override
-	public String getName() {
-		return "blockbase";
-	}
+    @Override
+    public boolean isFullCube(IBlockState iBlockState) {
+        return false;
+    }
 
-	@Override
-	public IBlockCompressed getParent() {
-		return parent;
-	}
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState iBlockState) {
+        return EnumBlockRenderType.MODEL;
+    }
 
-	@Override
-	public void setParent(IBlockCompressed iBlockCompressed) {
-		parent = iBlockCompressed;
-	}
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TileCompressed();
+    }
+
+    private ArrayList<IBlockCompressed> children = new ArrayList<>();
+    private IBlockCompressed parent;
+
+    @Override
+    public boolean isAvailable(Block item) {
+        return true;
+    }
+
+    @Override
+    public ArrayList<IBlockCompressed> getChildren() {
+        return children;
+    }
+
+    @Override
+    public String getName() {
+        return "blockbase";
+    }
+
+    @Override
+    public IBlockCompressed getParent() {
+        return parent;
+    }
+
+    @Override
+    public void setParent(IBlockCompressed iBlockCompressed) {
+        parent = iBlockCompressed;
+    }
 
 }

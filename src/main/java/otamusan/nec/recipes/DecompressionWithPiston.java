@@ -14,74 +14,74 @@ import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 
 public class DecompressionWithPiston extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
-	public static final ItemStack catalyst = new ItemStack(Item.getItemFromBlock(Blocks.STICKY_PISTON));
+    public static final ItemStack catalyst = new ItemStack(Item.getItemFromBlock(Blocks.STICKY_PISTON));
 
-	@Override
-	public boolean matches(InventoryCrafting inv, World world) {
-		return getItemAmount(inv) == 2 && hasCatalyst(inv) && !getBase(inv).isEmpty();
-	}
+    @Override
+    public boolean matches(InventoryCrafting inv, World world) {
+        return getItemAmount(inv) == 2 && hasCatalyst(inv) && !getBase(inv).isEmpty();
+    }
 
-	private ItemStack getBase(InventoryCrafting inv) {
-		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			ItemStack current = inv.getStackInSlot(i);
-			if (!current.isEmpty()) {
-				if (ItemCompressed.isCompressedItem(current.getItem()))
-					return current.copy();
-			}
-		}
-		return ItemStack.EMPTY;
-	}
+    private ItemStack getBase(InventoryCrafting inv) {
+        for (int i = 0; i < inv.getSizeInventory(); i++) {
+            ItemStack current = inv.getStackInSlot(i);
+            if (!current.isEmpty()) {
+                if (ItemCompressed.isCompressedItem(current.getItem()))
+                    return current.copy();
+            }
+        }
+        return ItemStack.EMPTY;
+    }
 
-	private int getItemAmount(InventoryCrafting inv) {
-		int a = 0;
-		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			if (!inv.getStackInSlot(i).isEmpty())
-				a++;
-		}
-		return a;
-	}
+    private int getItemAmount(InventoryCrafting inv) {
+        int a = 0;
+        for (int i = 0; i < inv.getSizeInventory(); i++) {
+            if (!inv.getStackInSlot(i).isEmpty())
+                a++;
+        }
+        return a;
+    }
 
-	private boolean hasCatalyst(InventoryCrafting inv) {
-		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			if (isCatalyst(inv.getStackInSlot(i))) {
-				return true;
-			}
-		}
-		return false;
-	}
+    private boolean hasCatalyst(InventoryCrafting inv) {
+        for (int i = 0; i < inv.getSizeInventory(); i++) {
+            if (isCatalyst(inv.getStackInSlot(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-	@Override
-	public boolean canFit(int width, int height) {
-		return true;
-	}
+    @Override
+    public boolean canFit(int width, int height) {
+        return true;
+    }
 
-	@Override
-	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
-		NonNullList<ItemStack> list = NonNullList.withSize(9, ItemStack.EMPTY);
-		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			if (isCatalyst(inv.getStackInSlot(i))) {
-				list.set(i, inv.getStackInSlot(i).copy());
-			}
-		}
-		return list;
-	}
+    @Override
+    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
+        NonNullList<ItemStack> list = NonNullList.withSize(9, ItemStack.EMPTY);
+        for (int i = 0; i < inv.getSizeInventory(); i++) {
+            if (isCatalyst(inv.getStackInSlot(i))) {
+                list.set(i, inv.getStackInSlot(i).copy());
+            }
+        }
+        return list;
+    }
 
-	private boolean isCatalyst(ItemStack item) {
-		return NECConfig.isDecompressionCatalyst(item.getItem());
-	}
+    private boolean isCatalyst(ItemStack item) {
+        return NECConfig.isDecompressionCatalyst(item.getItem());
+    }
 
-	@Override
-	public ItemStack getRecipeOutput() {
-		return new ItemStack(CommonProxy.ITEMBASE);
-	}
+    @Override
+    public ItemStack getRecipeOutput() {
+        return new ItemStack(CommonProxy.ITEMBASE);
+    }
 
-	@Override
-	public ItemStack getCraftingResult(InventoryCrafting inv) {
-		return ItemCompressed.createUncompressedItem(getBase(inv));
-	}
+    @Override
+    public ItemStack getCraftingResult(InventoryCrafting inv) {
+        return ItemCompressed.createUncompressedItem(getBase(inv));
+    }
 
-	@Override
-	public boolean isDynamic() {
-		return true;
-	}
+    @Override
+    public boolean isDynamic() {
+        return true;
+    }
 }

@@ -4,6 +4,7 @@
 
 ### Custom ###
 artifacts/
+.idea/
 
 ### Eclipse ###
 

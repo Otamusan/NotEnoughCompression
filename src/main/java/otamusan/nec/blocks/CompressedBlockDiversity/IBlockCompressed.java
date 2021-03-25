@@ -24,112 +24,112 @@ import otamusan.nec.items.CompressedItemDiversity.ItemCompressed;
 import otamusan.nec.util.ColorUtil;
 
 public interface IBlockCompressed {
-	public boolean isAvailable(Block item);
+    public boolean isAvailable(Block item);
 
-	public ArrayList<IBlockCompressed> getChildren();
+    public ArrayList<IBlockCompressed> getChildren();
 
-	public default void addChildren(IBlockCompressed iBlockCompressed) {
-		getChildren().add(iBlockCompressed);
-		iBlockCompressed.setParent(this);
-		((Block) iBlockCompressed).setRegistryName(Lib.MOD_ID + ":compresseditem" + iBlockCompressed.getNameTreed());
-		((Block) iBlockCompressed).setUnlocalizedName("compresseditem");
-		ForgeRegistries.BLOCKS.register((Block) iBlockCompressed);
-	}
+    public default void addChildren(IBlockCompressed iBlockCompressed) {
+        getChildren().add(iBlockCompressed);
+        iBlockCompressed.setParent(this);
+        ((Block) iBlockCompressed).setRegistryName(Lib.MOD_ID + ":compresseditem" + iBlockCompressed.getNameTreed());
+        ((Block) iBlockCompressed).setUnlocalizedName("compresseditem");
+        ForgeRegistries.BLOCKS.register((Block) iBlockCompressed);
+    }
 
-	public default Block getBlock(Block original) {
-		for (IBlockCompressed iBlockCompressed : getChildren()) {
-			if (iBlockCompressed.isAvailable(original)) {
-				return iBlockCompressed.getBlock(original);
-			}
-		}
-		return (Block) this;
-	}
+    public default Block getBlock(Block original) {
+        for (IBlockCompressed iBlockCompressed : getChildren()) {
+            if (iBlockCompressed.isAvailable(original)) {
+                return iBlockCompressed.getBlock(original);
+            }
+        }
+        return (Block) this;
+    }
 
-	public default ArrayList<Block> getCompressedBlocks() {
-		ArrayList<Block> blocks = new ArrayList<>();
-		blocks.add((Block) this);
-		for (IBlockCompressed iBlockCompressed : getChildren()) {
-			blocks.addAll(iBlockCompressed.getCompressedBlocks());
-		}
-		return blocks;
-	}
+    public default ArrayList<Block> getCompressedBlocks() {
+        ArrayList<Block> blocks = new ArrayList<>();
+        blocks.add((Block) this);
+        for (IBlockCompressed iBlockCompressed : getChildren()) {
+            blocks.addAll(iBlockCompressed.getCompressedBlocks());
+        }
+        return blocks;
+    }
 
-	public default ArrayList<IBlockCompressed> getIBlockCompresseds() {
-		ArrayList<IBlockCompressed> blocks = new ArrayList<>();
-		blocks.add(this);
-		for (IBlockCompressed iBlockCompressed : getChildren()) {
-			blocks.addAll(iBlockCompressed.getIBlockCompresseds());
-		}
-		return blocks;
-	}
+    public default ArrayList<IBlockCompressed> getIBlockCompresseds() {
+        ArrayList<IBlockCompressed> blocks = new ArrayList<>();
+        blocks.add(this);
+        for (IBlockCompressed iBlockCompressed : getChildren()) {
+            blocks.addAll(iBlockCompressed.getIBlockCompresseds());
+        }
+        return blocks;
+    }
 
-	public String getName();
+    public String getName();
 
-	public IBlockCompressed getParent();
+    public IBlockCompressed getParent();
 
-	public void setParent(IBlockCompressed iBlockCompressed);
+    public void setParent(IBlockCompressed iBlockCompressed);
 
-	public default String getNameTreed() {
+    public default String getNameTreed() {
 
-		if (getParent() == null) {
-			return "_" + getName();
-		}
+        if (getParent() == null) {
+            return "_" + getName();
+        }
 
-		return getParent().getNameTreed() + "_" + getName();
-	}
+        return getParent().getNameTreed() + "_" + getName();
+    }
 
-	@SideOnly(Side.CLIENT)
-	public default void preModelRegister() {
-		ModelResourceLocation MRBlockCompressed = new ModelResourceLocation(
-				Lib.MOD_ID + ":compresseditem" + this.getNameTreed(), "normal");
+    @SideOnly(Side.CLIENT)
+    public default void preModelRegister() {
+        ModelResourceLocation MRBlockCompressed = new ModelResourceLocation(
+                Lib.MOD_ID + ":compresseditem" + this.getNameTreed(), "normal");
 
-		ClientProxy.MRBlockCompresseds.add(MRBlockCompressed);
-		StateMapperBase ignoreState = new StateMapperBase() {
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState iBlockState) {
-				return MRBlockCompressed;
-			}
-		};
+        ClientProxy.MRBlockCompresseds.add(MRBlockCompressed);
+        StateMapperBase ignoreState = new StateMapperBase() {
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState iBlockState) {
+                return MRBlockCompressed;
+            }
+        };
 
-		ModelLoader.setCustomStateMapper((Block) this, ignoreState);
-	}
+        ModelLoader.setCustomStateMapper((Block) this, ignoreState);
+    }
 
-	@SideOnly(Side.CLIENT)
-	public default void modelRegister() {
-		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor() {
-			@Override
-			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-				if (!(state instanceof IExtendedBlockState))
-					return -1;
-				IExtendedBlockState eState = (IExtendedBlockState) state;
+    @SideOnly(Side.CLIENT)
+    public default void modelRegister() {
+        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor() {
+            @Override
+            public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
+                if (!(state instanceof IExtendedBlockState))
+                    return -1;
+                IExtendedBlockState eState = (IExtendedBlockState) state;
 
-				NBTTagCompound itemnbt = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_NBT);
+                NBTTagCompound itemnbt = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_NBT);
 
-				if (itemnbt == null)
-					return -1;
+                if (itemnbt == null)
+                    return -1;
 
-				ItemStack stack = new ItemStack(itemnbt);
+                ItemStack stack = new ItemStack(itemnbt);
 
-				int time = ItemCompressed.getTime(stack);
+                int time = ItemCompressed.getTime(stack);
 
-				if (time > 0) {
-					IBlockState originalState = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
+                if (time > 0) {
+                    IBlockState originalState = eState.getValue(BlockCompressed.COMPRESSEDBLOCK_STATE);
 
-					int k;
+                    int k;
 
-					int oritintindex = tintIndex - 100;
-					if (oritintindex == -1) {
-						k = ColorUtil.getCompressedColor(time + 1).getRGB();
-					} else {
-						int colorInt = Minecraft.getMinecraft().getBlockColors().colorMultiplier(originalState, worldIn,
-								pos, oritintindex);
-						k = ColorUtil.getCompressedColor(new Color(colorInt), time + 1).getRGB();
-					}
-					return k;
-				}
-				return -1;
-			}
-		}, (Block) this);
-	}
+                    int oritintindex = tintIndex - 100;
+                    if (oritintindex == -1) {
+                        k = ColorUtil.getCompressedColor(time + 1).getRGB();
+                    } else {
+                        int colorInt = Minecraft.getMinecraft().getBlockColors().colorMultiplier(originalState, worldIn,
+                                pos, oritintindex);
+                        k = ColorUtil.getCompressedColor(new Color(colorInt), time + 1).getRGB();
+                    }
+                    return k;
+                }
+                return -1;
+            }
+        }, (Block) this);
+    }
 
 }

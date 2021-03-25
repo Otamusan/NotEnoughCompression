@@ -12,20 +12,20 @@ import otamusan.nec.client.itemcompressed.CompressedModel;
 
 public class ModelBakeEventHandler {
 
-	@SubscribeEvent
-	public void onModelBakeEvent(ModelBakeEvent event) {
-		ClientProxy.modelBased = event.getModelManager().getBlockModelShapes()
-				.getModelForState(Blocks.STONE.getDefaultState());
+    @SubscribeEvent
+    public void onModelBakeEvent(ModelBakeEvent event) {
+        ClientProxy.modelBased = event.getModelManager().getBlockModelShapes()
+                .getModelForState(Blocks.STONE.getDefaultState());
 
-		for (ModelResourceLocation modelResourceLocation : ClientProxy.MRItemCompresseds) {
-			event.getModelRegistry().putObject(modelResourceLocation,
-					new CompressedModel(ClientProxy.modelBased, new CompressedItemOverrideList(new ArrayList<>())));
+        for (ModelResourceLocation modelResourceLocation : ClientProxy.MRItemCompresseds) {
+            event.getModelRegistry().putObject(modelResourceLocation,
+                    new CompressedModel(ClientProxy.modelBased, new CompressedItemOverrideList(new ArrayList<>())));
 
-		}
-		for (ModelResourceLocation modelResourceLocation : ClientProxy.MRBlockCompresseds) {
-			event.getModelRegistry().putObject(modelResourceLocation,
-					new BlockCompressedBakedModel(ClientProxy.modelBased));
-		}
+        }
+        for (ModelResourceLocation modelResourceLocation : ClientProxy.MRBlockCompresseds) {
+            event.getModelRegistry().putObject(modelResourceLocation,
+                    new BlockCompressedBakedModel(ClientProxy.modelBased));
+        }
 
-	}
+    }
 }

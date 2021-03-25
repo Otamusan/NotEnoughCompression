@@ -3,6 +3,13 @@ notenoughcompression.hasnotitem=CompressedItem
 notenoughcompression.compressed=%sx Compressed %s
 notenoughcompression.compresseditem=Compressed Items : %s
 notenoughcompression.total=Total : %s
+notenoughcompression.blockspecialized=[Special Compressed Block]
+notenoughcompression.itemspecialized=[Special Compressed Item]
+
+notenoughcompression.itemdescription.notenoughcompression:compresseditem_base_itemplantable=Can be planted and grows slowly
+notenoughcompression.blockdescription.notenoughcompression:compresseditem_blockbase_blocksapling=Can be planted and grows slowly
+notenoughcompression.blockdescription.notenoughcompression:compresseditem_blockbase_blockfurnace=Processing compressed items with equivalent fuel and materials
+
 notenoughcompression.advancement.compression.root.title=Beginning of compression
 notenoughcompression.advancement.compression.compressedcobblestone1.title=Compressed Cobble Stone
 notenoughcompression.advancement.compression.compressedcobblestone2.title=Second time
@@ -15,15 +22,15 @@ notenoughcompression.advancement.compression.compressedcobblestone8.title=Eighth
 notenoughcompression.advancement.compression.compressedcobblestone9.title=Ninth time
 
 notenoughcompression.advancement.compression.root.description=Convenient, right?
-notenoughcompression.advancement.compression.compressedcobblestone1.description=Let's compress a cobble stone
-notenoughcompression.advancement.compression.compressedcobblestone2.description=Let's compress more
-notenoughcompression.advancement.compression.compressedcobblestone3.description=It has just begun more
-notenoughcompression.advancement.compression.compressedcobblestone4.description=Chest filled full of cobblestones
-notenoughcompression.advancement.compression.compressedcobblestone5.description=To exhibit this mod characteristics
-notenoughcompression.advancement.compression.compressedcobblestone6.description=Is it difficult by the manual operation soon?
-notenoughcompression.advancement.compression.compressedcobblestone7.description=Ordinary in an industrial environment
-notenoughcompression.advancement.compression.compressedcobblestone8.description=boring?
-notenoughcompression.advancement.compression.compressedcobblestone9.description=You can not make bedrock!
+notenoughcompression.advancement.compression.compressedcobblestone1.description=One chest is enough
+notenoughcompression.advancement.compression.compressedcobblestone2.description=Also for building materials
+notenoughcompression.advancement.compression.compressedcobblestone3.description=Amount you can hold in your hand
+notenoughcompression.advancement.compression.compressedcobblestone4.description=Full of stones
+notenoughcompression.advancement.compression.compressedcobblestone5.description=What more do you use it for?
+notenoughcompression.advancement.compression.compressedcobblestone6.description=Manual and automatic walls
+notenoughcompression.advancement.compression.compressedcobblestone7.description=Daily life in an industrial mods
+notenoughcompression.advancement.compression.compressedcobblestone8.description=Reversal of purpose and means
+notenoughcompression.advancement.compression.compressedcobblestone9.description=It's almost bedrock
 
 
 # Large Number Names
@@ -130,4 +137,4 @@ notenoughcompression.unit.97=Sexnonagintillion
 notenoughcompression.unit.98=Septnonagintillion
 notenoughcompression.unit.99=Octononagintillion
 notenoughcompression.unit.100=Novemnonagintillion
-notenoughcompression.unit.101=Centillion
+notenoughcompression.unit.101=Centilliontile.compressedblock.name=:lnkntile.compressedblock.name=jjjjjjjj

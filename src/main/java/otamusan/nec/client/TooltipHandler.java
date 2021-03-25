@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class TooltipHandler {
 
-	@SubscribeEvent
-	public void onItemTooltip(ItemTooltipEvent event) {
-	}
+    @SubscribeEvent
+    public void onItemTooltip(ItemTooltipEvent event) {
+    }
 }

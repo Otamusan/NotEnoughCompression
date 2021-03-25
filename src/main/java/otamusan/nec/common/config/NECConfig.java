@@ -8,119 +8,139 @@ import net.minecraftforge.common.config.Config.Comment;
 import otamusan.nec.common.Lib;
 
 public class NECConfig {
-	@Config(modid = Lib.MOD_ID)
-	public static class CONFIG_TYPES {
+    @Config(modid = Lib.MOD_ID)
+    public static class CONFIG_TYPES {
 
-		public static Compression compression = new Compression();
-		public static JEI jei = new JEI();
-		public static Using using = new Using();
-		public static World world = new World();
+        public static Compression compression = new Compression();
+        public static JEI jei = new JEI();
+        public static Using using = new Using();
+        public static World world = new World();
 
-		public static class World {
-			@Comment({ "Whether to replace generated chunks in the world" })
-			public boolean isReplaceChunks = true;
+        public static class World {
+            @Comment({"Whether to replace generated chunks in the world"})
+            public boolean isReplaceChunks = true;
 
-			@Comment({ "Chunk replacement rate" })
-			public double rate = 0.005D;
+            @Comment({"Chunk replacement rate"})
+            public double rate = 0.2D;
 
-			@Comment({ "Maximum compressed time of blocks in chunks replaced" })
-			public int maxTimeReplaced = 5;
+            @Comment({"Maximum compressed time of blocks in chunks replaced"})
+            public int maxTimeReplaced = 5;
 
-			@Comment({ "Deviation of the replaced compressed time" })
-			public int deviationofTime = 6;
-		}
+            @Comment({"Deviation of the replaced compressed time"})
+            public int deviationofTime = 6;
 
-		public static class Using {
-			@Comment({ "Blocks written here can not be placed even if it is compressed" })
-			public String[] placeExclusion = {};
+            @Comment({"If set to true, the item's crafting material will require a compressed item."})
+            public boolean isReplaceVanillaRecipe = false;
+        }
 
-			@Comment({ "Restriction of time of compressed Item on using" })
-			public int usingCompressionTime = 3;
+        public static class Using {
+            @Comment({"Blocks written here can not be placed even if it is compressed"})
+            public String[] placeExclusion = {};
 
-			@Comment({ "Items written here can not use" })
-			public String[] usingExclusion = {};
+            @Comment({"Restriction of time of compressed Item on using"})
+            public int usingCompressionTime = 3;
 
-			@Comment({ "Whether to update all compressed item in inventory" })
-			public boolean isUpdateOnlyOnHand = false;
-		}
+            @Comment({"Items written here can not use"})
+            public String[] usingExclusion = {};
 
-		public static class Compression {
-			@Comment({ "Items written here can not be compressed" })
-			public String[] compressedExclusion = {};
+            @Comment({"Whether to update all compressed item in inventory"})
+            public boolean isUpdateOnlyOnHand = false;
 
-			@Comment({ "Catalyst of compression" })
-			public String compressionCatalyst = "minecraft:piston";
+            @Comment({"Whether to specialize Furnace(Specialization cause changing unlocalized name)"})
+            public boolean isSpecializeFurnace = true;
 
-			@Comment({ "Catalyst of decompression" })
-			public String decompressionCatalyst = "minecraft:sticky_piston";
-		}
+            @Comment({"Whether to specialize Saplings"})
+            public boolean isSpecializeSaplings = true;
 
-		public static class JEI {
-			@Comment({ "Whether to show the recipe of compression" })
-			public boolean JEIshowCompression = true;
+            @Comment({"Whether to slow down sapling growth per compressed times"})
+            public boolean isSaplingSlowDownGrowth = true;
 
-			@Comment({ "Whether to show the recipe of uncompression" })
-			public boolean JEIshowUncompression = true;
+            @Comment({"Whether to specialize Crops"})
+            public boolean isSpecializeCrops = true;
 
-			@Comment({ "Whether to show the recipe of compressed crating" })
-			public boolean JEIshowCompressedCraft = true;
+            @Comment({"Whether to slow down crops growth per compressed times"})
+            public boolean isCropsSlowDownGrowth = true;
 
-			@Comment({ "Number of compression recipes to be displayed on JEI" })
-			public int JEIshowCompressionTime = 5;
-		}
-	}
 
-	public static Item getCompressionCatalyst() {
-		return Item.getByNameOrId(CONFIG_TYPES.compression.compressionCatalyst);
-	}
+        }
 
-	public static Item getDecompressionCatalyst() {
-		return Item.getByNameOrId(CONFIG_TYPES.compression.decompressionCatalyst);
-	}
+        public static class Compression {
+            @Comment({"Items written here can not be compressed"})
+            public String[] compressedExclusion = {};
 
-	public static boolean isCompressionCatalyst(Item item) {
-		Item cfgitem = Item.getByNameOrId(CONFIG_TYPES.compression.compressionCatalyst);
-		return item == cfgitem;
-	}
+            @Comment({"Catalyst of compression"})
+            public String compressionCatalyst = "minecraft:piston";
 
-	public static boolean isDecompressionCatalyst(Item item) {
-		Item cfgitem = Item.getByNameOrId(CONFIG_TYPES.compression.decompressionCatalyst);
-		return item == cfgitem;
-	}
+            @Comment({"Catalyst of decompression"})
+            public String decompressionCatalyst = "minecraft:sticky_piston";
+        }
 
-	public static boolean isCompressible(Item item) {
-		for (String name : CONFIG_TYPES.compression.compressedExclusion) {
-			Item cfgItem = Item.getByNameOrId(name);
-			if (item == cfgItem)
-				return false;
-		}
-		return true;
-	}
+        public static class JEI {
+            @Comment({"Whether to show the recipe of compression"})
+            public boolean JEIshowCompression = true;
 
-	public static boolean isUsable(Item item) {
-		for (String name : CONFIG_TYPES.compression.compressedExclusion) {
-			Item cfgItem = Item.getByNameOrId(name);
-			if (item == cfgItem)
-				return false;
-		}
-		return true;
-	}
+            @Comment({"Whether to show the recipe of uncompression"})
+            public boolean JEIshowUncompression = true;
 
-	public static boolean isPlacable(Block block) {
-		for (String name : CONFIG_TYPES.using.placeExclusion) {
-			Block cfg = Block.getBlockFromName(name);
-			if (block == cfg)
-				return false;
-		}
-		return true;
-	}
+            @Comment({"Whether to show the recipe of compressed crating"})
+            public boolean JEIshowCompressedCraft = true;
 
-	public static boolean isPlacable(Item item) {
-		for (String name : CONFIG_TYPES.using.placeExclusion) {
-			Block cfg = Block.getBlockFromName(name);
-			if (((ItemBlock) item).getBlock() == cfg)
-				return false;
-		}
-		return true;
-	}
+            @Comment({"Number of compression recipes to be displayed on JEI"})
+            public int JEIshowCompressionTime = 5;
+        }
+    }
+
+    public static Item getCompressionCatalyst() {
+        return Item.getByNameOrId(CONFIG_TYPES.compression.compressionCatalyst);
+    }
+
+    public static Item getDecompressionCatalyst() {
+        return Item.getByNameOrId(CONFIG_TYPES.compression.decompressionCatalyst);
+    }
+
+    public static boolean isCompressionCatalyst(Item item) {
+        Item cfgitem = Item.getByNameOrId(CONFIG_TYPES.compression.compressionCatalyst);
+        return item == cfgitem;
+    }
+
+    public static boolean isDecompressionCatalyst(Item item) {
+        Item cfgitem = Item.getByNameOrId(CONFIG_TYPES.compression.decompressionCatalyst);
+        return item == cfgitem;
+    }
+
+    public static boolean isCompressible(Item item) {
+        for (String name : CONFIG_TYPES.compression.compressedExclusion) {
+            Item cfgItem = Item.getByNameOrId(name);
+            if (item == cfgItem)
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean isUsable(Item item) {
+        for (String name : CONFIG_TYPES.compression.compressedExclusion) {
+            Item cfgItem = Item.getByNameOrId(name);
+            if (item == cfgItem)
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean isPlacable(Block block) {
+        for (String name : CONFIG_TYPES.using.placeExclusion) {
+            Block cfg = Block.getBlockFromName(name);
+            if (block == cfg)
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean isPlacable(Item item) {
+        for (String name : CONFIG_TYPES.using.placeExclusion) {
+            Block cfg = Block.getBlockFromName(name);
+            if (((ItemBlock) item).getBlock() == cfg)
+                return false;
+        }
+        return true;
+    }
 }
